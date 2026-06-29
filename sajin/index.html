@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAJIN — Lihat Untung Bersih Usaha F&amp;B, Bukan Cuma Omzet | Local-first, Tanpa Langganan</title>
+    <meta
+      name="description"
+      content="Aplikasi untuk pemilik warung & F&B: untung bersih, COGS per bahan, margin menu, stok pintar (kedaluwarsa/forecast), cash flow. Data lokal di perangkatmu, offline, sekali bayar — tanpa langganan."
+    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e93412'/%3E%3Cstop offset='1' stop-color='%23f47a14'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='38' font-weight='900' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="theme-color" content="#e93412" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SAJIN — Untung yang jelas untuk usaha F&B" />
+    <meta property="og:description" content="Untung bersih, COGS per bahan, margin menu, stok pintar & cash flow. Local-first, offline, sekali bayar." />
+    <meta property="og:locale" content="id_ID" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SAJIN",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, PWA",
+        "description": "Aplikasi local-first untuk UMKM F&B: untung bersih, COGS per bahan, margin menu, stok pintar, dan cash flow. Offline, sekali bayar."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Perlu internet?", "acceptedAnswer": { "@type": "Answer", "text": "Tidak setelah aplikasi dibuka. SAJIN bekerja offline." } },
+          { "@type": "Question", "name": "Perlu langganan bulanan?", "acceptedAnswer": { "@type": "Answer", "text": "Tidak. Sekali bayar untuk satu usaha." } },
+          { "@type": "Question", "name": "Data saya disimpan di mana?", "acceptedAnswer": { "@type": "Answer", "text": "Lokal di perangkatmu. Tidak dikirim ke server kami." } },
+          { "@type": "Question", "name": "Apakah SAJIN menjamin usaha pasti untung?", "acceptedAnswer": { "@type": "Answer", "text": "Tidak. SAJIN membantu kamu melihat data lebih jelas; forecast adalah estimasi." } }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap">
+        <span class="brand"><span class="brand-mark">S</span> SAJIN</span>
+        <nav>
+          <a href="../">← MERIA</a>
+          <a href="#fitur">Fitur</a>
+          <a href="#tampilan">Tampilan</a>
+          <a href="#untuk-siapa">Untuk siapa</a>
+          <a href="#harga">Harga</a>
+        </nav>
+        <a class="btn btn-primary" href="#harga" style="margin-left:12px">Beli sekarang</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <span class="pill-top">UNTUK PEMILIK WARUNG &amp; F&amp;B</span>
+            <h1>Omzet ramai belum tentu untung.<br /><span class="hl">SAJIN bikin untungmu jelas.</span></h1>
+            <p class="lead">
+              Lihat <strong>untung bersih</strong> — bukan cuma omzet. Hitung modal (COGS) per bahan, margin tiap menu,
+              stok yang pintar (peringatan kedaluwarsa &amp; perkiraan habis), sampai cash flow. Semua
+              <strong>tersimpan di perangkatmu</strong>, jalan <strong>offline</strong>, <strong>sekali bayar</strong>.
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary btn-lg" href="#harga">Beli &amp; pakai hari ini</a>
+              <a class="btn btn-ghost btn-lg" href="#tampilan">Lihat tampilannya</a>
+            </div>
+            <div class="trust-row">
+              <span>✅ Tanpa langganan</span>
+              <span>✅ Data milikmu</span>
+              <span>✅ Offline</span>
+              <span>✅ Aktivasi instan via email</span>
+            </div>
+          </div>
+          <div class="hero-mock" aria-hidden="true">
+            <svg class="mock-svg" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi dashboard SAJIN">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e93412"/><stop offset="1" stop-color="#f47a14"/></linearGradient>
+                <linearGradient id="garea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e93412" stop-opacity="0.25"/><stop offset="1" stop-color="#e93412" stop-opacity="0"/></linearGradient>
+              </defs>
+              <rect x="0" y="0" width="380" height="300" rx="16" fill="#ffffff" stroke="#ecdfd3"/>
+              <rect x="0" y="0" width="380" height="40" rx="16" fill="url(#g1)"/>
+              <rect x="0" y="24" width="380" height="16" fill="url(#g1)"/>
+              <circle cx="22" cy="20" r="9" fill="#fff" opacity="0.9"/><text x="22" y="24" font-family="Arial" font-size="11" font-weight="900" fill="#e93412" text-anchor="middle">S</text>
+              <text x="40" y="24" font-family="Arial" font-size="13" font-weight="800" fill="#fff">Dashboard</text>
+              <!-- KPI chips -->
+              <g>
+                <rect x="14" y="54" width="110" height="48" rx="10" fill="#fff6ea" stroke="#ecdfd3"/>
+                <text x="24" y="72" font-family="Arial" font-size="8" fill="#6b5a50">OMZET</text>
+                <text x="24" y="90" font-family="Arial" font-size="15" font-weight="900" fill="#241a14">Rp 12,4jt</text>
+                <rect x="135" y="54" width="110" height="48" rx="10" fill="#fff6ea" stroke="#ecdfd3"/>
+                <text x="145" y="72" font-family="Arial" font-size="8" fill="#6b5a50">UNTUNG</text>
+                <text x="145" y="90" font-family="Arial" font-size="15" font-weight="900" fill="#16865a">Rp 3,1jt</text>
+                <rect x="256" y="54" width="110" height="48" rx="10" fill="#fff6ea" stroke="#ecdfd3"/>
+                <text x="266" y="72" font-family="Arial" font-size="8" fill="#6b5a50">ORDER</text>
+                <text x="266" y="90" font-family="Arial" font-size="15" font-weight="900" fill="#241a14">428</text>
+              </g>
+              <!-- line chart -->
+              <rect x="14" y="114" width="232" height="172" rx="10" fill="#ffffff" stroke="#ecdfd3"/>
+              <text x="26" y="134" font-family="Arial" font-size="9" font-weight="800" fill="#241a14">Tren omzet harian</text>
+              <path d="M26 250 L26 210 L60 220 L94 188 L128 200 L162 165 L196 180 L232 150 L232 250 Z" fill="url(#garea)"/>
+              <path d="M26 210 L60 220 L94 188 L128 200 L162 165 L196 180 L232 150" fill="none" stroke="#e93412" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="232" cy="150" r="3.5" fill="#e93412"/>
+              <!-- donut -->
+              <rect x="256" y="114" width="110" height="172" rx="10" fill="#ffffff" stroke="#ecdfd3"/>
+              <text x="266" y="134" font-family="Arial" font-size="9" font-weight="800" fill="#241a14">Per platform</text>
+              <circle cx="311" cy="195" r="34" fill="none" stroke="#f6a91a" stroke-width="14"/>
+              <circle cx="311" cy="195" r="34" fill="none" stroke="#e93412" stroke-width="14" stroke-dasharray="60 154" transform="rotate(-90 311 195)"/>
+              <circle cx="311" cy="195" r="34" fill="none" stroke="#16865a" stroke-width="14" stroke-dasharray="40 174" transform="rotate(40 311 195)"/>
+              <circle cx="311" cy="195" r="34" fill="none" stroke="#2467c9" stroke-width="14" stroke-dasharray="28 186" transform="rotate(125 311 195)"/>
+              <rect x="270" y="244" width="8" height="8" rx="2" fill="#e93412"/><text x="282" y="251" font-family="Arial" font-size="8" fill="#6b5a50">GrabFood</text>
+              <rect x="270" y="258" width="8" height="8" rx="2" fill="#16865a"/><text x="282" y="265" font-family="Arial" font-size="8" fill="#6b5a50">GoFood</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- USP BAND -->
+      <section class="usp-band">
+        <div class="wrap usp-grid">
+          <div class="usp"><div class="usp-ico">💰</div><h3>Untung bersih, bukan omzet</h3><p>Net payout setelah potongan platform, dikurangi pengeluaran — angka yang benar-benar masuk kantong.</p></div>
+          <div class="usp"><div class="usp-ico">🍗</div><h3>COGS per bahan + Price Lab</h3><p>Tahu modal &amp; margin tiap menu sampai ke bahan. Simulasi harga sebelum mengubahnya.</p></div>
+          <div class="usp"><div class="usp-ico">📦</div><h3>Stok pintar</h3><p>Peringatan kedaluwarsa, urut pakai bahan terlama (FIFO), &amp; perkiraan kapan harus belanja lagi.</p></div>
+          <div class="usp"><div class="usp-ico">🔒</div><h3>Privat &amp; sekali bayar</h3><p>Data lokal di perangkatmu, tanpa cloud wajib, tanpa tagihan bulanan.</p></div>
+        </div>
+      </section>
+
+      <!-- MASALAH -->
+      <section class="alt">
+        <div class="wrap">
+          <h2>Familiar dengan ini?</h2>
+          <p class="sub">Kalau iya, SAJIN dibuat untukmu.</p>
+          <div class="grid">
+            <div class="card"><h3>“Jualan rame, tapi uang kok tipis?”</h3><p>Sulit tahu laba bersih yang sebenarnya.</p></div>
+            <div class="card"><h3>“Menu mana yang paling cuan?”</h3><p>Tanpa COGS, margin cuma tebakan.</p></div>
+            <div class="card"><h3>“Potongan ojol makan margin.”</h3><p>GrabFood/GoFood/ShopeeFood + diskon — berapa persisnya?</p></div>
+            <div class="card"><h3>“Bahan kebuang / kehabisan.”</h3><p>Tanpa kontrol, stok bocor &amp; kedaluwarsa diam-diam.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FITUR -->
+      <section id="fitur">
+        <div class="wrap">
+          <h2>Semua yang kamu butuh, dalam satu aplikasi</h2>
+          <p class="sub">Bukan sekadar kasir — pusat kendali profit, stok, dan keputusan harian.</p>
+          <div class="grid feat-grid">
+            <div class="card"><span class="feat-ico">📊</span><h3>Dashboard penuh grafik</h3><p>Omzet, untung, tren harian, jam &amp; hari tersibuk, target bulanan dengan progress.</p></div>
+            <div class="card"><span class="feat-ico">⚡</span><h3>Jualan Cepat</h3><p>Catat penjualan dari menu dalam 2 ketukan — stok bahan ikut berkurang otomatis.</p></div>
+            <div class="card"><span class="feat-ico">🧮</span><h3>Menu &amp; COGS + Price Lab</h3><p>Margin &amp; food cost per menu, kontribusi untung, simulasi harga/diskon.</p></div>
+            <div class="card"><span class="feat-ico">📦</span><h3>Stok &amp; kedaluwarsa</h3><p>Terima barang, waste, opname, FIFO, status “dekat/expired”, &amp; saran belanja.</p></div>
+            <div class="card"><span class="feat-ico">💵</span><h3>Cash flow &amp; break-even</h3><p>Kas masuk/keluar, utang, grafik balik modal, perkiraan transparan.</p></div>
+            <div class="card"><span class="feat-ico">💡</span><h3>Insight otomatis</h3><p>Saran yang membantu: menu margin tipis, stok mau habis, potongan platform besar.</p></div>
+            <div class="card"><span class="feat-ico">📅</span><h3>Kalender usaha</h3><p>Hari libur &amp; tanggal penting; saran stok ekstra menjelang hari ramai.</p></div>
+            <div class="card"><span class="feat-ico">🖨️</span><h3>Laporan rapi</h3><p>Cetak PDF 1 halaman atau export Excel — siap untuk evaluasi.</p></div>
+            <div class="card"><span class="feat-ico">🛡️</span><h3>Backup aman</h3><p>Backup biasa/terenkripsi + restore berlapis; lisensi tahan dibersihkannya browser.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAMPILAN (mockup ilustratif) -->
+      <section id="tampilan" class="alt">
+        <div class="wrap">
+          <h2>Sekilas tampilannya</h2>
+          <p class="sub">Ilustrasi — bersih, ringan, dan fokus ke angka yang penting. Mode terang &amp; gelap.</p>
+          <div class="shots">
+            <figure class="shot-frame">
+              <svg class="mock-svg" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi halaman stok">
+                <rect width="420" height="260" rx="14" fill="#fff" stroke="#ecdfd3"/>
+                <text x="18" y="30" font-family="Arial" font-size="13" font-weight="900" fill="#241a14">Stok Bahan</text>
+                <rect x="16" y="44" width="388" height="26" rx="6" fill="#fff6ea"/>
+                <text x="26" y="61" font-family="Arial" font-size="9" font-weight="800" fill="#9f1b08">Bahan</text>
+                <text x="180" y="61" font-family="Arial" font-size="9" font-weight="800" fill="#9f1b08">Status</text>
+                <text x="320" y="61" font-family="Arial" font-size="9" font-weight="800" fill="#9f1b08">Habis</text>
+                <g font-family="Arial" font-size="10" fill="#241a14">
+                  <text x="26" y="92">Ayam fillet</text>
+                  <rect x="180" y="82" width="118" height="15" rx="7" fill="#fff1d6"/><text x="188" y="93" font-size="8" font-weight="800" fill="#92560a">Dekat kedaluwarsa</text>
+                  <text x="320" y="92" fill="#6b5a50">4 hari</text>
+                  <text x="26" y="120">Bumbu &amp; sambal</text>
+                  <rect x="180" y="110" width="88" height="15" rx="7" fill="#fde7e3"/><text x="188" y="121" font-size="8" font-weight="800" fill="#c92b13">Kedaluwarsa</text>
+                  <text x="320" y="120" fill="#6b5a50">—</text>
+                  <text x="26" y="148">Beras</text>
+                  <rect x="180" y="138" width="48" height="15" rx="7" fill="#e3f3ea"/><text x="188" y="149" font-size="8" font-weight="800" fill="#16865a">Aman</text>
+                  <text x="320" y="148" fill="#6b5a50">31 hari</text>
+                  <text x="26" y="176">Minyak goreng</text>
+                  <rect x="180" y="166" width="48" height="15" rx="7" fill="#e3f3ea"/><text x="188" y="177" font-size="8" font-weight="800" fill="#16865a">Aman</text>
+                  <text x="320" y="176" fill="#6b5a50">18 hari</text>
+                </g>
+                <rect x="16" y="196" width="388" height="48" rx="10" fill="#fff6ea" stroke="#ecdfd3"/>
+                <text x="28" y="216" font-family="Arial" font-size="9" font-weight="800" fill="#9f1b08">Saran belanja</text>
+                <text x="28" y="232" font-family="Arial" font-size="10" fill="#241a14">Ayam fillet ~6 kg • Bumbu ~3 porsi (habis sebelum akhir pekan)</text>
+              </svg>
+              <figcaption>Stok dengan status kedaluwarsa &amp; saran beli</figcaption>
+            </figure>
+            <figure class="shot-frame">
+              <svg class="mock-svg" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi laporan">
+                <rect width="420" height="260" rx="14" fill="#fff" stroke="#ecdfd3"/>
+                <rect x="16" y="16" width="388" height="3" fill="#e93412"/>
+                <text x="16" y="40" font-family="Arial" font-size="13" font-weight="900" fill="#241a14">Laporan SAJIN — Juni</text>
+                <g>
+                  <rect x="16" y="54" width="120" height="44" rx="8" fill="#fff6ea" stroke="#ecdfd3"/>
+                  <text x="26" y="72" font-family="Arial" font-size="7" fill="#6b5a50">OMZET</text><text x="26" y="90" font-family="Arial" font-size="13" font-weight="900" fill="#241a14">Rp 12,4jt</text>
+                  <rect x="148" y="54" width="120" height="44" rx="8" fill="#fff6ea" stroke="#ecdfd3"/>
+                  <text x="158" y="72" font-family="Arial" font-size="7" fill="#6b5a50">UNTUNG</text><text x="158" y="90" font-family="Arial" font-size="13" font-weight="900" fill="#16865a">Rp 3,1jt</text>
+                  <rect x="280" y="54" width="124" height="44" rx="8" fill="#fff6ea" stroke="#ecdfd3"/>
+                  <text x="290" y="72" font-family="Arial" font-size="7" fill="#6b5a50">PENGELUARAN</text><text x="290" y="90" font-family="Arial" font-size="13" font-weight="900" fill="#241a14">Rp 9,3jt</text>
+                </g>
+                <text x="16" y="124" font-family="Arial" font-size="9" font-weight="800" fill="#9f1b08">Penjualan per platform</text>
+                <g>
+                  <text x="16" y="146" font-family="Arial" font-size="9" fill="#241a14">GrabFood</text><rect x="120" y="138" width="200" height="10" rx="5" fill="#e93412"/><text x="330" y="146" font-family="Arial" font-size="9" fill="#6b5a50">Rp 5,1jt</text>
+                  <text x="16" y="168" font-family="Arial" font-size="9" fill="#241a14">GoFood</text><rect x="120" y="160" width="150" height="10" rx="5" fill="#f47a14"/><text x="330" y="168" font-family="Arial" font-size="9" fill="#6b5a50">Rp 3,8jt</text>
+                  <text x="16" y="190" font-family="Arial" font-size="9" fill="#241a14">ShopeeFood</text><rect x="120" y="182" width="110" height="10" rx="5" fill="#f6a91a"/><text x="330" y="190" font-family="Arial" font-size="9" fill="#6b5a50">Rp 2,4jt</text>
+                  <text x="16" y="212" font-family="Arial" font-size="9" fill="#241a14">Dine-in</text><rect x="120" y="204" width="70" height="10" rx="5" fill="#16865a"/><text x="330" y="212" font-family="Arial" font-size="9" fill="#6b5a50">Rp 1,1jt</text>
+                </g>
+                <rect x="16" y="232" width="388" height="1" fill="#ecdfd3"/>
+                <text x="16" y="248" font-family="Arial" font-size="8" fill="#6b5a50">Dibuat dari data lokal • siap Simpan sebagai PDF</text>
+              </svg>
+              <figcaption>Laporan ringkas, siap cetak PDF</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- DATAMU MILIKMU -->
+      <section>
+        <div class="wrap">
+          <h2>Datamu, milikmu</h2>
+          <p class="sub">Prinsip yang tidak bisa ditawar.</p>
+          <div class="grid">
+            <div class="card"><h3>Local-first</h3><p>Tersimpan di perangkatmu, tidak dikirim ke server kami.</p></div>
+            <div class="card"><h3>Offline</h3><p>Setelah dibuka, tetap jalan tanpa internet.</p></div>
+            <div class="card"><h3>Backup &amp; restore</h3><p>Aman saat ganti perangkat. (Password backup terenkripsi hilang = file tak bisa dibuka — jujur.)</p></div>
+            <div class="card"><h3>Sekali bayar</h3><p>Satu lisensi untuk satu usaha. Tanpa cloud/API berbayar wajib.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PEMBEDA -->
+      <section class="alt">
+        <div class="wrap">
+          <h2>Kenapa SAJIN beda</h2>
+          <p class="sub">Dibanding kebanyakan aplikasi berbasis cloud + langganan. (SAJIN tak unggul di semua hal — mis. ekosistem hardware kasir.)</p>
+          <table>
+            <thead><tr><th>Aspek</th><th>Umumnya kompetitor</th><th>SAJIN</th></tr></thead>
+            <tbody>
+              <tr><td>Penyimpanan data</td><td>Cloud (server vendor)</td><td><strong>Lokal di perangkatmu</strong></td></tr>
+              <tr><td>Biaya</td><td>Langganan bulanan</td><td><strong>Sekali bayar</strong></td></tr>
+              <tr><td>Modal (COGS)</td><td>Sering terbatas</td><td><strong>Per bahan + Price Lab</strong></td></tr>
+              <tr><td>Stok</td><td>Dasar</td><td><strong>Kedaluwarsa, FIFO, forecast</strong></td></tr>
+              <tr><td>Offline</td><td>Bergantung cloud</td><td><strong>Offline penuh</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- UNTUK SIAPA -->
+      <section id="untuk-siapa">
+        <div class="wrap">
+          <h2>Cocok untuk kamu jika…</h2>
+          <div class="grid two">
+            <div class="card good">
+              <h3>✅ Cocok</h3>
+              <p>Ayam geprek, rice bowl, coffee shop kecil, kedai minuman, bakery rumahan, cloud kitchen, katering kecil, warung modern — yang jualan via GrabFood/GoFood/ShopeeFood atau langsung.</p>
+            </div>
+            <div class="card bad">
+              <h3>⛔ Kurang cocok</h3>
+              <p>Kalau kamu butuh mesin kasir/POS lengkap, software pajak/akuntansi, ERP, atau aplikasi yang “menjamin” laba naik — SAJIN bukan itu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET + CARA BELI -->
+      <section class="alt">
+        <div class="wrap">
+          <h2>Yang kamu dapatkan</h2>
+          <p class="sub">Sekali beli, langsung pakai.</p>
+          <div class="grid">
+            <div class="card"><h3>📥 Aplikasi SAJIN</h3><p>Satu file siap pakai — tinggal buka, jalan di laptop/HP, offline.</p></div>
+            <div class="card"><h3>🔑 Lisensi pribadi</h3><p>Aktivasi instan &amp; offline untuk usahamu, dikirim ke email.</p></div>
+            <div class="card"><h3>📖 Panduan + bantuan setup</h3><p>Panduan ringkas berbahasa Indonesia &amp; bantuan aktivasi bila perlu.</p></div>
+          </div>
+          <div class="steps">
+            <div class="step"><span class="step-n">1</span> Klik beli &amp; bayar (QRIS / e-wallet / transfer)</div>
+            <div class="step"><span class="step-n">2</span> Cek email — aplikasi + lisensi terkirim otomatis</div>
+            <div class="step"><span class="step-n">3</span> Buka, aktifkan, langsung pakai</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HARGA -->
+      <section id="harga">
+        <div class="wrap">
+          <h2>Harga</h2>
+          <p class="sub">Sekali bayar untuk satu usaha. Tanpa biaya tersembunyi.</p>
+          <div class="price-card">
+            <div class="price-badge">🎉 Harga Peluncuran</div>
+            <div class="price-amount"><span class="price-old">Rp 299.000</span> Rp 79.000</div>
+            <div class="price-save">Hemat Rp 220.000 (73%) — sekali bayar, selamanya</div>
+            <ul class="price-list">
+              <li>Aplikasi SAJIN (1 file, offline)</li>
+              <li>Lisensi pribadi untuk 1 usaha</li>
+              <li>Panduan + bantuan aktivasi</li>
+              <li>Update perbaikan (selama versi ini)</li>
+            </ul>
+            <a class="btn btn-primary btn-lg btn-block" href="#" data-edit="link-beli">Beli sekarang</a>
+            <p class="price-note">Pembayaran &amp; pengiriman otomatis. Butuh bantuan aktivasi? Kami bantu sampai bisa.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="alt">
+        <div class="wrap">
+          <h2>Pertanyaan umum</h2>
+          <dl class="faq">
+            <dt>Perlu internet?</dt><dd>Tidak setelah dibuka. SAJIN bekerja offline.</dd>
+            <dt>Perlu langganan?</dt><dd>Tidak — sekali bayar untuk satu usaha.</dd>
+            <dt>Data saya di mana?</dt><dd>Lokal di perangkatmu; tidak dikirim ke server kami.</dd>
+            <dt>Bagaimana saya menerima aplikasinya?</dt><dd>Otomatis ke email setelah pembayaran terverifikasi: aplikasi + lisensi + panduan.</dd>
+            <dt>Kalau ganti perangkat?</dt><dd>Gunakan Backup lalu Restore, dan aktifkan lisensimu lagi.</dd>
+            <dt>Menjamin untung?</dt><dd>Tidak. SAJIN membantu kamu melihat data lebih jelas; forecast = estimasi.</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <strong>SAJIN</strong> — untung bersih untuk usaha F&amp;B • Local-first, offline, sekali bayar.<br />
+        <span class="foot-note">“SAJIN” adalah nama kerja; nama final dapat berubah. Dokumen legal (EULA/Privacy/Terms) tersedia saat pembelian. © <span data-edit="tahun">[TAHUN]</span> <span data-edit="pemilik">[PEMILIK]</span>.</span>
+      </div>
+    </footer>
+  </body>
+</html>
