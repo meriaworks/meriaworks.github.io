@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fitur SAJIN — Kasir yang tahu modal, stok yang mikir, laporan sekali klik</title>
+<meta name="description" content="Kenapa kasir SAJIN beda: setiap order tahu modal & untungnya. HPP otomatis, stok yang menyarankan belanja, analisa berbahasa manusia, laporan investor 1 klik. Rp 49rb sekali bayar." />
+<meta name="theme-color" content="#101014" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff5c1f'/%3E%3Cstop offset='1' stop-color='%23f7a91c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='38' font-weight='900' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./site.css" />
+<style>
+.page-hero{position:relative;padding:150px 0 30px;overflow:hidden}
+.page-hero::before{content:"";position:absolute;top:-340px;left:50%;transform:translateX(-50%);width:1000px;height:640px;background:radial-gradient(ellipse at center,rgba(255,92,31,.18),transparent 70%);pointer-events:none}
+.page-hero .wrap{position:relative;text-align:center}
+.page-hero h1{max-width:800px;margin:0 auto}
+.big{border:1px solid var(--line);border-radius:22px;background:var(--card);padding:40px;margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.big.solo{grid-template-columns:1fr}
+.big .kicker{margin-bottom:8px}
+.big h3{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.7px;line-height:1.18}
+.big>div>p{color:var(--ink-2);margin-top:12px;font-size:15.5px}
+.big .num{font-size:13px;font-weight:800;color:var(--ink-3);letter-spacing:2px}
+@media(max-width:840px){.big{grid-template-columns:1fr;padding:28px}}
+.mini-note{font-size:13px;color:var(--ink-3);border-left:3px solid var(--brand);padding:6px 0 6px 14px;margin-top:18px}
+.mini-note b{color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-mark">S</span> SAJIN</a>
+    <nav>
+      <a href="./fitur.html" class="on">Fitur</a>
+      <a href="./tentang.html">Tentang</a>
+      <a href="./#harga">Harga</a>
+      <a href="./#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#" data-buy style="margin-left:auto">Rp 49rb — sekali bayar</a>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="pill rv"><span class="dot"></span> Semua termasuk — tidak ada paket "Pro"</span>
+    <h1 class="rv rv-d1" style="margin-top:20px">Bukan sekadar catat.<br /><span class="g">Setiap angka tahu artinya.</span></h1>
+    <p class="lead rv rv-d2" style="margin:18px auto 0">
+      Aplikasi lain mencatat apa yang terjadi. SAJIN mengerti <b style="color:var(--ink)">kenapa itu penting untuk untungmu</b> —
+      dari kasir sampai laporan, semuanya tersambung ke satu pertanyaan: hari ini untung berapa?
+    </p>
+  </div>
+</section>
+
+<section style="padding-top:30px">
+  <div class="wrap">
+
+    <!-- 01 KASIR -->
+    <div class="big rv">
+      <div>
+        <span class="num">01</span>
+        <span class="kicker" style="display:block">Kasir (POS)</span>
+        <h3>Kasir lain mencatat penjualan.<br />Kasir SAJIN tahu modalnya.</h3>
+        <p>
+          Di POS biasa, "terjual Rp 25.000" adalah akhir cerita. Di SAJIN itu baru awal:
+          satu ketukan yang sama juga memotong stok bahan sesuai resep, menghitung modal porsi itu,
+          dan tahu berapa yang benar-benar masuk kantong setelah potongan channel.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Satu ketukan = tiga pekerjaan</b>: jualan tercatat, stok terpotong, untung terhitung</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Shift buka–tutup</b> dengan hitung kas, biar setoran selalu klop</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Struk, layar dapur, meja &amp; reservasi</b> — untuk yang punya tempat makan</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Tetap jalan saat internet mati</b> — karena memang tidak butuh internet</span></li>
+        </ul>
+        <p class="mini-note"><b>Buat yang jualan online-only:</b> ada mode catat cepat (Quick Sale) — order GoFood selesai, dua ketukan, beres. Komisi channel terhitung sendiri.</p>
+      </div>
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Kasir — shift pagi <small>07:12</small></div>
+        <div class="mk-rows">
+          <div class="mk-row" style="grid-template-columns:1.6fr 1fr 1fr">
+            <span><b>Ayam Crispy ×2</b><small>GoFood</small></span>
+            <span><b>Rp 40.000</b><small>gross</small></span>
+            <span><b class="mk-chip ok">untung Rp 11.400</b></span>
+          </div>
+          <div class="mk-row" style="grid-template-columns:1.6fr 1fr 1fr">
+            <span><b>Nasi Telur ×1</b><small>di tempat</small></span>
+            <span><b>Rp 12.000</b><small>gross</small></span>
+            <span><b class="mk-chip ok">untung Rp 6.550</b></span>
+          </div>
+        </div>
+        <div class="mk-card" style="margin-top:10px;display:flex;justify-content:space-between;font-size:12.5px">
+          <span class="mk-muted">Stok ayam fillet</span><b>terpotong otomatis −450 gr</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 HPP -->
+    <div class="big rv">
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Simulasi harga <small>Es Kopi Susu</small></div>
+        <div class="mk-card">
+          <div class="mk-pl">
+            <div><span>Harga sekarang</span><b>Rp 10.000</b></div>
+            <div><span>Modal per gelas</span><b class="neg">Rp 8.900</b></div>
+            <div><span>Komisi GoFood 20%</span><b class="neg">− Rp 2.000</b></div>
+            <div><span>Sisa untukmu</span><b class="neg">− Rp 900 (rugi!)</b></div>
+          </div>
+        </div>
+        <div class="mk-card" style="margin-top:10px">
+          <div class="mk-pl">
+            <div><span>Coba harga baru</span><b>Rp 14.000</b></div>
+            <div><span>Sisa untukmu</span><b class="pos">Rp 2.300 / gelas ✓</b></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="num">02</span>
+        <span class="kicker" style="display:block">HPP &amp; Simulasi Harga</span>
+        <h3>Berhenti menentukan harga pakai perasaan</h3>
+        <p>
+          Masukkan resep sekali (ayam 250 gr, tepung 80 gr, …) — sejak itu SAJIN selalu tahu modal
+          tiap porsi, bahkan saat harga bahan berubah. Mau naikkan harga atau ikut promo platform?
+          Simulasikan dulu: kelihatan untung-ruginya <i>sebelum</i> kamu putuskan.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Modal per porsi selalu terbarui</b> mengikuti harga bahan terakhirmu</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Simulasi diskon &amp; komisi</b> — tahu batas promo yang masih masuk akal</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Menu rugi ditandai</b> sebelum sempat menggerus untung berbulan-bulan</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03 STOK -->
+    <div class="big rv">
+      <div>
+        <span class="num">03</span>
+        <span class="kicker" style="display:block">Stok</span>
+        <h3>Stok yang ikut mikir, bukan cuma dihitung</h3>
+        <p>
+          Kebanyakan pencatat stok cuma tahu "sisa berapa". SAJIN tahu <i>kapan habis</i>,
+          <i>mana yang mau kedaluwarsa</i>, dan <i>berapa yang perlu dibeli</i> — dihitung dari pola jualanmu
+          sendiri, termasuk hari-hari ramai di kalender.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Bahan lama terpakai duluan</b> — nilai stokmu selalu jujur</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Peringatan kedaluwarsa</b> sebelum jadi kerugian</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Saran belanja sadar kalender</b> — tanggal kembar &amp; libur terbaca otomatis</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Opname &amp; waste</b> — selisih stok ketahuan, bukan didiamkan</span></li>
+        </ul>
+        <p class="mini-note"><b>Kenapa penting:</b> di F&B, untung paling sering bocor lewat bahan — kebuang, kelebihan belanja, atau dipakai tak tercatat. SAJIN menutup tiga-tiganya.</p>
+      </div>
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Saran belanja <small>untuk 7 hari</small></div>
+        <div class="mk-rows">
+          <div class="mk-row" style="grid-template-columns:1.3fr 1fr 1fr">
+            <span><b>Ayam fillet</b><small>pemakaian naik</small></span>
+            <span><b>12 kg</b><small>saran beli</small></span>
+            <span><span class="mk-chip warn">Sabtu ramai</span></span>
+          </div>
+          <div class="mk-row" style="grid-template-columns:1.3fr 1fr 1fr">
+            <span><b>Tepung bumbu</b><small>stabil</small></span>
+            <span><b>5 kg</b><small>saran beli</small></span>
+            <span><span class="mk-chip ok">normal</span></span>
+          </div>
+          <div class="mk-row" style="grid-template-columns:1.3fr 1fr 1fr">
+            <span><b>Susu UHT</b><small>harga naik 12%</small></span>
+            <span><b>6 L</b><small>saran beli</small></span>
+            <span><span class="mk-chip bad">cek supplier</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 ANALISA -->
+    <div class="big rv">
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Kotak masuk aksi <small>hari ini</small></div>
+        <div class="mk-insight" style="margin-top:0">
+          <span class="mk-ii" style="background:rgba(220,38,38,.12);color:#b91c1c">!</span>
+          <span><b>Urgent: belum backup 9 hari</b><span>Datamu hanya ada di perangkat ini. Cadangkan sekarang — 1 klik.</span></span>
+        </div>
+        <div class="mk-insight">
+          <span class="mk-ii" style="background:rgba(217,119,6,.14);color:#b45309">?</span>
+          <span><b>Perlu dicek: ada 2 hari tanpa catatan</b><span>Selasa &amp; Rabu kosong. Lupa nyatat, atau memang libur?</span></span>
+        </div>
+        <div class="mk-insight">
+          <span class="mk-ii" style="background:rgba(13,148,136,.12);color:#0b7a6c">✓</span>
+          <span><b>Checklist tutup: kas klop, stok dicek</b><span>Shift hari ini selesai rapi. Sampai besok!</span></span>
+        </div>
+      </div>
+      <div>
+        <span class="num">04</span>
+        <span class="kicker" style="display:block">Analisa &amp; Kotak Masuk Aksi</span>
+        <h3>Kamu tidak perlu jago baca angka.<br />Biar SAJIN yang baca.</h3>
+        <p>
+          Setiap hari SAJIN memeriksa datamu: margin yang melorot, hari yang bolong, backup yang kelewat,
+          stok yang aneh — lalu menaruhnya di satu kotak masuk berurutan prioritas: <i>Urgent</i>,
+          <i>Perlu dicek</i>, <i>Selesai nanti</i>. Buka satu layar, tahu semua yang penting.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Skor kesehatan usaha</b> — satu angka, tahu posisimu</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Review mingguan otomatis</b> — naik-turunnya dijelaskan, bukan cuma ditampilkan</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Penjaga kualitas data</b> — order dobel &amp; tanggal bolong terdeteksi sendiri</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 05 LAPORAN -->
+    <div class="big rv">
+      <div>
+        <span class="num">05</span>
+        <span class="kicker" style="display:block">Laporan &amp; Uang</span>
+        <h3>Dari catatan harian jadi laporan yang bikin orang percaya</h3>
+        <p>
+          Mau ajak partner, pinjam modal ke keluarga, atau sekadar menunjukkan ke pasangan bahwa
+          usahamu sehat? Satu klik: laba-rugi, arus kas, dan profitabilitas menu tersusun rapi —
+          PDF satu halaman atau Excel.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Paket Investor 1-klik</b> — beberapa laporan sekaligus, siap kirim</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>"Aman dipakai"</b> — tahu berapa uang usaha yang boleh diambil tanpa mengganggu operasional</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>ROAS iklan platform</b> — iklan GoFood/GrabFood-mu balik modal atau tidak</span></li>
+        </ul>
+      </div>
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Paket Investor <small>Juni 2026</small></div>
+        <div class="mk-exports">
+          <span class="mk-exp hot">⬇ Unduh paket lengkap</span>
+        </div>
+        <div class="mk-rows">
+          <div class="mk-row" style="grid-template-columns:1fr auto"><span><b>Laba-rugi bulanan</b><small>PDF · 1 halaman</small></span><span class="mk-chip ok">siap</span></div>
+          <div class="mk-row" style="grid-template-columns:1fr auto"><span><b>Arus kas</b><small>Excel</small></span><span class="mk-chip ok">siap</span></div>
+          <div class="mk-row" style="grid-template-columns:1fr auto"><span><b>Profitabilitas menu</b><small>Excel</small></span><span class="mk-chip ok">siap</span></div>
+          <div class="mk-row" style="grid-template-columns:1fr auto"><span><b>Ringkasan stok</b><small>PDF</small></span><span class="mk-chip ok">siap</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 DATA -->
+    <div class="big rv">
+      <div class="mk" aria-hidden="true">
+        <div class="mk-top"><span class="mk-dot">S</span> Datamu, aturanmu</div>
+        <div class="mk-rows">
+          <div class="mk-row" style="grid-template-columns:auto 1fr"><span class="mk-chip ok">lokal</span><span><b>Tersimpan di perangkatmu</b><small>bukan di server siapa pun</small></span></div>
+          <div class="mk-row" style="grid-template-columns:auto 1fr"><span class="mk-chip ok">1 klik</span><span><b>Backup terenkripsi</b><small>file kecil, bisa dikunci password</small></span></div>
+          <div class="mk-row" style="grid-template-columns:auto 1fr"><span class="mk-chip ok">PIN</span><span><b>Kunci aplikasi</b><small>untuk perangkat yang dipakai bergantian</small></span></div>
+          <div class="mk-row" style="grid-template-columns:auto 1fr"><span class="mk-chip ok">jejak</span><span><b>Riwayat perubahan</b><small>angka keuangan tak bisa diubah diam-diam</small></span></div>
+        </div>
+      </div>
+      <div>
+        <span class="num">06</span>
+        <span class="kicker" style="display:block">Keamanan &amp; Kepemilikan Data</span>
+        <h3>Usahamu, datamu. Titik.</h3>
+        <p>
+          SAJIN tidak punya server, tidak minta login, tidak mengirim datamu ke mana-mana.
+          Angka jualanmu adalah rahasia dapurmu — dan kami mendesain SAJIN supaya
+          <i>kami sendiri pun tidak bisa melihatnya</i>.
+        </p>
+        <ul class="checks">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Pindah HP?</b> Bawa file backup, pulih dalam hitungan menit</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Aplikasi rewel soal backup</b> — dengan sengaja, demi datamu</span></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Angka uang dihitung teliti</b> — dibangun dengan ratusan pengujian otomatis</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- grid pelengkap -->
+    <div class="center" style="margin-top:80px">
+      <span class="kicker rv">Masih ada lagi</span>
+      <h2 class="rv rv-d1" style="margin-inline:auto">Pelengkap yang biasanya berbayar di tempat lain</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b>Pelanggan &amp; poin loyalti</b><span>Pelanggan setia tercatat, poin bertambah otomatis dari kasir</span></div></div>
+      <div class="feat rv rv-d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg></span><div><b>Catering &amp; pesanan besar</b><span>Penawaran → DP → pelunasan, tak ada yang kelupaan</span></div></div>
+      <div class="feat rv rv-d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><div><b>Kalender jualan Indonesia</b><span>Libur nasional, tanggal kembar, jam buka — nyambung ke saran stok</span></div></div>
+      <div class="feat rv rv-d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></span><div><b>Cari apa pun seketika</b><span>Tekan satu tombol, ketik, ketemu — menu, transaksi, halaman</span></div></div>
+      <div class="feat rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span><div><b>10+ tema tampilan</b><span>Termasuk pembuat tema sendiri — aplikasimu, seleramu</span></div></div>
+      <div class="feat rv rv-d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><div><b>Sembunyikan yang belum perlu</b><span>Baru mulai? Tampilkan 3 modul saja dulu — sisanya menunggu</span></div></div>
+      <div class="feat rv rv-d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span><div><b>Impor data lamamu</b><span>Rekap Excel/CSV lama tinggal tempel — riwayatmu ikut pindah</span></div></div>
+      <div class="feat rv rv-d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><b>Mode contoh</b><span>Coba dulu pakai data contoh, hapus kapan saja — tanpa risiko</span></div></div>
+    </div>
+
+    <div class="center" style="margin-top:70px">
+      <a class="btn btn-primary rv" href="#" data-buy style="font-size:17px;padding:15px 34px">Beli SAJIN — Rp 49.000, sekali bayar</a>
+      <p class="hero-note rv rv-d1" style="margin-top:14px">Semua fitur di halaman ini termasuk. Tidak ada biaya tambahan.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Meria Works · SAJIN — <i>Dari pejuang F&amp;B, untuk pejuang F&amp;B.</i></span>
+    <span><a href="./">Beranda</a> · <a href="./tentang.html">Tentang</a> · <a href="mailto:meriaworks.id@gmail.com">meriaworks.id@gmail.com</a></span>
+  </div>
+  <p class="legal-note">
+    SAJIN adalah alat bantu pencatatan &amp; analisa usaha — bukan pengganti akuntan, konsultan pajak, atau penasihat keuangan.
+    Semua angka merupakan estimasi berdasarkan data yang dimasukkan pengguna; tampilan pada halaman ini merupakan pratinjau dengan data contoh.
+  </p>
+</footer>
+
+<script src="./site.js"></script>
+</body>
+</html>
