@@ -9,7 +9,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff5c1f'/%3E%3Cstop offset='1' stop-color='%23f7a91c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='38' font-weight='900' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./site.css" />
 <style>
 .page-hero{position:relative;padding:150px 0 30px;overflow:hidden}
@@ -28,10 +28,33 @@
 </style>
 </head>
 <body>
+<div id="progress"></div>
+<div id="glow" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="icg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24">
+      <stop offset="0" stop-color="#ff3d00"/><stop offset="1" stop-color="#ffb01f"/>
+    </linearGradient>
+    <linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff3d00"/><stop offset="1" stop-color="#ffb01f"/>
+    </linearGradient>
+  </defs>
+</svg>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="./"><span class="brand-mark">S</span> SAJIN</a>
+    <a class="brand" href="./">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="1.5" y="4.5" width="39" height="39" rx="12" fill="url(#lgA)"/>
+        <text x="21" y="33.5" text-anchor="middle" font-family="'Space Grotesk','Arial Black',sans-serif" font-size="23" font-weight="700" fill="#fff">S</text>
+        <g class="logo-spark">
+          <circle cx="39" cy="9" r="8.6" fill="#0c0b10"/>
+          <circle cx="39" cy="9" r="6.9" fill="#17e6b3"/>
+          <path d="M35.4 11.6 L37.9 9.1 L39.4 10.6 L42.4 7.2" stroke="#062b22" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+      SAJIN
+    </a>
     <nav>
       <a href="./fitur.html" class="on">Fitur</a>
       <a href="./tentang.html">Tentang</a>
@@ -273,14 +296,14 @@
       <h2 class="rv rv-d1" style="margin-inline:auto">Pelengkap yang biasanya berbayar di tempat lain</h2>
     </div>
     <div class="feat-grid">
-      <div class="feat rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b>Pelanggan &amp; poin loyalti</b><span>Pelanggan setia tercatat, poin bertambah otomatis dari kasir</span></div></div>
-      <div class="feat rv rv-d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg></span><div><b>Catering &amp; pesanan besar</b><span>Penawaran → DP → pelunasan, tak ada yang kelupaan</span></div></div>
-      <div class="feat rv rv-d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><div><b>Kalender jualan Indonesia</b><span>Libur nasional, tanggal kembar, jam buka — nyambung ke saran stok</span></div></div>
-      <div class="feat rv rv-d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></span><div><b>Cari apa pun seketika</b><span>Tekan satu tombol, ketik, ketemu — menu, transaksi, halaman</span></div></div>
-      <div class="feat rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span><div><b>10+ tema tampilan</b><span>Termasuk pembuat tema sendiri — aplikasimu, seleramu</span></div></div>
-      <div class="feat rv rv-d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><div><b>Sembunyikan yang belum perlu</b><span>Baru mulai? Tampilkan 3 modul saja dulu — sisanya menunggu</span></div></div>
-      <div class="feat rv rv-d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span><div><b>Impor data lamamu</b><span>Rekap Excel/CSV lama tinggal tempel — riwayatmu ikut pindah</span></div></div>
-      <div class="feat rv rv-d3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><b>Mode contoh</b><span>Coba dulu pakai data contoh, hapus kapan saja — tanpa risiko</span></div></div>
+      <div class="feat rv"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b>Pelanggan &amp; poin loyalti</b><span>Pelanggan setia tercatat, poin bertambah otomatis dari kasir</span></div></div>
+      <div class="feat rv rv-d1"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg></span><div><b>Catering &amp; pesanan besar</b><span>Penawaran → DP → pelunasan, tak ada yang kelupaan</span></div></div>
+      <div class="feat rv rv-d2"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></span><div><b>Kalender jualan Indonesia</b><span>Libur nasional, tanggal kembar, jam buka — nyambung ke saran stok</span></div></div>
+      <div class="feat rv rv-d3"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></span><div><b>Cari apa pun seketika</b><span>Tekan satu tombol, ketik, ketemu — menu, transaksi, halaman</span></div></div>
+      <div class="feat rv"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span><div><b>10+ tema tampilan</b><span>Termasuk pembuat tema sendiri — aplikasimu, seleramu</span></div></div>
+      <div class="feat rv rv-d1"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><div><b>Sembunyikan yang belum perlu</b><span>Baru mulai? Tampilkan 3 modul saja dulu — sisanya menunggu</span></div></div>
+      <div class="feat rv rv-d2"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span><div><b>Impor data lamamu</b><span>Rekap Excel/CSV lama tinggal tempel — riwayatmu ikut pindah</span></div></div>
+      <div class="feat rv rv-d3"><span class="ic ic-tile"><svg class="ic-g" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><b>Mode contoh</b><span>Coba dulu pakai data contoh, hapus kapan saja — tanpa risiko</span></div></div>
     </div>
 
     <div class="center" style="margin-top:70px">
