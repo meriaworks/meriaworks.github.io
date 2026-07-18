@@ -1,93 +1,2042 @@
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MERIA — Software untuk usaha & hidup yang lebih teratur</title>
-    <meta name="description" content="MERIA (PT Meria Teknologi Nusantara) membuat aplikasi praktis & privat: SAJIN (F&B UMKM), KLINAP (klinik), JELIN (lamaran kerja), PANTUR (keuangan pribadi)." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%235b4bdb'/%3E%3Cstop offset='1' stop-color='%2317b1a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial' font-size='34' font-weight='900' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
-    <link rel="stylesheet" href="./styles.css" />
-    <meta property="og:title" content="MERIA — Software untuk usaha & hidup yang lebih teratur" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="id_ID" />
-  </head>
-  <body>
-    <header class="m-nav">
-      <div class="wrap">
-        <span class="m-brand"><span class="m-mark">M</span> MERIA</span>
-        <nav><a href="#produk">Produk</a><a href="#tentang">Tentang</a></nav>
+<!DOCTYPE html>
+<html lang="id" data-theme="cute" data-lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff6ec" />
+  <meta name="description" content="Meria Works membuat webapp, PWA, APK, dan produk digital terjangkau untuk membantu masyarakat serta UMKM Indonesia bekerja lebih rapi, hidup lebih tenang, dan tumbuh dengan caranya sendiri." />
+  <meta property="og:title" content="Meria Works — Digital tools untuk hidup yang nyata." />
+  <meta property="og:description" content="Aplikasi lokal, praktis, dan terjangkau: SAJIN, KLINAP, KALIK, 4KRT, JELIN, PANTUR. Sekali punya, dipakai tumbuh bersama." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://meriaworks.github.io/assets/meria-logo.png" />
+  <title>Meria Works — Digital tools untuk hidup yang nyata.</title>
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M15 46c-6 0-10-4.5-10-10 0-5 3.4-8.6 8-9.6C14 18 22 12 32 12s18 6 19 14.4c4.6 1 8 4.6 8 9.6 0 5.5-4 10-10 10z" fill="%23fff" stroke="%23332727" stroke-width="3"/><rect x="20" y="34" width="24" height="16" rx="4" fill="%23ff90b8" stroke="%23332727" stroke-width="3"/><text x="32" y="46.5" text-anchor="middle" font-family="Arial" font-size="12" font-weight="900" fill="%23332727">M</text><circle cx="25" cy="28" r="2.4" fill="%23332727"/><circle cx="39" cy="28" r="2.4" fill="%23332727"/></svg>' />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ TOKENS ============ */
+    :root {
+      --radius-sm: 14px;
+      --radius-md: 24px;
+      --radius-lg: 38px;
+      --radius-xl: 52px;
+      --container: min(1180px, calc(100% - 40px));
+      --ease: cubic-bezier(.2,.75,.2,1);
+      --bounce: cubic-bezier(.34,1.56,.42,1);
+      --mx: 50%;
+      --my: 50%;
+    }
+
+    /* --- Kawaii (default) --- */
+    [data-theme="cute"] {
+      --ink: #332727;
+      --ink-soft: #5c4a48;
+      --muted: #7d6763;
+      --bg: #fff6ec;
+      --bg-2: #ffefe0;
+      --card: #fffdf8;
+      --dark-bg: #3b2c30;
+      --dark-card: #4a383d;
+      --dark-text: #ffeede;
+      --dark-muted: #d9bfc0;
+      --accent: #ff90b8;
+      --accent-2: #7fe3c0;
+      --pink: #ff90b8;
+      --mint: #7fe3c0;
+      --sky: #8cc8ff;
+      --butter: #ffd97a;
+      --lilac: #c9a8ff;
+      --coral: #ff8a70;
+      --lime: #c3ea6b;
+      --c-sajin: #ff8a70;
+      --c-klinap: #8cc8ff;
+      --c-kalik: #ffd97a;
+      --c-4krt: #c3ea6b;
+      --c-jelin: #c9a8ff;
+      --c-pantur: #7fe3c0;
+      --line: rgba(51,39,39,.95);
+      --line-soft: rgba(51,39,39,.14);
+      --line-dark: rgba(255,238,222,.2);
+      --bw: 2.5px;
+      --pop: 6px 6px 0 var(--ink);
+      --pop-sm: 4px 4px 0 var(--ink);
+      --font-display: "Baloo 2", "Nunito", system-ui, sans-serif;
+      --font-body: "Nunito", system-ui, sans-serif;
+      --disp-weight: 700;
+      --disp-track: -.02em;
+      --disp-lh: 1.04;
+      --btn-radius: 999px;
+      --mascot-body: #fffdf8;
+      --mascot-line: #332727;
+      --mascot-pad: #ff90b8;
+      --mascot-heart: #ff90b8;
+      --sel-bg: #ffd97a;
+    }
+
+    /* --- Modern --- */
+    [data-theme="modern"] {
+      --ink: #111612;
+      --ink-soft: #454e45;
+      --muted: #687068;
+      --bg: #f5f0e7;
+      --bg-2: #fffaf1;
+      --card: #ffffff;
+      --dark-bg: #111612;
+      --dark-card: #1b241d;
+      --dark-text: #f5f0e7;
+      --dark-muted: #b4bdb4;
+      --accent: #dffa55;
+      --accent-2: #79e9ba;
+      --pink: #f1a6ff;
+      --mint: #79e9ba;
+      --sky: #82b8ff;
+      --butter: #ffd867;
+      --lilac: #cdb4ff;
+      --coral: #ff785f;
+      --lime: #cdf25f;
+      --c-sajin: #ff785f;
+      --c-klinap: #82b8ff;
+      --c-kalik: #ffd867;
+      --c-4krt: #cdf25f;
+      --c-jelin: #f1a6ff;
+      --c-pantur: #79e9ba;
+      --line: rgba(17,22,18,.9);
+      --line-soft: rgba(17,22,18,.14);
+      --line-dark: rgba(255,255,255,.16);
+      --bw: 1px;
+      --pop: 0 30px 80px rgba(17,22,18,.16);
+      --pop-sm: 0 14px 40px rgba(17,22,18,.12);
+      --font-display: "Space Grotesk", Inter, system-ui, sans-serif;
+      --font-body: Inter, system-ui, sans-serif;
+      --disp-weight: 700;
+      --disp-track: -.05em;
+      --disp-lh: .96;
+      --btn-radius: 999px;
+      --mascot-body: #dffa55;
+      --mascot-line: #111612;
+      --mascot-pad: #111612;
+      --mascot-heart: #ff785f;
+      --sel-bg: #dffa55;
+    }
+
+    /* ============ BASE ============ */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      transition: background .4s ease, color .4s ease;
+    }
+    body.menu-open { overflow: hidden; }
+    ::selection { background: var(--sel-bg); color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    h1,h2,h3,h4 { font-family: var(--font-display); font-weight: var(--disp-weight); letter-spacing: var(--disp-track); }
+    [data-theme="modern"] h1, [data-theme="modern"] h2 { font-weight: 700; }
+
+    /* kawaii faces inside icons vanish in modern theme */
+    [data-theme="modern"] .kf { display: none; }
+
+    .skip-link {
+      position: fixed; left: 14px; top: -90px; z-index: 9999;
+      padding: 12px 18px; border-radius: 999px;
+      background: var(--accent); color: var(--ink);
+      border: var(--bw) solid var(--ink);
+      font-weight: 800;
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 14px; }
+
+    .progress { position: fixed; inset: 0 0 auto 0; height: 4px; z-index: 1002; pointer-events: none; }
+    .progress span {
+      display: block; width: 100%; height: 100%;
+      transform: scaleX(0); transform-origin: left;
+      background: linear-gradient(90deg, var(--pink), var(--butter), var(--mint), var(--sky), var(--lilac));
+    }
+
+    .container { width: var(--container); margin-inline: auto; }
+    .section { position: relative; padding: 110px 0; }
+    .section.tint { background: var(--bg-2); }
+    .section.dark { background: var(--dark-bg); color: var(--dark-text); }
+
+    /* soft pastel blobs behind light sections (cute only) */
+    [data-theme="cute"] .section::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(420px 300px at 8% 12%, color-mix(in srgb, var(--pink) 9%, transparent), transparent 70%),
+        radial-gradient(420px 300px at 94% 78%, color-mix(in srgb, var(--sky) 10%, transparent), transparent 70%);
+    }
+    [data-theme="cute"] .section.dark::before {
+      background:
+        radial-gradient(420px 300px at 10% 10%, rgba(255,144,184,.07), transparent 70%),
+        radial-gradient(420px 300px at 90% 85%, rgba(140,200,255,.06), transparent 70%);
+    }
+    .section > .container { position: relative; z-index: 1; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+      gap: 48px; align-items: end; margin-bottom: 58px;
+    }
+    .section-head h2, .display {
+      margin: 0;
+      font-size: clamp(2.5rem, 5.4vw, 5.4rem);
+      line-height: var(--disp-lh);
+    }
+    [data-theme="modern"] .section-head h2, [data-theme="modern"] .display { letter-spacing: -.06em; }
+    .section-head p { margin: 0; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.7; color: var(--muted); max-width: 520px; }
+    .dark .section-head p { color: var(--dark-muted); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      border: var(--bw) solid currentColor;
+      border-radius: 999px;
+      font-size: .76rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+    }
+    [data-theme="cute"] .eyebrow { background: var(--card); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+    [data-theme="cute"] .dark .eyebrow { background: var(--dark-card); border-color: var(--dark-text); box-shadow: 3px 3px 0 rgba(0,0,0,.35); }
+    .eyebrow .ic { width: 15px; height: 15px; }
+
+    .copy { font-size: clamp(1.02rem, 1.5vw, 1.2rem); line-height: 1.7; color: var(--muted); }
+    .dark .copy { color: var(--dark-muted); }
+
+    .hl { position: relative; }
+    [data-theme="cute"] .hl {
+      background: linear-gradient(transparent 60%, color-mix(in srgb, var(--accent) 60%, transparent) 60%, color-mix(in srgb, var(--accent) 60%, transparent) 94%, transparent 94%);
+      border-radius: 6px;
+      padding: 0 .08em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    [data-theme="cute"] .dark .hl, [data-theme="cute"] .cta .hl { background: none; color: var(--accent); }
+    [data-theme="modern"] .hl { color: var(--coral); }
+    [data-theme="modern"] .dark .hl { color: var(--accent); }
+
+    /* ============ ICON SYSTEM ============ */
+    .ic { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-chip {
+      flex: none;
+      width: 56px; height: 56px; display: grid; place-items: center;
+      border-radius: 19px;
+      border: var(--bw) solid var(--ink);
+      background: var(--tone, var(--accent));
+      color: var(--ink);
+      transition: transform .3s var(--bounce);
+    }
+    [data-theme="cute"] .icon-chip { box-shadow: 3px 3px 0 var(--ink); }
+    [data-theme="modern"] .icon-chip { border-color: transparent; }
+    .icon-chip .ic { width: 28px; height: 28px; }
+
+    /* ============ MARQUEE ============ */
+    .announcement {
+      position: relative; z-index: 50;
+      background: var(--accent); color: var(--ink);
+      border-bottom: var(--bw) solid var(--ink);
+      overflow: hidden;
+    }
+    [data-theme="modern"] .announcement { border-bottom: 1px solid rgba(17,22,18,.18); }
+    .announcement-track { display: flex; width: max-content; animation: ticker 26s linear infinite; }
+    .announcement-item {
+      display: flex; align-items: center; gap: 26px;
+      padding: 10px 26px;
+      font-size: .78rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+    }
+    .announcement-item .ic { width: 15px; height: 15px; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* ============ NAV ============ */
+    .nav-shell { position: sticky; top: 14px; z-index: 100; margin-top: 16px; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 8px 10px 8px 14px;
+      border: var(--bw) solid var(--ink);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      backdrop-filter: blur(14px);
+    }
+    [data-theme="cute"] .nav { box-shadow: var(--pop-sm); }
+    [data-theme="modern"] .nav { border-color: rgba(17,22,18,.16); box-shadow: 0 18px 50px rgba(17,22,18,.1); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; min-width: max-content; font-family: var(--font-display); font-weight: 800; font-size: 1.06rem; letter-spacing: -.02em; }
+    .brand .mascot { width: 42px; height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      padding: 9px 12px; border-radius: 999px;
+      color: var(--ink-soft); font-size: .88rem; font-weight: 800;
+      transition: color .2s ease, background .2s ease, transform .2s var(--bounce);
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); background: color-mix(in srgb, var(--accent) 30%, transparent); transform: translateY(-2px); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+
+    .switcher {
+      display: inline-flex; align-items: center;
+      border: var(--bw) solid var(--ink); border-radius: 999px;
+      background: var(--bg-2);
+      padding: 3px; gap: 2px;
+    }
+    [data-theme="modern"] .switcher { border-color: rgba(17,22,18,.2); }
+    .switcher button {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 10px; border: 0; border-radius: 999px;
+      background: transparent; cursor: pointer;
+      font-size: .74rem; font-weight: 900; letter-spacing: .04em;
+      color: var(--muted);
+      transition: background .25s ease, color .25s ease;
+    }
+    .switcher button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .switcher .ic { width: 13px; height: 13px; }
+
+    .mobile-toggle {
+      display: none;
+      width: 44px; height: 44px; border: var(--bw) solid var(--ink); border-radius: 50%;
+      background: var(--accent); cursor: pointer;
+    }
+    .mobile-toggle span, .mobile-toggle::before, .mobile-toggle::after {
+      content: ""; display: block; width: 16px; height: 2.4px; border-radius: 4px;
+      margin: 3.5px auto; background: var(--ink);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .menu-open .mobile-toggle span { opacity: 0; }
+    .menu-open .mobile-toggle::before { transform: translateY(6px) rotate(45deg); }
+    .menu-open .mobile-toggle::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      --btn-bg: var(--accent);
+      --btn-color: var(--ink);
+      position: relative;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 22px;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--btn-radius);
+      background: var(--btn-bg); color: var(--btn-color);
+      font-family: var(--font-display);
+      font-size: .95rem; font-weight: 700;
+      cursor: pointer; overflow: hidden; isolation: isolate;
+      transition: transform .22s var(--bounce), box-shadow .22s ease, background .25s ease;
+    }
+    [data-theme="cute"] .btn { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] .btn:hover { transform: translate(-2px,-3px); box-shadow: 7px 7px 0 var(--ink); }
+    [data-theme="cute"] .btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+    [data-theme="cute"] .dark .btn, [data-theme="cute"] .footer .btn { box-shadow: 4px 4px 0 rgba(0,0,0,.4); }
+    [data-theme="cute"] .dark .btn:hover { box-shadow: 7px 7px 0 rgba(0,0,0,.4); }
+    [data-theme="modern"] .btn { border-color: transparent; font-weight: 700; letter-spacing: -.01em; }
+    [data-theme="modern"] .btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+      background: rgba(255,255,255,.3);
+      transform: translateX(-104%) skewX(-18deg);
+      transition: transform .5s var(--ease);
+    }
+    [data-theme="modern"] .btn:hover::before { transform: translateX(0) skewX(0); }
+    [data-theme="modern"] .btn:hover { box-shadow: 0 14px 40px color-mix(in srgb, var(--btn-bg) 30%, transparent); }
+    .btn .ic { width: 17px; height: 17px; transition: transform .25s var(--ease); }
+    .btn:hover .ic { transform: translate(3px,-3px) rotate(8deg); }
+    .btn.ghost { --btn-bg: transparent; --btn-color: currentColor; }
+    [data-theme="modern"] .btn.ghost { border: 1px solid currentColor; }
+    .btn.dark-btn { --btn-bg: var(--ink); --btn-color: var(--bg); }
+    .btn.mint-btn { --btn-bg: var(--accent-2); }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      padding: 84px 0 110px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    [data-theme="modern"] .hero {
+      color: var(--dark-text);
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(121,233,186,.16), transparent 28%),
+        linear-gradient(160deg, #101611 0%, #17231c 48%, #0d110e 100%);
+    }
+    [data-theme="modern"] .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -3;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 84%);
+    }
+    [data-theme="cute"] .hero {
+      background:
+        radial-gradient(560px 420px at 12% 8%, color-mix(in srgb, var(--pink) 16%, transparent), transparent 70%),
+        radial-gradient(520px 420px at 88% 18%, color-mix(in srgb, var(--sky) 16%, transparent), transparent 70%),
+        radial-gradient(480px 420px at 78% 92%, color-mix(in srgb, var(--butter) 18%, transparent), transparent 70%),
+        var(--bg);
+    }
+    #hero-canvas { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; opacity: .8; pointer-events: none; }
+    [data-theme="cute"] #hero-canvas { opacity: .55; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(400px, .95fr);
+      gap: 30px; align-items: center;
+    }
+    .hero-copy { position: relative; z-index: 3; }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-bottom: 24px; padding: 9px 15px;
+      border: var(--bw) solid var(--ink); border-radius: 999px;
+      background: var(--card);
+      font-size: .78rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+    }
+    [data-theme="cute"] .hero-kicker { box-shadow: 3px 3px 0 var(--ink); }
+    [data-theme="modern"] .hero-kicker { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #cad3ca; }
+    .hero-kicker .pulse {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-2) 55%, transparent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 11px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+    .hero h1 {
+      margin: 0; max-width: 850px;
+      font-size: clamp(3.4rem, 7.4vw, 7.6rem);
+      line-height: .98;
+    }
+    [data-theme="modern"] .hero h1 { line-height: .85; letter-spacing: -.07em; font-weight: 700; }
+    .hero h1 .hero-line { display: block; }
+    .hero h1 .outline { color: inherit; }
+    [data-theme="modern"] .hero h1 .outline { color: transparent; -webkit-text-stroke: 1.5px rgba(245,240,231,.72); }
+    [data-theme="cute"] .hero h1 .outline { color: var(--coral); }
+    .hero h1 .scribble { position: relative; display: inline-block; }
+    [data-theme="modern"] .hero h1 .scribble { color: var(--accent); }
+    [data-theme="cute"] .hero h1 .scribble {
+      background: var(--accent);
+      border: var(--bw) solid var(--ink);
+      border-radius: 22px;
+      box-shadow: var(--pop-sm);
+      padding: 0 .18em .04em;
+      transform: rotate(-2deg);
+    }
+    .hero h1 .scribble::after {
+      content: ""; position: absolute; left: 2%; right: -2%; bottom: -10px; height: 13px;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 12 C40 3, 75 19, 116 10 S190 2, 235 11 S270 18, 298 8' fill='none' stroke='%23dffa55' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+      transform: rotate(-1deg);
+    }
+    [data-theme="cute"] .hero h1 .scribble::after { display: none; }
+    .hero-lead { max-width: 640px; margin: 30px 0 0; font-size: clamp(1.06rem, 1.5vw, 1.24rem); line-height: 1.7; color: var(--muted); }
+    [data-theme="modern"] .hero-lead { color: #bdc7bd; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+    .hero-proof span {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 13px; border-radius: 999px;
+      border: var(--bw) solid var(--line-soft);
+      font-size: .82rem; font-weight: 800;
+      color: var(--ink-soft);
+      background: color-mix(in srgb, var(--card) 70%, transparent);
+    }
+    [data-theme="modern"] .hero-proof span { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.05); color: #aeb8ae; }
+    .hero-proof .ic { width: 15px; height: 15px; color: var(--accent-2); }
+    [data-theme="cute"] .hero-proof .ic { color: var(--ink); }
+
+    /* --- hero mascot world --- */
+    .hero-world { position: relative; height: 640px; z-index: 2; }
+    .mascot-stage {
+      position: absolute; left: 50%; top: 50%;
+      width: 320px;
+      transform: translate(-50%,-52%);
+      z-index: 3;
+      animation: mascotFloat 5.2s ease-in-out infinite;
+      cursor: pointer;
+    }
+    @keyframes mascotFloat { 50% { transform: translate(-50%, calc(-52% - 16px)); } }
+    .mascot { overflow: visible; }
+    .mascot .cloud { fill: var(--mascot-body); stroke: var(--mascot-line); stroke-width: 5; }
+    .mascot .sprout-stem { stroke: var(--mascot-line); stroke-width: 5; fill: none; }
+    .mascot .sprout-heart { fill: var(--mascot-heart); stroke: var(--mascot-line); stroke-width: 5; }
+    .mascot .eye { fill: var(--mascot-line); animation: blink 4.6s infinite; transform-origin: center; transform-box: fill-box; }
+    .mascot .eye.r { animation-delay: .05s; }
+    @keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.08); } }
+    .mascot .smile { fill: none; stroke: var(--mascot-line); stroke-width: 5; stroke-linecap: round; }
+    .mascot .blush { fill: var(--pink); opacity: .55; }
+    [data-theme="modern"] .mascot .blush { opacity: 0; }
+    .mascot .pad { fill: var(--mascot-pad); stroke: var(--mascot-line); stroke-width: 5; }
+    .mascot .pad-m { fill: var(--mascot-body); font-family: var(--font-display); font-weight: 800; font-size: 34px; }
+    [data-theme="cute"] .mascot .pad-m { fill: #fffdf8; }
+    [data-theme="modern"] .mascot .pad-m { fill: var(--accent); }
+    .mascot .paw { fill: var(--mascot-body); stroke: var(--mascot-line); stroke-width: 5; }
+    .mascot .sprout { transform-origin: 160px 46px; animation: sproutWiggle 3.4s ease-in-out infinite; }
+    @keyframes sproutWiggle { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(6deg); } }
+    .mascot-shadow {
+      position: absolute; left: 50%; bottom: 8%;
+      width: 200px; height: 26px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--ink) 14%, transparent);
+      filter: blur(6px);
+      animation: shadowPulse 5.2s ease-in-out infinite;
+    }
+    @keyframes shadowPulse { 50% { transform: translateX(-50%) scale(.86); opacity: .7; } }
+    .heart-burst { position: absolute; width: 22px; height: 22px; z-index: 6; pointer-events: none; color: var(--pink); animation: heartUp 1s ease-out forwards; }
+    @keyframes heartUp { from { opacity: 1; transform: translateY(0) scale(.6) rotate(0); } to { opacity: 0; transform: translateY(-90px) scale(1.25) rotate(14deg); } }
+
+    .orbit {
+      position: absolute; left: 50%; top: 50%;
+      border: 2px dashed color-mix(in srgb, var(--ink) 22%, transparent);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      animation: orbitSpin 40s linear infinite;
+    }
+    [data-theme="modern"] .orbit { border-color: rgba(255,255,255,.12); }
+    .orbit.one { width: 440px; height: 440px; }
+    .orbit.two { width: 620px; height: 620px; animation-direction: reverse; animation-duration: 60s; opacity: .6; }
+    @keyframes orbitSpin { to { transform: translate(-50%,-50%) rotate(1turn); } }
+
+    .product-float {
+      --x: 0px; --y: 0px;
+      position: absolute; z-index: 5;
+      width: 178px; min-height: 108px;
+      padding: 14px 16px;
+      border: var(--bw) solid var(--ink);
+      border-radius: 22px;
+      background: var(--card);
+      transform: translate3d(var(--x),var(--y),0) rotate(var(--rot, 0deg));
+      transition: transform .4s var(--bounce), box-shadow .3s ease;
+    }
+    [data-theme="cute"] .product-float { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] .product-float:hover { box-shadow: 7px 7px 0 var(--ink); }
+    [data-theme="modern"] .product-float {
+      border-color: rgba(255,255,255,.16);
+      background: rgba(20,28,22,.68);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+      color: var(--dark-text);
+    }
+    [data-theme="modern"] .product-float:hover { border-color: var(--tone); }
+    .product-float .mini-icon {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border-radius: 12px;
+      border: var(--bw) solid var(--ink);
+      background: var(--tone);
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    [data-theme="modern"] .product-float .mini-icon { border-color: transparent; }
+    .product-float .mini-icon .ic { width: 20px; height: 20px; }
+    .product-float strong { display: block; font-family: var(--font-display); font-size: 1.02rem; }
+    .product-float small { display: block; margin-top: 3px; color: var(--muted); line-height: 1.4; font-weight: 600; }
+    [data-theme="modern"] .product-float small { color: #aeb7ae; }
+    .product-float .stat-dot {
+      position: absolute; right: 12px; top: 12px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent-2);
+      border: 2px solid var(--ink);
+    }
+    [data-theme="modern"] .product-float .stat-dot { border-color: transparent; }
+    .product-float .stat-dot.soon { background: var(--butter); }
+    .pf-sajin  { --tone: var(--c-sajin);  left: -2%;  top: 4%;    --rot: -5deg; animation: cardFloat 5.6s ease-in-out infinite; }
+    .pf-klinap { --tone: var(--c-klinap); right: -4%; top: 6%;    --rot: 5deg;  animation: cardFloat 6.2s .5s ease-in-out infinite; }
+    .pf-kalik  { --tone: var(--c-kalik);  right: -6%; top: 44%;   --rot: 3deg;  animation: cardFloat 5.9s .9s ease-in-out infinite; }
+    .pf-4krt   { --tone: var(--c-4krt);   right: 4%;  bottom: 2%; --rot: -3deg; animation: cardFloat 5.4s 1.2s ease-in-out infinite; }
+    .pf-jelin  { --tone: var(--c-jelin);  left: -4%;  bottom: 4%; --rot: 4deg;  animation: cardFloat 6.4s .2s ease-in-out infinite; }
+    .pf-pantur { --tone: var(--c-pantur); left: -7%;  top: 42%;   --rot: -4deg; animation: cardFloat 5.8s .7s ease-in-out infinite; }
+    @keyframes cardFloat { 50% { transform: translate3d(var(--x), calc(var(--y) - 12px), 0) rotate(calc(var(--rot) + 1.5deg)); } }
+
+    .scroll-cue {
+      position: absolute; left: 50%; bottom: 26px; z-index: 4;
+      display: grid; place-items: center;
+      width: 48px; height: 68px;
+      border: var(--bw) solid var(--line-soft); border-radius: 999px;
+      transform: translateX(-50%);
+    }
+    [data-theme="modern"] .scroll-cue { border-color: rgba(255,255,255,.2); }
+    .scroll-cue::before {
+      content: ""; width: 6px; height: 12px; border-radius: 99px;
+      background: var(--accent);
+      animation: scrollDot 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollDot { 0% { transform: translateY(-12px); opacity: 0; } 35% { opacity: 1; } 100% { transform: translateY(13px); opacity: 0; } }
+
+    /* wavy divider */
+    .wave { display: block; width: 100%; height: 44px; margin-bottom: -1px; }
+    .wave path { fill: var(--wave-fill, var(--bg)); }
+    [data-theme="modern"] .wave { display: none; }
+    [data-theme="modern"] .wave-spacer { display: none; }
+
+    /* ============ MANIFESTO ============ */
+    .manifesto-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 70px; align-items: start; }
+    .manifesto-sticky { position: sticky; top: 110px; }
+    .manifesto-big { margin: 0; font-size: clamp(2.4rem, 5vw, 5rem); line-height: 1.06; }
+    [data-theme="modern"] .manifesto-big { line-height: .98; letter-spacing: -.06em; }
+    .manifesto-big span { color: var(--muted); }
+    .manifesto-points { display: grid; gap: 16px; margin-top: 54px; }
+    .manifesto-point {
+      display: grid; grid-template-columns: 64px 1fr; gap: 20px;
+      padding: 24px;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      transition: transform .3s var(--bounce), box-shadow .3s ease;
+    }
+    [data-theme="cute"] .manifesto-point { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] .manifesto-point:hover { transform: translate(-3px,-4px) rotate(-.4deg); box-shadow: 8px 8px 0 var(--ink); }
+    [data-theme="modern"] .manifesto-point { border-color: var(--line-soft); border-radius: 0; border-inline: 0; border-bottom: 0; border-top: 1px solid var(--line-soft); background: transparent; padding: 28px 0; }
+    [data-theme="modern"] .manifesto-point:last-child { border-bottom: 1px solid var(--line-soft); }
+    .manifesto-point .icon-chip { width: 52px; height: 52px; }
+    [data-theme="modern"] .manifesto-point .icon-chip { background: var(--ink); color: var(--bg); border-radius: 15px; }
+    .manifesto-point h3 { margin: 0 0 8px; font-size: 1.3rem; }
+    .manifesto-point p { margin: 0; color: var(--muted); line-height: 1.65; font-weight: 600; }
+    [data-theme="modern"] .manifesto-point p { font-weight: 400; }
+
+    /* ============ PRODUCTS ============ */
+    .ecosystem { padding-bottom: 140px; overflow: clip; }
+    .product-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+    .product-tab {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 16px;
+      border: var(--bw) solid var(--line-dark);
+      border-radius: 999px;
+      background: transparent; color: var(--dark-muted);
+      font-family: var(--font-display);
+      font-size: .9rem; font-weight: 700; cursor: pointer;
+      transition: .25s var(--bounce);
+    }
+    .product-tab .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--tone, var(--accent)); }
+    .product-tab:hover { transform: translateY(-3px); color: var(--dark-text); border-color: var(--tone); }
+    .product-tab[aria-selected="true"] { background: var(--tone); color: var(--ink); border-color: var(--ink); }
+    [data-theme="cute"] .product-tab[aria-selected="true"] { box-shadow: 3px 3px 0 rgba(0,0,0,.4); }
+    [data-theme="modern"] .product-tab[aria-selected="true"] { border-color: var(--tone); }
+    .product-tab[aria-selected="true"] .dot { background: var(--ink); }
+
+    .product-stage {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: var(--dark-card);
+      border: var(--bw) solid var(--line-dark);
+      overflow: hidden;
+    }
+    [data-theme="cute"] .product-stage { border-color: rgba(0,0,0,.35); box-shadow: 8px 8px 0 rgba(0,0,0,.35); }
+    [data-theme="modern"] .product-stage { box-shadow: 0 36px 120px rgba(0,0,0,.24); }
+    .product-panel { --tone: var(--accent); display: none; grid-template-columns: .92fr 1.08fr; min-height: 620px; animation: panelIn .6s var(--ease) both; }
+    .product-panel.active { display: grid; }
+    @keyframes panelIn { from { opacity: 0; transform: translateY(14px) scale(.99); } }
+    .product-copy { position: relative; z-index: 3; padding: 60px 50px; display: flex; flex-direction: column; justify-content: center; }
+    .product-index {
+      width: fit-content; margin-bottom: 26px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 13px; border-radius: 999px;
+      background: var(--tone); color: var(--ink);
+      border: var(--bw) solid var(--ink);
+      font-size: .74rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+    }
+    [data-theme="modern"] .product-index { border-color: transparent; }
+    .product-copy h3 { margin: 0; font-size: clamp(3.4rem, 6vw, 6.2rem); line-height: .9; color: var(--dark-text); }
+    [data-theme="modern"] .product-copy h3 { letter-spacing: -.07em; }
+    .product-copy .tagline { margin: 22px 0 0; color: var(--tone); font-family: var(--font-display); font-size: 1.28rem; font-weight: 700; }
+    .product-copy > p:not(.tagline) { max-width: 500px; margin: 16px 0 0; color: var(--dark-muted); line-height: 1.7; }
+    .feature-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+    .feature-list li {
+      padding: 8px 12px;
+      border: 1.5px solid var(--line-dark);
+      border-radius: 999px;
+      color: var(--dark-text);
+      font-size: .78rem; font-weight: 700;
+    }
+    .product-cta { margin-top: 30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .product-cta .btn { --btn-bg: var(--tone); }
+    .soon-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 15px; border-radius: 999px;
+      border: 1.5px dashed var(--line-dark);
+      color: var(--dark-muted); font-size: .82rem; font-weight: 800;
+    }
+    .soon-tag .ic { width: 15px; height: 15px; }
+
+    .product-visual {
+      position: relative; min-height: 560px;
+      background:
+        radial-gradient(circle at 60% 30%, color-mix(in srgb, var(--tone) 30%, transparent), transparent 42%);
+      overflow: hidden;
+    }
+    [data-theme="cute"] .product-visual::before {
+      content: ""; position: absolute; inset: 0; opacity: .5;
+      background-image: radial-gradient(color-mix(in srgb, var(--tone) 40%, transparent) 2px, transparent 2.5px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(circle, black 20%, transparent 75%);
+    }
+    [data-theme="modern"] .product-visual::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle, black 22%, transparent 74%);
+    }
+    .mock-device {
+      position: absolute; left: 50%; top: 50%;
+      width: min(84%, 520px);
+      padding: 18px;
+      border: var(--bw) solid var(--ink);
+      border-radius: 34px;
+      background: var(--card); color: var(--ink);
+      transform: translate(-48%,-48%) rotate(-3deg);
+      transition: transform .5s var(--bounce);
+    }
+    [data-theme="cute"] .mock-device { box-shadow: 9px 9px 0 rgba(0,0,0,.35); }
+    [data-theme="modern"] .mock-device { border-color: rgba(255,255,255,.16); background: rgba(245,240,231,.94); box-shadow: 0 45px 100px rgba(0,0,0,.28); }
+    .product-panel:hover .mock-device { transform: translate(-50%,-51%) rotate(-1deg); }
+    .mock-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .mock-logo { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 800; font-size: .95rem; }
+    .mock-logo i { width: 22px; height: 22px; border-radius: 8px; background: var(--tone); border: 2px solid var(--ink); }
+    [data-theme="modern"] .mock-logo i { border-color: transparent; }
+    .mock-dots { display: flex; gap: 5px; }
+    .mock-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-soft); }
+    .mock-hero-card {
+      position: relative; min-height: 140px; padding: 20px;
+      border-radius: 22px;
+      background: var(--ink); color: var(--bg);
+      border: var(--bw) solid var(--ink);
+      overflow: hidden;
+    }
+    [data-theme="cute"] .mock-hero-card { background: var(--dark-bg); color: var(--dark-text); }
+    .mock-hero-card::after {
+      content: ""; position: absolute; right: -40px; top: -50px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: var(--tone); opacity: .75;
+    }
+    .mock-label { position: relative; z-index: 1; font-size: .66rem; letter-spacing: .11em; text-transform: uppercase; font-weight: 800; opacity: .75; }
+    .mock-number { position: relative; z-index: 1; margin-top: 9px; font-family: var(--font-display); font-size: clamp(2.2rem,3.6vw,3.4rem); font-weight: 800; letter-spacing: -.03em; }
+    .mock-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 10px; }
+    .mock-card { min-height: 96px; padding: 13px; border: 2px solid var(--line-soft); border-radius: 16px; background: var(--bg-2); }
+    [data-theme="modern"] .mock-card { background: #fff; border-width: 1px; }
+    .mock-card strong { display: block; font-size: .8rem; }
+    .mock-card small { display: block; margin-top: 5px; color: var(--muted); font-weight: 600; }
+    .bars { display: flex; align-items: flex-end; gap: 4px; height: 38px; margin-top: 10px; }
+    .bars i { flex: 1; min-width: 4px; border-radius: 5px 5px 2px 2px; background: var(--tone); border: 1.5px solid var(--ink); border-bottom: 0; transform-origin: bottom; animation: barGrow 1s var(--bounce) both; }
+    [data-theme="modern"] .bars i { border: 0; opacity: .8; }
+    .bars i:nth-child(1){height:35%;animation-delay:.05s}.bars i:nth-child(2){height:72%;animation-delay:.15s}.bars i:nth-child(3){height:48%;animation-delay:.25s}.bars i:nth-child(4){height:93%;animation-delay:.35s}.bars i:nth-child(5){height:64%;animation-delay:.45s}.bars i:nth-child(6){height:84%;animation-delay:.55s}
+    @keyframes barGrow { from { transform: scaleY(0); } }
+    .float-badge {
+      position: absolute; z-index: 5;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 15px; border-radius: 16px;
+      background: var(--tone); color: var(--ink);
+      border: var(--bw) solid var(--ink);
+      font-size: .8rem; font-weight: 900;
+      animation: badgeBob 4s ease-in-out infinite;
+    }
+    [data-theme="cute"] .float-badge { box-shadow: 4px 4px 0 rgba(0,0,0,.35); }
+    [data-theme="modern"] .float-badge { border-color: transparent; box-shadow: 0 20px 60px rgba(0,0,0,.2); }
+    .float-badge .ic { width: 15px; height: 15px; }
+    .badge-a { right: 4%; top: 14%; transform: rotate(5deg); }
+    .badge-b { left: 4%; bottom: 12%; transform: rotate(-5deg); animation-delay: .8s; }
+    @keyframes badgeBob { 50% { margin-top: -10px; } }
+
+    /* ============ USP BENTO ============ */
+    .usp-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .usp-card {
+      position: relative; min-height: 260px; padding: 28px;
+      display: flex; flex-direction: column;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      overflow: hidden;
+      transition: transform .3s var(--bounce), box-shadow .3s ease;
+    }
+    [data-theme="cute"] .usp-card { box-shadow: var(--pop); }
+    [data-theme="cute"] .usp-card:hover { transform: translate(-3px,-5px) rotate(-.5deg); box-shadow: 10px 10px 0 var(--ink); }
+    [data-theme="modern"] .usp-card { border-color: var(--line-soft); background: rgba(255,255,255,.4); }
+    [data-theme="modern"] .usp-card:hover { border-color: rgba(17,22,18,.35); box-shadow: var(--pop); }
+    .usp-card:nth-child(1) { grid-column: span 7; min-height: 370px; background: var(--dark-bg); color: var(--dark-text); }
+    .usp-card:nth-child(2) { grid-column: span 5; min-height: 370px; background: var(--accent); }
+    [data-theme="modern"] .usp-card:nth-child(1) { background: var(--ink); color: var(--bg); }
+    .usp-card:nth-child(3), .usp-card:nth-child(4), .usp-card:nth-child(5) { grid-column: span 4; }
+    .usp-card:nth-child(1) h3 { padding-right: 90px; }
+    .usp-card:nth-child(2) h3 { padding-right: 125px; }
+    .usp-number { font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+    .usp-card h3 { max-width: 560px; margin: 26px 0 18px; font-size: clamp(1.7rem,3.2vw,3.4rem); line-height: 1.04; }
+    [data-theme="modern"] .usp-card h3 { letter-spacing: -.05em; line-height: 1; }
+    .usp-card > p { margin: auto 0 0; max-width: 520px; color: var(--muted); line-height: 1.6; font-weight: 600; position: relative; z-index: 1; }
+    .usp-card:nth-child(1) > p { color: var(--dark-muted); }
+    .usp-card:nth-child(2) > p { color: var(--ink-soft); }
+    [data-theme="modern"] .usp-card > p { font-weight: 400; }
+    .usp-card .orb {
+      position: absolute; right: -54px; top: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: var(--coral);
+      border: var(--bw) solid var(--ink);
+      animation: orbFloat 6s ease-in-out infinite;
+    }
+    [data-theme="modern"] .usp-card .orb { border-color: transparent; }
+    @keyframes orbFloat { 50% { transform: translate(-8px, 10px) scale(1.04); } }
+    .usp-card .coin {
+      position: absolute; right: 26px; top: 30px;
+      width: 108px; height: 108px;
+      display: grid; place-items: center;
+      border: 3.5px solid var(--ink); border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 1.9rem; font-weight: 800;
+      transform: rotate(11deg);
+      animation: coin 5s ease-in-out infinite;
+      background: color-mix(in srgb, #fff 35%, transparent);
+    }
+    @keyframes coin { 50% { transform: rotate(-8deg) translateY(10px); } }
+
+    /* ============ ACRONYM ============ */
+    .acronym-wrap { position: relative; min-height: 700px; }
+    .acronym-word {
+      position: sticky; top: 120px;
+      display: flex; justify-content: center;
+      gap: clamp(7px, 1.5vw, 22px);
+      margin-bottom: 64px;
+      font-family: var(--font-display);
+      font-size: clamp(4.4rem, 15vw, 11.5rem);
+      line-height: .8; font-weight: 800;
+      color: color-mix(in srgb, var(--dark-text) 14%, transparent);
+      pointer-events: none;
+    }
+    [data-theme="modern"] .acronym-word { color: transparent; -webkit-text-stroke: 1px rgba(245,240,231,.36); letter-spacing: -.06em; }
+    .acronym-word span { transition: color .35s ease, transform .35s var(--bounce), -webkit-text-stroke .35s ease; }
+    .acronym-word span.active { color: var(--accent); transform: translateY(-12px) rotate(-3deg); }
+    [data-theme="modern"] .acronym-word span.active { -webkit-text-stroke-color: var(--accent); }
+    .acronym-list { position: relative; z-index: 3; display: grid; gap: 14px; width: min(830px, 100%); margin-left: auto; }
+    .acronym-item {
+      display: grid; grid-template-columns: 78px 1fr; gap: 20px; align-items: start;
+      padding: 24px 26px;
+      border: var(--bw) solid var(--line-dark);
+      border-radius: var(--radius-md);
+      background: var(--dark-card);
+      transition: background .25s ease, transform .3s var(--bounce), border-color .25s ease, box-shadow .3s ease;
+    }
+    [data-theme="modern"] .acronym-item { background: rgba(255,255,255,.045); backdrop-filter: blur(12px); }
+    .acronym-item:hover, .acronym-item.active { transform: translateX(-10px); border-color: var(--accent); }
+    [data-theme="cute"] .acronym-item.active { box-shadow: 5px 5px 0 rgba(0,0,0,.35); }
+    .acronym-letter {
+      display: grid; place-items: center;
+      width: 60px; height: 60px; border-radius: 19px;
+      background: var(--accent); color: var(--ink);
+      border: var(--bw) solid var(--ink);
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 800;
+      transform: rotate(-4deg);
+      transition: transform .3s var(--bounce);
+    }
+    [data-theme="modern"] .acronym-letter { border-color: transparent; transform: none; }
+    .acronym-item:hover .acronym-letter, .acronym-item.active .acronym-letter { transform: rotate(4deg) scale(1.08); }
+    .acronym-item h3 { margin: 2px 0 6px; font-size: 1.35rem; }
+    .acronym-item p { margin: 0; color: var(--dark-muted); line-height: 1.6; }
+
+    /* ============ AUDIENCE ============ */
+    .audience-rail { display: grid; gap: 14px; }
+    .audience-row {
+      display: grid;
+      grid-template-columns: 64px 1.2fr 1fr 44px;
+      gap: 22px; align-items: center;
+      padding: 22px 26px;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      transition: background .3s ease, transform .3s var(--bounce), box-shadow .3s ease;
+    }
+    [data-theme="cute"] .audience-row { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] .audience-row:hover { background: var(--tone, var(--accent)); transform: translate(4px,-3px) rotate(.3deg); box-shadow: 8px 8px 0 var(--ink); }
+    [data-theme="modern"] .audience-row { border-color: var(--line-soft); border-radius: 0; background: var(--bg-2); }
+    [data-theme="modern"] .audience-row:first-child { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    [data-theme="modern"] .audience-row:last-child { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+    [data-theme="modern"] .audience-row:hover { background: var(--accent); transform: translateX(8px); }
+    .audience-row h3 { margin: 0; font-size: clamp(1.3rem,2vw,1.9rem); line-height: 1.15; }
+    [data-theme="modern"] .audience-row h3 { letter-spacing: -.04em; }
+    .audience-row p { margin: 0; color: var(--muted); line-height: 1.55; font-weight: 600; }
+    .audience-row:hover p { color: var(--ink-soft); }
+    .audience-arrow { justify-self: end; transition: transform .25s var(--bounce); }
+    .audience-arrow .ic { width: 26px; height: 26px; }
+    .audience-row:hover .audience-arrow { transform: translateX(6px) rotate(-8deg); }
+
+    /* ============ PRINCIPLES ============ */
+    .principle-stack { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .principle {
+      position: relative; min-height: 380px; padding: 28px;
+      display: flex; flex-direction: column;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      color: var(--ink);
+      transition: transform .3s var(--bounce), box-shadow .3s ease;
+    }
+    .principle:nth-child(1) { background: var(--coral); }
+    .principle:nth-child(2) { background: var(--mint); }
+    .principle:nth-child(3) { background: var(--sky); }
+    [data-theme="cute"] .principle { box-shadow: 6px 6px 0 rgba(0,0,0,.35); }
+    [data-theme="cute"] .principle:hover { transform: translate(-3px,-5px) rotate(-.6deg); box-shadow: 10px 10px 0 rgba(0,0,0,.35); }
+    [data-theme="modern"] .principle { border-color: transparent; }
+    .principle h3 { margin: 0; font-size: clamp(1.7rem,2.6vw,2.6rem); line-height: 1.06; }
+    [data-theme="modern"] .principle h3 { letter-spacing: -.045em; line-height: 1; }
+    .principle p { margin: auto 0 0; padding-top: 18px; line-height: 1.6; font-weight: 600; position: relative; z-index: 1; }
+    [data-theme="modern"] .principle p { font-weight: 400; }
+    .principle .shape {
+      position: absolute; right: -16px; top: 90px;
+      width: 150px; height: 150px;
+      border: 3.5px solid currentColor; opacity: .25;
+      animation: shapeMorph 8s ease-in-out infinite;
+    }
+    .principle:nth-child(2) .shape { border-radius: 50%; animation-delay: 1s; }
+    .principle:nth-child(3) .shape { transform: rotate(45deg); animation-delay: 2s; }
+    @keyframes shapeMorph { 50% { border-radius: 50%; transform: rotate(45deg) translate(-15px, 8px); } }
+
+    /* ============ PROCESS ============ */
+    .process { padding-bottom: 130px; }
+    .process-line {
+      position: absolute; left: calc(50% - 1.5px); top: 320px; bottom: 100px; width: 3px;
+      background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 8%, transparent));
+      border-radius: 4px;
+    }
+    .process-step { position: relative; display: grid; grid-template-columns: 1fr 90px 1fr; gap: 30px; align-items: center; min-height: 210px; }
+    .process-step:nth-child(even) .process-card { grid-column: 3; }
+    .process-step:nth-child(even) .process-spacer { grid-column: 1; grid-row: 1; }
+    .process-card {
+      padding: 26px;
+      border: var(--bw) solid var(--line-dark);
+      border-radius: var(--radius-md);
+      background: var(--dark-card);
+      transition: transform .3s var(--bounce), border-color .25s ease;
+    }
+    [data-theme="modern"] .process-card { background: rgba(255,255,255,.045); }
+    .process-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .process-card h3 { margin: 0 0 10px; font-size: 1.5rem; }
+    .process-card p { margin: 0; color: var(--dark-muted); line-height: 1.65; }
+    .process-dot {
+      grid-column: 2; grid-row: 1; z-index: 2;
+      width: 64px; height: 64px;
+      display: grid; place-items: center; justify-self: center;
+      border: var(--bw) solid var(--ink);
+      border-radius: 50%;
+      background: var(--accent); color: var(--ink);
+      font-family: var(--font-display); font-weight: 800;
+      box-shadow: 0 0 0 8px var(--dark-bg);
+    }
+
+    /* ============ PRICING ============ */
+    .pricing-story {
+      position: relative; padding: 76px;
+      border-radius: var(--radius-xl);
+      background: var(--accent);
+      border: var(--bw) solid var(--ink);
+      overflow: hidden;
+    }
+    [data-theme="cute"] .pricing-story { box-shadow: var(--pop); }
+    [data-theme="modern"] .pricing-story { border-color: transparent; }
+    .pricing-story::after {
+      content: "Rp";
+      position: absolute; right: -20px; bottom: -80px;
+      color: color-mix(in srgb, var(--ink) 10%, transparent);
+      font-family: var(--font-display);
+      font-size: 18rem; line-height: 1; font-weight: 800; letter-spacing: -.08em;
+    }
+    .pricing-story h2 { position: relative; z-index: 2; max-width: 880px; margin: 0; font-size: clamp(2.4rem,5.4vw,5.6rem); line-height: 1.02; }
+    [data-theme="modern"] .pricing-story h2 { letter-spacing: -.06em; line-height: .94; }
+    .pricing-bottom { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; margin-top: 46px; }
+    .pricing-bottom p { max-width: 640px; margin: 0; font-size: 1.1rem; line-height: 1.7; color: var(--ink-soft); font-weight: 600; }
+    [data-theme="modern"] .pricing-bottom p { color: var(--ink); font-weight: 400; }
+
+    /* ============ STATUS ============ */
+    .status-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    a.status-card { cursor: pointer; }
+    .status-card {
+      position: relative; min-height: 250px; padding: 22px;
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      overflow: hidden; display: block;
+      transition: transform .3s var(--bounce), box-shadow .3s ease;
+    }
+    [data-theme="cute"] .status-card { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] a.status-card:hover { transform: translate(-3px,-5px) rotate(-.5deg); box-shadow: 9px 9px 0 var(--ink); }
+    [data-theme="modern"] .status-card { border-color: var(--line-soft); background: var(--bg-2); }
+    [data-theme="modern"] a.status-card:hover { box-shadow: var(--pop); }
+    .status-card::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px;
+      background: var(--tone, var(--accent));
+      border-top: var(--bw) solid var(--ink);
+    }
+    [data-theme="modern"] .status-card::after { border-top: 0; }
+    .status-top { display: flex; align-items: center; gap: 12px; }
+    .status-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; }
+    [data-theme="modern"] .status-name { letter-spacing: -.04em; }
+    .status-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px; padding: 7px 11px; border-radius: 999px;
+      background: var(--ink); color: var(--bg);
+      font-size: .66rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .status-tag.live { background: var(--accent-2); color: var(--ink); border: 2px solid var(--ink); }
+    [data-theme="modern"] .status-tag.live { border-color: transparent; }
+    .status-card p { margin: 20px 0 0; color: var(--muted); line-height: 1.55; font-weight: 600; max-width: 88%; }
+    [data-theme="modern"] .status-card p { font-weight: 400; }
+    .status-go { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; font-weight: 900; font-size: .85rem; }
+    .status-go .ic { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+    a.status-card:hover .status-go .ic { transform: translateX(4px); }
+
+    /* ============ FAQ ============ */
+    .faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 66px; align-items: start; }
+    .faq-intro { position: sticky; top: 120px; }
+    .faq-list { display: grid; gap: 12px; }
+    .faq-item {
+      border: var(--bw) solid var(--ink);
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      overflow: hidden;
+      transition: box-shadow .3s ease, transform .3s var(--bounce);
+    }
+    [data-theme="cute"] .faq-item { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] .faq-item.open { box-shadow: 6px 6px 0 var(--ink); transform: translate(-2px,-2px); }
+    [data-theme="modern"] .faq-item { border: 0; border-bottom: 1px solid var(--line-soft); border-radius: 0; background: transparent; }
+    .faq-question {
+      width: 100%;
+      display: grid; grid-template-columns: 1fr 44px; gap: 18px; align-items: center;
+      padding: 20px 22px;
+      border: 0; background: transparent; text-align: left;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem,1.6vw,1.3rem); font-weight: 700; cursor: pointer;
+    }
+    [data-theme="modern"] .faq-question { padding: 24px 0; letter-spacing: -.02em; }
+    .faq-plus {
+      position: relative; width: 40px; height: 40px;
+      border: var(--bw) solid var(--ink); border-radius: 50%;
+      transition: transform .3s var(--bounce), background .28s ease;
+    }
+    [data-theme="modern"] .faq-plus { border-color: var(--line-soft); }
+    .faq-plus::before, .faq-plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 13px; height: 2.4px; border-radius: 3px; background: currentColor; transform: translate(-50%,-50%); }
+    .faq-plus::after { transform: translate(-50%,-50%) rotate(90deg); transition: transform .25s ease; }
+    .faq-item.open .faq-plus { transform: rotate(135deg); background: var(--accent); }
+    .faq-item.open .faq-plus::after { transform: translate(-50%,-50%) rotate(0); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .45s var(--ease); }
+    .faq-answer p { margin: 0; padding: 0 60px 22px 22px; color: var(--muted); line-height: 1.7; font-weight: 600; }
+    [data-theme="modern"] .faq-answer p { padding-left: 0; font-weight: 400; }
+
+    /* ============ CTA ============ */
+    .cta {
+      position: relative; min-height: 640px;
+      display: grid; place-items: center;
+      padding: 100px 0;
+      background: var(--dark-bg); color: var(--dark-text);
+      overflow: hidden; isolation: isolate;
+    }
+    .cta::before {
+      content: ""; position: absolute; inset: -20%; z-index: -2;
+      background: conic-gradient(from 180deg at 50% 50%,
+        color-mix(in srgb, var(--coral) 30%, transparent),
+        color-mix(in srgb, var(--mint) 26%, transparent),
+        color-mix(in srgb, var(--sky) 28%, transparent),
+        color-mix(in srgb, var(--lilac) 24%, transparent),
+        color-mix(in srgb, var(--accent) 30%, transparent),
+        color-mix(in srgb, var(--coral) 30%, transparent));
+      filter: blur(90px);
+      animation: spin 22s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(1turn); } }
+    .cta::after {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: radial-gradient(circle at center, transparent 0, color-mix(in srgb, var(--dark-bg) 30%, transparent) 45%, var(--dark-bg) 86%);
+    }
+    .cta-card { width: min(960px, calc(100% - 40px)); text-align: center; position: relative; }
+    .cta .cta-mascot { width: 130px; margin: 0 auto 26px; animation: mascotFloat 5.2s ease-in-out infinite; }
+    .cta h2 { margin: 0; font-size: clamp(3rem,7.4vw,7.6rem); line-height: .95; }
+    [data-theme="modern"] .cta h2 { letter-spacing: -.08em; line-height: .82; }
+    .cta h2 span { color: var(--accent); }
+    .cta p { max-width: 660px; margin: 30px auto 0; color: var(--dark-muted); font-size: 1.12rem; line-height: 1.7; }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .email-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; color: var(--dark-muted); font-size: .93rem; font-weight: 700; }
+    .email-pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent-2) 12%, transparent); }
+
+    /* ============ FOOTER ============ */
+    .footer { padding: 44px 0 26px; background: var(--dark-bg); color: var(--dark-text); border-top: 1px solid var(--line-dark); }
+    .footer-top { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; padding-bottom: 42px; }
+    .footer-title { max-width: 620px; margin: 0; font-size: clamp(2rem,4.4vw,4.4rem); line-height: 1.02; }
+    [data-theme="modern"] .footer-title { letter-spacing: -.06em; line-height: .95; }
+    .footer-links { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .footer-links div { display: grid; align-content: start; gap: 9px; }
+    .footer-links strong { margin-bottom: 6px; color: var(--dark-muted); font-size: .73rem; letter-spacing: .1em; text-transform: uppercase; }
+    .footer-links a { width: fit-content; color: var(--dark-text); font-weight: 600; opacity: .85; transition: opacity .2s ease, transform .2s var(--bounce); }
+    .footer-links a:hover { opacity: 1; color: var(--accent); transform: translateX(3px); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--line-dark); color: var(--dark-muted); font-size: .82rem; }
+
+    /* ============ REVEAL & MOTION ============ */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in-view { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: .08s; }
+    .reveal[data-delay="2"] { transition-delay: .16s; }
+    .reveal[data-delay="3"] { transition-delay: .24s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      :root { --container: min(100% - 32px, 920px); }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-world { height: 600px; max-width: 700px; width: 100%; margin: 0 auto; }
+      .section-head, .manifesto-layout, .faq-layout, .footer-top { grid-template-columns: 1fr; }
+      .manifesto-sticky, .faq-intro { position: static; }
+      .product-panel { grid-template-columns: 1fr; }
+      .product-copy { padding-bottom: 26px; }
+      .product-visual { min-height: 540px; }
+      .usp-card:nth-child(1), .usp-card:nth-child(2) { grid-column: span 12; }
+      .usp-card:nth-child(3), .usp-card:nth-child(4), .usp-card:nth-child(5) { grid-column: span 4; }
+      .principle-stack { grid-template-columns: 1fr; }
+      .principle { min-height: 300px; }
+      .status-grid { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-actions .nav-mail { display: none; }
+      .menu-open .nav-links {
+        position: fixed; left: 16px; right: 16px; top: 96px;
+        display: grid; padding: 20px;
+        border: var(--bw) solid var(--ink);
+        border-radius: 26px;
+        background: var(--card);
+        box-shadow: var(--pop);
+        z-index: 99;
+      }
+      .menu-open .nav-links a { padding: 14px; font-size: 1.15rem; }
+    }
+
+    @media (max-width: 720px) {
+      :root { --container: min(100% - 24px, 680px); }
+      .section { padding: 80px 0; }
+      .section-head { gap: 22px; margin-bottom: 40px; }
+      .hero { padding-top: 48px; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+      .hero-actions .btn { width: 100%; }
+      .hero-world { height: 540px; margin-top: -10px; }
+      .mascot-stage { width: 240px; }
+      .product-float { width: 148px; padding: 12px; border-radius: 18px; }
+      .pf-sajin { left: -3%; } .pf-klinap { right: -4%; } .pf-kalik { right: -5%; } .pf-4krt { right: 2%; } .pf-jelin { left: -4%; } .pf-pantur { left: -6%; }
+      .orbit.one { width: 340px; height: 340px; }
+      .orbit.two { width: 480px; height: 480px; }
+      .switcher button span.lbl { display: none; }
+      .manifesto-layout { gap: 32px; }
+      .manifesto-point { grid-template-columns: 52px 1fr; padding: 18px; }
+      .product-stage, .product-panel { min-height: auto; }
+      .product-copy { padding: 38px 22px 22px; }
+      .product-copy h3 { font-size: 3.6rem; }
+      .product-visual { min-height: 440px; }
+      .mock-device { width: 92%; padding: 12px; border-radius: 24px; }
+      .mock-grid { grid-template-columns: repeat(2,1fr); }
+      .mock-grid .mock-card:last-child { grid-column: span 2; }
+      .float-badge { font-size: .67rem; }
+      .usp-grid { grid-template-columns: 1fr; }
+      .usp-card:nth-child(n) { grid-column: 1; min-height: 320px; }
+      .acronym-word { top: 96px; font-size: 19vw; margin-bottom: 46px; }
+      .acronym-item { grid-template-columns: 56px 1fr; padding: 18px; }
+      .acronym-letter { width: 48px; height: 48px; border-radius: 15px; font-size: 1.4rem; }
+      .audience-row { grid-template-columns: 56px 1fr 30px; gap: 13px; padding: 18px 15px; }
+      .audience-row p { grid-column: 2 / -1; }
+      .pricing-story { padding: 42px 24px; border-radius: 34px; }
+      .pricing-bottom { grid-template-columns: 1fr; }
+      .pricing-bottom .btn { width: 100%; }
+      .status-grid { grid-template-columns: 1fr; }
+      .process-line { left: 32px; top: 300px; }
+      .process-step { grid-template-columns: 64px 1fr; gap: 14px; padding: 16px 0; min-height: auto; }
+      .process-step:nth-child(n) .process-card { grid-column: 2; }
+      .process-step:nth-child(n) .process-dot { grid-column: 1; grid-row: 1; }
+      .process-spacer { display: none; }
+      .faq-answer p { padding-right: 22px; }
+      .footer-links { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============ ICON SPRITE ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"/></symbol>
+      <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M12 20.5S4.8 16 3 11.5C1.6 8 4 4.5 7.5 4.5c1.9 0 3.4 1 4.5 2.6C13.1 5.5 14.6 4.5 16.5 4.5 20 4.5 22.4 8 21 11.5 19.2 16 12 20.5 12 20.5z"/></symbol>
+      <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2.5l2 6.7 6.8 1.9-6.3 2.9L12 21.5l-2.5-7.5-6.3-2.9 6.8-1.9z"/></symbol>
+      <symbol id="ic-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+      <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M4 8l8 6 8-6"/></symbol>
+      <symbol id="ic-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17M12 3c2.6 2.4 3.8 5.5 3.8 9S14.6 18.6 12 21c-2.6-2.4-3.8-5.5-3.8-9S9.4 5.4 12 3z"/></symbol>
+      <symbol id="ic-diamond" viewBox="0 0 24 24"><path d="M12 3l7.5 9L12 21l-7.5-9z"/></symbol>
+      <symbol id="ic-bolt" viewBox="0 0 24 24"><path d="M13 2.5 5 13.5h5.5L10 21.5l8-11h-5.5z"/></symbol>
+      <symbol id="ic-bowl" viewBox="0 0 24 24"><path d="M3.5 12.5h17c0 3.4-2.2 6.2-5.3 7.3l.3 1.7H8.5l.3-1.7c-3.1-1.1-5.3-3.9-5.3-7.3z"/><path d="M9 8.7C9 7.4 10 7.3 10 6M14 8.7c0-1.3 1-1.4 1-2.7"/><g class="kf"><circle cx="10" cy="16" r=".4"/><circle cx="14" cy="16" r=".4"/><path d="M11 17.6c.6.5 1.4.5 2 0"/></g></symbol>
+      <symbol id="ic-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M15 9.2c-.6-.8-1.7-1.3-3-1.3-1.7 0-3 .8-3 2.1 0 2.8 6 1.5 6 4.2 0 1.3-1.3 2.1-3 2.1-1.3 0-2.4-.5-3-1.3"/></symbol>
+      <symbol id="ic-clinic" viewBox="0 0 24 24"><path d="M9.5 3.5h5V9H20v5h-5.5v5.5h-5V14H4V9h5.5z"/><g class="kf"><circle cx="10.4" cy="11" r=".4"/><circle cx="13.6" cy="11" r=".4"/><path d="M10.8 12.8c.7.6 1.7.6 2.4 0"/></g></symbol>
+      <symbol id="ic-plane" viewBox="0 0 24 24"><path d="M3.5 10.5 21 3.5l-7 17.5-2.7-7.8z"/><path d="M21 3.5 11.3 13.2"/></symbol>
+      <symbol id="ic-flame" viewBox="0 0 24 24"><path d="M12 2.5c3.7 4.2 4.8 7.9 3.2 11.6-1 2.4-2 3.6-3.2 4.9-1.2-1.3-2.2-2.5-3.2-4.9C7.2 10.4 8.3 6.7 12 2.5z"/><path d="M12 12.5c1 1.4.9 2.7 0 4-1-1.3-1-2.6 0-4z"/></symbol>
+      <symbol id="ic-dpad" viewBox="0 0 24 24"><path d="M12 2.5l2.8 3.7H9.2zM12 21.5l-2.8-3.7h5.6zM2.5 12l3.7-2.8v5.6zM21.5 12l-3.7 2.8V9.2z"/><circle cx="12" cy="12" r="1.6"/></symbol>
+      <symbol id="ic-tag" viewBox="0 0 24 24"><path d="M13 3.5h5.5a2 2 0 0 1 2 2V11L12 19.5 4 11.5 13 3.5z"/><circle cx="16" cy="8" r="1.4"/></symbol>
+      <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7.2-6.2-7.2-11A7.2 7.2 0 0 1 19.2 10.5c0 4.8-7.2 11-7.2 11z"/><g class="kf"><circle cx="9.8" cy="9.6" r=".4"/><circle cx="14.2" cy="9.6" r=".4"/><path d="M10.4 11.6c.9.8 2.3.8 3.2 0"/></g></symbol>
+      <symbol id="ic-cloud-off" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.9-8.9 6 6 0 0 1 11.7 1.2A3.9 3.9 0 0 1 17.5 18.5z"/><path d="M12.8 10.5l-2.4 3h2.8l-1.9 3"/></symbol>
+      <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 2.8l7.2 2.9v5.1c0 4.6-3 7.8-7.2 9.4-4.2-1.6-7.2-4.8-7.2-9.4V5.7z"/><path d="M12 14.6s-2.9-1.9-3.6-3.7c-.5-1.4.4-2.7 1.8-2.7.8 0 1.4.4 1.8 1 .4-.6 1-1 1.8-1 1.4 0 2.3 1.3 1.8 2.7-.7 1.8-3.6 3.7-3.6 3.7z"/></symbol>
+      <symbol id="ic-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".5"/><circle cx="15" cy="10" r=".5"/><path d="M8.5 14c1.8 1.9 5.2 1.9 7 0"/></symbol>
+      <symbol id="ic-home" viewBox="0 0 24 24"><path d="M4 11l8-7.5L20 11v9.5h-5.5v-6h-5v6H4z"/></symbol>
+      <symbol id="ic-ear" viewBox="0 0 24 24"><path d="M7 9a5.5 5.5 0 0 1 11 .3c0 3.2-2.6 4-3.2 6.4-.5 2-1.6 3.3-3.4 3.3-1.4 0-2.5-.8-3-2"/><path d="M10.5 9.3A2.6 2.6 0 0 1 15.6 10c0 1.6-1.4 2.2-2 3.6"/></symbol>
+      <symbol id="ic-route" viewBox="0 0 24 24"><circle cx="6" cy="18.5" r="2.5"/><circle cx="18" cy="5.5" r="2.5"/><path d="M8.5 18.5h6a4 4 0 0 0 0-8h-5a3.5 3.5 0 0 1 0-7h6"/></symbol>
+      <symbol id="ic-test" viewBox="0 0 24 24"><path d="M9 3.5h6M10.5 3.5v5L5 17.6A2.4 2.4 0 0 0 7.2 21h9.6a2.4 2.4 0 0 0 2.2-3.4L13.5 8.5v-5"/><path d="M8 14.5h8"/></symbol>
+      <symbol id="ic-mascot-mini" viewBox="0 0 64 60"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8c0-2.5 1-3.5 2.5-4.5" fill="none"/><path d="M37.5 2.2c1.6-.9 3.3.2 3.2 1.9-.1 1.6-1.9 2.6-4.4 2.4.4-2.4 1.2-4.3 1.2-4.3z" fill="currentColor" stroke-width="2"/><path d="M15 44c-5.5 0-9.5-4-9.5-9 0-4.4 3-8 7.2-8.8C13.5 18.5 21 12.5 30 12.5s16.5 6 17.3 13.7C51.5 27 54.5 30.6 54.5 35c0 5-4 9-9.5 9z"/><circle cx="24" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="38" cy="30" r="2" fill="currentColor" stroke="none"/><path d="M27 36c1.7 1.6 4.3 1.6 6 0"/><rect x="20" y="42" width="24" height="14" rx="4"/></g></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Langsung ke isi utama</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <div class="announcement" aria-hidden="true">
+    <div class="announcement-track">
+      <div class="announcement-item" data-i18n="mq1">Produk digital lokal untuk hidup yang nyata</div><div class="announcement-item"><svg class="ic"><use href="#ic-heart"/></svg></div>
+      <div class="announcement-item" data-i18n="mq2">Harga masuk akal, fitur tetap serius</div><div class="announcement-item"><svg class="ic"><use href="#ic-star"/></svg></div>
+      <div class="announcement-item" data-i18n="mq3">Dibuat untuk masyarakat dan UMKM Indonesia</div><div class="announcement-item"><svg class="ic"><use href="#ic-heart"/></svg></div>
+      <div class="announcement-item" data-i18n="mq4">Sekali punya, dipakai tumbuh bersama</div><div class="announcement-item"><svg class="ic"><use href="#ic-star"/></svg></div>
+      <div class="announcement-item" data-i18n="mq1">Produk digital lokal untuk hidup yang nyata</div><div class="announcement-item"><svg class="ic"><use href="#ic-heart"/></svg></div>
+      <div class="announcement-item" data-i18n="mq2">Harga masuk akal, fitur tetap serius</div><div class="announcement-item"><svg class="ic"><use href="#ic-star"/></svg></div>
+      <div class="announcement-item" data-i18n="mq3">Dibuat untuk masyarakat dan UMKM Indonesia</div><div class="announcement-item"><svg class="ic"><use href="#ic-heart"/></svg></div>
+      <div class="announcement-item" data-i18n="mq4">Sekali punya, dipakai tumbuh bersama</div><div class="announcement-item"><svg class="ic"><use href="#ic-star"/></svg></div>
+    </div>
+  </div>
+
+  <header class="nav-shell">
+    <nav class="nav container" aria-label="Navigasi utama">
+      <a class="brand" href="#top" aria-label="Meria Works">
+        <svg class="mascot" viewBox="0 0 64 60" aria-hidden="true" style="width:38px;color:var(--ink)"><use href="#ic-mascot-mini"/></svg>
+        <span>MERIA WORKS</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#tentang" data-i18n="nav.about">Tentang</a>
+        <a href="#produk" data-i18n="nav.products">Produk</a>
+        <a href="#kenapa" data-i18n="nav.why">Kenapa Meria</a>
+        <a href="#status" data-i18n="nav.status">Status</a>
+        <a href="#faq">FAQ</a>
       </div>
-    </header>
-
-    <main>
-      <section class="m-hero">
-        <div class="wrap">
-          <span class="m-pill">PT MERIA TEKNOLOGI NUSANTARA</span>
-          <h1>Software yang praktis, privat, &amp; bisa diandalkan.</h1>
-          <p class="m-lead">Kami membuat aplikasi untuk usaha &amp; kehidupan sehari-hari — fokus pada hal yang benar-benar berguna, dengan data yang tetap jadi milikmu.</p>
-          <a class="m-btn" href="#produk">Lihat produk</a>
+      <div class="nav-actions">
+        <div class="switcher" role="group" aria-label="Bahasa">
+          <button type="button" id="lang-id" aria-pressed="true">ID</button>
+          <button type="button" id="lang-en" aria-pressed="false">EN</button>
         </div>
-      </section>
+        <div class="switcher" role="group" aria-label="Tema">
+          <button type="button" id="theme-cute" aria-pressed="true"><svg class="ic"><use href="#ic-heart"/></svg><span class="lbl">Cute</span></button>
+          <button type="button" id="theme-modern" aria-pressed="false"><svg class="ic"><use href="#ic-diamond"/></svg><span class="lbl">Modern</span></button>
+        </div>
+        <a class="btn nav-mail" href="mailto:meriaworks.id@gmail.com?subject=Halo%20Meria%20Works" data-i18n="nav.cta">Hubungi kami</a>
+        <button class="mobile-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+      </div>
+    </nav>
+  </header>
 
-      <section id="produk">
-        <div class="wrap">
-          <h2>Pilih aplikasi</h2>
-          <p class="m-sub">Tiap aplikasi punya halamannya sendiri.</p>
-          <div class="m-grid">
-            <a class="m-card live" href="./sajin/" style="--accent:#e93412;--accent2:#f47a14">
-              <div class="m-ico">🍗</div>
-              <h3>SAJIN <span class="m-tag ok">Tersedia</span></h3>
-              <p>Untung bersih, COGS per bahan, margin menu, stok pintar &amp; cash flow untuk UMKM F&amp;B.</p>
-              <span class="m-go">Buka halaman →</span>
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-layout container">
+        <div class="hero-copy">
+          <div class="hero-kicker reveal"><span class="pulse"></span> <span data-i18n="hero.kicker">Digital tools buatan Indonesia</span></div>
+          <h1 class="reveal" data-delay="1" data-i18n="hero.h1"><span class="hero-line">Biar hidup</span><span class="hero-line outline">nggak makin</span><span class="hero-line"><span class="scribble">ribet.</span></span></h1>
+          <p class="hero-lead reveal" data-delay="2" data-i18n="hero.lead">Meria Works membuat webapp, PWA, APK, dan produk digital yang membantu orang Indonesia mengatur usaha, uang, pekerjaan, kesehatan, dan kemampuan diri—tanpa harga yang bikin ikut pusing.</p>
+          <div class="hero-actions reveal" data-delay="3">
+            <a class="btn" href="#produk"><span data-i18n="hero.cta1">Kenalan dengan produknya</span>
+              <svg class="ic"><use href="#ic-arrow"/></svg>
             </a>
-            <a class="m-card live" href="./klinap/" style="--accent:#2467c9;--accent2:#17b1a6">
-              <div class="m-ico">🏥</div>
-              <h3>KLINAP <span class="m-tag ok">Tersedia</span></h3>
-              <p>Operasional &amp; rekam medis elektronik (RME) untuk klinik — 100% offline, sekali bayar, data milik Anda.</p>
-              <span class="m-go">Buka halaman →</span>
-            </a>
-            <a class="m-card live" href="./kalik/" style="--accent:#c98a2e;--accent2:#ffc761">
-              <div class="m-ico"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2 Q17.5 8.5 15.5 14 Q14.5 18.5 12 20.5 Q9.5 18.5 8.5 14 Q6.5 8.5 12 2 Z" fill="#ffc761"/><path d="M12 12 Q14 15 12 18 Q10 15 12 12 Z" fill="#fff3d6"/></svg></div>
-              <h3>KALIK <span class="m-tag ok">Tersedia</span></h3>
-              <p>Gym mini untuk otak — 60 detik/hari: latihan nalar bergaya TPA, simulasi tes, dan pet elemen yang tumbuh bersamamu. Tanpa iklan, 100% offline.</p>
-              <span class="m-go">Buka halaman →</span>
-            </a>
-            <a class="m-card live" href="./4krt/" style="--accent:#8aa616;--accent2:#b9f227">
-              <div class="m-ico"><svg width="30" height="30" viewBox="0 0 48 48"><path d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z" fill="#b9f227"/></svg></div>
-              <h3>4KRT <span class="m-tag ok">Tersedia</span></h3>
-              <p>Trainer ritme 4 arah: baca pola, kejar beat, lihat analitik progres sampai milidetik. Gratis, offline, main di browser &amp; Android.</p>
-              <span class="m-go">Buka halaman →</span>
-            </a>
-            <div class="m-card soon" style="--accent:#7a3ff2;--accent2:#b06bff">
-              <div class="m-ico">💼</div>
-              <h3>JELIN <span class="m-tag">Segera</span></h3>
-              <p>Lacak lamaran kerja: posisi, tahap interview, follow-up, dan progres dalam satu tempat.</p>
-              <span class="m-go muted">Segera hadir</span>
-            </div>
-            <div class="m-card soon" style="--accent:#16865a;--accent2:#2bbd86">
-              <div class="m-ico">💰</div>
-              <h3>PANTUR <span class="m-tag">Segera</span></h3>
-              <p>Pantau uang &amp; atur hidup dari sisi finansial — anggaran, arus kas pribadi, dan tujuan.</p>
-              <span class="m-go muted">Segera hadir</span>
-            </div>
+            <a class="btn ghost" href="#tentang" data-i18n="hero.cta2">Kenapa Meria dibuat?</a>
+          </div>
+          <div class="hero-proof reveal" data-delay="3">
+            <span><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="hero.p1">4 aplikasi sudah bisa dipakai</span></span>
+            <span><svg class="ic"><use href="#ic-cloud-off"/></svg><span data-i18n="hero.p2">Local-first &amp; offline-first</span></span>
+            <span><svg class="ic"><use href="#ic-heart"/></svg><span data-i18n="hero.p3">Tanpa fitur pajangan</span></span>
           </div>
         </div>
-      </section>
 
-      <section id="tentang" class="m-alt">
-        <div class="wrap">
-          <h2>Prinsip MERIA</h2>
-          <div class="m-grid">
-            <div class="m-card flat"><h3>Privat by default</h3><p>Data kamu disimpan di perangkatmu sebisa mungkin — bukan diperjualbelikan.</p></div>
-            <div class="m-card flat"><h3>Sekali bayar, bukan jebakan langganan</h3><p>Bayar wajar untuk nilai yang jelas.</p></div>
-            <div class="m-card flat"><h3>Jujur</h3><p>Tanpa klaim berlebihan. Kami sebut apa adanya yang aplikasi bisa &amp; tidak bisa.</p></div>
+        <div class="hero-world" aria-label="Ekosistem produk Meria Works">
+          <div class="orbit one"></div>
+          <div class="orbit two"></div>
+          <div class="mascot-stage" id="mascot" title="Meria">
+            <svg class="mascot" viewBox="30 0 260 290" aria-hidden="true">
+              <g class="sprout">
+                <path class="sprout-stem" d="M160 62 C158 45 160 36 168 24" fill="none"/>
+                <path class="sprout-heart" d="M170 26 c-6-8-18-5-18 4 0 7 8 12 16 15 5-7 9-12 9-18 0-8-10-9-13-5z" transform="translate(2,-16) scale(1.05)"/>
+              </g>
+              <!-- cloud outline underlay -->
+              <g fill="var(--mascot-line)">
+                <circle cx="85" cy="160" r="57"/><circle cx="160" cy="122" r="75"/><circle cx="235" cy="160" r="57"/><rect x="55" y="158" width="210" height="62" rx="31"/>
+              </g>
+              <!-- cloud body -->
+              <g fill="var(--mascot-body)">
+                <circle cx="85" cy="160" r="52"/><circle cx="160" cy="122" r="70"/><circle cx="235" cy="160" r="52"/><rect x="60" y="162" width="200" height="53" rx="26"/>
+              </g>
+              <ellipse class="blush" cx="103" cy="172" rx="13" ry="8"/>
+              <ellipse class="blush" cx="217" cy="172" rx="13" ry="8"/>
+              <circle class="eye l" cx="127" cy="150" r="9"/>
+              <circle class="eye r" cx="193" cy="150" r="9"/>
+              <path class="smile" d="M141 170 Q160 186 179 170"/>
+              <rect class="pad" x="102" y="196" width="116" height="68" rx="16"/>
+              <text class="pad-m" x="160" y="243" text-anchor="middle">M</text>
+              <circle class="paw" cx="96" cy="224" r="15"/>
+              <circle class="paw" cx="224" cy="224" r="15"/>
+            </svg>
+          </div>
+          <div class="mascot-shadow" aria-hidden="true"></div>
+
+          <a class="product-float pf-sajin" href="./sajin/">
+            <span class="stat-dot" title="Tersedia"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-bowl"/></svg></span>
+            <strong>SAJIN</strong><small data-i18n="float.sajin">Operasional F&amp;B kecil, dibuat lebih rapi.</small>
+          </a>
+          <a class="product-float pf-klinap" href="./klinap/">
+            <span class="stat-dot" title="Tersedia"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-clinic"/></svg></span>
+            <strong>KLINAP</strong><small data-i18n="float.klinap">Operasional klinik sampai RME, 100% offline.</small>
+          </a>
+          <a class="product-float pf-kalik" href="./kalik/">
+            <span class="stat-dot" title="Tersedia"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-flame"/></svg></span>
+            <strong>KALIK</strong><small data-i18n="float.kalik">Gym mini untuk otak, 60 detik sehari.</small>
+          </a>
+          <a class="product-float pf-4krt" href="./4krt/">
+            <span class="stat-dot" title="Tersedia"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-dpad"/></svg></span>
+            <strong>4KRT</strong><small data-i18n="float.4krt">Trainer ritme 4 arah, gratis &amp; offline.</small>
+          </a>
+          <a class="product-float pf-jelin" href="#produk" data-product="jelin">
+            <span class="stat-dot soon" title="Segera"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-plane"/></svg></span>
+            <strong>JELIN</strong><small data-i18n="float.jelin">Semua lamaran kerja, nggak lagi tercecer.</small>
+          </a>
+          <a class="product-float pf-pantur" href="#produk" data-product="pantur">
+            <span class="stat-dot soon" title="Segera"></span>
+            <span class="mini-icon"><svg class="ic"><use href="#ic-coin"/></svg></span>
+            <strong>PANTUR</strong><small data-i18n="float.pantur">Uang, kewajiban, dan hidup dalam satu kendali.</small>
+          </a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#tentang" aria-label="Gulir ke bagian berikutnya"></a>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="section manifesto" id="tentang">
+      <div class="container manifesto-layout">
+        <div class="manifesto-sticky reveal">
+          <span class="eyebrow"><svg class="ic"><use href="#ic-heart"/></svg><span data-i18n="man.eyebrow">Kenapa kami ada</span></span>
+          <p class="copy" data-i18n="man.side">Di tengah ekonomi yang makin sulit ditebak, alat kerja yang bagus seharusnya membantu orang bergerak—bukan menambah langganan baru setiap bulan.</p>
+        </div>
+        <div>
+          <h2 class="manifesto-big reveal" data-i18n="man.h2">Kita semua lagi berjuang. <span>Teknologi harusnya ikut meringankan.</span></h2>
+          <div class="manifesto-points">
+            <article class="manifesto-point reveal">
+              <span class="icon-chip" style="--tone:var(--coral)"><svg class="ic"><use href="#ic-ear"/></svg></span>
+              <div><h3 data-i18n="man.p1t">Bukan dibuat dari asumsi ruang rapat.</h3><p data-i18n="man.p1b">Setiap produk dimulai dari masalah yang benar-benar terjadi: stok bahan yang berantakan, tagihan yang lupa dibayar, lamaran yang tercecer, atau administrasi yang menghabiskan waktu.</p></div>
+            </article>
+            <article class="manifesto-point reveal">
+              <span class="icon-chip" style="--tone:var(--mint)"><svg class="ic"><use href="#ic-smile"/></svg></span>
+              <div><h3 data-i18n="man.p2t">Fitur lengkap, tapi tetap manusiawi.</h3><p data-i18n="man.p2b">Kami suka sistem yang kuat. Tapi pengguna tidak harus merasa sedang mengoperasikan pesawat. Kompleks di belakang, terasa simpel di depan.</p></div>
+            </article>
+            <article class="manifesto-point reveal">
+              <span class="icon-chip" style="--tone:var(--butter)"><svg class="ic"><use href="#ic-tag"/></svg></span>
+              <div><h3 data-i18n="man.p3t">Harga terjangkau bukan berarti seadanya.</h3><p data-i18n="man.p3b">Nama Meria lahir dari “murah meriah”: produk yang bisa dijangkau lebih banyak orang, tetap dirancang serius, dan punya nilai pakai jangka panjang.</p></div>
+            </article>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer class="m-foot">
-      <div class="wrap">© <span data-edit="tahun">[TAHUN]</span> PT Meria Teknologi Nusantara — MERIA. Semua merek aplikasi milik MERIA.</div>
-    </footer>
-  </body>
+    <!-- ============ PRODUCTS ============ -->
+    <section class="section dark ecosystem" id="produk">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow"><svg class="ic"><use href="#ic-star"/></svg><span data-i18n="eco.eyebrow">Ekosistem Meria</span></span>
+            <h2 class="reveal" data-i18n="eco.h2">Satu rumah.<br><span class="hl">Banyak cara buat bertahan.</span></h2>
+          </div>
+          <p class="reveal" data-i18n="eco.side">Setiap produk punya pekerjaan yang berbeda, tapi punya tujuan yang sama: membuat urusan penting terasa lebih tertata, lebih ringan, dan lebih mungkin dijalankan.</p>
+        </div>
+
+        <div class="product-nav" role="tablist" aria-label="Pilih produk Meria Works">
+          <button class="product-tab" role="tab" aria-selected="true" data-target="sajin" style="--tone:var(--c-sajin)"><span class="dot"></span>SAJIN</button>
+          <button class="product-tab" role="tab" aria-selected="false" data-target="klinap" style="--tone:var(--c-klinap)"><span class="dot"></span>KLINAP</button>
+          <button class="product-tab" role="tab" aria-selected="false" data-target="kalik" style="--tone:var(--c-kalik)"><span class="dot"></span>KALIK</button>
+          <button class="product-tab" role="tab" aria-selected="false" data-target="4krt" style="--tone:var(--c-4krt)"><span class="dot"></span>4KRT</button>
+          <button class="product-tab" role="tab" aria-selected="false" data-target="jelin" style="--tone:var(--c-jelin)"><span class="dot"></span>JELIN</button>
+          <button class="product-tab" role="tab" aria-selected="false" data-target="pantur" style="--tone:var(--c-pantur)"><span class="dot"></span>PANTUR</button>
+        </div>
+
+        <div class="product-stage reveal">
+          <article class="product-panel active" data-panel="sajin" style="--tone:var(--c-sajin)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-bowl"/></svg><span data-i18n="sajin.index">01 · Untuk UMKM F&amp;B</span></span>
+              <h3>SAJIN</h3>
+              <p class="tagline" data-i18n="sajin.tag">Jualan enak. Operasional juga harus enak.</p>
+              <p data-i18n="sajin.body">SAJIN membantu warung, kedai, coffee shop, katering, dan bisnis F&amp;B lain melihat untung bersih, COGS per bahan, margin menu, stok pintar, sampai cash flow dalam satu tempat.</p>
+              <ul class="feature-list" data-i18n="sajin.feat"><li>Untung bersih</li><li>COGS per bahan</li><li>Margin menu</li><li>Stok pintar</li><li>Cash flow</li><li>Offline</li></ul>
+              <div class="product-cta">
+                <a class="btn" href="./sajin/"><span data-i18n="open.app">Buka aplikasinya</span><svg class="ic"><use href="#ic-arrow"/></svg></a>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>SAJIN</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="sajin.m0">Penjualan hari ini</span><div class="mock-number">Rp2,84 jt</div></div>
+                <div class="mock-grid" data-i18n="sajin.mg"><div class="mock-card"><strong>Margin</strong><small>Naik 7,4%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Stok kritis</strong><small>3 bahan perlu dicek</small></div><div class="mock-card"><strong>Menu terlaris</strong><small>Ayam Sambal Matah</small></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="sajin.b1">Food cost aman</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-cloud-off"/></svg><span data-i18n="sajin.b2">Bisa jalan offline</span></span>
+            </div>
+          </article>
+
+          <article class="product-panel" data-panel="klinap" style="--tone:var(--c-klinap)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-clinic"/></svg><span data-i18n="klinap.index">02 · Untuk klinik</span></span>
+              <h3>KLINAP</h3>
+              <p class="tagline" data-i18n="klinap.tag">Dari pasien datang sampai laporan selesai.</p>
+              <p data-i18n="klinap.body">KLINAP menyambungkan registrasi, antrean, rekam medis elektronik (RME), SOAP, resep, stok farmasi, billing, dan laporan klinik—100% offline, sekali bayar, data milik Anda.</p>
+              <ul class="feature-list" data-i18n="klinap.feat"><li>Registrasi</li><li>Antrean</li><li>RME &amp; SOAP</li><li>E-resep</li><li>Farmasi</li><li>Billing &amp; laporan</li></ul>
+              <div class="product-cta">
+                <a class="btn" href="./klinap/"><span data-i18n="open.app">Buka aplikasinya</span><svg class="ic"><use href="#ic-arrow"/></svg></a>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>KLINAP</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="klinap.m0">Antrean aktif</span><div class="mock-number" data-i18n="klinap.m1">12 pasien</div></div>
+                <div class="mock-grid" data-i18n="klinap.mg"><div class="mock-card"><strong>Ruang 01</strong><small>Sedang diperiksa</small></div><div class="mock-card"><strong>Farmasi</strong><small>2 stok menipis</small></div><div class="mock-card"><strong>Pendapatan</strong><small>Rekap otomatis</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-shield"/></svg><span data-i18n="klinap.b1">Data milik klinik</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="klinap.b2">100% offline</span></span>
+            </div>
+          </article>
+
+          <article class="product-panel" data-panel="kalik" style="--tone:var(--c-kalik)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-flame"/></svg><span data-i18n="kalik.index">03 · Untuk latihan otak</span></span>
+              <h3>KALIK</h3>
+              <p class="tagline" data-i18n="kalik.tag">Bukan cuma tes. Gym mini untuk otakmu.</p>
+              <p data-i18n="kalik.body">KALIK mengajak otak aktif lagi lewat 60 detik latihan per hari: nalar bergaya TPA, simulasi tes, latihan fokus dan kecepatan berpikir, plus pet elemen yang tumbuh bersamamu. Tanpa iklan, 100% offline.</p>
+              <ul class="feature-list" data-i18n="kalik.feat"><li>60 detik/hari</li><li>Nalar gaya TPA</li><li>Simulasi tes</li><li>Pet elemen</li><li>Tanpa iklan</li><li>Offline</li></ul>
+              <div class="product-cta">
+                <a class="btn" href="./kalik/"><span data-i18n="open.app">Buka aplikasinya</span><svg class="ic"><use href="#ic-arrow"/></svg></a>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>KALIK</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="kalik.m0">Streak latihan</span><div class="mock-number" data-i18n="kalik.m1">14 hari</div></div>
+                <div class="mock-grid" data-i18n="kalik.mg"><div class="mock-card"><strong>Fokus</strong><small>Level 8</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Kecepatan</strong><small>+18% bulan ini</small></div><div class="mock-card"><strong>Pet elemen</strong><small>Evolusi tahap 3</small></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-flame"/></svg><span data-i18n="kalik.b1">Lawan brain rot</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-heart"/></svg><span data-i18n="kalik.b2">Belajar sambil main</span></span>
+            </div>
+          </article>
+
+          <article class="product-panel" data-panel="4krt" style="--tone:var(--c-4krt)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-dpad"/></svg><span data-i18n="4krt.index">04 · Untuk refleks &amp; ritme</span></span>
+              <h3>4KRT</h3>
+              <p class="tagline" data-i18n="4krt.tag">Baca polanya. Kejar beat-nya.</p>
+              <p data-i18n="4krt.body">4KRT adalah trainer ritme 4 arah: baca pola, kejar beat, dan lihat analitik progresmu sampai milidetik. Gratis, offline, bisa dimainkan di browser dan Android.</p>
+              <ul class="feature-list" data-i18n="4krt.feat"><li>Ritme 4 arah</li><li>Analitik milidetik</li><li>Browser &amp; Android</li><li>Gratis</li><li>Offline</li></ul>
+              <div class="product-cta">
+                <a class="btn" href="./4krt/"><span data-i18n="open.app">Buka aplikasinya</span><svg class="ic"><use href="#ic-arrow"/></svg></a>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>4KRT</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="4krt.m0">Akurasi hari ini</span><div class="mock-number">94,2%</div></div>
+                <div class="mock-grid" data-i18n="4krt.mg"><div class="mock-card"><strong>Combo terbaik</strong><small>128 hit</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Reaksi rata-rata</strong><small>312 ms</small></div><div class="mock-card"><strong>Sesi hari ini</strong><small>12 menit</small></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-bolt"/></svg><span data-i18n="4krt.b1">Refleks makin tajam</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="4krt.b2">Gratis selamanya</span></span>
+            </div>
+          </article>
+
+          <article class="product-panel" data-panel="jelin" style="--tone:var(--c-jelin)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-plane"/></svg><span data-i18n="jelin.index">05 · Untuk pencari kerja</span></span>
+              <h3>JELIN</h3>
+              <p class="tagline" data-i18n="jelin.tag">Cari kerja sudah melelahkan. Tracking-nya jangan ikut berantakan.</p>
+              <p data-i18n="jelin.body">JELIN menyimpan semua lowongan yang pernah dilamar, status proses, deadline, catatan interview, dokumen, follow-up, dan insight pencarian kerja agar langkah berikutnya selalu jelas.</p>
+              <ul class="feature-list" data-i18n="jelin.feat"><li>Pipeline lamaran</li><li>Reminder</li><li>Catatan interview</li><li>Dokumen</li><li>Analitik</li><li>Export backup</li></ul>
+              <div class="product-cta">
+                <span class="soon-tag"><svg class="ic"><use href="#ic-star"/></svg><span data-i18n="soon">Segera hadir</span></span>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>JELIN</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="jelin.m0">Lamaran aktif</span><div class="mock-number" data-i18n="jelin.m1">18 posisi</div></div>
+                <div class="mock-grid" data-i18n="jelin.mg"><div class="mock-card"><strong>Interview</strong><small>3 proses berjalan</small></div><div class="mock-card"><strong>Follow-up</strong><small>2 perlu dikirim</small></div><div class="mock-card"><strong>Response rate</strong><small>Naik 12%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="jelin.b1">Nggak ada lamaran hilang</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-plane"/></svg><span data-i18n="jelin.b2">Next step selalu jelas</span></span>
+            </div>
+          </article>
+
+          <article class="product-panel" data-panel="pantur" style="--tone:var(--c-pantur)">
+            <div class="product-copy">
+              <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-coin"/></svg><span data-i18n="pantur.index">06 · Untuk keuangan pribadi</span></span>
+              <h3>PANTUR</h3>
+              <p class="tagline" data-i18n="pantur.tag">Saldo besar belum tentu uang aman.</p>
+              <p data-i18n="pantur.body">PANTUR membantu kamu memahami uang yang benar-benar bisa dipakai setelah tagihan, cicilan, paylater, target dana, kebutuhan harian, dan kewajiban lain diperhitungkan—tanpa harus jadi ahli finansial dulu.</p>
+              <ul class="feature-list" data-i18n="pantur.feat"><li>Safe to spend</li><li>Cashflow ke gajian</li><li>Tagihan &amp; cicilan</li><li>Goals</li><li>Dokumen hidup</li><li>Weekly check-in</li></ul>
+              <div class="product-cta">
+                <span class="soon-tag"><svg class="ic"><use href="#ic-star"/></svg><span data-i18n="soon">Segera hadir</span></span>
+              </div>
+            </div>
+            <div class="product-visual">
+              <div class="mock-device">
+                <div class="mock-top"><span class="mock-logo"><i></i>PANTUR</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="pantur.m0">Aman dipakai sampai gajian</span><div class="mock-number">Rp1,72 jt</div></div>
+                <div class="mock-grid" data-i18n="pantur.mg"><div class="mock-card"><strong>Tagihan dekat</strong><small>Internet · 3 hari</small></div><div class="mock-card"><strong>Goal aktif</strong><small>Dana darurat 64%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Pengeluaran</strong><small>Masih sesuai ritme</small></div></div>
+              </div>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-coin"/></svg><span data-i18n="pantur.b1">Gajian: 9 hari lagi</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="pantur.b2">Semua kewajiban, satu pantauan</span></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USP ============ -->
+    <section class="section tint" id="kenapa">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-tag"/></svg><span data-i18n="usp.eyebrow">Kenapa Meria</span></span><h2 class="reveal" data-i18n="usp.h2">Murah meriah.<br><span class="hl">Bukan murah lalu menyerah.</span></h2></div>
+          <p class="reveal" data-i18n="usp.side">Meria tidak mengejar kesan canggih dengan fitur yang tidak terpakai. Kami mengejar satu hal yang lebih penting: produk benar-benar membantu saat dibuka setiap hari.</p>
+        </div>
+        <div class="usp-grid">
+          <article class="usp-card reveal"><span class="usp-number" data-i18n="usp.c1n">Nilai utama</span><div class="orb"></div><h3 data-i18n="usp.c1t">Fitur serius untuk orang yang hidupnya sudah cukup serius.</h3><p data-i18n="usp.c1b">Produk dibangun untuk menyelesaikan pekerjaan nyata, bukan sekadar terlihat bagus saat didemokan.</p></article>
+          <article class="usp-card reveal" data-delay="1"><span class="usp-number" data-i18n="usp.c2n">Cara bayar</span><div class="coin">1×</div><h3 data-i18n="usp.c2t">Sekali beli. Nggak dikejar tagihan tiap bulan.</h3><p data-i18n="usp.c2b">Prinsip harga Meria dirancang agar pengguna bisa memiliki alatnya, bukan menyewanya selamanya.</p></article>
+          <article class="usp-card reveal"><span class="icon-chip" style="--tone:var(--coral)"><svg class="ic"><use href="#ic-pin"/></svg></span><h3 data-i18n="usp.c3t">Dibuat untuk realitas Indonesia.</h3><p data-i18n="usp.c3b">Bahasa, kebiasaan, alur kerja, tipe usaha, dan tantangannya terasa dekat—bukan hasil salin-tempel produk luar.</p></article>
+          <article class="usp-card reveal" data-delay="1"><span class="icon-chip" style="--tone:var(--sky)"><svg class="ic"><use href="#ic-cloud-off"/></svg></span><h3 data-i18n="usp.c4t">Tetap berguna saat internet tidak sempurna.</h3><p data-i18n="usp.c4b">Local-first dan offline-first menjadi fondasi banyak produk Meria, supaya pekerjaan tidak berhenti hanya karena koneksi sedang rewel.</p></article>
+          <article class="usp-card reveal" data-delay="2"><span class="icon-chip" style="--tone:var(--mint)"><svg class="ic"><use href="#ic-shield"/></svg></span><h3 data-i18n="usp.c5t">Data tetap terasa milik sendiri.</h3><p data-i18n="usp.c5b">Minim ketergantungan layanan eksternal, tersedia ekspor-impor cadangan, dan tidak memaksa pengguna menyerahkan lebih banyak data dari yang dibutuhkan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACRONYM ============ -->
+    <section class="section dark" aria-labelledby="meria-meaning">
+      <div class="container acronym-wrap">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-star"/></svg><span data-i18n="acr.eyebrow">Arti di balik nama</span></span><h2 id="meria-meaning" class="reveal" data-i18n="acr.h2">MERIA bukan cuma nama yang enak disebut.</h2></div>
+          <p class="reveal" data-i18n="acr.side">Lima huruf ini menjadi filter sederhana untuk setiap keputusan produk: dari fitur, harga, tampilan, sampai cara pengguna menyimpan datanya.</p>
+        </div>
+        <div class="acronym-word" aria-hidden="true"><span>M</span><span>E</span><span>R</span><span>I</span><span>A</span></div>
+        <div class="acronym-list">
+          <article class="acronym-item" data-letter="0"><div class="acronym-letter">M</div><div><h3 data-i18n="acr.mt">Murah, bukan murahan.</h3><p data-i18n="acr.mb">Harganya dibuat masuk akal. Kualitas, detail, dan kegunaannya tetap harus terasa bernilai.</p></div></article>
+          <article class="acronym-item" data-letter="1"><div class="acronym-letter">E</div><div><h3 data-i18n="acr.et">Efisien, bukan bikin kerja tambah panjang.</h3><p data-i18n="acr.eb">Setiap klik harus punya alasan. Setiap otomatisasi harus memangkas beban, bukan menambah menu baru.</p></div></article>
+          <article class="acronym-item" data-letter="2"><div class="acronym-letter">R</div><div><h3 data-i18n="acr.rt">Relevan dengan hidup dan usaha Indonesia.</h3><p data-i18n="acr.rb">Dari warung kecil sampai klinik, dari pencari kerja sampai pekerja kantoran—konteks lokal bukan catatan kaki.</p></div></article>
+          <article class="acronym-item" data-letter="3"><div class="acronym-letter">I</div><div><h3 data-i18n="acr.it">Inklusif untuk yang baru mulai maupun sedang bertumbuh.</h3><p data-i18n="acr.ib">Tidak perlu menjadi ahli teknologi dulu untuk memakai alat yang bagus.</p></div></article>
+          <article class="acronym-item" data-letter="4"><div class="acronym-letter">A</div><div><h3 data-i18n="acr.at">Andal untuk dipakai lama.</h3><p data-i18n="acr.ab">Arsitektur, backup, aksesibilitas, dan ketahanan produk dipikirkan sejak awal—bukan setelah masalah datang.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIENCE ============ -->
+    <section class="section" id="untuk-siapa">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-smile"/></svg><span data-i18n="aud.eyebrow">Untuk siapa?</span></span><h2 class="reveal" data-i18n="aud.h2">Bukan untuk “semua orang”.<br><span class="hl">Untuk orang-orang nyata.</span></h2></div>
+          <p class="reveal" data-i18n="aud.side">Kami tidak membuat persona yang terlalu sempurna. Kami memikirkan orang yang sibuk, kadang capek, sering harus mengurus banyak hal sekaligus, tapi tetap ingin hidupnya bergerak maju.</p>
+        </div>
+        <div class="audience-rail">
+          <article class="audience-row reveal" style="--tone:var(--c-sajin)"><span class="icon-chip" style="--tone:var(--c-sajin)"><svg class="ic"><use href="#ic-bowl"/></svg></span><h3 data-i18n="aud.r1t">Pemilik usaha makanan yang masih pegang banyak peran sendiri.</h3><p data-i18n="aud.r1b">Butuh tahu untung, stok, dan arus uang tanpa harus punya tim operasional besar.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
+          <article class="audience-row reveal" style="--tone:var(--c-pantur)"><span class="icon-chip" style="--tone:var(--c-pantur)"><svg class="ic"><use href="#ic-coin"/></svg></span><h3 data-i18n="aud.r2t">Pekerja dan keluarga muda yang ingin uangnya lebih terasa aman.</h3><p data-i18n="aud.r2b">Ingin melihat kewajiban, tujuan, dan uang bebas pakai dalam satu gambaran yang jujur.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
+          <article class="audience-row reveal" style="--tone:var(--c-klinap)"><span class="icon-chip" style="--tone:var(--c-klinap)"><svg class="ic"><use href="#ic-clinic"/></svg></span><h3 data-i18n="aud.r3t">Klinik yang ingin operasional rapi tanpa software terasa terlalu berat.</h3><p data-i18n="aud.r3b">Butuh alur pasien, RME, farmasi, dan laporan yang benar-benar nyambung.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
+          <article class="audience-row reveal" style="--tone:var(--c-jelin)"><span class="icon-chip" style="--tone:var(--c-jelin)"><svg class="ic"><use href="#ic-plane"/></svg></span><h3 data-i18n="aud.r4t">Pencari kerja yang sudah melamar ke mana-mana dan mulai kehilangan jejak.</h3><p data-i18n="aud.r4b">Butuh sistem yang mengingatkan, mencatat, dan membantu melihat proses secara utuh.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
+          <article class="audience-row reveal" style="--tone:var(--c-kalik)"><span class="icon-chip" style="--tone:var(--c-kalik)"><svg class="ic"><use href="#ic-flame"/></svg></span><h3 data-i18n="aud.r5t">Orang yang ingin otaknya aktif lagi, bukan hanya terus menggulir layar.</h3><p data-i18n="aud.r5b">Butuh latihan yang menantang, terukur, dan tetap terasa menyenangkan.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRINCIPLES ============ -->
+    <section class="section dark" id="prinsip">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-heart"/></svg><span data-i18n="pri.eyebrow">Janji desain</span></span><h2 class="reveal" data-i18n="pri.h2">Kompleks di belakang.<br><span class="hl">Tenang di depan.</span></h2></div>
+          <p class="reveal" data-i18n="pri.side">Produk yang lengkap tidak harus terasa penuh sesak. Meria memisahkan kekuatan sistem dari beban kognitif pengguna.</p>
+        </div>
+        <div class="principle-stack">
+          <article class="principle reveal"><h3 data-i18n="pri.c1t">Yang penting kelihatan. Yang jarang dipakai tidak ikut berteriak.</h3><div class="shape"></div><p data-i18n="pri.c1b">Hierarki visual membantu pengguna mengambil keputusan, bukan sekadar membuat layar terlihat ramai.</p></article>
+          <article class="principle reveal" data-delay="1"><h3 data-i18n="pri.c2t">Setiap produk punya karakter. Semua tetap terasa satu keluarga.</h3><div class="shape"></div><p data-i18n="pri.c2b">SAJIN boleh hangat, PANTUR boleh tenang, KALIK boleh energik—tanpa kehilangan standar Meria.</p></article>
+          <article class="principle reveal" data-delay="2"><h3 data-i18n="pri.c3t">Animasi harus membantu memahami, bukan menghalangi bekerja.</h3><div class="shape"></div><p data-i18n="pri.c3b">Gerak digunakan untuk memberi arah, umpan balik, dan rasa hidup. Selalu ada jalan yang nyaman bagi pengguna sensitif gerakan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section dark process" aria-labelledby="cara-kerja">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-route"/></svg><span data-i18n="pro.eyebrow">Cara produk dibangun</span></span><h2 id="cara-kerja" class="reveal" data-i18n="pro.h2">Masalah dulu.<br><span class="hl">Baru fitur.</span></h2></div>
+          <p class="reveal" data-i18n="pro.side">Kami tidak memulai dari tren teknologi. Kami mulai dari pekerjaan yang paling melelahkan, paling sering terlupa, dan paling berisiko jika salah.</p>
+        </div>
+        <div class="process-line" aria-hidden="true"></div>
+        <div>
+          <article class="process-step reveal"><div class="process-card"><h3 data-i18n="pro.s1t">Dengarkan masalah sebenarnya</h3><p data-i18n="pro.s1b">Siapa yang mengalami, kapan masalah muncul, apa akibatnya, dan bagaimana orang mengakalinya sekarang.</p></div><div class="process-dot">01</div><div class="process-spacer"></div></article>
+          <article class="process-step reveal"><div class="process-spacer"></div><div class="process-dot">02</div><div class="process-card"><h3 data-i18n="pro.s2t">Susun alur yang paling masuk akal</h3><p data-i18n="pro.s2b">Informasi, tugas, reminder, laporan, dan keputusan disusun menjadi sistem yang tidak membuat pengguna tersesat.</p></div></article>
+          <article class="process-step reveal"><div class="process-card"><h3 data-i18n="pro.s3t">Bangun local-first dan tahan gangguan</h3><p data-i18n="pro.s3b">Produk dirancang agar tetap berguna tanpa bergantung penuh pada cloud, API berbayar, atau koneksi yang selalu stabil.</p></div><div class="process-dot">03</div><div class="process-spacer"></div></article>
+          <article class="process-step reveal"><div class="process-spacer"></div><div class="process-dot">04</div><div class="process-card"><h3 data-i18n="pro.s4t">Uji sampai bagian kecil ikut masuk akal</h3><p data-i18n="pro.s4b">Dari backup, kondisi kosong, teks error, aksesibilitas, sampai tampilan layar kecil—bukan hanya happy path.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section" aria-labelledby="harga-title">
+      <div class="container">
+        <div class="pricing-story reveal">
+          <h2 id="harga-title" data-i18n="price.h2">Software seharusnya bantu kamu hemat. Bukan jadi pengeluaran tetap baru.</h2>
+          <div class="pricing-bottom">
+            <p data-i18n="price.body">Meria Works dibangun dengan prinsip harga terjangkau dan kepemilikan jangka panjang. Beberapa produk bahkan gratis. Arahnya selalu sama: transparan, masuk akal, dan tidak mengunci pengguna dalam langganan yang tidak selesai-selesai.</p>
+            <a class="btn dark-btn" href="mailto:meriaworks.id@gmail.com?subject=Tanya%20produk%20Meria%20Works"><span data-i18n="price.cta">Tanya produk</span><svg class="ic"><use href="#ic-mail"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATUS ============ -->
+    <section class="section tint" id="status" aria-labelledby="status-title">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><svg class="ic"><use href="#ic-bolt"/></svg><span data-i18n="st.eyebrow">Status produk</span></span><h2 id="status-title" class="reveal" data-i18n="st.h2">Bukan ide yang dipajang.<br><span class="hl">Produk yang bisa dibuka hari ini.</span></h2></div>
+          <p class="reveal" data-i18n="st.side">Empat aplikasi sudah bisa langsung dipakai. Dua lagi sedang disiapkan dengan standar yang sama. Klik kartunya untuk membuka halaman produk.</p>
+        </div>
+        <div class="status-grid">
+          <a class="status-card reveal" href="./sajin/" style="--tone:var(--c-sajin)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-sajin);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-bowl"/></svg></span><span class="status-name">SAJIN</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.sajin">Untung bersih, COGS per bahan, margin menu, stok pintar &amp; cash flow untuk UMKM F&amp;B.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
+          <a class="status-card reveal" data-delay="1" href="./klinap/" style="--tone:var(--c-klinap)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-klinap);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-clinic"/></svg></span><span class="status-name">KLINAP</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.klinap">Operasional &amp; rekam medis elektronik (RME) untuk klinik—100% offline, sekali bayar, data milik Anda.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
+          <a class="status-card reveal" data-delay="2" href="./kalik/" style="--tone:var(--c-kalik)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-kalik);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-flame"/></svg></span><span class="status-name">KALIK</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.kalik">Gym mini untuk otak—60 detik/hari: nalar gaya TPA, simulasi tes, dan pet elemen. Tanpa iklan, offline.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
+          <a class="status-card reveal" href="./4krt/" style="--tone:var(--c-4krt)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-4krt);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-dpad"/></svg></span><span class="status-name">4KRT</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.4krt">Trainer ritme 4 arah: baca pola, kejar beat, analitik sampai milidetik. Gratis, offline, browser &amp; Android.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
+          <article class="status-card reveal" data-delay="1" style="--tone:var(--c-jelin)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-jelin);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-plane"/></svg></span><span class="status-name">JELIN</span></div><span class="status-tag" data-i18n="st.soon">Segera hadir</span><p data-i18n="st.jelin">Job application tracker lengkap untuk pencari kerja yang menjalani banyak proses sekaligus.</p></article>
+          <article class="status-card reveal" data-delay="2" style="--tone:var(--c-pantur)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-pantur);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-coin"/></svg></span><span class="status-name">PANTUR</span></div><span class="status-tag" data-i18n="st.soon">Segera hadir</span><p data-i18n="st.pantur">Finance dan life-admin untuk memahami uang aman, kewajiban, serta target hidup.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro">
+          <span class="eyebrow"><svg class="ic"><use href="#ic-smile"/></svg>FAQ</span>
+          <h2 class="display reveal" data-i18n="faq.h2">Pertanyaan yang wajar ditanyakan.</h2>
+          <p class="copy reveal" style="margin-top:26px" data-i18n="faq.side">Belum menemukan jawabannya? Kirim email. Kami lebih suka menjawab dengan jujur daripada membuat kalimat pemasaran yang terdengar aman tapi tidak jelas.</p>
+        </div>
+        <div class="faq-list reveal">
+          <article class="faq-item open"><button class="faq-question" aria-expanded="true"><span data-i18n="faq.q1">Apakah semua produk Meria sudah bisa dipakai?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a1">Empat produk sudah tersedia dan bisa dibuka langsung dari halaman ini: SAJIN, KLINAP, KALIK, dan 4KRT. JELIN dan PANTUR masih dalam tahap pengembangan dan akan menyusul dengan standar yang sama.</p></div></article>
+          <article class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q2">Apakah Meria menggunakan sistem langganan bulanan?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a2">Arah utamanya adalah harga sekali beli dan kepemilikan jangka panjang—beberapa produk bahkan gratis. Meria tidak dibangun untuk memaksa pengguna membayar biaya bulanan hanya agar data dan fungsi dasar tetap bisa dipakai.</p></div></article>
+          <article class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q3">Apakah aplikasi tetap bisa dipakai tanpa internet?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a3">Ya, ini salah satu prinsip utama Meria. KLINAP, KALIK, dan 4KRT dirancang 100% offline; produk lain mengutamakan local-first. Fitur tertentu mungkin butuh koneksi, tetapi fungsi inti tidak bergantung pada internet atau layanan cloud berbayar.</p></div></article>
+          <article class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q4">Bagaimana Meria menjaga data pengguna?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a4">Pendekatannya adalah meminimalkan data yang dikumpulkan, mengutamakan penyimpanan lokal di perangkat pengguna, dan menyediakan ekspor-impor cadangan. Data kamu bukan barang dagangan.</p></div></article>
+          <article class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q5">Apakah Meria menerima ide produk lain?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a5">Ya. Meria tertarik pada masalah yang dialami banyak orang Indonesia dan bisa dibantu dengan produk digital yang praktis, terjangkau, serta tidak menciptakan ketergantungan biaya baru.</p></div></article>
+          <article class="faq-item"><button class="faq-question" aria-expanded="false"><span data-i18n="faq.q6">Bagaimana cara menghubungi Meria Works?</span><span class="faq-plus"></span></button><div class="faq-answer"><p data-i18n="faq.a6">Kirim email ke meriaworks.id@gmail.com. Tombol email di halaman ini sudah aktif dan langsung membuka aplikasi email kamu.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="kontak">
+      <div class="cta-card reveal">
+        <svg class="cta-mascot" viewBox="0 0 64 60" aria-hidden="true" style="color:var(--dark-text)"><use href="#ic-mascot-mini"/></svg>
+        <h2 data-i18n="cta.h2">Hidup sudah mahal.<br><span>Alat bantunya jangan.</span></h2>
+        <p data-i18n="cta.body">Meria Works membangun produk digital untuk orang-orang yang tetap berusaha menjalankan usaha, mengatur hidup, mencari kerja, merawat pasien, dan menjaga pikirannya tetap tajam.</p>
+        <div class="cta-actions">
+          <a class="btn" href="mailto:meriaworks.id@gmail.com?subject=Halo%20Meria%20Works&body=Halo%20Meria%20Works%2C%0A%0ASaya%20tertarik%20dengan..."><span data-i18n="cta.b1">Ngobrol dengan Meria</span><svg class="ic"><use href="#ic-mail"/></svg></a>
+          <a class="btn ghost" href="#produk" data-i18n="cta.b2">Lihat semua produk</a>
+        </div>
+        <a class="email-pill" href="mailto:meriaworks.id@gmail.com">meriaworks.id@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <h2 class="footer-title" data-i18n="foot.title">Digital tools untuk hidup yang nyata.</h2>
+        <div class="footer-links">
+          <div><strong data-i18n="foot.explore">Jelajahi</strong><a href="#tentang" data-i18n="nav.about">Tentang</a><a href="#produk" data-i18n="nav.products">Produk</a><a href="#kenapa" data-i18n="nav.why">Kenapa Meria</a><a href="#faq">FAQ</a></div>
+          <div><strong data-i18n="foot.products">Produk</strong><a href="./sajin/">SAJIN</a><a href="./klinap/">KLINAP</a><a href="./kalik/">KALIK</a><a href="./4krt/">4KRT</a><a href="#produk" data-product="jelin">JELIN</a><a href="#produk" data-product="pantur">PANTUR</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> PT Meria Teknologi Nusantara — Meria Works. <span data-i18n="foot.made">Dibuat di Indonesia.</span></span><span>Webapp · PWA · APK · Digital products</span></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const root = document.documentElement;
+
+      $('#year').textContent = new Date().getFullYear();
+
+      /* ---------- THEME ---------- */
+      const themeButtons = { cute: $('#theme-cute'), modern: $('#theme-modern') };
+      function setTheme(name, save = true) {
+        root.dataset.theme = name;
+        Object.entries(themeButtons).forEach(([k, b]) => b.setAttribute('aria-pressed', String(k === name)));
+        document.querySelector('meta[name="theme-color"]').content = name === 'cute' ? '#fff6ec' : '#111612';
+        if (save) try { localStorage.setItem('meria-theme', name); } catch {}
+        syncCanvasPalette();
+      }
+      themeButtons.cute.addEventListener('click', () => setTheme('cute'));
+      themeButtons.modern.addEventListener('click', () => setTheme('modern'));
+
+      /* ---------- LANGUAGE ---------- */
+      const EN = {
+        'skip': 'Skip to main content',
+        'mq1': 'Homegrown digital products for real life',
+        'mq2': 'Fair prices, seriously good features',
+        'mq3': 'Built for Indonesia’s people & small businesses',
+        'mq4': 'Own it once, grow with it',
+        'nav.about': 'About', 'nav.products': 'Products', 'nav.why': 'Why Meria', 'nav.status': 'Status', 'nav.cta': 'Say hello',
+        'hero.kicker': 'Digital tools, made in Indonesia',
+        'hero.h1': '<span class="hero-line">Life’s already</span><span class="hero-line outline">complicated</span><span class="hero-line"><span class="scribble">enough.</span></span>',
+        'hero.lead': 'Meria Works builds web apps, PWAs, Android apps and digital products that help real people run their business, money, job hunt, health and mind—without pricing that adds to the headache.',
+        'hero.cta1': 'Meet the products', 'hero.cta2': 'Why Meria exists',
+        'hero.p1': '4 apps ready to use today', 'hero.p2': 'Local-first & offline-first', 'hero.p3': 'No shelf-ware features',
+        'float.sajin': 'Small F&B operations, finally tidy.',
+        'float.klinap': 'Clinic ops to EMR, 100% offline.',
+        'float.kalik': 'A mini gym for your brain, 60s a day.',
+        'float.4krt': '4-way rhythm trainer, free & offline.',
+        'float.jelin': 'Every job application, never scattered.',
+        'float.pantur': 'Money, bills and life in one clear view.',
+        'man.eyebrow': 'Why we exist',
+        'man.side': 'In an economy that keeps getting harder to predict, good tools should help people move forward—not add another monthly subscription.',
+        'man.h2': 'Everyone’s fighting hard right now. <span>Technology should lighten the load.</span>',
+        'man.p1t': 'Not built from boardroom assumptions.',
+        'man.p1b': 'Every product starts from problems that actually happen: messy ingredient stock, bills that slip by, scattered job applications, or admin work that eats the whole day.',
+        'man.p2t': 'Full-featured, but still human.',
+        'man.p2b': 'We love powerful systems. But using one shouldn’t feel like flying a plane. Complex in the back, calm in the front.',
+        'man.p3t': 'Affordable never means half-baked.',
+        'man.p3b': 'The name Meria comes from “murah meriah”—cheap and cheerful: products more people can afford, still built seriously, with long-term value.',
+        'eco.eyebrow': 'The Meria ecosystem',
+        'eco.h2': 'One home.<br><span class="hl">Many ways to thrive.</span>',
+        'eco.side': 'Each product has a different job, but the same goal: making the important stuff feel more organised, lighter, and actually doable.',
+        'open.app': 'Open the app', 'soon': 'Coming soon',
+        'sajin.index': '01 · For F&B businesses',
+        'sajin.tag': 'Great food deserves great operations.',
+        'sajin.body': 'SAJIN helps food stalls, cafés, coffee shops, caterers and other F&B businesses see net profit, per-ingredient COGS, menu margins, smart stock and cash flow—all in one place.',
+        'sajin.feat': '<li>Net profit</li><li>COGS per ingredient</li><li>Menu margins</li><li>Smart stock</li><li>Cash flow</li><li>Offline</li>',
+        'sajin.m0': 'Today’s sales',
+        'sajin.mg': '<div class="mock-card"><strong>Margin</strong><small>Up 7.4%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Low stock</strong><small>3 items to check</small></div><div class="mock-card"><strong>Best seller</strong><small>Sambal Matah Chicken</small></div>',
+        'sajin.b1': 'Food cost on track', 'sajin.b2': 'Runs offline',
+        'klinap.index': '02 · For clinics',
+        'klinap.tag': 'From patient check-in to final report.',
+        'klinap.body': 'KLINAP connects registration, queues, electronic medical records (EMR), SOAP notes, prescriptions, pharmacy stock, billing and reports—100% offline, pay once, your data stays yours.',
+        'klinap.feat': '<li>Registration</li><li>Queues</li><li>EMR & SOAP</li><li>E-prescriptions</li><li>Pharmacy</li><li>Billing & reports</li>',
+        'klinap.m0': 'Active queue', 'klinap.m1': '12 patients',
+        'klinap.mg': '<div class="mock-card"><strong>Room 01</strong><small>In consultation</small></div><div class="mock-card"><strong>Pharmacy</strong><small>2 items low</small></div><div class="mock-card"><strong>Revenue</strong><small>Auto summary</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>',
+        'klinap.b1': 'The clinic owns its data', 'klinap.b2': '100% offline',
+        'kalik.index': '03 · For brain training',
+        'kalik.tag': 'Not just a test. A mini gym for your brain.',
+        'kalik.body': 'KALIK wakes your brain up with 60 seconds of training a day: aptitude-style reasoning, test simulations, focus and speed drills, plus an elemental pet that grows with you. No ads, 100% offline.',
+        'kalik.feat': '<li>60 sec/day</li><li>Aptitude reasoning</li><li>Test simulations</li><li>Elemental pet</li><li>No ads</li><li>Offline</li>',
+        'kalik.m0': 'Training streak', 'kalik.m1': '14 days',
+        'kalik.mg': '<div class="mock-card"><strong>Focus</strong><small>Level 8</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Speed</strong><small>+18% this month</small></div><div class="mock-card"><strong>Elemental pet</strong><small>Evolution stage 3</small></div>',
+        'kalik.b1': 'Fight the brain rot', 'kalik.b2': 'Learn by playing',
+        '4krt.index': '04 · For reflex & rhythm',
+        '4krt.tag': 'Read the pattern. Chase the beat.',
+        '4krt.body': '4KRT is a 4-way rhythm trainer: read patterns, chase the beat, and watch your progress analytics down to the millisecond. Free, offline, playable in the browser and on Android.',
+        '4krt.feat': '<li>4-way rhythm</li><li>Millisecond analytics</li><li>Browser & Android</li><li>Free</li><li>Offline</li>',
+        '4krt.m0': 'Today’s accuracy',
+        '4krt.mg': '<div class="mock-card"><strong>Best combo</strong><small>128 hits</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Avg. reaction</strong><small>312 ms</small></div><div class="mock-card"><strong>Today’s session</strong><small>12 minutes</small></div>',
+        '4krt.b1': 'Sharper reflexes', '4krt.b2': 'Free forever',
+        'jelin.index': '05 · For job seekers',
+        'jelin.tag': 'Job hunting is exhausting. Tracking it shouldn’t be.',
+        'jelin.body': 'JELIN keeps every application you’ve sent, its status, deadlines, interview notes, documents, follow-ups and job-hunt insights—so the next step is always clear.',
+        'jelin.feat': '<li>Application pipeline</li><li>Reminders</li><li>Interview notes</li><li>Documents</li><li>Analytics</li><li>Backup export</li>',
+        'jelin.m0': 'Active applications', 'jelin.m1': '18 roles',
+        'jelin.mg': '<div class="mock-card"><strong>Interviews</strong><small>3 in progress</small></div><div class="mock-card"><strong>Follow-ups</strong><small>2 to send</small></div><div class="mock-card"><strong>Response rate</strong><small>Up 12%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>',
+        'jelin.b1': 'No application lost', 'jelin.b2': 'Next step always clear',
+        'pantur.index': '06 · For personal finance',
+        'pantur.tag': 'A big balance isn’t the same as safe money.',
+        'pantur.body': 'PANTUR helps you see the money you can actually spend after bills, instalments, paylater, savings goals, daily needs and other commitments are accounted for—no finance degree required.',
+        'pantur.feat': '<li>Safe to spend</li><li>Cashflow to payday</li><li>Bills & instalments</li><li>Goals</li><li>Life documents</li><li>Weekly check-in</li>',
+        'pantur.m0': 'Safe to spend until payday',
+        'pantur.mg': '<div class="mock-card"><strong>Upcoming bill</strong><small>Internet · 3 days</small></div><div class="mock-card"><strong>Active goal</strong><small>Emergency fund 64%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Spending</strong><small>Still on rhythm</small></div>',
+        'pantur.b1': 'Payday: 9 days away', 'pantur.b2': 'Every commitment, one view',
+        'usp.eyebrow': 'Why Meria',
+        'usp.h2': 'Cheap and cheerful.<br><span class="hl">Never cheap and gave up.</span>',
+        'usp.side': 'Meria doesn’t chase a high-tech look with features nobody uses. We chase something more important: products that genuinely help every time you open them.',
+        'usp.c1n': 'Core value', 'usp.c1t': 'Serious features for people whose lives are serious enough already.',
+        'usp.c1b': 'Products are built to finish real work, not just to look good in a demo.',
+        'usp.c2n': 'How you pay', 'usp.c2t': 'Buy once. No monthly bill chasing you.',
+        'usp.c2b': 'Meria’s pricing principle is designed so users can own their tools, not rent them forever.',
+        'usp.c3t': 'Built for Indonesia’s reality.',
+        'usp.c3b': 'The language, habits, workflows, business types and daily challenges feel close to home—not copy-pasted from a foreign product.',
+        'usp.c4t': 'Still useful when the internet isn’t.',
+        'usp.c4b': 'Local-first and offline-first are the foundation of most Meria products, so work never stops just because the connection is moody.',
+        'usp.c5t': 'Your data still feels like yours.',
+        'usp.c5b': 'Minimal reliance on external services, backup export-import included, and no forcing users to hand over more data than needed.',
+        'acr.eyebrow': 'The name, decoded',
+        'acr.h2': 'MERIA isn’t just a name that’s fun to say.',
+        'acr.side': 'These five letters are a simple filter for every product decision: features, pricing, design, and how users keep their data.',
+        'acr.mt': 'Murah — affordable, never cheap-feeling.', 'acr.mb': 'Prices that make sense, while quality, detail and usefulness still feel valuable.',
+        'acr.et': 'Efisien — efficient, never extra work.', 'acr.eb': 'Every click needs a reason. Every automation must cut the load, not add another menu.',
+        'acr.rt': 'Relevan — relevant to real Indonesian life.', 'acr.rb': 'From tiny food stalls to clinics, from job seekers to office workers—local context is not a footnote.',
+        'acr.it': 'Inklusif — inclusive for beginners and growers.', 'acr.ib': 'You shouldn’t need to be a tech expert to use good tools.',
+        'acr.at': 'Andal — reliable for the long run.', 'acr.ab': 'Architecture, backups, accessibility and resilience are designed from day one—not after things break.',
+        'aud.eyebrow': 'Who it’s for',
+        'aud.h2': 'Not for “everyone”.<br><span class="hl">For real people.</span>',
+        'aud.side': 'We don’t design for perfect personas. We design for people who are busy, sometimes tired, juggling too much at once—but still want their life to move forward.',
+        'aud.r1t': 'Food business owners still wearing every hat themselves.',
+        'aud.r1b': 'They need profit, stock and cash flow answers without hiring an ops team.',
+        'aud.r2t': 'Workers and young families who want their money to feel safer.',
+        'aud.r2b': 'They want commitments, goals and free-to-spend money in one honest picture.',
+        'aud.r3t': 'Clinics that want tidy operations without heavyweight software.',
+        'aud.r3b': 'They need patient flow, EMR, pharmacy and reports that actually connect.',
+        'aud.r4t': 'Job seekers who’ve applied everywhere and are losing track.',
+        'aud.r4b': 'They need a system that reminds, records, and shows the whole journey.',
+        'aud.r5t': 'People who want their brain active again, not just scrolling.',
+        'aud.r5b': 'They need training that’s challenging, measurable, and still fun.',
+        'pri.eyebrow': 'Design promise',
+        'pri.h2': 'Complex in the back.<br><span class="hl">Calm in the front.</span>',
+        'pri.side': 'A complete product doesn’t have to feel crowded. Meria separates system power from the user’s cognitive load.',
+        'pri.c1t': 'What matters is visible. What’s rarely used doesn’t shout.',
+        'pri.c1b': 'Visual hierarchy helps users make decisions—it isn’t there to make screens look busy.',
+        'pri.c2t': 'Every product has character. All of them feel like one family.',
+        'pri.c2b': 'SAJIN can be warm, PANTUR calm, KALIK energetic—without losing the Meria standard.',
+        'pri.c3t': 'Motion should help understanding, never block the work.',
+        'pri.c3b': 'Animation gives direction, feedback and life. There’s always a comfortable path for motion-sensitive users.',
+        'pro.eyebrow': 'How products get built',
+        'pro.h2': 'Problem first.<br><span class="hl">Features later.</span>',
+        'pro.side': 'We don’t start from tech trends. We start from the work that’s most exhausting, most often forgotten, and most costly when it goes wrong.',
+        'pro.s1t': 'Listen to the real problem', 'pro.s1b': 'Who experiences it, when it appears, what it costs, and how people are working around it today.',
+        'pro.s2t': 'Shape the flow that makes sense', 'pro.s2b': 'Information, tasks, reminders, reports and decisions arranged into a system that never leaves users lost.',
+        'pro.s3t': 'Build local-first and resilient', 'pro.s3b': 'Products stay useful without depending fully on the cloud, paid APIs, or a connection that’s always stable.',
+        'pro.s4t': 'Test until the small stuff makes sense', 'pro.s4b': 'Backups, empty states, error copy, accessibility, small screens—not just the happy path.',
+        'price.h2': 'Software should help you save money. Not become a brand-new fixed expense.',
+        'price.body': 'Meria Works is built on affordable pricing and long-term ownership. Some products are even free. The direction never changes: transparent, reasonable, and never locking users into a subscription that won’t end.',
+        'price.cta': 'Ask about a product',
+        'st.eyebrow': 'Product status',
+        'st.h2': 'Not ideas on display.<br><span class="hl">Products you can open today.</span>',
+        'st.side': 'Four apps are ready to use right now. Two more are being built to the same standard. Click a card to open its product page.',
+        'st.live': 'Available now', 'st.soon': 'Coming soon', 'st.open': 'Open page',
+        'st.sajin': 'Net profit, per-ingredient COGS, menu margins, smart stock & cash flow for F&B businesses.',
+        'st.klinap': 'Operations & electronic medical records (EMR) for clinics—100% offline, pay once, your data.',
+        'st.kalik': 'A mini gym for your brain—60s/day: aptitude reasoning, test simulations, an elemental pet. No ads, offline.',
+        'st.4krt': '4-way rhythm trainer: read patterns, chase beats, millisecond analytics. Free, offline, browser & Android.',
+        'st.jelin': 'A complete job application tracker for seekers juggling many processes at once.',
+        'st.pantur': 'Finance and life-admin to understand safe money, commitments, and life goals.',
+        'faq.h2': 'Fair questions, honest answers.',
+        'faq.side': 'Can’t find your answer? Send an email. We’d rather answer honestly than write marketing lines that sound safe but say nothing.',
+        'faq.q1': 'Can I use Meria products today?',
+        'faq.a1': 'Four products are live and one click away from this page: SAJIN, KLINAP, KALIK and 4KRT. JELIN and PANTUR are still in development and will follow with the same standard.',
+        'faq.q2': 'Does Meria use monthly subscriptions?',
+        'faq.a2': 'The main direction is pay-once pricing and long-term ownership—some products are even free. Meria isn’t built to charge a monthly fee just so your data and core features keep working.',
+        'faq.q3': 'Do the apps work without internet?',
+        'faq.a3': 'Yes—it’s one of Meria’s core principles. KLINAP, KALIK and 4KRT are designed 100% offline; other products are local-first. Some features may need a connection, but core functions don’t depend on the internet or paid cloud services.',
+        'faq.q4': 'How does Meria treat user data?',
+        'faq.a4': 'By collecting as little as possible, prioritising local storage on your device, and providing backup export-import. Your data is not merchandise.',
+        'faq.q5': 'Does Meria take ideas for new products?',
+        'faq.a5': 'Yes. Meria is drawn to problems many Indonesians share that can be helped with practical, affordable digital products that don’t create new recurring costs.',
+        'faq.q6': 'How do I contact Meria Works?',
+        'faq.a6': 'Email meriaworks.id@gmail.com. The email buttons on this page are live and open your mail app directly.',
+        'cta.h2': 'Life is expensive enough.<br><span>Your tools shouldn’t be.</span>',
+        'cta.body': 'Meria Works builds digital products for people who keep going—running businesses, organising life, hunting for jobs, caring for patients, and keeping their minds sharp.',
+        'cta.b1': 'Talk to Meria', 'cta.b2': 'See all products',
+        'foot.title': 'Digital tools for real life.',
+        'foot.explore': 'Explore', 'foot.products': 'Products', 'foot.made': 'Made in Indonesia.',
+      };
+      const ID = {};
+      $$('[data-i18n]').forEach(el => { ID[el.dataset.i18n] ??= el.innerHTML; });
+      const langButtons = { id: $('#lang-id'), en: $('#lang-en') };
+      const META = {
+        id: { title: 'Meria Works — Digital tools untuk hidup yang nyata.', desc: 'Aplikasi lokal, praktis, dan terjangkau: SAJIN, KLINAP, KALIK, 4KRT, JELIN, PANTUR. Sekali punya, dipakai tumbuh bersama.' },
+        en: { title: 'Meria Works — Digital tools for real life.', desc: 'Practical, affordable, local-first apps: SAJIN, KLINAP, KALIK, 4KRT, JELIN, PANTUR. Own it once, grow with it.' },
+      };
+      function setLang(lang, save = true) {
+        root.dataset.lang = lang;
+        root.lang = lang;
+        const dict = lang === 'en' ? EN : ID;
+        $$('[data-i18n]').forEach(el => {
+          const v = dict[el.dataset.i18n];
+          if (v != null) el.innerHTML = v;
+        });
+        document.title = META[lang].title;
+        document.querySelector('meta[name="description"]').content = META[lang].desc;
+        Object.entries(langButtons).forEach(([k, b]) => b.setAttribute('aria-pressed', String(k === lang)));
+        if (save) try { localStorage.setItem('meria-lang', lang); } catch {}
+        $$('.faq-item.open .faq-answer').forEach(a => a.style.maxHeight = a.scrollHeight + 'px');
+      }
+      langButtons.id.addEventListener('click', () => setLang('id'));
+      langButtons.en.addEventListener('click', () => setLang('en'));
+
+      /* restore prefs (URL params win: ?theme=modern&lang=en) */
+      try {
+        const q = new URLSearchParams(location.search);
+        const t = q.get('theme') || localStorage.getItem('meria-theme');
+        const l = q.get('lang') || localStorage.getItem('meria-lang');
+        if (t === 'modern') setTheme('modern', false);
+        if (l === 'en') setLang('en', false);
+      } catch {}
+
+      /* ---------- SCROLL PROGRESS ---------- */
+      const progress = $('.progress span');
+      const updateProgress = () => {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+      };
+      addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      /* ---------- HERO POINTER LIGHT (modern) ---------- */
+      const hero = $('.hero');
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty('--mx', `${((e.clientX-r.left)/r.width)*100}%`);
+        hero.style.setProperty('--my', `${((e.clientY-r.top)/r.height)*100}%`);
+      });
+
+      /* ---------- REVEAL ---------- */
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+          });
+        }, { threshold: .12, rootMargin: '0px 0px -5% 0px' });
+        $$('.reveal').forEach(el => io.observe(el));
+      } else {
+        $$('.reveal').forEach(el => el.classList.add('in-view'));
+      }
+
+      /* ---------- MOBILE NAV ---------- */
+      const menuButton = $('.mobile-toggle');
+      menuButton.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+      $$('.nav-links a').forEach(a => a.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }));
+
+      /* ---------- PRODUCT TABS ---------- */
+      const tabs = $$('.product-tab');
+      const panels = $$('.product-panel');
+      function activateProduct(name) {
+        tabs.forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.target === name)));
+        panels.forEach(panel => panel.classList.toggle('active', panel.dataset.panel === name));
+      }
+      tabs.forEach(tab => tab.addEventListener('click', () => activateProduct(tab.dataset.target)));
+      $$('[data-product]').forEach(link => link.addEventListener('click', () => {
+        const name = link.dataset.product;
+        if (name) setTimeout(() => activateProduct(name), 250);
+      }));
+      $('.product-nav').addEventListener('keydown', e => {
+        const active = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+        let next = active;
+        if (e.key === 'ArrowRight') next = (active+1)%tabs.length;
+        if (e.key === 'ArrowLeft') next = (active-1+tabs.length)%tabs.length;
+        if (next !== active) { e.preventDefault(); tabs[next].focus(); tabs[next].click(); }
+      });
+
+      /* ---------- FAQ ---------- */
+      $$('.faq-item').forEach((item) => {
+        const button = $('.faq-question', item);
+        const answer = $('.faq-answer', item);
+        if (item.classList.contains('open')) answer.style.maxHeight = answer.scrollHeight + 'px';
+        button.addEventListener('click', () => {
+          const willOpen = !item.classList.contains('open');
+          item.classList.toggle('open', willOpen);
+          button.setAttribute('aria-expanded', String(willOpen));
+          answer.style.maxHeight = willOpen ? answer.scrollHeight + 'px' : '0px';
+        });
+      });
+
+      /* ---------- MASCOT HEART BURST ---------- */
+      const mascot = $('#mascot');
+      if (mascot && !reduceMotion) {
+        const world = $('.hero-world');
+        const burst = () => {
+          for (let i = 0; i < 6; i++) {
+            const h = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            h.setAttribute('viewBox', '0 0 24 24');
+            h.classList.add('heart-burst');
+            h.innerHTML = '<use href="#ic-heart" fill="currentColor" stroke="currentColor"/>';
+            const mr = mascot.getBoundingClientRect(), wr = world.getBoundingClientRect();
+            h.style.left = (mr.left - wr.left + mr.width * (0.2 + Math.random() * 0.6)) + 'px';
+            h.style.top = (mr.top - wr.top + mr.height * 0.2) + 'px';
+            h.style.animationDelay = (i * 70) + 'ms';
+            h.style.color = ['var(--pink)','var(--coral)','var(--butter)','var(--mint)','var(--sky)','var(--lilac)'][i];
+            world.appendChild(h);
+            setTimeout(() => h.remove(), 1600);
+          }
+        };
+        mascot.addEventListener('click', burst);
+        mascot.addEventListener('mouseenter', burst);
+      }
+
+      /* ---------- ACRONYM SYNC ---------- */
+      const acronymItems = $$('.acronym-item');
+      const acronymLetters = $$('.acronym-word span');
+      if ('IntersectionObserver' in window) {
+        const acIO = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const index = Number(entry.target.dataset.letter);
+              acronymItems.forEach((x,i) => x.classList.toggle('active', i === index));
+              acronymLetters.forEach((x,i) => x.classList.toggle('active', i === index));
+            }
+          });
+        }, { threshold: .65, rootMargin: '-15% 0px -20% 0px' });
+        acronymItems.forEach(item => acIO.observe(item));
+      }
+
+      /* ---------- HERO CANVAS (sprinkles / constellation) ---------- */
+      const canvas = $('#hero-canvas');
+      const ctx = canvas.getContext('2d');
+      let points = [];
+      let palette = [];
+      function syncCanvasPalette() {
+        const cs = getComputedStyle(root);
+        palette = ['--pink','--mint','--sky','--lilac','--butter','--coral'].map(v => cs.getPropertyValue(v).trim());
+        points.forEach((p,i) => p.color = palette[i % palette.length]);
+      }
+      function resizeCanvas() {
+        const dpr = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(canvas.clientWidth * dpr);
+        canvas.height = Math.floor(canvas.clientHeight * dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        const count = Math.min(50, Math.floor(canvas.clientWidth / 24));
+        points = Array.from({length:count}, (_,i) => ({
+          x: Math.random()*canvas.clientWidth,
+          y: Math.random()*canvas.clientHeight,
+          vx: (Math.random()-.5)*.18,
+          vy: (Math.random()-.5)*.18,
+          r: Math.random()*2.4+1.2,
+          spin: Math.random()*Math.PI*2,
+          type: i % 3,
+          color: '#fff'
+        }));
+        syncCanvasPalette();
+      }
+      function drawStar(p) {
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.spin);
+        const s = p.r * 2.4;
+        ctx.beginPath();
+        ctx.moveTo(0,-s); ctx.quadraticCurveTo(s*.18,-s*.18,s,0); ctx.quadraticCurveTo(s*.18,s*.18,0,s); ctx.quadraticCurveTo(-s*.18,s*.18,-s,0); ctx.quadraticCurveTo(-s*.18,-s*.18,0,-s);
+        ctx.fill(); ctx.restore();
+      }
+      function drawCanvas() {
+        ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+        const cute = root.dataset.theme === 'cute';
+        points.forEach((p,i) => {
+          p.x += p.vx; p.y += p.vy; p.spin += .004;
+          if (p.x < -20) p.x = canvas.clientWidth+20;
+          if (p.x > canvas.clientWidth+20) p.x = -20;
+          if (p.y < -20) p.y = canvas.clientHeight+20;
+          if (p.y > canvas.clientHeight+20) p.y = -20;
+          ctx.globalAlpha = cute ? .8 : .55;
+          ctx.fillStyle = p.color;
+          if (cute && p.type === 0) { drawStar(p); }
+          else { ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); }
+          if (!cute) {
+            for (let j=i+1;j<points.length;j++) {
+              const q = points[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
+              if (d < 120) {
+                ctx.globalAlpha = (1-d/120)*.10;
+                ctx.strokeStyle = '#ffffff';
+                ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+              }
+            }
+          }
+        });
+        ctx.globalAlpha = 1;
+        if (!reduceMotion) requestAnimationFrame(drawCanvas);
+      }
+      resizeCanvas(); drawCanvas();
+      addEventListener('resize', resizeCanvas);
+    })();
+  </script>
+</body>
 </html>
