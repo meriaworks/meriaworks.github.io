@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Klinap — Bayar Sekali. Pakai Selamanya. | Sistem Informasi Klinik & Apotek 100% Offline</title>
-<meta name="description" content="Klinap berjalan 100% offline di komputer klinik Anda. Harga perkenalan sekali bayar Rp 329.000 (dari Rp 799.000) — tanpa langganan, tanpa internet, tanpa data disandera. Rekam medis, resep, apotek, antrean dalam satu aplikasi." />
+<meta name="description" content="Klinap berjalan 100% offline di komputer klinik Anda. Harga perkenalan sekali bayar Rp 129.000 (dari Rp 799.000) — tanpa langganan, tanpa internet, tanpa data disandera. Rekam medis, resep, apotek, antrean dalam satu aplikasi." />
 <link rel="canonical" href="https://meriaworks.github.io/klinap/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Klinap — Bayar Sekali Rp 329.000 (dari Rp 799.000). Pakai Selamanya." />
+<meta property="og:title" content="Klinap — Bayar Sekali Rp 129.000 (dari Rp 799.000). Pakai Selamanya." />
 <meta property="og:description" content="Sistem informasi klinik & apotek 100% offline. Tanpa langganan, data milik klinik Anda." />
 <meta property="og:url" content="https://meriaworks.github.io/klinap/" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -565,6 +565,42 @@ footer .logo{font-size:1.15rem}
   -webkit-background-clip:text;background-clip:text;transition:background-size 1.4s var(--ease)}
 .mega.in{background-size:100% 100%;-webkit-text-stroke:1.5px transparent}
 
+/* ---------- MOTTO KLINISI ---------- */
+.motto{background:var(--pine-deep);color:#C4E4DB;margin:0 24px;border-radius:var(--r-lg);padding:clamp(52px,8vw,96px) 30px;
+  text-align:center;position:relative;overflow:hidden}
+@media(max-width:640px){.motto{margin:0 10px}}
+.motto::before{content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:linear-gradient(rgba(45,212,191,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,.05) 1px,transparent 1px);
+  background-size:44px 44px;-webkit-mask-image:radial-gradient(70% 80% at 50% 50%,#000,transparent);mask-image:radial-gradient(70% 80% at 50% 50%,#000,transparent)}
+.motto .stetho{width:54px;height:54px;margin:0 auto 22px;border-radius:16px;background:rgba(45,212,191,.12);
+  border:1.5px solid rgba(45,212,191,.35);display:grid;place-items:center}
+.motto .stetho svg{width:28px;height:28px;stroke:var(--mint);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.motto .en{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.9rem,4.6vw,3.4rem);color:#fff;line-height:1.15;letter-spacing:-.01em;position:relative;z-index:1}
+.motto .en em{color:var(--mint);font-style:italic}
+.motto .id{margin-top:14px;font-family:var(--mono);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:#7FBFB2;position:relative;z-index:1}
+.motto p.why{max-width:62ch;margin:22px auto 0;color:#A9D4C9;font-size:1.02rem;position:relative;z-index:1}
+.motto p.why b{color:#fff}
+.motto .sig{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--mint);position:relative;z-index:1}
+
+/* ---------- USP TENANG ---------- */
+.tenang-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:46px}
+@media(max-width:980px){.tenang-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.tenang-grid{grid-template-columns:repeat(2,1fr)}}
+.tng{border:1.5px solid var(--line2);border-radius:var(--r);background:var(--card);padding:22px 16px 20px;text-align:center;
+  position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.tng:hover{transform:translate(-2px,-5px) rotate(-.6deg);box-shadow:5px 7px 0 rgba(12,59,51,.16);border-color:var(--pine)}
+.tng .big{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1.6px var(--teal);transition:color .35s var(--ease)}
+.tng:hover .big{color:var(--teal);-webkit-text-stroke:1.6px transparent}
+.tng h3{font-family:var(--serif);font-weight:600;font-size:1.02rem;margin:12px 0 5px}
+.tng p{font-size:.8rem;color:var(--ink2);line-height:1.5}
+.tng::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:0;height:3px;border-radius:3px 3px 0 0;
+  background:var(--amber);transition:width .35s var(--ease)}
+.tng:hover::after{width:56%}
+.tenang-tag{text-align:center;margin-top:30px;font-size:1.05rem;color:var(--ink2)}
+.tenang-tag b{color:var(--pine)}
+.tenang-tag .word{font-family:var(--serif);font-style:italic;color:var(--teal);font-weight:600}
+
 /* ---------- LAIN-LAIN ---------- */
 .totop{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);
   background:var(--card);color:var(--pine);display:grid;place-items:center;cursor:pointer;box-shadow:3px 3px 0 rgba(12,59,51,.25);
@@ -601,22 +637,24 @@ footer .logo{font-size:1.15rem}
     Klinap
   </a>
   <div class="navlinks">
+    <a class="l" href="#tenang">TENANG</a>
     <a class="l" href="#untuk-klinik">Untuk Klinik</a>
     <a class="l" href="#fitur">Fitur</a>
     <a class="l" href="#cara">Cara Kerja</a>
     <a class="l" href="#harga">Harga</a>
     <a class="l" href="#faq">FAQ</a>
-    <a class="navprice" href="#harga" aria-label="Harga Rp 329.000, dari Rp 799.000"><span class="was">799rb</span><b>Rp 329rb</b></a>
+    <a class="navprice" href="#harga" aria-label="Harga Rp 129.000, dari Rp 799.000"><span class="was">799rb</span><b>Rp 129rb</b></a>
     <a class="btn btn-primary" data-magnetic href="#harga" style="padding:11px 20px;font-size:.9rem">Lihat Harga <span class="ar">→</span></a>
     <button class="navtog" id="navTog" type="button" aria-label="Buka menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </div></nav>
 <div class="mobov" id="mobOv"></div>
 <aside class="mobnav" id="mobNav" aria-label="Menu navigasi">
+  <a href="#tenang">TENANG</a>
   <a href="#untuk-klinik">Untuk Klinik</a>
   <a href="#fitur">Fitur</a>
   <a href="#cara">Cara Kerja</a>
-  <a href="#harga">Harga — <span class="was">799rb</span> Rp 329rb</a>
+  <a href="#harga">Harga — <span class="was">799rb</span> Rp 129rb</a>
   <a href="#faq">FAQ</a>
   <a class="btn btn-primary" href="#harga">Lihat Harga &amp; Pesan</a>
 </aside>
@@ -641,9 +679,9 @@ footer .logo{font-size:1.15rem}
       <a class="btn btn-primary btn-lg" data-magnetic href="#harga">Lihat Harga &amp; Pesan <span class="ar">→</span></a>
       <a class="btn btn-ghost btn-lg" href="#cara">Lihat Cara Kerjanya</a>
     </div>
-    <p class="founder-byline">Dibuat &amp; didukung langsung oleh tim Meria — bukan reseller.</p>
-    <p class="pricebar">Harga perkenalan <span class="was">Rp 799.000</span> <b>Rp 329.000</b> — sekali bayar, <b style="font-size:1rem">bukan</b> per bulan.</p>
-    <p class="savechip rv"><svg viewBox="0 0 24 24"><path d="M12 1.5v21M17 5.5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Hemat <b>± Rp 26,7 juta</b> dalam 3 tahun vs langganan cloud <span class="mono" style="font-weight:500">(asumsi Rp 750rb/bln)</span></p>
+    <p class="founder-byline"><em style="font-family:var(--serif)">From clinician, to clinic owner</em> — dibuat oleh dokter yang turun praktik, bukan vendor software.</p>
+    <p class="pricebar">Harga perkenalan <span class="was">Rp 799.000</span> <b>Rp 129.000</b> — sekali bayar, <b style="font-size:1rem">bukan</b> per bulan.</p>
+    <p class="savechip rv"><svg viewBox="0 0 24 24"><path d="M12 1.5v21M17 5.5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Hemat <b>± Rp 26,9 juta</b> dalam 3 tahun vs langganan cloud <span class="mono" style="font-weight:500">(asumsi Rp 750rb/bln)</span></p>
     <p class="reassure mono">Tanpa biaya tersembunyi · Tanpa langganan · Data milik Anda</p>
 
     <!-- PANGGUNG INTERAKTIF: matikan internetnya. -->
@@ -682,6 +720,7 @@ footer .logo{font-size:1.15rem}
               <div class="nl"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M10 12l1.6 1.6L15 10"/></svg>RME / SOAP</div>
               <div class="nl"><svg viewBox="0 0 24 24"><path d="M8 3.5h8M9 3.5v5l-4 8a3 3 0 0 0 2.7 4.5h8.6A3 3 0 0 0 19 16.5l-4-8v-5"/></svg>Resep</div>
               <div class="nl"><svg viewBox="0 0 24 24"><rect x="3.5" y="9.5" width="17" height="5" rx="2.5" transform="rotate(-45 12 12)"/><path d="M8.8 8.8l6.4 6.4"/></svg>Apotek</div>
+              <div class="nl"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>Kasir</div>
               <div class="nl"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-8M21 20H3"/></svg>Laporan</div>
             </aside>
             <div class="main">
@@ -748,10 +787,41 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 02 UNTUK KLINIK -->
+<!-- MOTTO KLINISI (statement band) -->
+<section style="padding-left:0;padding-right:0;padding-top:0">
+  <div class="motto rv">
+    <div class="stetho" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M5 3H4a1 1 0 0 0-1 1v5a6 6 0 0 0 12 0V4a1 1 0 0 0-1-1h-1"/><path d="M8 15v1a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="11" r="2"/></svg>
+    </div>
+    <h2 class="en">From clinician,<br><em>to clinic owner.</em></h2>
+    <p class="id">Dari klinisi, untuk pemilik klinik</p>
+    <p class="why">Klinap tidak lahir di ruang rapat vendor software. Ia lahir dari <b>ruang praktik</b> — dibuat oleh dokter yang tahu rasanya antrean menumpuk saat internet mati, stok obat selisih di akhir bulan, dan tagihan langganan yang terus naik. Setiap fitur di sini ada karena pernah dibutuhkan sungguhan.</p>
+    <p class="sig">— dokter di balik Klinap</p>
+  </div>
+</section>
+
+<!-- 02 USP: TENANG -->
+<section id="tenang">
+  <div class="wrap center">
+    <span class="klabel rv">02 · Janji kami dalam satu kata</span>
+    <h2 class="rv" style="margin-top:14px">Klinap dibangun agar Anda<br><em>TENANG.</em></h2>
+    <p class="lead rv">Enam huruf, enam janji — semuanya bisa Anda uji sendiri di halaman ini.</p>
+    <div class="tenang-grid">
+      <div class="tng rv"><span class="big">T</span><h3>Tanpa internet</h3><p>100% offline. Listrik nyala, klinik jalan.</p></div>
+      <div class="tng rv"><span class="big">E</span><h3>Efisien</h3><p>Sekali bayar Rp 129 rb — bukan langganan.</p></div>
+      <div class="tng rv"><span class="big">N</span><h3>Nonstop</h3><p>Internet mati? Antrean, kasir &amp; RME tetap jalan.</p></div>
+      <div class="tng rv"><span class="big">A</span><h3>Aman</h3><p>Data di komputer Anda, bukan server orang lain.</p></div>
+      <div class="tng rv"><span class="big">N</span><h3>Nyaman</h3><p>Alur kerja rapi — staf langsung paham.</p></div>
+      <div class="tng rv"><span class="big">G</span><h3>Genggaman Anda</h3><p>Aplikasi &amp; data milik klinik, selamanya.</p></div>
+    </div>
+    <p class="tenang-tag rv"><b>Klinap = <span class="word">TENANG</span>.</b> Tanpa internet · Efisien · Nonstop · Aman · Nyaman · dalam Genggaman Anda.</p>
+  </div>
+</section>
+
+<!-- 03 UNTUK KLINIK -->
 <section id="untuk-klinik" style="background:var(--paper2);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)">
   <div class="wrap center">
-    <span class="klabel rv">02 · Satu aplikasi, banyak spesialisasi</span>
+    <span class="klabel rv">03 · Satu aplikasi, banyak spesialisasi</span>
     <h2 class="rv" style="margin-top:14px">Dibuat untuk klinik<br><em>seperti milik Anda.</em></h2>
     <p class="lead rv">Aktifkan modul sesuai jenis klinik — fitur khususnya menyesuaikan otomatis.</p>
     <div class="tabs rv" id="clinicTabs" role="tablist" aria-label="Jenis klinik">
@@ -874,11 +944,11 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 03 FITUR / BENTO -->
+<!-- 04 FITUR / BENTO -->
 <section id="fitur">
   <div class="wrap">
     <div class="center">
-      <span class="klabel rv">03 · Fitur inti</span>
+      <span class="klabel rv">04 · Fitur inti</span>
       <h2 class="rv" style="margin-top:14px">Semua yang klinik butuhkan,<br><em>tanpa yang tak perlu.</em></h2>
       <p class="lead rv">Satu aplikasi rapi dari check-in pagi sampai tutup kasir malam.</p>
     </div>
@@ -895,7 +965,7 @@ footer .logo{font-size:1.15rem}
       </div>
       <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M14 3l4 4h-4z"/><path class="dr" d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path class="dr" d="M14 3v4h4M9.5 12h5M9.5 15.5h3"/></svg></div><h3>Resep Digital</h3><p>Tulis resep, kirim ke apotek dalam satu klik — lengkap skrining alergi.</p></div>
       <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M12 12l5.7-5.7a4 4 0 0 0-5.7 5.7z" transform="rotate(45 12 12)"/><rect class="dr" x="3.5" y="9.5" width="17" height="5" rx="2.5" transform="rotate(-45 12 12)"/><path class="dr" d="M8.8 8.8l6.4 6.4"/></svg></div><h3>Apotek (FEFO)</h3><p>Stok kedaluwarsa keluar lebih dulu — kurangi obat terbuang &amp; rugi.</p></div>
-      <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M6 3h12v4H6z"/><path class="dr" d="M6 3h12v18l-3-2-3 2-3-2-3 2Z"/><path class="dr" d="M9 8h6M9 12h6"/></svg></div><h3>Kasir &amp; Catatan</h3><p>Tutup transaksi; audit log tak bisa dihapus &amp; mudah dicari.</p></div>
+      <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M6 3h12v4H6z"/><path class="dr" d="M6 3h12v18l-3-2-3 2-3-2-3 2Z"/><path class="dr" d="M9 8h6M9 12h6"/></svg></div><h3>Kasir &amp; Pembayaran</h3><p>Tagihan otomatis dari resep, bayar tunai/QRIS/transfer, cetak struk — teraudit.</p></div>
       <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><rect class="fillm" x="8.5" y="14.5" width="7" height="5.5" rx="1.2"/><rect class="dr" x="3" y="4" width="7" height="5.5" rx="1.2"/><rect class="dr" x="14" y="4" width="7" height="5.5" rx="1.2"/><rect class="dr" x="8.5" y="14.5" width="7" height="5.5" rx="1.2"/><path class="dr" d="M6.5 9.5v2.5h11V9.5M12 12v2.5"/></svg></div><h3>Multi-PC (LAN)</h3><p>Resepsionis, dokter, apotek terhubung satu jaringan lokal.</p></div>
       <div class="cell rv"><div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M12 3l9 4.5-9 4.5-9-4.5z"/><path class="dr" d="M12 3l9 4.5-9 4.5-9-4.5L12 3Z"/><path class="dr" d="M3 12l9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/></svg></div><h3>Multi-Spesialisasi</h3><p>8+ modul: Umum, Gigi, Estetik, Obgyn-KIA, apotek, antrean — satu sistem.</p></div>
     </div>
@@ -949,11 +1019,11 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 04 SCROLLYTELLING -->
+<!-- 05 SCROLLYTELLING -->
 <section id="cara" style="background:var(--paper2);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)">
   <div class="wrap">
     <div class="center" style="margin-bottom:26px">
-      <span class="klabel rv">04 · Cara kerja</span>
+      <span class="klabel rv">05 · Cara kerja</span>
       <h2 class="rv" style="margin-top:14px">Satu hari di klinik<br><em>bersama Klinap.</em></h2>
     </div>
     <div class="scrolly">
@@ -982,13 +1052,13 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 05 ZONA GELAP: KEPEMILIKAN + TCO -->
+<!-- 06 ZONA GELAP: KEPEMILIKAN + TCO -->
 <section style="padding-left:0;padding-right:0">
   <div class="dark-zone">
     <div class="wrap">
       <div class="dz-grid rv" id="dzGrid">
         <div>
-          <span class="klabel">05 · Kepemilikan data</span>
+          <span class="klabel">06 · Kepemilikan data</span>
           <h2 style="margin-top:14px">Data pasien Anda.<br><em>Bukan data server orang lain.</em></h2>
           <p class="lead" style="margin-top:16px">Semua rekam medis tersimpan aman di komputer klinik Anda — bukan di cloud entah-di-mana. Berhenti bayar pun, data dan aplikasi tetap milik Anda.</p>
           <div class="obj">
@@ -1019,7 +1089,7 @@ footer .logo{font-size:1.15rem}
 
       <div class="tco rv">
         <div class="center"><h2>Hitung sendiri: berapa yang Anda <em>hemat.</em></h2>
-          <p class="lead" style="margin:12px auto 0">Contoh nyata: langganan cloud Rp 750rb/bulan = <b style="color:#fff">± Rp 27 juta</b> dalam 3 tahun. Klinap: <b style="color:var(--mint)">Rp 329.000</b> — sekali. Geser slider untuk hitung versi klinik Anda.</p></div>
+          <p class="lead" style="margin:12px auto 0">Contoh nyata: langganan cloud Rp 750rb/bulan = <b style="color:#fff">± Rp 27 juta</b> dalam 3 tahun. Klinap: <b style="color:var(--mint)">Rp 129.000</b> — sekali. Geser slider untuk hitung versi klinik Anda.</p></div>
         <div class="tco-grid">
           <div>
             <label>Berapa tahun pakai? <b class="mono" id="yrLbl" style="color:#fff">3 tahun</b></label>
@@ -1042,17 +1112,17 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 06 PERBANDINGAN -->
+<!-- 07 PERBANDINGAN -->
 <section>
   <div class="wrap center">
-    <span class="klabel rv">06 · Hitam di atas putih</span>
+    <span class="klabel rv">07 · Hitam di atas putih</span>
     <h2 class="rv" style="margin-top:14px">Klinap vs <span style="color:var(--ink3);font-style:italic;font-weight:500">software klinik cloud</span></h2>
     <p class="lead rv">Bandingkan sendiri, baris per baris.</p>
     <div class="cmp rvl">
       <table>
         <thead><tr><th>Hal</th><th>Klinap</th><th>Software Cloud</th></tr></thead>
         <tbody>
-          <tr><td>Biaya</td><td class="yes"><span class="mrk"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></span>Sekali Rp 329.000 <span style="color:var(--ink3);font-weight:400">(dari Rp 799.000)</span></td><td class="no">Langganan tiap bulan, naik tiap tahun</td></tr>
+          <tr><td>Biaya</td><td class="yes"><span class="mrk"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></span>Sekali Rp 129.000 <span style="color:var(--ink3);font-weight:400">(dari Rp 799.000)</span></td><td class="no">Langganan tiap bulan, naik tiap tahun</td></tr>
           <tr><td>Internet</td><td class="yes"><span class="mrk"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></span>Tidak perlu (offline)</td><td class="no">Wajib stabil</td></tr>
           <tr><td>Saat internet mati</td><td class="yes"><span class="mrk"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></span>Klinik tetap jalan</td><td class="no">Antrean &amp; kasir berhenti</td></tr>
           <tr><td>Kepemilikan data</td><td class="yes"><span class="mrk"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></svg></span>Milik klinik, di komputer Anda</td><td class="no">Di server vendor</td></tr>
@@ -1064,12 +1134,12 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 07 KENAPA TENANG -->
+<!-- 08 KENAPA TENANG -->
 <section style="padding-top:0">
   <div class="wrap center">
-    <span class="klabel rv">07 · Kenapa tenang dengan Klinap</span>
+    <span class="klabel rv">08 · Kenapa tenang dengan Klinap</span>
     <h2 class="rv" style="margin-top:14px">Beli dengan tenang —<br><em>didukung langsung pembuatnya.</em></h2>
-    <p class="lead rv">Bukan lewat reseller, bukan balasan robot. Anda bicara langsung dengan tim yang membangun Klinap.</p>
+    <p class="lead rv">Bukan lewat reseller, bukan balasan robot. Anda bicara langsung dengan dokter &amp; tim yang membangun Klinap.</p>
     <div class="trust-grid">
       <div class="tcard rv">
         <div class="kic"><svg viewBox="0 0 24 24"><path class="fillm" d="M4 14v-2a8 8 0 0 1 16 0v2h-3v-2a5 5 0 0 0-10 0v2z"/><path class="dr" d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect class="dr" x="2.5" y="13.5" width="4" height="6.5" rx="1.3"/><rect class="dr" x="17.5" y="13.5" width="4" height="6.5" rx="1.3"/><path class="dr" d="M19.5 20v.5a3 3 0 0 1-3 3H13"/></svg></div>
@@ -1090,22 +1160,22 @@ footer .logo{font-size:1.15rem}
     </div>
     <div class="founder-note rv">
       <svg viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-3.3 2.2-5.5 5.5-5.5 0 3.3-2.2 5.5-5.5 5.5Z"/><path d="M12 15c0-2.7-2-4.5-4.7-4.5 0 2.7 2 4.5 4.7 4.5Z"/></svg>
-      <span><b>Jadilah klinik perintis Klinap.</b> Sebagai pengguna awal, Anda dapat harga perkenalan <b>Rp 329.000</b> (nanti <span class="was">Rp 799.000</span>) — dan masukan Anda ikut membentuk fitur berikutnya.</span>
+      <span><b>Jadilah klinik perintis Klinap.</b> Sebagai pengguna awal, Anda dapat harga perkenalan <b>Rp 129.000</b> (nanti <span class="was">Rp 799.000</span>) — dan masukan Anda ikut membentuk fitur berikutnya.</span>
     </div>
   </div>
 </section>
 
-<!-- 08 HARGA -->
+<!-- 09 HARGA -->
 <section id="harga" style="background:var(--paper2);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)">
   <div class="wrap center">
-    <span class="klabel rv">08 · Harga</span>
+    <span class="klabel rv">09 · Harga</span>
     <h2 class="rv" style="margin-top:14px">Harga jujur.<br><em>Tanpa biaya tersembunyi.</em></h2>
     <p class="lead rv">Bayar sekali. Tanpa langganan, tanpa biaya bulanan.</p>
 
     <div class="ticket rvs">
-      <span class="stamp">PROMO PERKENALAN · HEMAT 59%</span>
+      <span class="stamp">PROMO PERKENALAN · HEMAT 84%</span>
       <h3>Lisensi Klinap — Sekali Bayar</h3>
-      <div class="amt" id="priceAmt"><span class="was">Rp 799.000</span><b>Rp 329.000</b><small>/ sekali, selamanya</small></div>
+      <div class="amt" id="priceAmt"><span class="was">Rp 799.000</span><b>Rp 129.000</b><small>/ sekali, selamanya</small></div>
       <p class="cheaper">Lebih murah dari 1 bulan langganan software klinik lain.</p>
       <div class="tearline"></div>
       <ul>
@@ -1144,10 +1214,10 @@ footer .logo{font-size:1.15rem}
   </div>
 </section>
 
-<!-- 09 FAQ -->
+<!-- 10 FAQ -->
 <section id="faq">
   <div class="wrap center">
-    <span class="klabel rv">09 · Tanya jawab</span>
+    <span class="klabel rv">10 · Tanya jawab</span>
     <h2 class="rv" style="margin-top:14px">Pertanyaan yang<br><em>sering ditanyakan.</em></h2>
     <div class="faq" id="faqList">
       <div class="qa"><q>Apakah benar tanpa internet? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Ya. Klinap bekerja penuh tanpa internet. Listrik nyala, klinik jalan.</p></div></div></div>
@@ -1159,7 +1229,7 @@ footer .logo{font-size:1.15rem}
       <div class="qa"><q>Bisa pindah data dari Excel / software lama? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Bisa. Tersedia import massal data pasien &amp; obat dari Excel/CSV memakai template yang kami sediakan, jadi Anda tidak perlu input ulang dari nol.</p></div></div></div>
       <div class="qa"><q>Apakah sesuai aturan rekam medis elektronik (PMK 24/2022)? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Klinap menerapkan prinsip RME yang baik: rekam medis dikunci setelah final (hanya bisa ditambah addendum), jejak audit yang tidak bisa dihapus, dan hak akses per peran. Integrasi SATUSEHAT tidak diaktifkan demi menjaga mode 100% offline.</p></div></div></div>
       <div class="qa"><q>Bagaimana kalau butuh bantuan atau pelatihan? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Kami bantu setup awal gratis lewat email/remote, lengkap dengan panduan penggunaan. Hubungi kami di meriaworks.id@gmail.com kapan saja.</p></div></div></div>
-      <div class="qa"><q>Kok harganya semurah ini? Apakah ada biaya lain? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Tidak ada biaya lain. Karena Klinap berjalan 100% offline, kami tidak menanggung biaya server bulanan yang biasanya ditutup dari uang langganan Anda. Harga perkenalan Rp 329.000 sudah termasuk semua modul — tanpa langganan, tanpa perpanjangan, tanpa biaya tersembunyi. Wajar terasa murah karena modelnya memang beda: Anda beli aplikasinya, bukan menyewa akses.</p></div></div></div>
+      <div class="qa"><q>Kok harganya semurah ini? Apakah ada biaya lain? <span class="cv"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></q><div class="ans"><div><p>Tidak ada biaya lain. Karena Klinap berjalan 100% offline, kami tidak menanggung biaya server bulanan yang biasanya ditutup dari uang langganan Anda. Harga perkenalan Rp 129.000 sudah termasuk semua modul — tanpa langganan, tanpa perpanjangan, tanpa biaya tersembunyi. Wajar terasa murah karena modelnya memang beda: Anda beli aplikasinya, bukan menyewa akses.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -1169,7 +1239,7 @@ footer .logo{font-size:1.15rem}
   <div class="final rv">
     <div class="spot"></div>
     <h2>Siap modernkan klinik Anda —<br><em>dengan tenang?</em></h2>
-    <p class="lead">Harga perkenalan <b>Rp 329.000</b> (dari Rp 799.000) untuk klinik perintis. Bayar sekali, punya selamanya — tanpa internet, tanpa langganan.</p>
+    <p class="lead">Harga perkenalan <b>Rp 129.000</b> (dari Rp 799.000) untuk klinik perintis. Bayar sekali, punya selamanya — tanpa internet, tanpa langganan.</p>
     <div class="cta-row" style="margin-top:32px">
       <a class="btn btn-mint btn-lg" data-magnetic href="#harga">Lihat Harga &amp; Pesan <span class="ar">→</span></a>
       <a class="btn btn-ghost btn-lg" id="ctaAsk" href="#harga">Tanya Dulu, Tanpa Komitmen</a>
@@ -1182,7 +1252,7 @@ footer .logo{font-size:1.15rem}
 
 <!-- STICKY MOBILE CTA -->
 <div class="mcta">
-  <div class="mcta-price"><span class="was">799rb</span><b>Rp 329rb</b></div>
+  <div class="mcta-price"><span class="was">799rb</span><b>Rp 129rb</b></div>
   <a class="btn btn-primary" id="mctaBuy" href="mailto:meriaworks.id@gmail.com">Pesan via Email</a>
 </div>
 
@@ -1194,6 +1264,7 @@ footer .logo{font-size:1.15rem}
       <div>
         <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4v16M7 12l3.4-1.8 2.4 5 2.4-7.6 1.6 4.4" stroke="#2DD4BF" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Klinap</a>
         <p class="fnote" style="max-width:36ch">Sistem Informasi Klinik &amp; Apotek. 100% offline. Sekali bayar. Data milik Anda.</p>
+        <p class="fnote" style="font-family:var(--serif);font-style:italic;color:var(--teal)">From clinician, to clinic owner.</p>
       </div>
       <div class="flinks">
         <a href="#untuk-klinik">Untuk Klinik</a><a href="#fitur">Fitur</a><a href="#cara">Cara Kerja</a><a href="#harga">Harga</a><a href="#faq">FAQ</a>
@@ -1214,7 +1285,7 @@ const LINKS = {
   sajin:  "https://meriaworks.github.io/sajin/",
   klinap: "https://meriaworks.github.io/klinap/"
 };
-const PRICE = "Rp 329.000";
+const PRICE = "Rp 129.000"; // harga perkenalan sekali-bayar (dicoret dari Rp 799.000)
 const PRICE_WAS = "Rp 799.000";
 const EMAIL = "meriaworks.id@gmail.com";
 const mailLink = (subject, body) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -1245,7 +1316,7 @@ const mBuy = document.getElementById('mctaBuy'); if (mBuy) mBuy.href = orderLink
 (function(){
   const items = [
     ['100% OFFLINE','tanpa internet'],['SEKALI BAYAR','tanpa langganan'],['DATA MILIK ANDA','bukan milik vendor'],
-    ['RME · SOAP','ICD-10'],['APOTEK','FEFO'],['ANTREAN','per-poli'],['MULTI-PC','jaringan lokal']
+    ['RME · SOAP','ICD-10'],['APOTEK','FEFO'],['KASIR','tunai · QRIS · struk'],['ANTREAN','per-poli'],['MULTI-PC','jaringan lokal']
   ];
   const set = items.map(([a,b])=>`<span class="mq"><span class="a">${a}</span><span class="x">✚</span><span class="b">${b}</span><span class="x">✚</span></span>`).join('');
   document.getElementById('marq').innerHTML = set + set;
@@ -1374,7 +1445,7 @@ if(FINE && !REDUCE){
   const yrLbl=document.getElementById('yrLbl'), moLbl=document.getElementById('moLbl');
   const kVal=document.getElementById('kVal'), cVal=document.getElementById('cVal'), beVal=document.getElementById('beVal'), note=document.getElementById('saveNote');
   const chart=document.getElementById('chart');
-  const KLINAP_ONCE=329; // Rp 329rb sekali bayar (dalam ribuan)
+  const KLINAP_ONCE=129; // Rp 129rb sekali bayar (dalam ribuan)
   const fmt=n=>'Rp '+(n>=1000?(n/1000).toFixed(n%1000?1:0)+' jt':n+' rb');
   function draw(animate){
     const years=+yr.value, perMo=+mo.value;
