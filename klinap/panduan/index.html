@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Panduan Lengkap Klinap — dari Beli sampai Klinik Beroperasi (Swalayan Penuh)</title>
+<meta name="description" content="Panduan bergambar Klinap: beli, pasang, aktivasi, setup awal, alur harian, kasir, backup, dan mitigasi semua skenario buruk — tanpa perlu bantuan siapa pun." />
+<link rel="canonical" href="https://meriaworks.github.io/klinap/panduan/" />
+<meta name="robots" content="index,follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2311594C'/%3E%3Cstop offset='.55' stop-color='%230B372E'/%3E%3Cstop offset='1' stop-color='%23071F1B'/%3E%3C/linearGradient%3E%3ClinearGradient id='m' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23A5F3E4'/%3E%3Cstop offset='.5' stop-color='%232DD4BF'/%3E%3Cstop offset='1' stop-color='%230FA391'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='128' fill='url(%23b)'/%3E%3Cpath d='M175 112v288' stroke='url(%23m)' stroke-width='52' stroke-linecap='round'/%3E%3Cpath d='M348 118 179 260 348 394' fill='none' stroke='url(%23m)' stroke-width='52' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='175' cy='258' r='44' fill='%23071F1B'/%3E%3Ccircle cx='175' cy='258' r='30' fill='%23F0A428'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FAF6EE; --paper2:#F2ECDF; --card:#FFFDF8;
+  --ink:#12221E; --ink2:#41544E; --ink3:#75857F; --line:#E3DCCB; --line2:#D5CCB6;
+  --pine:#0C3B33; --pine-deep:#071F1B; --teal:#0D9488; --mint:#2DD4BF; --mint-soft:#DCF4EC;
+  --amber:#F0A428; --amber-deep:#8A5A00; --amber-soft:#FBEED2; --rose:#E23A5F; --rose-soft:#FBE3E8;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter","Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+::selection{background:var(--mint);color:var(--pine-deep)}
+body{font-family:var(--sans);color:var(--ink2);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);font-weight:600;text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd{font-family:var(--mono);font-size:.88em;background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--pine)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+header.top{position:sticky;top:0;z-index:50;background:rgba(250,246,238,.9);backdrop-filter:blur(12px);border-bottom:1.5px solid var(--line)}
+header.top .inner{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--ink)}
+.logo .mark{width:32px;height:32px;border-radius:9px;overflow:hidden;flex-shrink:0}
+.logo .mark svg{width:100%;height:100%;display:block}
+header.top .back{margin-left:auto;font-size:.88rem}
+
+.hero{padding:56px 0 40px;border-bottom:1.5px solid var(--line)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--ink);line-height:1.1;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero p{max-width:64ch;margin-top:14px;font-size:1.05rem}
+.hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.hero .meta span{font-size:.8rem;font-weight:600;background:var(--card);border:1.5px solid var(--line2);border-radius:999px;padding:7px 14px;color:var(--ink2)}
+
+.layout{display:grid;grid-template-columns:250px 1fr;gap:44px;padding:44px 0 90px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:20px}}
+nav.toc{position:sticky;top:76px;height:fit-content;font-size:.88rem}
+@media(max-width:900px){nav.toc{position:static;border:1.5px solid var(--line2);border-radius:14px;padding:16px;background:var(--card)}}
+nav.toc p{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--ink3);margin-bottom:10px}
+nav.toc a{display:block;padding:6px 10px;border-left:2px solid var(--line);color:var(--ink2);font-weight:500;text-decoration:none}
+nav.toc a:hover{color:var(--pine);border-color:var(--teal)}
+nav.toc a.mit{color:var(--amber-deep)}
+
+main section{margin-bottom:56px;scroll-margin-top:86px}
+h2{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--ink);margin-bottom:6px;display:flex;align-items:baseline;gap:12px}
+h2 .no{font-family:var(--mono);font-size:.9rem;color:var(--teal);font-weight:700}
+h3{font-size:1.05rem;color:var(--ink);margin:22px 0 8px}
+.sub{color:var(--ink3);font-size:.95rem;margin-bottom:18px}
+ol.steps{counter-reset:st;list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:14px}
+ol.steps>li{counter-increment:st;position:relative;padding:16px 18px 16px 58px;background:var(--card);border:1.5px solid var(--line2);border-radius:14px}
+ol.steps>li::before{content:counter(st);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:9px;background:var(--pine);color:#DCF4EC;font-weight:800;font-size:.85rem;display:grid;place-items:center}
+ol.steps b{color:var(--ink)}
+ul.plain{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px}
+ul.plain li{padding-left:24px;position:relative}
+ul.plain li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+.callout{border-radius:14px;padding:16px 18px 16px 52px;position:relative;margin:16px 0;font-size:.95rem}
+.callout::before{position:absolute;left:16px;top:14px;font-size:1.2rem}
+.callout.warn{background:var(--amber-soft);border:1.5px solid var(--amber)}
+.callout.warn::before{content:"⚠️"}
+.callout.info{background:var(--mint-soft);border:1.5px solid rgba(13,148,136,.4)}
+.callout.info::before{content:"💡"}
+.callout.danger{background:var(--rose-soft);border:1.5px solid rgba(226,58,95,.4)}
+.callout.danger::before{content:"🛟"}
+.callout b{color:var(--ink)}
+
+/* ilustrasi jendela (mockup akurat antarmuka) */
+.shotbox{margin:18px 0}
+.shotbox figcaption{font-size:.8rem;color:var(--ink3);margin-top:8px;font-family:var(--mono)}
+.win{border:1.5px solid var(--line2);border-radius:14px;background:var(--card);overflow:hidden;box-shadow:0 14px 34px -18px rgba(12,34,28,.25);max-width:640px}
+.win-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1.5px solid var(--line);background:var(--paper2)}
+.win-bar i{width:10px;height:10px;border-radius:50%;background:var(--line2)}
+.win-bar i:nth-child(1){background:#F0A8A8}.win-bar i:nth-child(2){background:#F0D89B}.win-bar i:nth-child(3){background:#A8DCC0}
+.win-bar .url{margin-left:8px;font-family:var(--mono);font-size:.7rem;color:var(--ink3)}
+.win .pad{padding:18px}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:.72rem;font-weight:700;color:var(--ink2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em}
+.fld .box{border:1.5px solid var(--line2);border-radius:9px;padding:9px 12px;font-family:var(--mono);font-size:.8rem;color:var(--ink);background:var(--paper)}
+.fld .box.ok{border-color:var(--teal);background:var(--mint-soft)}
+.btnm{display:inline-block;background:var(--pine);color:#DCF4EC;font-weight:700;font-size:.82rem;border-radius:9px;padding:10px 18px}
+.mini{border:1.5px solid var(--line);border-radius:10px;overflow:hidden;font-size:.78rem;background:var(--card)}
+.mini .r{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;border-top:1px solid var(--line)}
+.mini .r:first-child{border:0;background:var(--paper2);font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
+.pill{font-size:.64rem;padding:3px 10px;border-radius:999px;font-weight:700}
+.pill.g{background:#D9F2DF;color:#1F7A3D}.pill.a{background:var(--amber-soft);color:var(--amber-deep)}
+.arrowflow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0;font-size:.85rem;font-weight:600}
+.arrowflow span{background:var(--card);border:1.5px solid var(--line2);border-radius:999px;padding:8px 15px;color:var(--ink)}
+.arrowflow i{color:var(--teal);font-style:normal;font-weight:800}
+
+table.mit{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:14px;background:var(--card);border:1.5px solid var(--line2);border-radius:14px;overflow:hidden}
+table.mit th,table.mit td{padding:12px 14px;text-align:left;border-top:1px solid var(--line);vertical-align:top}
+table.mit thead th{background:var(--pine);color:#DCF4EC;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono);border:0}
+table.mit td:first-child{font-weight:700;color:var(--ink);width:32%}
+@media(max-width:700px){table.mit{display:block;overflow-x:auto}}
+
+footer{border-top:1.5px solid var(--line);padding:30px 0 40px;font-size:.85rem;color:var(--ink3);text-align:center}
+footer em{font-family:var(--serif);color:var(--teal)}
+.totopl{position:fixed;right:16px;bottom:16px;background:var(--card);border:1.5px solid var(--ink);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;color:var(--pine);font-weight:800;box-shadow:3px 3px 0 rgba(12,59,51,.2)}
+@media print{header.top,nav.toc,.totopl{display:none}.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <a class="logo" href="../">
+    <span class="mark"><svg viewBox="0 0 512 512" aria-hidden="true">
+      <defs>
+        <linearGradient id="pb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11594C"/><stop offset=".55" stop-color="#0B372E"/><stop offset="1" stop-color="#071F1B"/></linearGradient>
+        <linearGradient id="pm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A5F3E4"/><stop offset=".5" stop-color="#2DD4BF"/><stop offset="1" stop-color="#0FA391"/></linearGradient>
+      </defs>
+      <rect width="512" height="512" fill="url(#pb)"/>
+      <path d="M175 112v288" stroke="url(#pm)" stroke-width="52" stroke-linecap="round"/>
+      <path d="M348 118 179 260 348 394" fill="none" stroke="url(#pm)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="175" cy="258" r="44" fill="#071F1B"/><circle cx="175" cy="258" r="30" fill="#F0A428"/>
+    </svg></span>
+    Klinap <span style="font-family:var(--sans);font-size:.8rem;font-weight:600;color:var(--ink3)">· Panduan</span>
+  </a>
+  <a class="back" href="../">← Kembali ke beranda</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1>Dari beli sampai klinik beroperasi —<br><em>tanpa perlu bantuan siapa pun.</em></h1>
+  <p>Ikuti halaman ini dari atas ke bawah. Setiap langkah ditulis untuk staf non-teknis, lengkap dengan ilustrasi tampilan yang akan Anda lihat, dan bagian <b>mitigasi</b> untuk semua skenario buruk yang mungkin terjadi.</p>
+  <div class="meta">
+    <span>⏱️ Total ±15 menit</span><span>🖥️ Windows 10/11 · RAM 4 GB</span><span>🌐 Internet hanya saat mengunduh installer</span><span>🖨️ Bisa dicetak (Ctrl+P)</span>
+  </div>
+</div></div>
+
+<div class="wrap layout">
+<nav class="toc" aria-label="Daftar isi">
+  <p>DAFTAR ISI</p>
+  <a href="#beli">1 · Beli & terima email</a>
+  <a href="#pasang">2 · Unduh & pasang</a>
+  <a href="#aktivasi">3 · Aktivasi lisensi</a>
+  <a href="#login">4 · Login pertama & password</a>
+  <a href="#setup">5 · Setup awal klinik</a>
+  <a href="#harian">6 · Alur kerja harian</a>
+  <a href="#kasir">7 · Kasir & struk</a>
+  <a href="#multipc">8 · Banyak komputer (LAN)</a>
+  <a href="#backup">9 · Backup & pemulihan</a>
+  <a class="mit" href="#mitigasi">🛟 Mitigasi semua masalah</a>
+  <a href="#faq">FAQ singkat</a>
+</nav>
+
+<main>
+<!-- 1 BELI -->
+<section id="beli">
+  <h2><span class="no">01</span>Beli &amp; terima email</h2>
+  <p class="sub">Semuanya otomatis — tidak perlu chat siapa pun.</p>
+  <ol class="steps">
+    <li>Klik <b>Beli Sekarang</b> di <a href="../#harga">halaman harga</a>, lalu bayar (QRIS / transfer / e-wallet).</li>
+    <li>Dalam hitungan detik, cek <b>email Anda</b>: berisi <b>KODE LISENSI</b> (diawali <code>KLINAP2-</code>) dan <b>tautan unduh installer</b>.</li>
+    <li><b>Simpan email itu baik-baik</b> — kode lisensi Anda dipakai lagi bila suatu saat ganti komputer.</li>
+  </ol>
+  <div class="callout warn"><b>Email tidak masuk?</b> Cek folder <b>Spam/Promosi</b>. Masih tidak ada setelah 15 menit → hubungi <code>meriaworks.id@gmail.com</code> dengan bukti pembayaran (ini satu-satunya skenario yang butuh email).</div>
+</section>
+
+<!-- 2 PASANG -->
+<section id="pasang">
+  <h2><span class="no">02</span>Unduh &amp; pasang installer</h2>
+  <p class="sub">Lakukan di 1 komputer yang akan menjadi "pusat" klinik (komputer yang paling sering menyala).</p>
+  <ol class="steps">
+    <li>Unduh <code>KlinapSetup.exe</code> dari tautan di email, lalu <b>klik dua kali</b> untuk menjalankan.</li>
+    <li>Bila muncul layar biru <b>"Windows protected your PC"</b> (SmartScreen): klik <b>More info</b> → <b>Run anyway</b>. Ini normal untuk aplikasi baru yang belum populer — bukan tanda bahaya.</li>
+    <li>Ikuti installer: <b>Next → Next → Install</b>. Proses ±5–10 menit (installer sudah membawa semua yang dibutuhkan).</li>
+    <li>Selesai → muncul ikon <b>Klinap</b> di Desktop. Klik dua kali untuk membuka.</li>
+  </ol>
+  <div class="callout info"><b>Antivirus menahan file?</b> Pilih "Allow/Izinkan" atau tambahkan folder <code>C:\Klinap</code> ke pengecualian (exclusion) antivirus. Klinap 100% offline dan tidak mengirim data ke mana pun.</div>
+</section>
+
+<!-- 3 AKTIVASI -->
+<section id="aktivasi">
+  <h2><span class="no">03</span>Aktivasi lisensi</h2>
+  <p class="sub">Sekali saja, langsung dari email pembelian.</p>
+  <figure class="shotbox">
+    <div class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span class="url">Klinap — Aktivasi</span></div>
+      <div class="pad">
+        <div class="fld"><label>Kode Lisensi</label><div class="box ok">KLINAP2-7XK2M4PQ-ifv9SFzRvpLm…&nbsp; ← tempel utuh dari email</div></div>
+        <span class="btnm">Aktifkan Klinap</span>
+      </div>
+    </div>
+    <figcaption>Ilustrasi layar aktivasi — tampilan asli persis seperti ini.</figcaption>
+  </figure>
+  <ol class="steps">
+    <li>Buka email pembelian → <b>salin seluruh kode</b> yang diawali <code>KLINAP2-</code> (boleh ikut terbawa spasi, sistem membersihkannya).</li>
+    <li>Tempel di kolom kode → klik <b>Aktifkan Klinap</b>.</li>
+    <li>Muncul halaman login = aktivasi berhasil. <b>Selamanya aktif</b>, 100% offline setelah ini.</li>
+  </ol>
+  <div class="callout warn"><b>"Kode lisensi tidak valid"?</b> Hampir selalu karena kode tersalin sebagian. Salin ulang <b>seluruh baris</b> dari email (klik 3× pada kodenya untuk memblok semua), lalu tempel lagi.</div>
+</section>
+
+<!-- 4 LOGIN -->
+<section id="login">
+  <h2><span class="no">04</span>Login pertama &amp; amankan password</h2>
+  <figure class="shotbox">
+    <div class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span class="url">Klinap — Masuk</span></div>
+      <div class="pad">
+        <div class="fld"><label>Username</label><div class="box">superadmin</div></div>
+        <div class="fld"><label>Password</label><div class="box">ClinicOS#2026</div></div>
+        <span class="btnm">Masuk</span>
+      </div>
+    </div>
+    <figcaption>Akun bawaan pertama kali — segera ganti password-nya!</figcaption>
+  </figure>
+  <ol class="steps">
+    <li>Masuk dengan <code>superadmin</code> / <code>ClinicOS#2026</code>.</li>
+    <li><b>WAJIB:</b> buka <b>User Management</b> → ganti password superadmin dengan milik Anda sendiri.</li>
+    <li>Buat akun untuk tiap peran staf: <b>Front Desk</b> (registrasi+kasir), <b>Dokter</b>, <b>Perawat</b>, <b>Apoteker</b>, dan <b>Owner</b> (untuk Anda: laporan &amp; pengaturan). Tiap peran otomatis hanya melihat menu yang relevan.</li>
+    <li>Staf login memakai akunnya masing-masing — semua aktivitas tercatat atas nama masing-masing di audit log.</li>
+  </ol>
+  <div class="callout danger"><b>Lupa password suatu saat?</b> Tidak masalah — lihat bagian <a href="#mitigasi">Mitigasi</a>: ada tombol pemulihan <code>Reset-Admin</code> bawaan. Anda tidak akan pernah terkunci dari data sendiri.</div>
+</section>
+
+<!-- 5 SETUP -->
+<section id="setup">
+  <h2><span class="no">05</span>Setup awal klinik (±10 menit)</h2>
+  <ol class="steps">
+    <li><b>Pengaturan Klinik</b> → isi nama klinik, alamat, telepon, nomor izin (muncul di kop surat &amp; struk).</li>
+    <li><b>Pengaturan → Modul Klinik</b> → centang jenis klinik Anda: Umum / Gigi / Estetik / Obgyn-KIA (boleh lebih dari satu). Fitur khususnya menyesuaikan otomatis.</li>
+    <li><b>Kasir → tab Tarif</b> → masukkan tarif jasa Anda (mis. "Konsultasi Dokter Umum — 50.000", "Cabut Gigi — 150.000").</li>
+    <li><b>Apotek</b> → tambah obat (atau <b>Import dari Excel</b> memakai template yang disediakan — tidak perlu ketik ulang), isi <b>harga jual</b> per obat, lalu catat stok masuk per batch beserta tanggal kedaluwarsanya.</li>
+    <li>Pasien lama? <b>Pasien → Import</b> dari Excel/CSV memakai template.</li>
+  </ol>
+  <div class="callout info"><b>Tidak wajib sekaligus.</b> Minimal untuk mulai beroperasi: nama klinik + 1 tarif konsultasi + akun staf. Obat dan pasien bisa dicicil sambil jalan.</div>
+</section>
+
+<!-- 6 HARIAN -->
+<section id="harian">
+  <h2><span class="no">06</span>Alur kerja harian</h2>
+  <p class="sub">Satu pasien, dari datang sampai pulang — semua tersambung otomatis:</p>
+  <div class="arrowflow">
+    <span>1 · Registrasi</span><i>→</i><span>2 · Antrean</span><i>→</i><span>3 · Periksa (RME)</span><i>→</i><span>4 · Resep → Apotek</span><i>→</i><span>5 · Kasir</span>
+  </div>
+  <ol class="steps">
+    <li><b>Front desk:</b> menu <b>Registrasi</b> → pilih/daftarkan pasien → pilih poli → pasien otomatis dapat nomor antrean. (Layar antrean untuk TV ruang tunggu: menu <b>Antrean → Layar Panggil</b>.)</li>
+    <li><b>Dokter:</b> menu <b>RME/SOAP</b> → pilih pasien dari antrean → tulis S-O-A-P + diagnosis ICD-10 (ketik untuk mencari) → buat e-resep → <b>Kirim ke Apotek</b>. Rekam medis terkunci setelah final (hanya bisa ditambah addendum — sesuai kaidah).</li>
+    <li><b>Apoteker:</b> menu <b>Resep</b> → resep masuk otomatis → siapkan → <b>Dispensing</b>: stok terpotong otomatis dengan FEFO (kedaluwarsa terdekat keluar duluan).</li>
+    <li><b>Kasir:</b> menu <b>Kasir</b> → kunjungan muncul di "Belum Ditagih" → item obat sudah terisi dari resep → tambah jasa dari tarif → <b>Terima Pembayaran</b> → struk tercetak.</li>
+  </ol>
+  <figure class="shotbox">
+    <div class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span class="url">klinap · antrean</span></div>
+      <div class="pad">
+        <div class="mini">
+          <div class="r"><span>No · Pasien</span><span>Status</span></div>
+          <div class="r"><span><b>A1</b> · Ahmad Fauzi · Umum</span><span class="pill g">Dilayani</span></div>
+          <div class="r"><span><b>A2</b> · Nur Aisyah · Gigi</span><span class="pill a">Menunggu</span></div>
+        </div>
+      </div>
+    </div>
+    <figcaption>Ilustrasi antrean — coba versi interaktifnya di <a href="../">beranda</a>.</figcaption>
+  </figure>
+</section>
+
+<!-- 7 KASIR -->
+<section id="kasir">
+  <h2><span class="no">07</span>Kasir &amp; struk</h2>
+  <ol class="steps">
+    <li><b>Tarif</b> (sekali saja): Kasir → tab Tarif → tambah semua jasa/tindakan klinik Anda.</li>
+    <li><b>Menagih:</b> tab Kasir → klik kunjungan di "Belum Ditagih" → item obat otomatis terisi dari resep (harga dari data obat) → tambah jasa dari dropdown tarif → isi diskon bila ada.</li>
+    <li><b>Menerima pembayaran:</b> klik <b>Terima Pembayaran</b> → pilih Tunai/QRIS/Transfer/Debit → untuk tunai, ketik uang diterima → kembalian dihitung otomatis → struk tercetak.</li>
+    <li><b>Salah input?</b> Tagihan bisa dibatalkan dengan alasan (tercatat permanen di audit — aman dari kecurangan).</li>
+    <li><b>Rekap:</b> ringkasan pendapatan hari ini selalu tampil di atas halaman Kasir; riwayat per tanggal ada di tab Riwayat.</li>
+  </ol>
+  <div class="callout info"><b>Printer struk:</b> printer kasir 58/80mm apa pun yang sudah terpasang di Windows langsung bisa dipakai (dialog cetak browser). Printer biasa (A4) juga bisa.</div>
+</section>
+
+<!-- 8 MULTI PC -->
+<section id="multipc">
+  <h2><span class="no">08</span>Banyak komputer dalam satu klinik (LAN)</h2>
+  <p class="sub">1 lisensi = 1 klinik, bebas jumlah perangkat. PC lain tidak perlu diinstal apa pun.</p>
+  <ol class="steps">
+    <li>Pastikan semua perangkat tersambung ke <b>Wi-Fi/jaringan yang sama</b> dengan PC utama.</li>
+    <li>Di PC utama, lihat alamat yang tertera saat Klinap menyala (contoh: <code>http://KOMPUTER-KLINIK:3001</code> atau <code>http://192.168.1.10:3001</code>).</li>
+    <li>Di PC/tablet/HP lain: buka <b>browser</b> (Chrome/Edge) → ketik alamat itu → login dengan akun masing-masing. Selesai.</li>
+    <li>Simpan sebagai pintasan: buka menu browser → <b>Add to Home screen / Install app</b>.</li>
+  </ol>
+  <div class="callout warn"><b>PC lain tidak bisa membuka?</b> 99% karena firewall. Di PC utama: saat pertama kali Klinap jalan, Windows menanyakan izin jaringan — pilih <b>Allow/Izinkan (Private network)</b>. Terlanjur menolak? Buka <code>Windows Security → Firewall → Allow an app</code> → centang Klinap/Node.js untuk Private.</div>
+</section>
+
+<!-- 9 BACKUP -->
+<section id="backup">
+  <h2><span class="no">09</span>Backup &amp; pemulihan</h2>
+  <ol class="steps">
+    <li><b>Otomatis:</b> Klinap membuat backup <b>setiap hari</b> sendiri, disimpan 30 salinan terakhir. Tidak perlu melakukan apa pun.</li>
+    <li><b>Kebiasaan baik (1×/minggu, 1 menit):</b> menu <b>Backup &amp; Restore</b> → <b>Unduh backup</b> → simpan ke flashdisk/Google Drive. Ini melindungi dari skenario terburuk: komputer hilang/mati total.</li>
+    <li><b>Memulihkan:</b> menu Backup → pilih file → <b>Restore</b>. Sistem memeriksa keutuhan file dulu, dan menyimpan salinan pengaman sebelum memulihkan — tidak bisa "tambah rusak".</li>
+  </ol>
+  <div class="callout info"><b>Untuk yang teliti:</b> lokasi backup bisa dipindah ke disk kedua/USB permanen (variabel <code>BACKUP_DIR</code>) — sehingga kerusakan disk utama tidak ikut memakan backup.</div>
+</section>
+
+<!-- MITIGASI -->
+<section id="mitigasi">
+  <h2><span class="no">🛟</span>Mitigasi — bila hal buruk terjadi</h2>
+  <p class="sub">Semua skenario di bawah bisa Anda selesaikan sendiri, tanpa menghubungi siapa pun.</p>
+  <table class="mit">
+    <thead><tr><th>Masalah</th><th>Solusi mandiri</th></tr></thead>
+    <tbody>
+      <tr><td>Lupa password / semua akun terkunci</td><td>Di PC utama, klik dua kali <code>Reset-Admin.bat</code> (di folder Klinap / Start Menu) → password <code>superadmin</code> kembali ke <code>ResetKlinap#2026</code> → masuk → ganti password. Selalu berhasil, offline.</td></tr>
+      <tr><td>Internet mati</td><td>Bukan masalah — Klinap memang tidak butuh internet. Semua fitur tetap jalan.</td></tr>
+      <tr><td>Listrik padam saat sedang input</td><td>Database Klinap tahan padam (mode jurnal aman). Nyalakan lagi → data terakhir yang tersimpan tetap utuh.</td></tr>
+      <tr><td>Komputer rusak / hilang / ganti PC baru</td><td>Di PC baru: pasang installer (unduh lagi dari email) → aktivasi dengan <b>kode lisensi yang sama</b> → menu Backup → <b>Restore</b> file backup terakhir Anda. Semua data kembali. (Karena itu, rajinlah menyalin backup ke flashdisk.)</td></tr>
+      <tr><td>Kode lisensi hilang</td><td>Cari email pembelian Anda (cari kata "KLINAP2" di kotak masuk). Kode tidak pernah kedaluwarsa.</td></tr>
+      <tr><td>Salah hapus obat / pasien / BHP</td><td>Tidak ada penghapusan permanen — semuanya diarsipkan. Buka daftar → filter <b>Arsip</b> → <b>Pulihkan</b>.</td></tr>
+      <tr><td>Salah input tagihan yang sudah lunas</td><td>Kasir → buka tagihan → <b>Batalkan</b> dengan alasan → buat tagihan baru. Semua tercatat di audit log.</td></tr>
+      <tr><td>Antivirus/SmartScreen memblokir installer</td><td>SmartScreen: More info → Run anyway. Antivirus: Allow, atau tambahkan folder <code>C:\Klinap</code> ke exclusion. Klinap tidak mengirim data ke mana pun.</td></tr>
+      <tr><td>PC lain di klinik tidak bisa membuka Klinap</td><td>Pastikan satu jaringan Wi-Fi → izinkan Klinap/Node di Windows Firewall (Private) → coba pakai alamat IP, bukan nama komputer.</td></tr>
+      <tr><td>Aplikasi tidak mau terbuka</td><td>Restart komputer dulu (menyelesaikan 90% kasus). Masih gagal: klik kanan ikon Klinap → Run as administrator. Data Anda aman — tersimpan terpisah dari aplikasi.</td></tr>
+      <tr><td>Layar menampilkan error saat dipakai</td><td>Muat ulang halaman (F5). Kejadian berulang di menu yang sama → catat tulisannya, lanjutkan kerja dari menu lain; data yang sudah tersimpan tidak hilang.</td></tr>
+      <tr><td>Staf nakal mengubah/menghapus data</td><td>Semua aksi tercatat di <b>Audit Log</b> (siapa, kapan, dari komputer mana, sebelum-sesudah) dan tidak bisa dihapus. Batasi hak akses per peran di User Management.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2><span class="no">?</span>FAQ singkat</h2>
+  <ul class="plain">
+    <li><b>Berapa lama sampai bisa dipakai?</b> ±15 menit dari bayar sampai registrasi pasien pertama.</li>
+    <li><b>Perlu langganan?</b> Tidak. Sekali bayar Rp 129.000, selamanya.</li>
+    <li><b>Perlu internet?</b> Hanya saat mengunduh installer. Setelah itu 100% offline.</li>
+    <li><b>Data saya di mana?</b> Di komputer Anda sendiri. Tidak ada server pihak ketiga.</li>
+    <li><b>Boleh dipakai di 2 klinik?</b> 1 lisensi untuk 1 klinik (banyak PC dalam 1 jaringan boleh). Klinik kedua → beli lisensi kedua.</li>
+    <li><b>Masih ada pertanyaan?</b> Tanya <b>asisten otomatis</b> di <a href="../">beranda</a> (pojok kiri bawah), atau baca ulang bagian terkait di atas.</li>
+  </ul>
+</section>
+</main>
+</div>
+
+<footer>
+  <p>Klinap — Sistem Informasi Klinik &amp; Apotek · 100% offline · <em>From clinician, to clinic owner.</em></p>
+  <p style="margin-top:6px">© 2026 Klinap. Panduan ini bisa dicetak: tekan <code>Ctrl+P</code>.</p>
+</footer>
+<a class="totopl" href="#" aria-label="Kembali ke atas">↑</a>
+</body>
+</html>
