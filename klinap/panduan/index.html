@@ -142,7 +142,7 @@ footer em{font-family:var(--serif);color:var(--teal)}
   <p>DAFTAR ISI</p>
   <a href="#beli">1 · Beli & terima email</a>
   <a href="#pasang">2 · Unduh & pasang</a>
-  <a href="#aktivasi">3 · Aktivasi lisensi</a>
+  <a href="#aktivasi">3 · Setujui ketentuan</a>
   <a href="#login">4 · Login pertama & password</a>
   <a href="#setup">5 · Setup awal klinik</a>
   <a href="#harian">6 · Alur kerja harian</a>
@@ -160,10 +160,11 @@ footer em{font-family:var(--serif);color:var(--teal)}
   <p class="sub">Semuanya otomatis — tidak perlu chat siapa pun.</p>
   <ol class="steps">
     <li>Klik <b>Beli Sekarang</b> di <a href="../#harga">halaman harga</a>, lalu bayar (QRIS / transfer / e-wallet).</li>
-    <li>Dalam hitungan detik, cek <b>email Anda</b>: berisi <b>KODE LISENSI</b> dan <b>tautan unduh paket</b>.</li>
-    <li><b>Simpan email itu baik-baik</b> — kode lisensi Anda dipakai lagi bila suatu saat ganti komputer.</li>
+    <li>Dalam hitungan detik, cek <b>email Anda</b>: berisi <b>tautan unduh paket</b>. Tanpa kode aktivasi apa pun.</li>
+    <li><b>Simpan email itu baik-baik</b> — itu bukti pembelian Anda, dan tautannya dipakai lagi bila suatu saat instal ulang / ganti komputer.</li>
   </ol>
   <div class="callout warn"><b>Email tidak masuk?</b> Cek folder <b>Spam/Promosi</b>. Masih tidak ada setelah 15 menit → hubungi <code>meriaworks.id@gmail.com</code> dengan bukti pembayaran (ini satu-satunya skenario yang butuh email).</div>
+  <div class="callout danger"><b>Peringatan keras:</b> paket ini untuk <b>satu klinik Anda saja</b>. Menggandakan, membagikan tautan unduhan, mengunggahnya ke internet/grup, atau menjual kembali adalah <b>pelanggaran hak cipta (UU No. 28/2014)</b> dan seketika mengakhiri izin pakai tanpa pengembalian dana.</div>
 </section>
 
 <!-- 2 PASANG -->
@@ -179,28 +180,27 @@ footer em{font-family:var(--serif);color:var(--teal)}
   <div class="callout info"><b>Antivirus menahan file?</b> Pilih "Allow/Izinkan" atau tambahkan folder <code>C:\Klinap</code> ke pengecualian (exclusion) antivirus. Klinap 100% offline dan tidak mengirim data ke mana pun.</div>
 </section>
 
-<!-- 3 AKTIVASI -->
+<!-- 3 PERSETUJUAN KETENTUAN -->
 <section id="aktivasi">
-  <h2><span class="no">03</span>Aktivasi lisensi</h2>
-  <p class="sub">Sekali saja, langsung dari email pembelian.</p>
+  <h2><span class="no">03</span>Setujui ketentuan (sekali klik)</h2>
+  <p class="sub">Tanpa kode aktivasi. Pemakaian pertama hanya meminta Anda membaca dan menyetujui Ketentuan Penggunaan.</p>
   <figure class="shotbox">
     <div class="win">
-      <div class="win-bar"><i></i><i></i><i></i><span class="url">Klinap — Aktivasi</span></div>
+      <div class="win-bar"><i></i><i></i><i></i><span class="url">Klinap — Ketentuan Penggunaan</span></div>
       <div class="pad">
-        <div class="fld"><label>Kode Lisensi</label><div class="box ok">XXXX-XXXX-XXXX-XXXX&nbsp; ← tempel utuh dari email pembelian</div></div>
-        <div class="fld"><label>&nbsp;</label><div class="box">☑ Saya telah membaca &amp; menyetujui Ketentuan Penggunaan (EULA)</div></div>
-        <span class="btnm">Setuju &amp; Aktifkan Klinap</span>
+        <div class="fld"><label>Ringkasan ketentuan</label><div class="box">1 klinik · dilarang menggandakan/membagikan/menjual ulang · data milik Anda · bukan alat diagnosis</div></div>
+        <div class="fld"><label>&nbsp;</label><div class="box ok">☑ Saya telah membaca &amp; menyetujui seluruh Ketentuan Penggunaan</div></div>
+        <span class="btnm">Setuju &amp; Mulai Menggunakan Klinap</span>
       </div>
     </div>
-    <figcaption>Ilustrasi layar aktivasi — tampilan asli persis seperti ini.</figcaption>
+    <figcaption>Ilustrasi layar persetujuan — tampilan asli persis seperti ini.</figcaption>
   </figure>
   <ol class="steps">
-    <li>Buka email pembelian → <b>salin seluruh kode lisensi</b> (klik 3× pada kodenya untuk memblok semua; boleh ikut terbawa spasi, sistem membersihkannya).</li>
-    <li>Centang persetujuan <b>Ketentuan Penggunaan (EULA)</b> — bisa dibaca dulu lewat tautannya.</li>
-    <li>Tempel kode → klik <b>Setuju &amp; Aktifkan Klinap</b>. Pastikan internet masih tersambung <b>saat langkah ini saja</b> (verifikasi pembelian satu kali).</li>
-    <li>Muncul halaman login = aktivasi berhasil. <b>Selamanya aktif</b>, 100% offline setelah ini.</li>
+    <li>Baca ringkasan <b>Ketentuan Penggunaan (EULA)</b> yang tampil (teks lengkap ada di file <code>EULA-KLINAP.txt</code> dalam paket).</li>
+    <li>Centang kotak persetujuan → klik <b>Setuju &amp; Mulai</b>. Persetujuan tercatat sekali, permanen.</li>
+    <li>Muncul halaman login = selesai. Klinap aktif <b>selamanya</b>, 100% offline.</li>
   </ol>
-  <div class="callout warn"><b>"Kode lisensi tidak valid"?</b> Hampir selalu karena kode tersalin sebagian — salin ulang <b>seluruh baris</b> dari email, lalu tempel lagi. Bila pesan menyebut internet: sambungkan internet sebentar dan klik Aktifkan lagi (hanya perlu sekali ini).</div>
+  <div class="callout info"><b>Kenapa harus dicentang?</b> Ketentuan itu memuat hal penting bagi Anda (data 100% milik klinik, kewajiban backup) dan larangan keras pembajakan/penjualan ulang — persetujuan elektronik Anda tercatat dengan stempel waktu.</div>
 </section>
 
 <!-- 4 LOGIN -->
@@ -314,8 +314,8 @@ footer em{font-family:var(--serif);color:var(--teal)}
       <tr><td>Lupa password / semua akun terkunci</td><td>Di PC utama, klik dua kali <code>Reset-Admin.bat</code> (di folder Klinap / Start Menu) → password <code>superadmin</code> kembali ke <code>ResetKlinap#2026</code> → masuk → ganti password. Selalu berhasil, offline.</td></tr>
       <tr><td>Internet mati</td><td>Bukan masalah — Klinap memang tidak butuh internet. Semua fitur tetap jalan.</td></tr>
       <tr><td>Listrik padam saat sedang input</td><td>Database Klinap tahan padam (mode jurnal aman). Nyalakan lagi → data terakhir yang tersimpan tetap utuh.</td></tr>
-      <tr><td>Komputer rusak / hilang / ganti PC baru</td><td>Di PC baru: pasang installer (unduh lagi dari email) → aktivasi dengan <b>kode lisensi yang sama</b> → menu Backup → <b>Restore</b> file backup terakhir Anda. Semua data kembali. (Karena itu, rajinlah menyalin backup ke flashdisk.)</td></tr>
-      <tr><td>Kode lisensi hilang</td><td>Cari email pembelian Anda (cari kata "KLINAP2" di kotak masuk). Kode tidak pernah kedaluwarsa.</td></tr>
+      <tr><td>Komputer rusak / hilang / ganti PC baru</td><td>Di PC baru: pasang installer (unduh lagi dari tautan di email pembelian) → setujui ketentuan → menu Backup → <b>Restore</b> file backup terakhir Anda. Semua data kembali. (Karena itu, rajinlah menyalin backup ke flashdisk.)</td></tr>
+      <tr><td>Tautan unduh / email pembelian hilang</td><td>Cari kata "Klinap" atau "Mayar" di kotak masuk email Anda. Masih tidak ketemu: hubungi <code>meriaworks.id@gmail.com</code> dengan bukti pembayaran.</td></tr>
       <tr><td>Salah hapus obat / pasien / BHP</td><td>Tidak ada penghapusan permanen — semuanya diarsipkan. Buka daftar → filter <b>Arsip</b> → <b>Pulihkan</b>.</td></tr>
       <tr><td>Salah input tagihan yang sudah lunas</td><td>Kasir → buka tagihan → <b>Batalkan</b> dengan alasan → buat tagihan baru. Semua tercatat di audit log.</td></tr>
       <tr><td>Antivirus/SmartScreen memblokir installer</td><td>SmartScreen: More info → Run anyway. Antivirus: Allow, atau tambahkan folder <code>C:\Klinap</code> ke exclusion. Klinap tidak mengirim data ke mana pun.</td></tr>
