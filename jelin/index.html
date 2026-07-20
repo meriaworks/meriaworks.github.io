@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C3AED'/%3E%3Cstop offset='1' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='white'/%3E%3Cpath d='M10.4 21.6a8 8 0 0 1 0-11.2M21.6 10.4a8 8 0 0 1 0 11.2' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C3AED'/%3E%3Cstop offset='1' stop-color='%23A855F7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M9.1 15.2c-.9.3-.8 1.6.1 1.9l4.5 1.5c.3.1.6.3.7.7l1.5 4.5c.3.9 1.6 1 1.9.1l5.6-12.7c.3-.8-.4-1.5-1.2-1.2z' fill='white'/%3E%3Ccircle cx='8.6' cy='24.4' r='1.1' fill='white' opacity='.45'/%3E%3Ccircle cx='11.9' cy='22.7' r='1.4' fill='white' opacity='.75'/%3E%3C/svg%3E">
 <style>
 /* ================================================================
    JELIN — LANDING "SINYAL" v2 (terang × ungu)
@@ -311,6 +311,57 @@ section{position:relative}
 .step h3{font-size:1.15rem;margin-bottom:8px}
 .step p{color:var(--muted);font-size:.94rem}
 
+/* ---------- pricing ---------- */
+.pricing{padding:130px 0}
+.pricing-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;align-items:stretch}
+@media (max-width:900px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{
+  position:relative;overflow:clip;display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+  border:1px solid rgba(109,40,217,.3);border-radius:var(--r-xl);padding:38px 34px;
+  background:
+    radial-gradient(70% 80% at 85% -10%,rgba(168,85,247,.14),transparent 70%),
+    var(--surface);
+  box-shadow:var(--shadow);
+}
+.discount-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+  background:var(--fuchsia);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  animation:badgePulse 2.6s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{transform:rotate(-1.5deg) scale(1)}50%{transform:rotate(1.5deg) scale(1.05)}}
+.price-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:14px}
+.price-old{color:var(--faint);font-size:1.3rem;font-weight:600;text-decoration:line-through;text-decoration-color:var(--fuchsia);text-decoration-thickness:2.5px}
+.price-now{font-size:clamp(3rem,7vw,4.6rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--purple)}
+.price-now small{font-size:.35em;font-weight:600;color:var(--muted);letter-spacing:0}
+.price-sub{color:var(--muted);font-size:.95rem}
+.price-includes{display:grid;gap:9px;margin:22px 0 26px}
+.price-includes li{display:flex;align-items:center;gap:10px;font-size:.94rem;font-weight:500}
+.price-includes li svg{color:var(--purple)}
+.buy-note{color:var(--faint);font-size:.84rem;margin-top:12px;max-width:40ch;transition:color .3s,transform .3s var(--spring)}
+.buy-note.pop{color:var(--fuchsia);transform:scale(1.03)}
+.how-card{
+  display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r-xl);
+  background:var(--surface);box-shadow:0 10px 34px -22px rgba(48,22,110,.25);overflow:clip;
+}
+.how-card header{padding:26px 30px 6px}
+.how-card header h3{font-size:1.2rem;letter-spacing:-.01em}
+.how-card header p{color:var(--muted);font-size:.92rem;margin-top:6px}
+.how-list{display:grid;padding:14px 12px 18px}
+.how-list li{display:flex;gap:16px;align-items:flex-start;padding:14px 18px;border-radius:var(--r-lg);transition:background .25s}
+.how-list li:hover{background:var(--purple-soft)}
+.how-num{
+  display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:12px;
+  background:var(--purple);color:#fff;font-weight:700;font-size:.85rem;
+}
+.how-list strong{display:block;font-size:.97rem}
+.how-list p{color:var(--muted);font-size:.88rem;margin-top:2px}
+.file-chip{
+  display:inline-flex;align-items:center;gap:8px;margin:2px 30px 26px;align-self:flex-start;
+  padding:9px 16px;border-radius:12px;border:1px dashed rgba(109,40,217,.4);
+  background:var(--purple-soft);color:var(--purple);font-weight:700;font-size:.85rem;
+  font-variant-numeric:tabular-nums;
+}
+
 /* ---------- faq ---------- */
 .faq{padding:110px 0;background:var(--bg2);border-block:1px solid var(--line)}
 .faq-list{display:grid;gap:10px;max-width:820px}
@@ -364,19 +415,20 @@ section{position:relative}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- JELIN signal mark -->
+    <!-- JELIN mark: pesawat kertas + jejak titik bertahap -->
     <g id="mark">
-      <circle cx="12" cy="12" r="2.1" fill="currentColor" stroke="none"/>
-      <path d="M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4"/>
-      <path d="M5 19a10 10 0 0 1 0-14M19 5a10 10 0 0 1 0 14" opacity=".45"/>
+      <path d="M4.6 10.9c-.8.3-.7 1.5.1 1.8l5 1.7c.3.1.6.4.7.7l1.7 5c.3.8 1.5.9 1.8.1l6.4-14.4c.3-.8-.4-1.5-1.2-1.2z" fill="currentColor" stroke="none"/>
+      <circle cx="4.2" cy="19.8" r="1.1" fill="currentColor" opacity=".4" stroke="none"/>
+      <circle cx="7.4" cy="18.2" r="1.4" fill="currentColor" opacity=".7" stroke="none"/>
     </g>
     <linearGradient id="mark-g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#A855F7"/>
     </linearGradient>
     <g id="mark-badge">
       <rect width="24" height="24" rx="7" fill="url(#mark-g)" stroke="none"/>
-      <circle cx="12" cy="12" r="1.9" fill="#fff" stroke="none"/>
-      <path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7" stroke="#fff" stroke-width="1.6"/>
+      <path d="M7.4 11.5c-.7.3-.6 1.3.1 1.5l3.4 1.1c.3.1.5.3.6.6l1.1 3.4c.2.7 1.2.8 1.5.1l4.3-9.6c.3-.6-.3-1.2-.9-.9z" fill="#fff" stroke="none"/>
+      <circle cx="7" cy="18.4" r=".85" fill="#fff" opacity=".45" stroke="none"/>
+      <circle cx="9.5" cy="17.1" r="1.05" fill="#fff" opacity=".75" stroke="none"/>
     </g>
     <g id="i-board"><rect x="3.2" y="4" width="5" height="7" rx="1.8"/><rect x="9.5" y="4" width="5" height="12" rx="1.8"/><rect x="15.8" y="8" width="5" height="9" rx="1.8"/></g>
     <g id="i-cal"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 9.5h17M8 3.2v3M16 3.2v3"/><path d="m8.8 14.6 2.1 2.1 4.3-4.3"/></g>
@@ -401,7 +453,7 @@ section{position:relative}
     <a href="#demo">Coba</a>
     <a href="#faq">FAQ</a>
   </div>
-  <a class="btn" href="#ikuti" data-magnet>Ikuti rilisnya<svg class="ic"><use href="#i-arrow"/></svg></a>
+  <a class="btn" href="#harga" data-magnet>Beli — Rp 13rb<svg class="ic"><use href="#i-arrow"/></svg></a>
 </nav>
 
 <main id="atas">
@@ -434,7 +486,7 @@ section{position:relative}
         <a class="btn" href="#demo" data-magnet>Rasakan cara kerjanya<svg class="ic"><use href="#i-arrow"/></svg></a>
         <a class="btn ghost" href="#masalah" data-magnet>Kenapa JELIN ada</a>
       </div>
-      <p class="hero-note">PWA — berjalan offline di browser, bisa dipasang di HP &amp; desktop.</p>
+      <p class="hero-note">PWA dalam satu file HTML — sekali bayar Rp 13rb, buka di browser, jalan offline di HP &amp; komputer.</p>
     </div>
 
     <span class="scroll-hint">Gulir</span>
@@ -581,6 +633,55 @@ section{position:relative}
     </div>
   </section>
 
+  <!-- ============ PRICING ============ -->
+  <section class="pricing container" id="harga" aria-label="Harga JELIN">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Harga perkenalan</span>
+      <h2>Sekali bayar Rp 13 ribu.<br><span style="color:var(--purple)">Dipakai selamanya.</span></h2>
+      <p>Tanpa langganan, tanpa biaya bulanan, tanpa iklan. Harga diskon perkenalan — sekali beli, aplikasinya milikmu.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <span class="discount-badge">Diskon 84% — harga perkenalan</span>
+        <div class="price-line">
+          <span class="price-old">Rp 79.000</span>
+          <span class="price-now">Rp 13<small>rb</small></span>
+        </div>
+        <p class="price-sub">Sekali bayar. Bukan per bulan. Bukan per tahun.</p>
+        <ul class="price-includes">
+          <li><svg class="ic"><use href="#i-check"/></svg>Semua fitur, tanpa dikunci-kunci</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Satu file <strong>JELIN.html</strong> siap pakai</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Jalan offline 100%, data lokal milikmu</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Dipakai di HP, laptop, dan komputer</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Backup &amp; ekspor JSON/CSV kapan saja</li>
+        </ul>
+        <button class="btn" id="buyBtn" data-magnet>Beli &amp; Unduh — Rp 13.000<svg class="ic"><use href="#i-export"/></svg></button>
+        <p class="buy-note" id="buyNote">Link pembelian sedang disiapkan — sebentar lagi aktif. Setelah bayar, file <strong>JELIN.html</strong> langsung terunduh di halaman ini.</p>
+      </div>
+      <div class="how-card reveal" data-delay="1">
+        <header>
+          <h3>Yang kamu dapat: satu file HTML, langsung jadi aplikasi.</h3>
+          <p>JELIN adalah PWA yang dikemas dalam satu file. Tidak perlu install ribet, tidak perlu app store.</p>
+        </header>
+        <ul class="how-list">
+          <li>
+            <span class="how-num">1</span>
+            <div><strong>Bayar Rp 13 ribu, unduh filenya</strong><p>Kamu menerima satu file bernama JELIN.html — kecil, ringan, milikmu selamanya.</p></div>
+          </li>
+          <li>
+            <span class="how-num">2</span>
+            <div><strong>Buka di browser mana saja</strong><p>Klik dua kali filenya, atau buka lewat Chrome/Edge di HP maupun komputer. Langsung jalan — tanpa internet sekalipun.</p></div>
+          </li>
+          <li>
+            <span class="how-num">3</span>
+            <div><strong>Langsung pakai semua fiturnya</strong><p>Pipeline papan &amp; tabel, agenda follow-up, catatan interview, versi dokumen, statistik jujur, sampai backup JSON/CSV — semua aktif dari detik pertama.</p></div>
+          </li>
+        </ul>
+        <span class="file-chip"><svg class="ic" style="width:15px;height:15px"><use href="#i-doc"/></svg>JELIN.html · ±350 KB · offline</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FAQ ============ -->
   <section class="faq" id="faq">
     <div class="container">
@@ -592,7 +693,7 @@ section{position:relative}
         <details class="faq-item reveal"><summary>Datanya disimpan di mana?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Di perangkatmu sendiri, dalam penyimpanan lokal browser (IndexedDB). Tidak ada server JELIN, jadi tidak ada yang bisa mengintip. Kamu bisa mengunduh backup JSON/CSV kapan saja dari halaman Data.</p></details>
         <details class="faq-item reveal" data-delay="1"><summary>Apakah JELIN merekomendasikan lowongan kerja?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Tidak — dan itu disengaja. JELIN berjalan offline dan tidak pernah mengarang daftar lowongan yang belum tentu ada. JELIN fokus merapikan proses lamaran yang benar-benar sedang kamu jalani.</p></details>
         <details class="faq-item reveal" data-delay="2"><summary>Apakah bisa dipakai tanpa internet?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Bisa, 100%. JELIN adalah PWA — setelah dibuka pertama kali, semuanya berjalan offline dan bisa dipasang seperti aplikasi biasa di HP maupun desktop.</p></details>
-        <details class="faq-item reveal" data-delay="3"><summary>Kapan rilis dan berapa harganya?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">JELIN sedang tahap akhir pengembangan oleh Meria Works. Ikuti rilisnya lewat email di bawah — kabar harga dan akses awal akan dikirim ke sana dulu.</p></details>
+        <details class="faq-item reveal" data-delay="3"><summary>Berapa harganya, dan dapat apa?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Rp 13.000 sekali bayar (harga diskon perkenalan, dari Rp 79.000). Kamu mendapat satu file JELIN.html — buka di browser mana pun dan langsung jadi aplikasi penuh yang jalan offline. Tanpa langganan, tanpa biaya tambahan. Link pembeliannya sebentar lagi aktif di halaman ini.</p></details>
       </div>
     </div>
   </section>
@@ -600,11 +701,12 @@ section{position:relative}
   <!-- ============ CTA ============ -->
   <section class="cta container" id="ikuti">
     <div class="cta-card reveal">
-      <h2>Cari kerja itu berat.<br><span>Melacaknya jangan.</span></h2>
-      <p>JELIN segera hadir sebagai PWA gratis dicoba dari Meria Works. Jadilah yang pertama tahu saat pintunya dibuka.</p>
+      <h2>Cari kerja itu berat.<br><span>Melacaknya cuma Rp 13 ribu.</span></h2>
+      <p>Sekali bayar, dapat satu file JELIN.html yang jalan offline selamanya. Mau dikabari saat link pembeliannya aktif? Kirim email saja.</p>
       <div class="cta-actions">
-        <a class="btn" data-magnet href="mailto:meriaworks.id@gmail.com?subject=Kabari%20saya%20saat%20JELIN%20rilis&body=Halo%20Meria%20Works%2C%0A%0ATolong%20kabari%20saya%20saat%20JELIN%20dirilis.%0A%0ATerima%20kasih!">Kabari saya saat rilis<svg class="ic"><use href="#i-mail"/></svg></a>
-        <a class="btn ghost" data-magnet href="https://meriaworks.github.io/">Lihat produk Meria lainnya</a>
+        <a class="btn" data-magnet href="#harga">Beli JELIN — Rp 13.000<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn ghost" data-magnet href="mailto:meriaworks.id@gmail.com?subject=Kabari%20saya%20saat%20link%20pembelian%20JELIN%20aktif&body=Halo%20Meria%20Works%2C%0A%0ATolong%20kabari%20saya%20saat%20link%20pembelian%20JELIN%20aktif.%0A%0ATerima%20kasih!">Kabari saya<svg class="ic"><use href="#i-mail"/></svg></a>
+        <a class="btn ghost" data-magnet href="https://meriaworks.github.io/">Website MeriaWorks</a>
       </div>
       <a class="email-pill" href="mailto:meriaworks.id@gmail.com">meriaworks.id@gmail.com</a>
     </div>
@@ -782,6 +884,15 @@ section{position:relative}
   };
   if (reduceMotion) chaos.style.setProperty("--p", "1");
   else { addEventListener("scroll", scrub, { passive: true }); scrub(); }
+
+  /* ---------- buy button (placeholder sampai link pembelian aktif) ---------- */
+  const buyBtn = $("#buyBtn"), buyNote = $("#buyNote");
+  buyBtn.addEventListener("click", () => {
+    buyNote.classList.remove("pop");
+    void buyNote.offsetWidth;
+    buyNote.classList.add("pop");
+    buyNote.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+  });
 
   /* ---------- interactive demo ---------- */
   const demoStages = $$("#demoStages .demo-stage");
