@@ -746,8 +746,8 @@ section{position:relative}
           <li><svg class="ic"><use href="#i-check"/></svg>Dipakai di HP, laptop, dan komputer</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Backup &amp; ekspor JSON/CSV kapan saja</li>
         </ul>
-        <button class="btn" id="buyBtn" data-magnet>Beli &amp; Unduh — Rp 13.000<svg class="ic"><use href="#i-export"/></svg></button>
-        <p class="buy-note" id="buyNote">Link pembelian sedang disiapkan — sebentar lagi aktif. Setelah bayar, file <strong>JELIN.html</strong> langsung terunduh di halaman ini.</p>
+        <a class="btn" data-magnet href="https://meria.myr.id/pl/jelin" rel="noreferrer" target="_blank">Beli &amp; Unduh — Rp 13.000<svg class="ic"><use href="#i-export"/></svg></a>
+        <p class="buy-note">Pembayaran aman lewat Mayar. Setelah bayar, file <strong>JELIN.html</strong> langsung bisa diunduh.</p>
       </div>
       <div class="how-card reveal" data-delay="1">
         <header>
@@ -784,7 +784,7 @@ section{position:relative}
         <details class="faq-item reveal"><summary>Datanya disimpan di mana?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Di perangkatmu sendiri, dalam penyimpanan lokal browser (IndexedDB). Tidak ada server JELIN, jadi tidak ada yang bisa mengintip. Kamu bisa mengunduh backup JSON/CSV kapan saja dari halaman Data.</p></details>
         <details class="faq-item reveal" data-delay="1"><summary>Apakah JELIN merekomendasikan lowongan kerja?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Tidak — dan itu disengaja. JELIN berjalan offline dan tidak pernah mengarang daftar lowongan yang belum tentu ada. JELIN fokus merapikan proses lamaran yang benar-benar sedang kamu jalani.</p></details>
         <details class="faq-item reveal" data-delay="2"><summary>Apakah bisa dipakai tanpa internet?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Bisa, 100%. JELIN adalah PWA — setelah dibuka pertama kali, semuanya berjalan offline dan bisa dipasang seperti aplikasi biasa di HP maupun desktop.</p></details>
-        <details class="faq-item reveal" data-delay="3"><summary>Berapa harganya, dan dapat apa?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Rp 13.000 sekali bayar (harga diskon perkenalan, dari Rp 79.000). Kamu mendapat satu file JELIN.html — buka di browser mana pun dan langsung jadi aplikasi penuh yang jalan offline. Tanpa langganan, tanpa biaya tambahan. Link pembeliannya sebentar lagi aktif di halaman ini.</p></details>
+        <details class="faq-item reveal" data-delay="3"><summary>Berapa harganya, dan dapat apa?<svg class="ic"><use href="#i-plus"/></svg></summary><p class="a">Rp 13.000 sekali bayar (harga diskon perkenalan, dari Rp 79.000). Kamu mendapat satu file JELIN.html — buka di browser mana pun dan langsung jadi aplikasi penuh yang jalan offline. Tanpa langganan, tanpa biaya tambahan. Klik "Beli &amp; Unduh" di halaman ini — setelah pembayaran selesai, filenya langsung bisa diunduh.</p></details>
       </div>
     </div>
   </section>
@@ -793,10 +793,10 @@ section{position:relative}
   <section class="cta container" id="ikuti">
     <div class="cta-card reveal">
       <h2>Cari kerja itu berat.<br><span>Melacaknya cuma Rp 13 ribu.</span></h2>
-      <p>Sekali bayar, dapat satu file JELIN.html yang jalan offline selamanya. Mau dikabari saat link pembeliannya aktif? Kirim email saja.</p>
+      <p>Sekali bayar, dapat satu file JELIN.html yang jalan offline selamanya. Ada pertanyaan sebelum beli? Kirim email saja.</p>
       <div class="cta-actions">
-        <a class="btn" data-magnet href="#harga">Beli JELIN — Rp 13.000<svg class="ic"><use href="#i-arrow"/></svg></a>
-        <a class="btn ghost" data-magnet href="mailto:meriaworks.id@gmail.com?subject=Kabari%20saya%20saat%20link%20pembelian%20JELIN%20aktif&body=Halo%20Meria%20Works%2C%0A%0ATolong%20kabari%20saya%20saat%20link%20pembelian%20JELIN%20aktif.%0A%0ATerima%20kasih!">Kabari saya<svg class="ic"><use href="#i-mail"/></svg></a>
+        <a class="btn" data-magnet href="https://meria.myr.id/pl/jelin" rel="noreferrer" target="_blank">Beli JELIN — Rp 13.000<svg class="ic"><use href="#i-export"/></svg></a>
+        <a class="btn ghost" data-magnet href="mailto:meriaworks.id@gmail.com?subject=Tanya%20soal%20JELIN&body=Halo%20Meria%20Works%2C%0A%0ASaya%20mau%20tanya%20soal%20JELIN...">Tanya dulu<svg class="ic"><use href="#i-mail"/></svg></a>
         <a class="btn ghost" data-magnet href="https://meriaworks.github.io/">Website MeriaWorks</a>
       </div>
       <a class="email-pill" href="mailto:meriaworks.id@gmail.com">meriaworks.id@gmail.com</a>
@@ -997,15 +997,6 @@ section{position:relative}
   const jelasRow = $("#jelasRow");
   jelasRow.addEventListener("pointerleave", startJelas);
   startJelas();
-
-  /* ---------- buy button (placeholder sampai link pembelian aktif) ---------- */
-  const buyBtn = $("#buyBtn"), buyNote = $("#buyNote");
-  buyBtn.addEventListener("click", () => {
-    buyNote.classList.remove("pop");
-    void buyNote.offsetWidth;
-    buyNote.classList.add("pop");
-    buyNote.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
-  });
 
   /* ---------- interactive demo ---------- */
   const demoStages = $$("#demoStages .demo-stage");
