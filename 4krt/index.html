@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#07090d" />
-<meta name="description" content="4KRT — latihan singkat untuk respons visual, koordinasi jari, timing, dan fokus. Baca pola, kejar beat, dan lihat progres yang benar-benar bisa dibaca. Gratis, offline, main di browser atau Android." />
+<meta name="description" content="4KRT — trainer visual–motor 4 arah dengan metode SIGAP. Baca pola, kejar beat, baca progresmu sampai milidetik. Bayar semaumu, offline, tanpa akun." />
 <title>4KRT — Baca Cepat. Gerak Tepat. Naik Level.</title>
 <meta property="og:title" content="4KRT — Baca cepat. Gerak tepat. Naik level." />
-<meta property="og:description" content="Trainer ritme 4 arah dengan metode SIGAP: 60–200 BPM, mode Reverse, analitik sampai milidetik. Gratis & offline." />
+<meta property="og:description" content="Trainer visual–motor 4 arah dengan metode SIGAP. Bayar semaumu — offline, tanpa akun, tanpa iklan." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="id_ID" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090d'/%3E%3Cpath d='M14 32h20l-7-7 5-5 15 12-15 12-5-5 7-7H14z' fill='%23c8ff1a'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230b0e15'/%3E%3Cpath d='M32 7l10 13H22z' fill='%2343f5a0'/%3E%3Cpath d='M32 57L22 44h20z' fill='%2326e7ff'/%3E%3Cpath d='M7 32l13-10v20z' fill='%239a64ff'/%3E%3Cpath d='M57 32L44 22v20z' fill='%23ff6876'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3Ccircle cx='32' cy='32' r='10.5' fill='none' stroke='%23c8ff1a' stroke-width='2'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
   --bg:#07090d; --bg2:#0b0e15; --surface:#10141d; --surface2:#151b26;
   --ink:#f5f7ef; --muted:#a4adba; --line:#273140;
   --lime:#c8ff1a; --cyan:#26e7ff; --violet:#9a64ff; --coral:#ff6876; --amber:#ffc857; --green:#43f5a0; --red:#ff4d5e;
-  --radius:24px; --shadow:0 30px 90px rgba(0,0,0,.36);
+  --shadow:0 30px 90px rgba(0,0,0,.36);
   --font-d:"Archivo",sans-serif; --font-b:"Space Grotesk",sans-serif;
   --ease:cubic-bezier(.2,.8,.2,1);
 }
@@ -30,7 +30,7 @@ body{color:var(--ink);font-family:var(--font-b);overflow-x:hidden;font-variant-n
   radial-gradient(circle at 20% 0%,rgba(154,100,255,.12),transparent 35%),
   radial-gradient(circle at 85% 12%,rgba(38,231,255,.08),transparent 30%),
   var(--bg)}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1500;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1500;opacity:.15;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
 h1,h2,h3{font-family:var(--font-d);text-wrap:balance}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit}
@@ -41,17 +41,24 @@ img,svg{display:block;max-width:100%}
 .skip{position:fixed;top:-80px;left:12px;z-index:2600;padding:10px 14px;background:var(--ink);color:var(--bg);border-radius:10px;transition:top .2s}
 .skip:focus{top:12px}
 .wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-.section{position:relative;padding:clamp(88px,11vw,150px) 0}
-.section-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.65fr);gap:40px;align-items:end;margin-bottom:54px}
-.section-head h2{font-size:clamp(40px,6.6vw,88px);line-height:.94;letter-spacing:-.045em;font-weight:900;max-width:900px}
-.section-head p{font-size:clamp(16px,2vw,20px);line-height:1.6;color:var(--muted)}
-.eyebrow{display:flex;align-items:center;gap:12px;color:var(--lime);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:24px}
+.section{position:relative;padding:clamp(84px,10vw,140px) 0}
+.section-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.65fr);gap:40px;align-items:end;margin-bottom:52px}
+.section-head h2{font-size:clamp(38px,6.4vw,84px);line-height:.94;letter-spacing:-.045em;font-weight:900;max-width:900px}
+.section-head p{font-size:clamp(16px,2vw,19px);line-height:1.6;color:var(--muted)}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--lime);font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:22px}
 .eyebrow::before{content:"";width:38px;height:1px;background:currentColor}
-.lime{color:var(--lime)}.violet{color:var(--violet)}.cyan{color:var(--cyan)}
+.lime{color:var(--lime)}.violet{color:var(--violet)}
 kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3px 8px;font-size:11px;background:#0d121a;font-family:var(--font-b)}
 @media (max-width:980px){.section-head{grid-template-columns:1fr}}
 
-/* ================= PRELOADER (count-in) ================= */
+/* ================= LOGO MARK ================= */
+.mark{flex:0 0 auto;display:block;border-radius:12px;filter:drop-shadow(0 0 16px rgba(200,255,26,.18))}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-d);font-weight:900;letter-spacing:-.04em;font-size:22px}
+.brand em{font-style:italic;background:linear-gradient(110deg,var(--violet),#fff 55%,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand:hover .mark{animation:markSpin .7s var(--ease)}
+@keyframes markSpin{50%{transform:rotate(12deg) scale(1.08)}}
+
+/* ================= PRELOADER ================= */
 #loader{position:fixed;inset:0;z-index:5000;background:var(--bg);display:grid;place-items:center;transition:clip-path .8s var(--ease);clip-path:inset(0)}
 #loader.done{clip-path:inset(0 0 100% 0)}
 #loader .num{font-family:var(--font-d);font-weight:900;font-size:clamp(90px,22vw,210px);color:var(--lime);position:relative;text-shadow:0 0 60px rgba(200,255,26,.45)}
@@ -71,8 +78,8 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
   .cur-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:#081006;opacity:0;transition:opacity .2s}
   body.cur-on .cur-dot,body.cur-on .cur-ring{opacity:1}
   body.cur-hover .cur-ring{width:66px;height:66px;border-color:var(--cyan);background:rgba(38,231,255,.08)}
-  body.cur-play .cur-ring{width:76px;height:76px;background:var(--lime);border-color:var(--lime)}
-  body.cur-play .cur-ring b{opacity:1}
+  body.cur-get .cur-ring{width:76px;height:76px;background:var(--lime);border-color:var(--lime)}
+  body.cur-get .cur-ring b{opacity:1}
   body.cur-down .cur-ring{width:30px;height:30px}
 }
 @media (pointer:coarse){.cur-dot,.cur-ring{display:none}}
@@ -80,19 +87,13 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 /* ================= NAV ================= */
 .nav-shell{position:fixed;inset:14px 0 auto;z-index:2300;transition:transform .35s var(--ease)}
 .nav-shell.hide{transform:translateY(-120%)}
-.nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(8,10,15,.6);backdrop-filter:blur(22px);box-shadow:0 14px 45px rgba(0,0,0,.25)}
-.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-d);font-weight:900;letter-spacing:-.04em;font-size:22px}
-.brand-mark{width:40px;height:40px;display:grid;place-items:center;position:relative;transform:skew(-7deg);border-radius:11px;background:linear-gradient(135deg,#fff 0 32%,var(--violet) 33% 66%,var(--lime) 67%);color:#080a0f;box-shadow:0 0 25px rgba(154,100,255,.32)}
-.brand-mark::after{content:"4";font-weight:900;transform:skew(7deg)}
-.brand em{font-style:italic;background:linear-gradient(110deg,var(--violet),#fff 55%,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
-.nav-links{display:flex;align-items:center;gap:26px;font-size:13px;color:#c3c9d2}
+.nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 18px;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:rgba(8,10,15,.6);backdrop-filter:blur(22px);box-shadow:0 14px 45px rgba(0,0,0,.25)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:13px;color:#c3c9d2}
 .nav-links a{position:relative;padding:4px 0}
 .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--lime);transition:.25s var(--ease)}
 .nav-links a:hover{color:#fff}
 .nav-links a:hover::after{right:0}
 .nav-actions{display:flex;gap:10px;align-items:center}
-.sound-toggle{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:15px;transition:.25s}
-.sound-toggle[aria-pressed="true"]{border-color:var(--lime);color:var(--lime);box-shadow:0 0 16px rgba(200,255,26,.2)}
 .btn{border:0;border-radius:14px;min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;letter-spacing:-.01em;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s;isolation:isolate}
 .btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 10%,rgba(255,255,255,.3),transparent 90%);transform:translateX(-120%);transition:.55s var(--ease);z-index:1}
 .btn:hover::before{transform:translateX(120%)}
@@ -101,8 +102,11 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .btn-ghost{border:1px solid var(--line);background:rgba(255,255,255,.035)}
 .btn-ghost:hover{border-color:var(--cyan);background:rgba(38,231,255,.08)}
 .btn:active{transform:translateY(0) scale(.98)}
+.mayar-button{border-radius:14px;min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border:1px solid var(--coral);color:var(--coral);background:rgba(255,104,118,.06);transition:.3s var(--ease);cursor:pointer}
+.mayar-button:hover{background:rgba(255,104,118,.14);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,104,118,.15)}
+.mayar-button::before{content:"♥";font-size:13px}
 @media (max-width:980px){.nav-links{display:none}}
-@media (max-width:680px){.nav-shell{inset:8px 0 auto}.nav{height:58px;border-radius:16px}.nav-actions .btn{display:none}}
+@media (max-width:680px){.nav-shell{inset:8px 0 auto}.nav{height:58px;border-radius:16px}.nav-actions .mayar-button{display:none}}
 
 /* ================= REVEAL ================= */
 [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -118,16 +122,16 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .hero{min-height:100svh;padding:138px 0 70px;display:grid;align-items:center;position:relative;overflow:hidden}
 #signal-field{position:absolute;inset:0;width:100%;height:100%;opacity:.55;mask-image:linear-gradient(to bottom,#000,transparent 93%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,.82fr);gap:52px;align-items:center;position:relative;z-index:2}
-.hero-copy h1{font-size:clamp(56px,8.6vw,124px);line-height:.84;letter-spacing:-.055em;font-weight:900;max-width:920px}
+.hero-copy h1{font-size:clamp(54px,8.4vw,120px);line-height:.84;letter-spacing:-.055em;font-weight:900;max-width:920px}
 .hero-copy h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
 .hero-copy h1 .word{display:inline-block;transform:translateY(110%);animation:rise .85s var(--ease) forwards}
 .hero-copy h1 .line:nth-child(2) .word{animation-delay:.12s}
 .hero-copy h1 .line:nth-child(3) .word{animation-delay:.24s}
 @keyframes rise{to{transform:none}}
-.hero-copy .lead{font-size:clamp(17px,2vw,22px);line-height:1.6;color:#bdc5d0;max-width:660px;margin:32px 0 28px}
+.hero-copy .lead{font-size:clamp(17px,2vw,21px);line-height:1.6;color:#bdc5d0;max-width:640px;margin:30px 0 28px}
 .hero-copy .lead strong{color:#fff}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.proof-strip{display:flex;gap:24px;flex-wrap:wrap;margin-top:34px;color:#99a3b0;font-size:13px}
+.proof-strip{display:flex;gap:22px;flex-wrap:wrap;margin-top:32px;color:#99a3b0;font-size:13px}
 .proof-strip span{display:flex;align-items:center;gap:8px}
 .proof-strip i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 15px var(--lime);animation:blink 1.8s infinite}
 @keyframes blink{50%{opacity:.35}}
@@ -167,89 +171,72 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .float-b{right:-18px;bottom:70px;color:var(--cyan);animation-delay:-1.4s}
 @keyframes float{50%{transform:translateY(-13px) rotate(1deg)}}
 @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:120px}.hero-stage{min-height:570px}}
-@media (max-width:680px){.hero-copy h1{font-size:17vw}.hero-stage{min-height:520px;margin-top:8px}.trainer{inset:44px 0 30px;padding:20px;transform:none}.hseq{gap:6px;margin-top:30px}.key{width:56px;border-radius:15px}.float-a{left:4px;top:26px}.float-b{right:0;bottom:8px}}
+@media (max-width:680px){.hero-copy h1{font-size:16.5vw}.hero-stage{min-height:520px;margin-top:8px}.trainer{inset:44px 0 30px;padding:20px;transform:none}.hseq{gap:6px;margin-top:30px}.key{width:56px;border-radius:15px}.float-a{left:4px;top:26px}.float-b{right:0;bottom:8px}}
 
 /* ================= MARQUEE ================= */
-.marq{border-block:1px solid var(--line);padding:16px 0;overflow:hidden;background:#0a0d13;transform:rotate(-1.2deg) scale(1.02);margin-block:8px}
+.marq{border-block:1px solid var(--line);padding:15px 0;overflow:hidden;background:#0a0d13;transform:rotate(-1.2deg) scale(1.02);margin-block:8px}
 .marq.rev{transform:rotate(1.2deg) scale(1.02);border-top:0}
 .marq .track{display:flex;width:max-content;animation:slide 26s linear infinite}
 .marq.rev .track{animation-direction:reverse}
 .marq:hover .track{animation-play-state:paused}
-.marq span{font-family:var(--font-d);font-weight:900;font-size:clamp(19px,2.7vw,30px);letter-spacing:-.02em;white-space:nowrap;padding-inline:20px;color:#dbe0e6}
+.marq span{font-family:var(--font-d);font-weight:900;font-size:clamp(18px,2.6vw,28px);letter-spacing:-.02em;white-space:nowrap;padding-inline:20px;color:#dbe0e6}
 .marq span::after{content:"✦";margin-left:40px;color:var(--lime);font-size:.7em;vertical-align:middle}
 .marq span.o{color:transparent;-webkit-text-stroke:1px var(--muted)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* ================= STORY ================= */
+/* ================= STORY + STATS ================= */
 .story-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:52px;align-items:stretch}
 .story-note{border-left:1px solid var(--line);padding-left:26px;display:flex;flex-direction:column;justify-content:space-between}
-.story-note blockquote{font-family:var(--font-d);font-size:clamp(21px,2.8vw,34px);line-height:1.22;letter-spacing:-.03em;font-weight:700}
-.story-note cite{font-style:normal;color:var(--muted);font-size:13px;margin-top:28px}
-.progress-jump{position:relative;border:1px solid var(--line);border-radius:34px;background:linear-gradient(135deg,#0d1118,#141925);padding:clamp(28px,5vw,64px);overflow:hidden;min-height:480px;box-shadow:var(--shadow)}
+.story-note blockquote{font-family:var(--font-d);font-size:clamp(20px,2.7vw,32px);line-height:1.22;letter-spacing:-.03em;font-weight:700}
+.story-note cite{font-style:normal;color:var(--muted);font-size:13px;margin-top:26px}
+.progress-jump{position:relative;border:1px solid var(--line);border-radius:34px;background:linear-gradient(135deg,#0d1118,#141925);padding:clamp(28px,5vw,60px);overflow:hidden;min-height:440px;box-shadow:var(--shadow)}
 .progress-jump::before{content:"";position:absolute;inset:-30% 40% -30% -20%;background:radial-gradient(circle,rgba(154,100,255,.24),transparent 60%)}
-.jump-row{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:26px;height:100%;min-height:340px}
-.jump-number{font-family:var(--font-d);font-size:clamp(66px,10vw,145px);font-weight:900;letter-spacing:-.06em;line-height:.75;text-align:center}
-.jump-number small{font-family:var(--font-b);font-size:13px;display:block;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:22px;font-weight:500}
+.jump-row{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:26px;height:100%;min-height:300px}
+.jump-number{font-family:var(--font-d);font-size:clamp(62px,9.5vw,135px);font-weight:900;letter-spacing:-.06em;line-height:.75;text-align:center}
+.jump-number small{font-family:var(--font-b);font-size:13px;display:block;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:20px;font-weight:500}
 .jump-arrow{width:90px;height:2px;background:linear-gradient(90deg,var(--violet),var(--lime));position:relative;box-shadow:0 0 24px var(--lime)}
 .jump-arrow::after{content:"";position:absolute;width:14px;height:14px;border-top:2px solid var(--lime);border-right:2px solid var(--lime);right:0;top:50%;transform:translateY(-50%) rotate(45deg)}
-.jump-level{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);padding:10px 16px;border-radius:99px;border:1px solid var(--cyan);background:#07141a;color:var(--cyan);font-weight:700;white-space:nowrap}
-@media (max-width:980px){.story-grid{grid-template-columns:1fr}.story-note{min-height:260px}}
-@media (max-width:680px){.jump-row{grid-template-columns:1fr;align-content:center;text-align:center}.jump-arrow{transform:rotate(90deg);margin:10px auto}.jump-level{position:relative;bottom:auto;margin:24px auto 0;left:auto;transform:none;display:table}.progress-jump{min-height:560px}}
-
-/* ================= STATS ================= */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.stat{background:var(--bg2);padding:30px 24px;position:relative;overflow:hidden;transition:background .3s}
+.jump-level{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 16px;border-radius:99px;border:1px solid var(--cyan);background:#07141a;color:var(--cyan);font-weight:700;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:52px}
+.stat{background:var(--bg2);padding:28px 22px;position:relative;overflow:hidden;transition:background .3s}
 .stat:hover{background:#0d1420}
 .stat::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,var(--lime),var(--cyan));transform:scaleX(0);transition:transform .45s var(--ease)}
 .stat:hover::after{transform:scaleX(1)}
-.stat b{display:block;font-family:var(--font-d);font-weight:900;font-size:clamp(28px,3.4vw,42px);color:var(--lime)}
+.stat b{display:block;font-family:var(--font-d);font-weight:900;font-size:clamp(26px,3.2vw,40px);color:var(--lime)}
 .stat span{color:var(--muted);font-size:13px}
-
-/* ================= FRICTION ================= */
-.friction-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.friction{min-height:270px;border:1px solid var(--line);border-radius:28px;padding:28px;position:relative;overflow:hidden;background:var(--surface);transition:.35s var(--ease)}
-.friction:nth-child(1){grid-column:span 7}.friction:nth-child(2){grid-column:span 5}.friction:nth-child(3){grid-column:span 4}.friction:nth-child(4){grid-column:span 8}
-.friction:hover{transform:translateY(-8px);border-color:#4d5c70}
-.friction h3{font-size:clamp(24px,3.2vw,42px);letter-spacing:-.035em;line-height:1.02;margin-bottom:14px;max-width:520px;font-weight:900}
-.friction p{color:var(--muted);line-height:1.6;max-width:550px}
-.friction-visual{position:absolute;right:20px;bottom:14px;font-family:var(--font-d);font-size:80px;font-weight:900;color:rgba(255,255,255,.05);letter-spacing:-.06em;transition:.35s var(--ease);pointer-events:none}
-.friction:hover .friction-visual{color:rgba(200,255,26,.12);transform:rotate(-4deg) scale(1.06)}
-.stuck-loop{position:absolute;width:150px;height:150px;border:1px dashed var(--coral);border-radius:50%;right:32px;bottom:24px;animation:spin 12s linear infinite;pointer-events:none}
-.stuck-loop::before,.stuck-loop::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,104,118,.35);inset:22px}.stuck-loop::after{inset:48px}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (max-width:980px){.friction:nth-child(n){grid-column:span 6}}
-@media (max-width:680px){.friction:nth-child(n){grid-column:span 12}}
+@media (max-width:980px){.story-grid{grid-template-columns:1fr}.story-note{min-height:240px}}
+@media (max-width:680px){.jump-row{grid-template-columns:1fr;align-content:center;text-align:center}.jump-arrow{transform:rotate(90deg);margin:10px auto}.jump-level{position:relative;bottom:auto;margin:22px auto 0;left:auto;transform:none;display:table}.progress-jump{min-height:520px}}
 
 /* ================= SIGAP ================= */
 .sigap{background:linear-gradient(180deg,#0a0d13,#0d1118 35%,#080a0f);border-block:1px solid var(--line)}
 .sigap-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
 .sigap-sticky{position:sticky;top:118px;height:max-content}
-.sigap-word{font-family:var(--font-d);font-size:clamp(88px,14vw,196px);font-weight:900;letter-spacing:-.07em;line-height:.78;background:linear-gradient(180deg,#fff,#7e8794);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sigap-word{font-family:var(--font-d);font-size:clamp(84px,13.5vw,190px);font-weight:900;letter-spacing:-.07em;line-height:.78;background:linear-gradient(180deg,#fff,#7e8794);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sigap-word span{transition:.25s;color:transparent}
 .sigap-word span.on{color:var(--lime);-webkit-text-fill-color:var(--lime);text-shadow:0 0 55px rgba(200,255,26,.2)}
-.sigap-intro{color:var(--muted);font-size:17px;line-height:1.6;max-width:430px;margin-top:32px}
+.sigap-intro{color:var(--muted);font-size:17px;line-height:1.6;max-width:430px;margin-top:30px}
 .sigap-intro strong{color:#fff}
-.sigap-steps{display:grid;gap:18px}
-.sigap-step{min-height:210px;border:1px solid var(--line);border-radius:26px;padding:30px;display:grid;grid-template-columns:70px 1fr;gap:24px;align-items:start;background:rgba(255,255,255,.025);transition:.35s var(--ease)}
+.sigap-steps{display:grid;gap:16px}
+.sigap-step{min-height:190px;border:1px solid var(--line);border-radius:26px;padding:28px;display:grid;grid-template-columns:70px 1fr;gap:24px;align-items:start;background:rgba(255,255,255,.025);transition:.35s var(--ease)}
 .sigap-step:hover{border-color:var(--lime);background:rgba(200,255,26,.035);transform:translateX(6px)}
 .sigap-letter{width:64px;height:64px;display:grid;place-items:center;border-radius:18px;background:#0b0f16;border:1px solid #374355;font-family:var(--font-d);font-size:28px;font-weight:900;color:var(--lime)}
-.sigap-step h3{font-size:30px;letter-spacing:-.03em;margin-bottom:10px;font-weight:900}
+.sigap-step h3{font-size:28px;letter-spacing:-.03em;margin-bottom:9px;font-weight:900}
 .sigap-step p{color:var(--muted);line-height:1.6}
-.sigap-step small{display:block;margin-top:16px;color:#75808e;text-transform:uppercase;letter-spacing:.12em;font-size:11px}
-@media (max-width:980px){.sigap-layout{grid-template-columns:1fr}.sigap-sticky{position:relative;top:auto}.sigap-word{font-size:26vw}}
+.sigap-step small{display:block;margin-top:14px;color:#75808e;text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+@media (max-width:980px){.sigap-layout{grid-template-columns:1fr}.sigap-sticky{position:relative;top:auto}.sigap-word{font-size:25vw}}
 @media (max-width:680px){.sigap-step{grid-template-columns:52px 1fr;padding:22px}.sigap-letter{width:50px;height:50px;font-size:22px}}
 
 /* ================= DEMO ================= */
-.demo-shell{border:1px solid var(--line);border-radius:38px;background:linear-gradient(145deg,#121722,#090c12);padding:clamp(26px,5vw,60px);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.demo-shell{border:1px solid var(--line);border-radius:38px;background:linear-gradient(145deg,#121722,#090c12);padding:clamp(26px,5vw,58px);position:relative;overflow:hidden;box-shadow:var(--shadow)}
 .demo-shell::before{content:"";position:absolute;inset:-60% -20% auto 45%;height:600px;background:radial-gradient(circle,rgba(38,231,255,.14),transparent 62%);pointer-events:none}
 .demo-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;position:relative;flex-wrap:wrap}
-.demo-title h3{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.045em;font-weight:900}
+.demo-title h3{font-size:clamp(30px,4.4vw,56px);letter-spacing:-.045em;font-weight:900}
 .demo-title p{color:var(--muted);margin-top:10px}
 .demo-score{display:flex;gap:10px;flex-wrap:wrap}
 .score-pill{padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#0a0d13;min-width:86px}
 .score-pill span{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .score-pill b{font-size:20px;font-family:var(--font-d)}
-.demo-word{text-align:center;font-family:var(--font-d);font-weight:900;font-size:clamp(24px,4vw,42px);min-height:1.3em;margin:34px 0 6px;letter-spacing:.02em}
+.demo-word{text-align:center;font-family:var(--font-d);font-weight:900;font-size:clamp(23px,3.8vw,40px);min-height:1.3em;margin:32px 0 6px;letter-spacing:.02em}
 .demo-word.perfect{color:var(--cyan);animation:pop .5s var(--ease)}
 .demo-word.great{color:var(--green);animation:pop .5s var(--ease)}
 .demo-word.cool{color:var(--amber);animation:pop .5s var(--ease)}
@@ -257,20 +244,21 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .demo-word.miss{color:var(--red);animation:shake .4s}
 @keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes shake{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}
-.demo-lane{margin:10px 0 26px;padding:26px 0;display:flex;align-items:center;justify-content:center;position:relative;border-block:1px solid rgba(255,255,255,.06)}
+.demo-lane{margin:8px 0 24px;padding:24px 0;display:flex;align-items:center;justify-content:center;position:relative;border-block:1px solid rgba(255,255,255,.06)}
 .demo-lane::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 10%,rgba(255,255,255,.025) 10% 10.2%);pointer-events:none}
 .dseq{display:flex;gap:clamp(5px,1.2vw,12px);position:relative;z-index:2}
-.dkey{width:clamp(50px,7.4vw,88px);aspect-ratio:1;border-radius:20px;display:grid;place-items:center;background:#121925;border:1.5px dashed #405067;transition:.18s var(--ease);box-shadow:inset 0 1px rgba(255,255,255,.08);color:var(--cyan)}
+.dkey{width:clamp(50px,7.4vw,86px);aspect-ratio:1;border-radius:20px;display:grid;place-items:center;background:#121925;border:1.5px dashed #405067;transition:.18s var(--ease);box-shadow:inset 0 1px rgba(255,255,255,.08);color:var(--cyan)}
 .dkey svg{width:52%;fill:currentColor;filter:drop-shadow(0 0 8px currentColor)}
 .dkey.on{border-style:solid;background:rgba(67,245,160,.08);color:var(--green);border-color:var(--green);box-shadow:inset 0 0 22px rgba(67,245,160,.22),0 0 18px rgba(67,245,160,.28);transform:translateY(-6px)}
 .dkey.err{border-color:var(--coral);color:var(--coral);animation:keyMiss .3s}
-.dtrack{position:relative;height:72px;border:1px solid #223443;border-radius:44px;width:min(640px,100%);margin:0 auto;background:linear-gradient(90deg,var(--violet),#2879ff 40%,var(--cyan) 68%,var(--lime) 86%,var(--coral)) center/100% 2px no-repeat}
+.dtrack{position:relative;height:70px;border:1px solid #223443;border-radius:44px;width:min(620px,100%);margin:0 auto;background:linear-gradient(90deg,var(--violet),#2879ff 40%,var(--cyan) 68%,var(--lime) 86%,var(--coral)) center/100% 2px no-repeat}
 .dzone{position:absolute;top:8px;bottom:8px;left:76%;width:16%;border:1px solid rgba(255,255,255,.5);border-radius:10px;background:rgba(200,255,26,.13);box-shadow:0 0 18px rgba(200,255,26,.3)}
-.dzone i{position:absolute;top:50%;left:50%;width:38px;height:38px;transform:translate(-50%,-50%);border:3px solid var(--red);border-radius:50%;box-shadow:0 0 14px rgba(255,77,94,.6)}
+.dzone i{position:absolute;top:50%;left:50%;width:36px;height:36px;transform:translate(-50%,-50%);border:3px solid var(--red);border-radius:50%;box-shadow:0 0 14px rgba(255,77,94,.6)}
 .dzone i::after{content:"";position:absolute;inset:32%;border-radius:50%;background:var(--red)}
-.dball{position:absolute;top:50%;left:0;width:32px;height:32px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 12px 4px #1bbcff,0 0 34px 8px #177cff}
-.demo-message{text-align:center;color:var(--muted);min-height:26px;margin-top:20px;font-size:14.5px}
+.dball{position:absolute;top:50%;left:0;width:30px;height:30px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 12px 4px #1bbcff,0 0 34px 8px #177cff}
+.demo-message{text-align:center;color:var(--muted);min-height:26px;margin-top:18px;font-size:14.5px}
 .demo-message strong{color:#fff}
+.demo-message a{color:var(--lime);border-bottom:1px dashed var(--lime)}
 .demo-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}
 .dpad{display:none;gap:8px;justify-content:center;margin-top:20px;flex-wrap:wrap}
 .dpad button{width:58px;height:58px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:grid;place-items:center;color:var(--ink)}
@@ -280,40 +268,25 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 @media (pointer:coarse){.dpad{display:flex}}
 #confetti{position:absolute;inset:0;pointer-events:none;z-index:5}
 
-/* ================= RITME ================= */
-.ritme-word{display:flex;justify-content:center;gap:clamp(6px,1.6vw,18px);margin:20px 0;perspective:900px}
-.rl{flex:1;max-width:164px;aspect-ratio:.78;border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,var(--surface),#080d13);display:grid;place-items:center;font-family:var(--font-d);font-weight:900;font-size:clamp(38px,7vw,86px);color:var(--ink);position:relative;transition:transform .5s var(--ease),border-color .4s,box-shadow .4s,color .4s;transform-style:preserve-3d;cursor:pointer}
-.rl small{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:var(--font-b);font-weight:500;font-size:10px;letter-spacing:.2em;color:var(--muted);opacity:0;transition:opacity .3s}
-.rl:hover small,.rl.act small{opacity:1}
-.rl:nth-child(1):hover,.rl:nth-child(1).act{color:var(--lime);border-color:var(--lime);box-shadow:0 0 34px rgba(200,255,26,.22);animation:jolt .35s}
-.rl:nth-child(2):hover,.rl:nth-child(2).act{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 34px rgba(38,231,255,.22);animation:pulse2 1.1s infinite}
-.rl:nth-child(3):hover,.rl:nth-child(3).act{color:var(--violet);border-color:var(--violet);box-shadow:0 0 34px rgba(154,100,255,.28);animation:tick 1s steps(2) infinite}
-.rl:nth-child(4):hover,.rl:nth-child(4).act{color:var(--coral);border-color:var(--coral);box-shadow:0 0 34px rgba(255,104,118,.24);transform:rotateY(360deg)}
-.rl:nth-child(5):hover,.rl:nth-child(5).act{color:var(--green);border-color:var(--green);box-shadow:0 0 34px rgba(67,245,160,.26);animation:slidein .4s var(--ease)}
-@keyframes jolt{20%{transform:translate(-4px,2px) rotate(-2deg)}45%{transform:translate(4px,-2px) rotate(2deg)}70%{transform:translate(-2px,1px)}}
-@keyframes pulse2{50%{transform:scale(1.06)}}
-@keyframes tick{50%{transform:rotate(4deg)}}
-@keyframes slidein{from{transform:translateX(26px);opacity:.4}}
-.ritme-detail{max-width:700px;margin:26px auto 0;text-align:center;min-height:92px}
-.ritme-detail h3{font-size:clamp(19px,2.6vw,28px);margin-bottom:10px;transition:color .3s}
-.ritme-detail p{color:var(--muted);line-height:1.7;font-size:16px}
-
-/* ================= FEATURES BENTO ================= */
+/* ================= FITUR ================= */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .bcard{grid-column:span 2;border:1px solid var(--line);border-radius:26px;padding:28px;background:linear-gradient(160deg,var(--surface),#080d13);position:relative;overflow:hidden;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s;will-change:transform}
 .bcard.w3{grid-column:span 3}
+.bcard.w6{grid-column:span 6;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
 .bcard:hover{border-color:var(--c,var(--lime));box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 30px color-mix(in srgb,var(--c,var(--lime)) 16%,transparent)}
 .bcard .no{font-size:11px;color:var(--muted);letter-spacing:.18em}
 .bcard h3{font-size:21px;margin:14px 0 10px;font-weight:900;letter-spacing:-.02em}
 .bcard p{color:var(--muted);font-size:14.5px;line-height:1.65}
-.bcard .viz{height:112px;display:grid;place-items:center;position:relative;margin-top:8px}
-@media (max-width:980px){.bcard,.bcard.w3{grid-column:span 3}}
-@media (max-width:680px){.bcard,.bcard.w3{grid-column:span 6}}
+.bcard .viz{height:110px;display:grid;place-items:center;position:relative;margin-top:8px}
+.bcard.w6 .viz{height:auto;margin:0}
+@media (max-width:980px){.bcard,.bcard.w3{grid-column:span 3}.bcard.w6{grid-column:span 6}}
+@media (max-width:680px){.bcard,.bcard.w3,.bcard.w6{grid-column:span 6}.bcard.w6{grid-template-columns:1fr}}
 .dial{width:100px;height:100px;border-radius:50%;border:2px solid var(--line);position:relative;display:grid;place-items:center;font-family:var(--font-d);font-weight:900;font-size:20px;color:var(--cyan)}
 .dial i{position:absolute;top:50%;left:50%;width:2px;height:42px;background:var(--cyan);transform-origin:top center;transform:rotate(200deg);transition:transform 1.2s var(--ease);border-radius:2px}
 .bcard:hover .dial i{transform:rotate(500deg)}
 .dial::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(38,231,255,.3);animation:spin 14s linear infinite}
-.lv{display:flex;align-items:flex-end;gap:6px;height:88px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.lv{display:flex;align-items:flex-end;gap:6px;height:86px}
 .lv i{width:13px;background:linear-gradient(180deg,var(--lime),rgba(200,255,26,.25));border-radius:4px;height:calc(22px + var(--h)*8px);transform:scaleY(.25);transform-origin:bottom;transition:transform .6s var(--ease) calc(var(--h)*.05s)}
 .bcard:hover .lv i,.bcard.seen .lv i{transform:scaleY(1)}
 .rvz{display:flex;gap:10px}
@@ -326,46 +299,14 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .spark polyline{fill:none;stroke:var(--lime);stroke-width:2.4;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.6s var(--ease)}
 .bcard:hover .spark polyline,.bcard.seen .spark polyline{stroke-dashoffset:0}
 .spark circle{fill:var(--cyan)}
-.viz-cal{display:flex;gap:14px;align-items:center;color:var(--muted);font-size:12px}
-.viz-cal i{width:64px;height:64px;border-radius:18px;border:1px solid var(--cyan);display:grid;place-items:center;font-size:24px;color:var(--cyan);transition:transform .5s var(--ease);font-style:normal}
-.bcard:hover .viz-cal i{transform:rotate(-14deg)}
-.viz-acc{display:flex;gap:10px}
-.viz-acc i{width:48px;height:48px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-size:19px;transition:.35s var(--ease);font-style:normal}
-.bcard:hover .viz-acc i{border-color:var(--green);color:var(--green);transform:translateY(-4px)}
-.bcard:hover .viz-acc i:nth-child(2){transition-delay:.06s}.bcard:hover .viz-acc i:nth-child(3){transition-delay:.12s}
-.viz-321{font-family:var(--font-d);font-weight:900;font-size:46px;color:var(--coral);text-shadow:0 0 30px rgba(255,104,118,.35);letter-spacing:.02em}
-.viz-num{display:grid;grid-template-columns:repeat(3,44px);gap:6px}
-.viz-num i{aspect-ratio:1;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;font-size:15px;color:var(--violet);transition:.3s var(--ease);font-style:normal}
-.bcard:hover .viz-num i{border-color:var(--violet);box-shadow:0 0 12px rgba(154,100,255,.3)}
-
-/* ================= JUDGMENT LAB ================= */
-.lab{border:1px solid var(--line);border-radius:34px;background:linear-gradient(160deg,var(--surface),#070b10);padding:clamp(26px,4vw,54px)}
-.lab .big{text-align:center;font-family:var(--font-d);font-weight:900;font-size:clamp(38px,6.6vw,80px);letter-spacing:.01em;min-height:1.2em;transition:color .2s}
-.lab .ms{text-align:center;color:var(--muted);font-size:15px;margin-top:6px}
-.lab .ms b{color:var(--ink);font-size:19px}
-.lab input[type=range]{width:100%;margin-top:36px;accent-color:var(--lime);height:30px}
-.zones{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1.25fr 1fr 1fr 1fr 1fr;gap:4px;margin-top:14px}
-.zones span{text-align:center;font-size:clamp(8px,1.2vw,11px);letter-spacing:.1em;padding:9px 2px;border-radius:8px;background:#0d1219;color:var(--muted);transition:all .25s;font-weight:700}
-.zones span.zon{color:#0a0f05;transform:translateY(-4px)}
-.zones span.z-miss.zon{background:var(--red);color:#fff}
-.zones span.z-bad.zon{background:#ff9943}
-.zones span.z-cool.zon{background:var(--amber)}
-.zones span.z-great.zon{background:var(--green)}
-.zones span.z-perfect.zon{background:var(--cyan);box-shadow:0 0 26px rgba(38,231,255,.5)}
-.lab .note{text-align:center;margin-top:28px;color:var(--muted);font-size:14px}
-
-/* ================= USE CASES ================= */
-.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.usecase{min-height:310px;border-radius:26px;border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:#0c1017;transition:.35s var(--ease)}
-.usecase:hover{transform:translateY(-6px)}
-.usecase::before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--case-color);filter:blur(80px);opacity:.12;top:-50px;right:-50px;transition:.35s}
-.usecase:hover::before{opacity:.25;transform:scale(1.3)}
-.usecase:nth-child(1){--case-color:var(--lime)}.usecase:nth-child(2){--case-color:var(--cyan)}.usecase:nth-child(3){--case-color:var(--violet)}.usecase:nth-child(4){--case-color:var(--coral)}
-.usecase-symbol{font-size:60px;font-weight:900;color:var(--case-color);letter-spacing:-.06em;font-family:var(--font-d)}
-.usecase h3{font-size:23px;letter-spacing:-.02em;margin-bottom:9px;font-weight:900}
-.usecase p{color:var(--muted);line-height:1.55;font-size:14px}
-@media (max-width:980px){.usecase-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:680px){.usecase-grid{grid-template-columns:1fr}}
+.thz{display:flex;flex-wrap:wrap;gap:8px;max-width:180px;justify-content:center}
+.thz i{width:24px;height:24px;border-radius:8px;transition:transform .35s var(--ease);border:1px solid rgba(255,255,255,.14)}
+.bcard:hover .thz i{transform:rotate(45deg) scale(1.12);border-radius:50%}
+.thz i:nth-child(odd){transition-delay:.05s}
+.viz-local{width:120px;height:120px;border-radius:32px;border:1px solid var(--cyan);display:grid;place-items:center;position:relative;transform:rotate(8deg);box-shadow:0 0 50px rgba(38,231,255,.12),inset 0 0 40px rgba(38,231,255,.05)}
+.viz-local::before{content:"";position:absolute;inset:18px;border:1px solid rgba(154,100,255,.5);border-radius:22px;transform:rotate(-16deg)}
+.viz-local b{font-family:var(--font-d);font-size:13px;transform:rotate(-8deg);text-align:center;line-height:1.3}
+.bcard:hover .viz-local{transform:rotate(0deg)}
 
 /* ================= ANALYTICS (light) ================= */
 .analytics{background:#edf1e9;color:#0b0f13}
@@ -379,12 +320,12 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .dash-tabs button{padding:9px 13px;border-radius:9px;color:#59625c;transition:.25s}
 .dash-tabs button.active{background:#0d1210;color:#fff}
 .dash-content{padding:22px;display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
-.chart-panel,.insight-panel{border:1px solid #d7ddd4;border-radius:22px;background:#fff;padding:22px;min-height:340px}
+.chart-panel,.insight-panel{border:1px solid #d7ddd4;border-radius:22px;background:#fff;padding:22px;min-height:330px}
 .chart-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:12px}
 .chart-head h3{font-size:19px}
 .chart-head strong{font-size:36px;letter-spacing:-.04em;font-family:var(--font-d)}
 .chart-head span{color:#657068;font-size:12px}
-#progress-chart{width:100%;height:235px;display:block}
+#progress-chart{width:100%;height:230px;display:block}
 .metric-list{display:grid;gap:10px;margin-top:20px}
 .metric-row{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:13px;border-radius:14px;background:#f1f4ef}
 .metric-row span{font-size:13px;color:#59625d}
@@ -393,7 +334,7 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .insight-card{border-left:3px solid #0d1210;padding:4px 0 4px 15px;margin:20px 0}
 .insight-card small{display:block;color:#6a746d;text-transform:uppercase;letter-spacing:.12em;font-size:10px;margin-bottom:7px}
 .insight-card b{font-size:18px;line-height:1.25;display:block}
-.matrix-mini{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:26px}
+.matrix-mini{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:24px}
 .matrix-mini i{aspect-ratio:1;border-radius:7px;background:#e2e7df;transition:.2s}
 .matrix-mini i.mon{background:#c8ff1a;box-shadow:inset 0 0 0 1px #7a9b00}
 .matrix-mini i.mid{background:#8be6d4}
@@ -401,85 +342,33 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 @media (max-width:980px){.dash-content{grid-template-columns:1fr}}
 @media (max-width:680px){.dash-tabs{width:100%;justify-content:space-between}.dash-content{padding:12px}.chart-panel,.insight-panel{padding:16px}}
 
-/* ================= MODES ================= */
-.mode-window{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.mode-window::-webkit-scrollbar{display:none}
-.mode-track{display:flex;gap:18px;width:max-content;padding:8px max(20px,calc((100vw - 1180px)/2))}
-.mode-card{width:min(360px,78vw);min-height:400px;border-radius:30px;border:1px solid var(--line);padding:28px;position:relative;overflow:hidden;background:#0d1118;flex:none;transition:transform .35s var(--ease),border-color .35s;scroll-snap-align:center}
-.mode-card:hover{transform:translateY(-10px) rotate(-1deg);border-color:var(--mc)}
-.mode-card::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:var(--mc);filter:blur(110px);opacity:.13;right:-100px;top:-100px;pointer-events:none}
-.mode-kicker{font-size:11px;color:var(--mc);letter-spacing:.16em;text-transform:uppercase;font-weight:700}
-.mode-card h3{font-size:37px;letter-spacing:-.035em;line-height:.95;margin:22px 0 13px;font-weight:900}
-.mode-card p{color:var(--muted);line-height:1.55;max-width:310px;font-size:14.5px}
-.mode-art{height:150px;margin-top:30px;display:grid;place-items:center;position:relative}
-.mode-art span{width:104px;height:104px;border-radius:26px;border:1px solid var(--mc);display:grid;place-items:center;color:var(--mc);font-size:40px;font-weight:900;font-family:var(--font-d);box-shadow:0 0 50px color-mix(in srgb,var(--mc) 16%,transparent);animation:modeBob 3s ease-in-out infinite}
-@keyframes modeBob{50%{transform:translateY(-12px) rotate(5deg)}}
-.mode-controls{display:flex;justify-content:center;gap:10px;margin-top:30px}
-.mode-controls button{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:#0d1118;transition:.25s}
-.mode-controls button:hover{border-color:var(--lime);color:var(--lime)}
-
-/* ================= THEME PLAYGROUND ================= */
-.tplay{border:1px solid var(--line);border-radius:34px;overflow:hidden;background:#05070a;transition:background .5s}
-.tplay .inner{padding:clamp(26px,4vw,54px);display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.tplay h3{font-size:24px;transition:color .4s;font-weight:900}
-.tplay .inner p{transition:color .4s;font-size:15px;line-height:1.7;margin-top:10px}
-.tname{font-family:var(--font-d);font-weight:900;font-size:14px;letter-spacing:.14em;margin-top:18px;display:block;min-height:1.4em;transition:color .4s}
-.tsw{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-.tsw button{width:50px;height:50px;border-radius:14px;border:2px solid transparent;position:relative;transition:transform .3s var(--ease),border-color .3s;box-shadow:0 8px 20px rgba(0,0,0,.4)}
-.tsw button:hover{transform:translateY(-4px) scale(1.06)}
-.tsw button.on{border-color:#fff;transform:scale(1.1)}
-.tsw button.on::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:900;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.tarrows{display:flex;gap:10px;justify-content:center}
-.tarrows i{width:clamp(48px,7vw,72px);aspect-ratio:1;border-radius:16px;border:1.5px solid #2a3947;display:grid;place-items:center;background:#11161c;transition:all .4s}
-.tarrows svg{width:55%;transition:fill .4s}
-@media (max-width:900px){.tplay .inner{grid-template-columns:1fr}}
-
-/* ================= SCIENCE ================= */
-.science-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.science-card{border:1px solid var(--line);border-radius:26px;padding:28px;background:#0d1118;min-height:280px;position:relative;overflow:hidden;transition:.35s var(--ease)}
-.science-card:hover{transform:translateY(-6px);border-color:#4d5c70}
-.science-card::after{content:attr(data-no);position:absolute;right:18px;bottom:-16px;font-family:var(--font-d);font-size:112px;font-weight:900;color:rgba(255,255,255,.035);letter-spacing:-.06em;pointer-events:none}
-.science-card h3{font-size:26px;letter-spacing:-.02em;margin:26px 0 12px;font-weight:900}
-.science-card p{color:var(--muted);line-height:1.65;font-size:14.5px}
-.science-card a{font-size:12px;color:var(--cyan);text-decoration:underline;text-underline-offset:4px;display:inline-block;margin-top:14px;position:relative;z-index:2}
-.evidence-tag{display:inline-flex;padding:7px 10px;border:1px solid #3a4557;border-radius:9px;color:#c7cdd5;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
-.science-caveat{margin-top:18px;border:1px solid #4a3b2b;background:#17120c;border-radius:22px;padding:24px;color:#d8c39e;line-height:1.65}
-.science-caveat strong{color:var(--amber)}
-@media (max-width:680px){.science-grid{grid-template-columns:1fr}}
-
-/* ================= VAULT ================= */
-.vault{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;border:1px solid var(--line);border-radius:36px;padding:clamp(28px,5vw,64px);background:linear-gradient(135deg,#111722,#090c12)}
-.vault h2{font-size:clamp(40px,5.6vw,72px);letter-spacing:-.045em;line-height:.94;margin-bottom:22px;font-weight:900}
-.vault>div>p{color:var(--muted);line-height:1.65;font-size:17px}
-.vault-list{display:grid;gap:12px;margin-top:28px}
-.vault-list span{display:flex;gap:10px;align-items:center}
-.vault-list i{color:var(--lime);font-style:normal}
-.vault-visual{min-height:380px;display:grid;place-items:center;position:relative}
-.vault-core{width:220px;height:220px;border-radius:52px;border:1px solid var(--cyan);display:grid;place-items:center;position:relative;transform:rotate(10deg);box-shadow:0 0 80px rgba(38,231,255,.14),inset 0 0 60px rgba(38,231,255,.06)}
-.vault-core::before,.vault-core::after{content:"";position:absolute;inset:24px;border:1px solid rgba(154,100,255,.55);border-radius:38px;transform:rotate(-20deg)}
-.vault-core::after{inset:62px;border-color:var(--lime);border-radius:24px;transform:rotate(12deg)}
-.vault-core b{font-size:19px;z-index:2;transform:rotate(-10deg);text-align:center;font-family:var(--font-d)}
-.vault-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 15px var(--lime);animation:vaultOrbit 4s linear infinite}
-@keyframes vaultOrbit{from{transform:rotate(0) translateX(165px) rotate(0)}to{transform:rotate(360deg) translateX(165px) rotate(-360deg)}}
-@media (max-width:980px){.vault{grid-template-columns:1fr}}
-@media (max-width:680px){.vault-visual{min-height:300px}.vault-core{width:175px;height:175px}.vault-dot{animation:none;transform:translateX(120px)}}
-
-/* ================= MANIFESTO ================= */
-.manifesto{min-height:88vh;display:grid;place-items:center;text-align:center;overflow:hidden}
-.manifesto h2{font-size:clamp(52px,9.4vw,132px);line-height:.84;letter-spacing:-.055em;max-width:1120px;font-weight:900}
-.manifesto h2 span{display:block}
-.manifesto p{max-width:700px;color:var(--muted);font-size:19px;line-height:1.65;margin:36px auto}
-.manifesto-ring{position:absolute;width:min(90vw,900px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(154,100,255,.18);animation:slowRotate 24s linear infinite;left:50%;top:50%;translate:-50% -50%}
-.manifesto-ring::before,.manifesto-ring::after{content:"";position:absolute;inset:11%;border-radius:50%;border:1px dashed rgba(38,231,255,.18)}
-.manifesto-ring::after{inset:27%;border-style:solid;border-color:rgba(200,255,26,.2)}
-@keyframes slowRotate{to{transform:rotate(360deg)}}
-.manifesto-content{position:relative;z-index:2}
+/* ================= HARGA (pay what you want) ================= */
+.price-note{max-width:640px;margin:0 auto 46px;text-align:center;color:var(--muted);font-size:16.5px;line-height:1.7}
+.price-note strong{color:var(--lime)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:920px;margin-inline:auto}
+.pcard{border:1px solid var(--line);border-radius:30px;padding:clamp(26px,3.6vw,42px);background:linear-gradient(160deg,#121722,#0a0d13);position:relative;overflow:hidden;transition:.35s var(--ease);display:flex;flex-direction:column;gap:18px}
+.pcard:hover{transform:translateY(-8px);border-color:var(--pc)}
+.pcard::before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:var(--pc);filter:blur(100px);opacity:.14;right:-70px;top:-70px;transition:.4s}
+.pcard:hover::before{opacity:.24}
+.pcard .tag{display:inline-flex;align-self:flex-start;padding:7px 12px;border:1px solid var(--pc);border-radius:99px;color:var(--pc);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.pcard h3{font-size:clamp(26px,3vw,36px);letter-spacing:-.035em;font-weight:900;line-height:1}
+.pcard .pwyw{font-family:var(--font-d);font-weight:900;font-size:clamp(30px,3.6vw,44px);color:#fff;line-height:1}
+.pcard .pwyw small{display:block;font-family:var(--font-b);font-weight:500;font-size:13px;color:var(--muted);letter-spacing:.06em;margin-top:8px}
+.pcard ul{list-style:none;display:grid;gap:9px;color:var(--muted);font-size:14.5px}
+.pcard ul i{color:var(--pc);font-style:normal;margin-right:8px}
+.pcard .btn{margin-top:auto;justify-content:space-between}
+.pcard .btn b{font-size:20px}
+.pcard:nth-child(1){--pc:var(--lime)}
+.pcard:nth-child(2){--pc:var(--cyan)}
+.price-fine{text-align:center;color:var(--muted);font-size:13px;margin-top:26px}
+.price-fine a{color:var(--coral);border-bottom:1px dashed var(--coral)}
+@media (max-width:820px){.price-grid{grid-template-columns:1fr}}
 
 /* ================= FAQ ================= */
-.faq-list{max-width:880px;margin-inline:auto}
+.faq-list{max-width:860px;margin-inline:auto}
 .qa{border-bottom:1px solid var(--line)}
 .qa:first-child{border-top:1px solid var(--line)}
-.qa .q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:25px 6px;font-size:clamp(17px,2.3vw,23px);font-weight:700;transition:color .25s;font-family:var(--font-d)}
+.qa .q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:24px 6px;font-size:clamp(17px,2.2vw,22px);font-weight:700;transition:color .25s;font-family:var(--font-d)}
 .qa .q:hover{color:var(--lime)}
 .qa .x{flex:0 0 auto;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;position:relative;transition:transform .4s var(--ease),border-color .3s,background .3s}
 .qa .x::before,.qa .x::after{content:"";position:absolute;top:50%;left:50%;width:12px;height:1.6px;background:currentColor;transform:translate(-50%,-50%)}
@@ -490,10 +379,10 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 
 /* ================= FINAL CTA ================= */
 .final-cta{padding-bottom:48px}
-.cta-box{min-height:560px;border-radius:42px;background:var(--lime);color:#091007;display:grid;place-items:center;align-content:center;gap:26px;text-align:center;padding:48px 28px;position:relative;overflow:hidden}
-.cta-box::before{content:"60";position:absolute;font-family:var(--font-d);font-size:min(52vw,720px);font-weight:900;letter-spacing:-.08em;color:rgba(7,16,6,.06);line-height:.7;top:50%;left:50%;transform:translate(-52%,-50%);pointer-events:none}
-.cta-box h2{font-size:clamp(46px,8vw,108px);line-height:.86;letter-spacing:-.05em;max-width:940px;position:relative;font-weight:900}
-.cta-box p{font-size:19px;max-width:640px;line-height:1.55;position:relative}
+.cta-box{min-height:520px;border-radius:42px;background:var(--lime);color:#091007;display:grid;place-items:center;align-content:center;gap:26px;text-align:center;padding:48px 28px;position:relative;overflow:hidden}
+.cta-box::before{content:"60";position:absolute;font-family:var(--font-d);font-size:min(50vw,680px);font-weight:900;letter-spacing:-.08em;color:rgba(7,16,6,.06);line-height:.7;top:50%;left:50%;transform:translate(-52%,-50%);pointer-events:none}
+.cta-box h2{font-size:clamp(42px,7.6vw,100px);line-height:.86;letter-spacing:-.05em;max-width:940px;position:relative;font-weight:900}
+.cta-box p{font-size:18px;max-width:620px;line-height:1.55;position:relative}
 .cta-box .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
 .cta-box .btn-dark{background:#081006;color:#fff;min-height:58px;padding:0 28px}
 .cta-box .btn-line{border:2px solid #081006;color:#081006;min-height:58px;padding:0 26px;background:transparent}
@@ -501,12 +390,16 @@ kbd{border:1px solid #46586a;border-bottom-width:3px;border-radius:6px;padding:3
 .cta-note{font-size:12.5px;opacity:.7;position:relative}
 
 /* ================= FOOTER ================= */
-footer{padding:34px 0 48px;color:#8d97a4}
-.footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:center;flex-wrap:wrap}
-.footer-copy{max-width:560px;font-size:13px;line-height:1.6}
-.footer-links{display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:52px 0 56px;color:#8d97a4}
+.footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:start}
+.footer-brand{display:grid;gap:14px}
+.footer-brand .tag{font-size:11px;letter-spacing:.3em;color:var(--muted)}
+.footer-copy{max-width:520px;font-size:13px;line-height:1.65}
+.footer-links{display:grid;gap:10px;font-size:13.5px;justify-items:start}
 .footer-links a{border-bottom:1px dashed var(--line);transition:.25s}
 .footer-links a:hover{color:var(--lime);border-color:var(--lime)}
+.footer-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+@media (max-width:820px){.footer-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -514,18 +407,21 @@ footer{padding:34px 0 48px;color:#8d97a4}
 
 <div id="loader" aria-hidden="true"><div class="num">3<span class="ring"></span></div><small>GET&nbsp;READY</small></div>
 <div id="progress" aria-hidden="true"><i></i></div>
-<div class="cur-ring" aria-hidden="true"><b>MAIN</b></div>
+<div class="cur-ring" aria-hidden="true"><b>GET</b></div>
 <div class="cur-dot" aria-hidden="true"></div>
 
 <div class="nav-shell" id="navShell">
   <nav class="nav wrap" aria-label="Navigasi utama">
-    <a class="brand magnetic" href="#top" aria-label="4KRT beranda"><span class="brand-mark"></span><span>4K<em>RT</em></span></a>
+    <a class="brand" href="#top" aria-label="4KRT beranda">
+      <svg class="mark" width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0b0e15" stroke="#273140"/><path d="M32 7l10 13H22z" fill="#43f5a0"/><path d="M32 57L22 44h20z" fill="#26e7ff"/><path d="M7 32l13-10v20z" fill="#9a64ff"/><path d="M57 32L44 22v20z" fill="#ff6876"/><circle cx="32" cy="32" r="7" fill="#fff"/><circle cx="32" cy="32" r="10.5" fill="none" stroke="#c8ff1a" stroke-width="2"/></svg>
+      <span>4K<em>RT</em></span>
+    </a>
     <div class="nav-links">
-      <a href="#cerita">Cerita</a><a href="#cara">Metode</a><a href="#coba">Coba</a><a href="#fitur">Fitur</a><a href="#sains">Sains</a><a href="#faq">FAQ</a>
+      <a href="#cerita">Cerita</a><a href="#cara">Metode</a><a href="#coba">Coba</a><a href="#fitur">Fitur</a><a href="#harga">Harga</a><a href="https://meriaworks.github.io/">MERIA</a>
     </div>
     <div class="nav-actions">
-      <button class="sound-toggle magnetic" id="soundToggle" aria-label="Aktifkan bunyi interaksi" aria-pressed="false">◌</button>
-      <a class="btn btn-primary magnetic" href="./play.html" target="_blank" rel="noopener">Main Sekarang <span>↗</span></a>
+      <a class="mayar-button iframe-lightbox-link" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true"><span></span>Support</a>
+      <a class="btn btn-primary magnetic" href="#harga">Dapatkan 4KRT</a>
     </div>
   </nav>
 </div>
@@ -542,13 +438,13 @@ footer{padding:34px 0 48px;color:#8d97a4}
         <span class="line"><span class="word lime">Gerak tepat.</span></span>
         <span class="line"><span class="word">Naik level.</span></span>
       </h1>
-      <p class="lead">Jari cepat itu bukan bakat — itu latihan. 4KRT mengubah pola panah jadi drill singkat untuk <strong>respons visual, koordinasi jari, timing, dan fokus</strong>, dengan progres yang benar-benar bisa kamu baca sampai milidetik.</p>
+      <p class="lead">Jari cepat itu bukan bakat — itu latihan. 4KRT mengubah pola panah jadi drill singkat untuk <strong>respons visual, koordinasi jari, timing, dan fokus</strong>, dengan progres yang bisa kamu baca sampai milidetik.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary magnetic" href="./play.html" target="_blank" rel="noopener">▶&nbsp; Main Sekarang — di Browser</a>
-        <a class="btn btn-ghost magnetic" href="./4KRT-Android.apk" download>Unduh Android · 121 KB</a>
+        <a class="btn btn-primary magnetic" href="#harga">Dapatkan 4KRT — Bayar Semaumu</a>
+        <a class="btn btn-ghost magnetic" href="#coba">Coba dulu, gratis di halaman ini ↓</a>
       </div>
       <div class="proof-strip" aria-label="Prinsip utama 4KRT">
-        <span><i></i> Mulai dari 60 detik</span><span><i></i> 100% offline &amp; lokal</span><span><i></i> Tanpa akun, tanpa iklan</span>
+        <span><i></i> Kamu yang tentukan harganya</span><span><i></i> 100% offline &amp; lokal</span><span><i></i> Tanpa akun, tanpa iklan</span>
       </div>
     </div>
 
@@ -580,20 +476,20 @@ footer{padding:34px 0 48px;color:#8d97a4}
   <span>BACA CEPAT</span><span class="o">KETIK POLA</span><span>PUKUL BEAT</span><span class="o">RESPONS VISUAL</span><span>KOORDINASI JARI</span><span class="o">60 → 200 BPM</span>
 </div></div>
 <div class="marq rev" aria-hidden="true"><div class="track" data-marq>
-  <span class="o">PERFECT ±33 MS</span><span>TIMING</span><span class="o">FOKUS</span><span>PROGRES TERUKUR</span><span class="o">TANPA AKUN</span><span>DATA DI PERANGKATMU</span>
+  <span class="o">PERFECT ±33 MS</span><span>BAYAR SEMAUMU</span><span class="o">TANPA AKUN</span><span>PROGRES TERUKUR</span><span class="o">DATA DI PERANGKATMU</span><span>METODE SIGAP</span>
 </div></div>
 
-<!-- ============ CERITA ============ -->
+<!-- ============ CERITA + STATS ============ -->
 <section class="section" id="cerita">
   <div class="wrap">
     <div class="eyebrow" data-reveal>Berawal dari frustrasi yang nyata</div>
     <div class="section-head">
       <h2 data-reveal>Latihan seharusnya bikin progres kelihatan — bukan bikin kamu nebak-nebak.</h2>
-      <p data-reveal>4KRT lahir karena latihan di dalam game terasa terlalu lama, analitiknya tipis, dan susah menjawab satu pertanyaan sederhana: <em>"aku sebenarnya berkembang, atau cuma mengulang?"</em></p>
+      <p data-reveal>4KRT lahir karena latihan di dalam game terasa terlalu lama, analitiknya tipis, dan susah menjawab satu pertanyaan sederhana: <em>"aku berkembang, atau cuma mengulang?"</em></p>
     </div>
     <div class="story-grid">
       <div class="story-note" data-reveal>
-        <blockquote>"Dulu saya mentok di Level 7 pada 70 BPM. Setelah latihan mandiri dengan 4KRT, saya bisa mencapai Level 8 pada 100 BPM."</blockquote>
+        <blockquote>"Dulu saya mentok di Level 7 pada 70 BPM. Setelah latihan mandiri dengan 4KRT, saya mencapai Level 8 pada 100 BPM."</blockquote>
         <cite>— cerita pembuat 4KRT; bukan janji hasil untuk semua orang</cite>
       </div>
       <div class="progress-jump tilt" data-reveal>
@@ -605,30 +501,13 @@ footer{padding:34px 0 48px;color:#8d97a4}
         <div class="jump-level">progres yang akhirnya terasa nyata</div>
       </div>
     </div>
-    <div class="stats" data-reveal style="margin-top:56px">
+    <div class="stats" data-reveal>
       <div class="stat"><b>60–200</b><span>rentang BPM, naik per 5</span></div>
-      <div class="stat"><b>6–12</b><span>panah per pola — selalu satu baris</span></div>
+      <div class="stat"><b>6–12</b><span>panah per pola, selalu satu baris</span></div>
       <div class="stat"><b>R1–R12</b><span>level mode Reverse</span></div>
-      <div class="stat"><b>±33 ms</b><span>jendela PERFECT preset Standard</span></div>
-      <div class="stat"><b>14</b><span>tema visual, satu geometri</span></div>
-      <div class="stat"><b>∞</b><span>Unlimited — berhenti kalau kamu bilang</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FRICTION ============ -->
-<section class="section" id="masalah">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Kenapa latihan sering terasa buntu?</div>
-    <div class="section-head">
-      <h2 data-reveal>Bukan selalu karena kamu lambat. Bisa jadi latihannya yang nggak memberi arah.</h2>
-      <p data-reveal>Tanpa durasi pendek, kesulitan bertahap, dan feedback yang jelas, kita gampang mengulang hal yang sama — lalu menyalahkan kemampuan sendiri.</p>
-    </div>
-    <div class="friction-grid">
-      <article class="friction tilt" data-reveal><h3>Satu sesi terlalu panjang.</h3><p>Kamu butuh latihan yang muat di sela aktivitas, bukan komitmen sepanjang satu lagu penuh cuma untuk mencoba satu pola.</p><div class="friction-visual">08:42</div></article>
-      <article class="friction tilt" data-reveal><h3>Naik level terlalu kabur.</h3><p>BPM naik, pola makin panjang — tapi nggak jelas bagian mana yang sebenarnya tertinggal.</p><div class="stuck-loop"></div></article>
-      <article class="friction tilt" data-reveal><h3>Skor nggak menjelaskan.</h3><p>Skor besar nggak otomatis kasih tahu masalahmu ada di pembacaan, input, atau timing.</p><div class="friction-visual">?</div></article>
-      <article class="friction tilt" data-reveal><h3>Latihan tanpa bukti rasanya jalan di tempat.</h3><p>4KRT menyimpan sesi, timing, akurasi, combo, distribusi judgment, exposure arah, sampai peta Level × BPM — supaya kamu tahu apa yang perlu dilatih berikutnya.</p><div class="friction-visual">→</div></article>
+      <div class="stat"><b>±33 ms</b><span>jendela PERFECT Standard</span></div>
+      <div class="stat"><b>11</b><span>mode · 14 tema visual</span></div>
+      <div class="stat"><b>∞</b><span>Unlimited — kamu yang berhenti</span></div>
     </div>
   </div>
 </section>
@@ -639,13 +518,13 @@ footer{padding:34px 0 48px;color:#8d97a4}
     <div class="sigap-sticky">
       <div class="eyebrow">Metode 4KRT</div>
       <h2 class="sigap-word" aria-label="SIGAP"><span>S</span><span>I</span><span>G</span><span>A</span><span>P</span></h2>
-      <p class="sigap-intro"><strong>Metode SIGAP</strong> adalah loop yang terjadi di tiap giliran: singkat, mudah dipahami, tapi cukup rinci untuk menunjukkan di titik mana koordinasimu mulai goyah. Scroll — tiap huruf nyala di tahapnya.</p>
+      <p class="sigap-intro"><strong>Metode SIGAP</strong> adalah loop yang terjadi di tiap giliran — singkat, tapi cukup rinci untuk menunjukkan di titik mana koordinasimu mulai goyah. Scroll: tiap huruf nyala di tahapnya.</p>
     </div>
     <div class="sigap-steps">
-      <article class="sigap-step" data-letter="0" data-reveal><div class="sigap-letter">S</div><div><h3>Scan pola</h3><p>Mata menangkap arah dan urutan tanpa harus membaca instruksi panjang.</p><small>Visual scanning</small></div></article>
-      <article class="sigap-step" data-letter="1" data-reveal><div class="sigap-letter">I</div><div><h3>Interpretasi arah</h3><p>Otak menerjemahkan simbol jadi keputusan tombol — kiri, atas, kanan, atau bawah. Mode Reverse menambah beban tepat di tahap ini.</p><small>Response selection</small></div></article>
+      <article class="sigap-step" data-letter="0" data-reveal><div class="sigap-letter">S</div><div><h3>Scan pola</h3><p>Mata menangkap arah dan urutan tanpa membaca instruksi panjang.</p><small>Visual scanning</small></div></article>
+      <article class="sigap-step" data-letter="1" data-reveal><div class="sigap-letter">I</div><div><h3>Interpretasi arah</h3><p>Otak menerjemahkan simbol jadi keputusan tombol. Mode Reverse menambah beban tepat di tahap ini.</p><small>Response selection</small></div></article>
       <article class="sigap-step" data-letter="2" data-reveal><div class="sigap-letter">G</div><div><h3>Gerak jari</h3><p>Keputusan berubah jadi urutan gerakan yang cepat, rapi, dan makin otomatis.</p><small>Motor sequence</small></div></article>
-      <article class="sigap-step" data-letter="3" data-reveal><div class="sigap-letter">A</div><div><h3>Akurasi timing</h3><p>Bukan cuma menekan tombol yang benar — tapi mengeksekusinya di jendela waktu yang tepat. PERFECT itu selebar ±33 milidetik.</p><small>Temporal precision</small></div></article>
+      <article class="sigap-step" data-letter="3" data-reveal><div class="sigap-letter">A</div><div><h3>Akurasi timing</h3><p>Bukan cuma tombol yang benar — tapi dieksekusi di jendela waktu yang tepat. PERFECT itu selebar ±33 milidetik.</p><small>Temporal precision</small></div></article>
       <article class="sigap-step" data-letter="4" data-reveal><div class="sigap-letter">P</div><div><h3>Progres terbaca</h3><p>Tiap sesi meninggalkan bukti: tempo, level, akurasi, combo, timing offset, dan pola kelemahanmu.</p><small>Personal analytics</small></div></article>
     </div>
   </div>
@@ -654,14 +533,14 @@ footer{padding:34px 0 48px;color:#8d97a4}
 <!-- ============ DEMO ============ -->
 <section class="section" id="coba">
   <div class="wrap">
-    <div class="eyebrow" data-reveal>Demo interaktif</div>
+    <div class="eyebrow" data-reveal>Coba dulu — gratis di sini</div>
     <div class="section-head">
-      <h2 data-reveal>Nggak perlu percaya copywriting-nya. Coba sendiri.</h2>
-      <p data-reveal>Ketik panah sesuai urutan, lalu tekan <strong>Spasi</strong> tepat saat bola masuk lingkaran merah. Ini satu giliran 4KRT sungguhan — judgment-nya dihitung sampai milidetik.</p>
+      <h2 data-reveal>Nggak perlu percaya copywriting-nya. Rasakan sendiri.</h2>
+      <p data-reveal>Ini satu giliran 4KRT sungguhan: ketik panah sesuai urutan, lalu tekan <strong>Spasi</strong> pas bola masuk lingkaran merah. Judgment-nya dihitung sampai milidetik.</p>
     </div>
     <div class="demo-shell" data-reveal>
       <div class="demo-top">
-        <div class="demo-title"><h3>Signal test 60 detik</h3><p>Keyboard: <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> lalu <kbd>Spasi</kbd></p></div>
+        <div class="demo-title"><h3>Signal test</h3><p>Keyboard: <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> lalu <kbd>Spasi</kbd></p></div>
         <div class="demo-score">
           <div class="score-pill"><span>Combo</span><b id="dCombo">0</b></div>
           <div class="score-pill"><span>Rekor</span><b id="dBest">0</b></div>
@@ -675,7 +554,7 @@ footer{padding:34px 0 48px;color:#8d97a4}
       <div class="demo-message" id="dMsg">Tekan <strong>Mulai demo</strong> untuk membangunkan sinyal.</div>
       <div class="demo-actions">
         <button class="btn btn-primary magnetic" id="dStart">▶&nbsp; Mulai demo</button>
-        <a class="btn btn-ghost magnetic" href="./play.html" target="_blank" rel="noopener">Versi lengkapnya ↗</a>
+        <a class="btn btn-ghost magnetic" href="#harga">Suka? Dapatkan versi lengkapnya</a>
       </div>
       <div class="dpad" aria-label="Kontrol sentuh">
         <button data-k="left" aria-label="kiri"><svg viewBox="0 0 48 48"><path transform="rotate(180 24 24)" d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></button>
@@ -689,32 +568,10 @@ footer{padding:34px 0 48px;color:#8d97a4}
   </div>
 </section>
 
-<!-- ============ RITME ============ -->
-<section class="section" id="ritme">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Lima skill yang kebentuk</div>
-    <div class="section-head">
-      <h2 data-reveal>SIGAP itu prosesnya.<br/>RITME hasilnya.</h2>
-      <p data-reveal>Jalani loop SIGAP cukup sering, dan lima hal ini pelan-pelan pindah dari usaha jadi refleks. Sentuh tiap huruf — masing-masing punya kelakuannya sendiri.</p>
-    </div>
-    <div class="ritme-word" data-reveal id="ritmeWord">
-      <button class="rl" data-i="0">R<small>REFLEKS</small></button>
-      <button class="rl" data-i="1">I<small>IRAMA</small></button>
-      <button class="rl" data-i="2">T<small>TIMING</small></button>
-      <button class="rl" data-i="3">M<small>MEMORI</small></button>
-      <button class="rl" data-i="4">E<small>EKSEKUSI</small></button>
-    </div>
-    <div class="ritme-detail" data-reveal>
-      <h3 id="ritmeH">RITME</h3>
-      <p id="ritmeP">Refleks · Irama · Timing · Memori · Eksekusi. Lima hal yang dilatih setiap giliran — nggak ada satu pun yang bisa nebeng doang.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FITUR ============ -->
 <section class="section" id="fitur">
   <div class="wrap">
-    <div class="eyebrow" data-reveal>Yang sudah hidup di dalam 4KRT</div>
+    <div class="eyebrow" data-reveal>Yang kamu dapatkan</div>
     <div class="section-head">
       <h2 data-reveal>Bukan satu mini-game.<br/>Ini sistem latihan pribadi.</h2>
       <p data-reveal>Atur tantangan, main cepat, baca hasil, tentukan drill berikutnya. Tiap fitur ada karena satu masalah latihan yang nyata.</p>
@@ -725,65 +582,20 @@ footer{padding:34px 0 48px;color:#8d97a4}
         <h3>60 sampai 200 BPM, naik per 5</h3><p>Mulai dari santai banget di 60, pensiun di 200 kalau berani. 29 preset — nggak ada alasan "temponya nggak pas buatku".</p></div>
       <div class="bcard w3 tilt" data-reveal style="--c:var(--lime)"><span class="no">02 / READING</span>
         <div class="viz"><div class="lv"><i style="--h:1"></i><i style="--h:2"></i><i style="--h:3"></i><i style="--h:4"></i><i style="--h:5"></i><i style="--h:6"></i><i style="--h:7"></i></div></div>
-        <h3>Level 6–12 panah, selalu satu baris</h3><p>Dua belas panah pun tetap sebaris — nggak ada pola yang turun baris dan ngerusak cara bacamu. Latihan harus mirip kondisi aslinya.</p></div>
+        <h3>Level 6–12 panah, selalu satu baris</h3><p>Dua belas panah pun tetap sebaris — nggak ada pola turun baris yang ngerusak cara bacamu.</p></div>
       <div class="bcard tilt" data-reveal style="--c:var(--coral)"><span class="no">03 / REVERSE</span>
         <div class="viz"><div class="rvz"><div class="a"><b>R</b><svg viewBox="0 0 48 48"><path d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></div><div class="a"><b>R</b><svg viewBox="0 0 48 48"><path transform="rotate(180 24 24)" d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></div></div></div>
-        <h3>Mode Reverse R1–R12</h3><p>Panah bertanda R ditekan kebalikannya. Otakmu bakal protes — itu tandanya kerja. Toggle: Delete/Home atau F1–F12.</p></div>
-      <div class="bcard tilt" data-reveal style="--c:var(--violet)"><span class="no">04 / SIGNAL</span>
-        <div class="viz"><div class="viz-num"><i>7</i><i>8</i><i>9</i><i>4</i><i>·</i><i>6</i><i>1</i><i>2</i><i>3</i></div></div>
-        <h3>4 arah atau 8 arah Numpad</h3><p>Arrow keyboard untuk fondasi, atau Numpad 1–9 dengan empat diagonal untuk koordinasi yang lebih kompleks.</p></div>
-      <div class="bcard tilt" data-reveal style="--c:var(--lime)"><span class="no">05 / INSIGHT</span>
+        <h3>Mode Reverse R1–R12</h3><p>Panah bertanda R ditekan kebalikannya. Otakmu protes — itu tandanya kerja.</p></div>
+      <div class="bcard tilt" data-reveal style="--c:var(--lime)"><span class="no">04 / INSIGHT</span>
         <div class="viz"><svg class="spark" viewBox="0 0 200 90" preserveAspectRatio="none"><polyline points="4,72 30,64 56,68 82,50 108,54 134,36 160,28 196,12"/><circle cx="196" cy="12" r="4"/></svg></div>
-        <h3>Analitik yang nggak nutupin gagal</h3><p>Miss ditandai ×, salah di panah ke berapa dicatat, konsistensi timing dihitung. Data paling berharga justru dari giliran yang gagal.</p></div>
-      <div class="bcard w3 tilt" data-reveal style="--c:var(--cyan)"><span class="no">06 / TIMING</span>
-        <div class="viz"><div class="viz-cal"><i>◷</i><div>wired · speaker · bluetooth<br/>tiga profil terpisah</div></div></div>
-        <h3>Kalibrasi timing per perangkat</h3><p>Offset speaker, kabel, dan Bluetooth disimpan terpisah — supaya delay perangkat nggak disalahartikan sebagai kemampuanmu.</p></div>
-      <div class="bcard w3 tilt" data-reveal style="--c:var(--green)"><span class="no">07 / HUMAN</span>
-        <div class="viz"><div class="viz-acc"><i>♿</i><i>◐</i><i>⌨</i></div></div>
-        <h3>Aksesibel &amp; manusiawi</h3><p>Reduced motion, high visibility, profil satu tangan, verbosity pembaca layar, backup/restore. Latihan itu untuk semua tangan.</p></div>
-      <div class="bcard w3 tilt" data-reveal style="--c:var(--coral)"><span class="no">08 / INSTANT</span>
-        <div class="viz"><div class="viz-321">3 · 2 · 1</div></div>
-        <h3>Sekali klik, langsung latihan</h3><p>Satu file HTML — buka, hitung mundur, main. Di Android tinggal pasang APK 121 KB. Nggak ada loading 5 menit.</p></div>
-      <div class="bcard w3 tilt" data-reveal style="--c:var(--violet)"><span class="no">09 / VARIETY</span>
-        <div class="viz" style="font-family:var(--font-d);font-weight:900;font-size:40px;color:var(--violet);letter-spacing:.06em">11×</div>
-        <h3>Sebelas mode, sebelas tujuan</h3><p>Quick 60, BPM Ladder, Reverse Ladder, Reading Only, Timing Only, Recovery, Daily Test, dan lainnya — geser ke bawah.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ JUDGMENT LAB ============ -->
-<section class="section" id="judge">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Lab timing</div>
-    <div class="section-head">
-      <h2 data-reveal>PERFECT itu cuma selebar 66 milidetik.</h2>
-      <p data-reveal>Geser slider-nya dan rasakan sendiri sesempit apa jendela penilaian preset Standard. Ini kenapa "hampir pas" dan "pas" itu dua dunia berbeda.</p>
-    </div>
-    <div class="lab" data-reveal>
-      <div class="big" id="jWord">PERFECT</div>
-      <p class="ms">offset kamu: <b id="jMs">0 ms</b></p>
-      <input type="range" id="jRange" min="-200" max="200" value="0" step="1" aria-label="Simulasi offset timing dalam milidetik" />
-      <div class="zones">
-        <span class="z-miss">MISS</span><span class="z-bad">BAD</span><span class="z-cool">COOL</span><span class="z-great">GREAT</span><span class="z-perfect">PERFECT</span><span class="z-great">GREAT</span><span class="z-cool">COOL</span><span class="z-bad">BAD</span><span class="z-miss">MISS</span>
-      </div>
-      <p class="note">Preset Standard: Perfect ±33 ms · Great ±70 ms · Cool ±115 ms · Bad ±170 ms. Ada Forgiving buat pemanasan, dan Strict buat yang sudah gila.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ USE CASES ============ -->
-<section class="section" id="untuk-siapa">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Nggak dibatasi satu game</div>
-    <div class="section-head">
-      <h2 data-reveal>Empat tombolnya sederhana. Skill yang dilatih lebih luas.</h2>
-      <p data-reveal>4KRT nggak menjanjikan transfer otomatis ke semua aktivitas. Tapi ia memang dirancang melatih komponen dasar yang dipakai saat membaca cepat, memilih respons, dan menggerakkan jari berurutan.</p>
-    </div>
-    <div class="usecase-grid">
-      <article class="usecase" data-reveal><div class="usecase-symbol">↖</div><div><h3>Rhythm-game player</h3><p>Latih pattern reading, reverse input, tempo, dan timing tanpa durasi lagu yang panjang.</p></div></article>
-      <article class="usecase" data-reveal style="--d:.06s"><div class="usecase-symbol">⌨</div><div><h3>Pekerja digital</h3><p>Jadikan 60 detik sebagai warm-up koordinasi tangan sebelum sesi mengetik atau kerja intens.</p></div></article>
-      <article class="usecase" data-reveal style="--d:.12s"><div class="usecase-symbol">◎</div><div><h3>Pencari fokus singkat</h3><p>Pakai drill sebagai transisi dari distraksi menuju satu tugas yang butuh perhatian penuh.</p></div></article>
-      <article class="usecase" data-reveal style="--d:.18s"><div class="usecase-symbol">♫</div><div><h3>Pembelajar ritme</h3><p>Berlatih menyelaraskan urutan visual, gerak jari, dan beat sebelum masuk aktivitas yang lebih kompleks.</p></div></article>
+        <h3>Analitik yang nggak nutupin gagal</h3><p>Miss ditandai ×, salah di panah ke berapa dicatat, konsistensi timing dihitung.</p></div>
+      <div class="bcard tilt" data-reveal style="--c:var(--violet)"><span class="no">05 / VARIETY</span>
+        <div class="viz"><div class="thz"><i style="background:#c8ff1a"></i><i style="background:#26e7ff"></i><i style="background:#9a64ff"></i><i style="background:#ff6876"></i><i style="background:#4aa8ff"></i><i style="background:#ffc857"></i><i style="background:#43f5a0"></i><i style="background:#ff9f43"></i><i style="background:#9fe8ff"></i><i style="background:#d384ff"></i><i style="background:#53ffd2"></i><i style="background:#b6ff63"></i></div></div>
+        <h3>11 mode · 14 tema</h3><p>Quick 60, BPM Ladder, Reverse Ladder, Timing Only, Recovery, Daily Test — plus 14 tema dengan geometri identik.</p></div>
+      <div class="bcard w6 tilt" data-reveal style="--c:var(--cyan)">
+        <div class="viz"><div class="viz-local"><b>LOCAL<br/>DATA</b></div></div>
+        <div><span class="no">06 / LOCAL-FIRST</span>
+        <h3>Punyamu. Di perangkatmu. Selamanya.</h3><p>Sekali unduh, jalan offline selamanya — tanpa akun, tanpa iklan, tanpa analytics yang ngintip. Kalibrasi timing per perangkat (wired/speaker/Bluetooth), backup ber-checksum, reduced motion, high visibility, dan profil satu tangan. Progresmu tinggal bersamamu.</p></div></div>
     </div>
   </div>
 </section>
@@ -794,7 +606,7 @@ footer{padding:34px 0 48px;color:#8d97a4}
     <div class="eyebrow" data-reveal>Progres bukan perasaan</div>
     <div class="section-head">
       <h2 data-reveal>Dashboard yang kasih tahu apa yang perlu kamu lakukan besok.</h2>
-      <p data-reveal>Angka yang baik nggak berhenti jadi dekorasi. Ia harus bantu milih: turunkan BPM, ulang level, fokus timing, atau siap naik tantangan.</p>
+      <p data-reveal>Angka yang baik nggak berhenti jadi dekorasi. Ia harus bantu milih: turunkan BPM, ulang level, fokus timing, atau naik tantangan.</p>
     </div>
     <div class="dashboard" data-reveal>
       <div class="dash-bar"><div class="dash-brand">4KRT / PROGRESS</div><div class="dash-tabs"><button class="active" data-chart="accuracy">Accuracy</button><button data-chart="timing">Timing</button><button data-chart="score">Score</button></div></div>
@@ -820,103 +632,41 @@ footer{padding:34px 0 48px;color:#8d97a4}
   </div>
 </section>
 
-<!-- ============ MODES ============ -->
-<section class="section" id="mode">
+<!-- ============ HARGA ============ -->
+<section class="section" id="harga">
   <div class="wrap">
-    <div class="eyebrow" data-reveal>Satu tujuan, banyak jalur</div>
+    <div class="eyebrow" data-reveal>Harga</div>
     <div class="section-head">
-      <h2 data-reveal>Pilih drill sesuai masalahmu — bukan sesuai gengsi level.</h2>
-      <p data-reveal>Kamu nggak selalu perlu main lebih cepat; kadang kamu perlu membaca lebih bersih, atau pulih lebih tenang.</p>
+      <h2 data-reveal>Bayar semaumu.<br/>Serius.</h2>
+      <p data-reveal>Alat latihan yang layak nggak seharusnya kehalang harga. Kamu yang menakar nilainya — sekali bayar, semua fitur, tanpa langganan.</p>
     </div>
-  </div>
-  <div class="mode-window" id="modeWindow"><div class="mode-track">
-    <article class="mode-card" style="--mc:var(--lime)"><span class="mode-kicker">Mode 01</span><h3>Quick<br/>60</h3><p>Satu menit untuk memulai. Warm-up, check-in, atau latihan singkat saat energi tipis.</p><div class="mode-art"><span>60</span></div></article>
-    <article class="mode-card" style="--mc:var(--cyan)"><span class="mode-kicker">Mode 02</span><h3>BPM<br/>Ladder</h3><p>Naik tempo bertahap sambil menjaga akurasi. Bukan loncat cepat — membangun kontrol.</p><div class="mode-art"><span>↗</span></div></article>
-    <article class="mode-card" style="--mc:var(--coral)"><span class="mode-kicker">Mode 03</span><h3>Reverse<br/>Ladder</h3><p>Beban interpretasi lewat arah terbalik — sedikit demi sedikit dari R1 sampai penuh.</p><div class="mode-art"><span>R</span></div></article>
-    <article class="mode-card" style="--mc:var(--violet)"><span class="mode-kicker">Mode 04</span><h3>Level<br/>Ladder</h3><p>Pola makin panjang seiring kamu bertahan. Dari 6 panah yang ramah sampai 12 yang bikin melotot.</p><div class="mode-art"><span>⇧</span></div></article>
-    <article class="mode-card" style="--mc:var(--amber)"><span class="mode-kicker">Mode 05</span><h3>Pattern<br/>Lab</h3><p>Bedah keluarga pola: alternating, cross, repeats, burst. Serang tepat di jenis yang sering bikin jatuh.</p><div class="mode-art"><span>▦</span></div></article>
-    <article class="mode-card" style="--mc:var(--cyan)"><span class="mode-kicker">Mode 06</span><h3>Timing<br/>Only</h3><p>Lupakan pola sebentar. Satu tugas: Spasi tepat di tengah. Meditasi versi rhythm game.</p><div class="mode-art"><span>◷</span></div></article>
-    <article class="mode-card" style="--mc:var(--lime)"><span class="mode-kicker">Mode 07</span><h3>Reading<br/>Only</h3><p>Kebalikannya: fokus baca dan ketik secepat mungkin. Bangun kecepatan mata-ke-jari dulu.</p><div class="mode-art"><span>◉</span></div></article>
-    <article class="mode-card" style="--mc:var(--coral)"><span class="mode-kicker">Mode 08</span><h3>Recovery<br/>Drill</h3><p>Turunkan tekanan, bangun ulang ritme, hentikan spiral frustrasi setelah sesi buruk.</p><div class="mode-art"><span>♡</span></div></article>
-    <article class="mode-card" style="--mc:var(--violet)"><span class="mode-kicker">Mode 09</span><h3>8-Direction</h3><p>Numpad 1–9 dengan empat diagonal. Buat yang merasa empat arah sudah terlalu sopan.</p><div class="mode-art"><span>8</span></div></article>
-    <article class="mode-card" style="--mc:var(--amber)"><span class="mode-kicker">Mode 10</span><h3>Unlimited<br/>Flow</h3><p>Tanpa timer. Berhenti hanya kalau kamu yang memutuskan. Buat malam-malam yang panjang.</p><div class="mode-art"><span>∞</span></div></article>
-    <article class="mode-card" style="--mc:var(--green)"><span class="mode-kicker">Mode 11</span><h3>Daily<br/>Test</h3><p>Assessment personal yang konsisten — perbandingan minggu ini vs minggu lalu jadi apel ke apel.</p><div class="mode-art"><span>✓</span></div></article>
-  </div></div>
-  <div class="mode-controls"><button id="modePrev" aria-label="Mode sebelumnya">←</button><button id="modeNext" aria-label="Mode berikutnya">→</button></div>
-</section>
-
-<!-- ============ THEMES ============ -->
-<section class="section" id="tema">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Tema</div>
-    <div class="section-head">
-      <h2 data-reveal>Klik warnanya. Kartu ini ikut ganti baju.</h2>
-      <p data-reveal>Empat belas tema dengan satu aturan keras: geometri, ukuran panah, dan zona penilaian nggak boleh geser sepiksel pun. Mata boleh dimanja — otot tetap latihan di lapangan yang sama.</p>
-    </div>
-    <div class="tplay" data-reveal id="tp">
-      <div class="inner">
-        <div>
-          <h3 id="tpH">Suasana boleh ganti, gameplay jangan.</h3>
-          <p id="tpP">Dari Blue Court yang kalem sampai Neon Pulse yang nyala — panah yang benar selalu berubah hijau, target selalu merah, dan beat nggak pernah bohong.</p>
-          <span class="tname" id="tpName"></span>
-          <div class="tsw" id="tpSw"></div>
-        </div>
-        <div class="tarrows" id="tpArrows">
-          <i><svg viewBox="0 0 48 48"><path transform="rotate(180 24 24)" d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></i>
-          <i><svg viewBox="0 0 48 48"><path transform="rotate(90 24 24)" d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></i>
-          <i><svg viewBox="0 0 48 48"><path transform="rotate(270 24 24)" d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></i>
-          <i><svg viewBox="0 0 48 48"><path d="M8 21h23l-8-8 5-5 16 16-16 16-5-5 8-8H8z"/></svg></i>
-        </div>
+    <div class="price-grid">
+      <div class="pcard tilt" data-reveal>
+        <span class="tag">Webapp · PC &amp; Laptop</span>
+        <h3>SIGAP Visual–Motor Training</h3>
+        <div class="pwyw">Rp — kamu yang isi<small>bayar semaumu · sekali bayar · bukan langganan</small></div>
+        <ul>
+          <li><i>✓</i>Satu file HTML — dobel-klik, langsung latihan</li>
+          <li><i>✓</i>Jalan offline selamanya, di browser apa pun</li>
+          <li><i>✓</i>Semua mode, tema, dan analitik lengkap</li>
+          <li><i>✓</i>Data &amp; progres 100% di perangkatmu</li>
+        </ul>
+        <a class="btn btn-primary" href="https://meria.myr.id/pl/sigap-visual-motor-training-powered-by-4krt" target="_blank" rel="noopener">Dapatkan Webapp <b>→</b></a>
+      </div>
+      <div class="pcard tilt" data-reveal style="--d:.08s">
+        <span class="tag">APK · Android</span>
+        <h3>4KRT untuk Android</h3>
+        <div class="pwyw">Rp — kamu yang isi<small>bayar semaumu · 121 KB · kontrol sentuh</small></div>
+        <ul>
+          <li><i>✓</i>APK ringan — lebih kecil dari satu foto</li>
+          <li><i>✓</i>Kontrol sentuh 4 &amp; 8 arah</li>
+          <li><i>✓</i>Semua fitur versi desktop, offline penuh</li>
+          <li><i>✓</i>Tanpa iklan, tanpa izin aneh-aneh</li>
+        </ul>
+        <a class="btn btn-primary" href="https://meria.myr.id/pl/4krt-visual-motor-training-apk" target="_blank" rel="noopener">Dapatkan APK <b>→</b></a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ SCIENCE ============ -->
-<section class="section" id="sains">
-  <div class="wrap">
-    <div class="eyebrow" data-reveal>Dasar ilmiah, tanpa janji berlebihan</div>
-    <div class="section-head">
-      <h2 data-reveal>Ada alasan kenapa latihan visual–motor, ritme, feedback, dan gamification layak digabungkan.</h2>
-      <p data-reveal>Jurnal mendukung komponen-komponennya. Tapi 4KRT sendiri masih perlu validasi penelitian langsung sebelum boleh mengklaim dampak klinis atau peningkatan kemampuan umum.</p>
-    </div>
-    <div class="science-grid">
-      <article class="science-card" data-no="01" data-reveal><span class="evidence-tag">Systematic review · 2023</span><h3>Action gaming dan perhatian</h3><p>Review pada dewasa muda melaporkan manfaat paling konsisten pada reaction time, processing speed, dan beberapa bentuk perhatian — tapi peneliti tetap meminta studi yang lebih kuat.</p><a href="https://doi.org/10.1177/10870547231153878" target="_blank" rel="noreferrer">DOI 10.1177/10870547231153878</a></article>
-      <article class="science-card" data-no="02" data-reveal style="--d:.06s"><span class="evidence-tag">Meta-analysis · 2018</span><h3>Latihan game nggak semuanya sama</h3><p>Meta-analysis menemukan efek intervensi yang lebih kecil daripada perbandingan antar pemain, dan mengingatkan publication bias bisa membesarkan estimasi.</p><a href="https://doi.org/10.1037/bul0000130" target="_blank" rel="noreferrer">DOI 10.1037/bul0000130</a></article>
-      <article class="science-card" data-no="03" data-reveal><span class="evidence-tag">Motor learning review · 2022</span><h3>Feedback membantu skill motor</h3><p>Analisis gabungan mendukung feedback — termasuk visual dan corrective feedback — untuk pembelajaran skill motor. Selaras dengan alasan 4KRT menampilkan timing, judgment, dan progres.</p><a href="https://pubmed.ncbi.nlm.nih.gov/36430079/" target="_blank" rel="noreferrer">PMID 36430079</a></article>
-      <article class="science-card" data-no="04" data-reveal style="--d:.06s"><span class="evidence-tag">Gamification meta-analysis · 2020</span><h3>Motivasi naik, transfer belum pasti</h3><p>Gamified cognitive tasks cenderung lebih engaging, tapi meta-analysis belum menemukan bukti kuat bahwa gamification sendiri meningkatkan hasil kognitif. Desain game itu kendaraan — bukan obat ajaib.</p><a href="https://doi.org/10.2196/18644" target="_blank" rel="noreferrer">DOI 10.2196/18644</a></article>
-    </div>
-    <div class="science-caveat" data-reveal><strong>Posisi yang jujur:</strong> 4KRT adalah alat latihan skill dan pencatat progres pribadi. Ia bukan alat diagnosis, terapi, atau bukti IQ naik. Klaim yang aman: kamu berlatih tugas visual–motor tertentu, dan 4KRT membuat latihan itu lebih terstruktur, singkat, dan terukur.</div>
-  </div>
-</section>
-
-<!-- ============ VAULT ============ -->
-<section class="section" id="privasi">
-  <div class="wrap">
-    <div class="vault" data-reveal>
-      <div>
-        <div class="eyebrow">Teknologi yang nggak ikut ngintip</div>
-        <h2>Progresmu tinggal bersamamu.</h2>
-        <p>4KRT dibangun local-first. Sesi, pengaturan, kalibrasi, dan histori disimpan di perangkatmu, lalu bisa diekspor sebagai backup — tanpa akun dan tanpa cloud wajib.</p>
-        <div class="vault-list">
-          <span><i>✓</i> Offline-first — main di gunung pun bisa</span>
-          <span><i>✓</i> Backup &amp; restore dengan checksum</span>
-          <span><i>✓</i> Tanpa analytics service, tanpa iklan</span>
-          <span><i>✓</i> Aksesibilitas yang bisa dipilih</span>
-        </div>
-      </div>
-      <div class="vault-visual"><div class="vault-core"><b>LOCAL<br/>DATA</b></div><span class="vault-dot"></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MANIFESTO ============ -->
-<section class="section manifesto">
-  <div class="manifesto-ring" aria-hidden="true"></div>
-  <div class="wrap manifesto-content" data-reveal>
-    <h2><span>Jangan cuma</span><span class="lime">main lebih lama.</span><span>Main lebih sadar.</span></h2>
-    <p>Sesi pendek. Tantangan jelas. Feedback yang bisa dibaca. Itu cara 4KRT mengubah latihan dari rutinitas yang melelahkan jadi perjalanan yang punya arah.</p>
-    <a class="btn btn-primary magnetic" href="./play.html" target="_blank" rel="noopener">Mulai giliran pertamamu ↗</a>
+    <p class="price-fine" data-reveal>Merasa terbantu dan pengin nambah lagi kapan-kapan? Ada tombol <a class="iframe-lightbox-link" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true">Support</a> — biar produk lokal terjangkau kayak gini terus lahir.</p>
   </div>
 </section>
 
@@ -925,19 +675,17 @@ footer{padding:34px 0 48px;color:#8d97a4}
   <div class="wrap">
     <div class="eyebrow" data-reveal>Sebelum mulai</div>
     <div class="section-head">
-      <h2 data-reveal>Pertanyaan yang memang layak ditanyakan.</h2>
-      <p data-reveal>Makin jujur batas produknya, makin berguna cara kita memakainya.</p>
+      <h2 data-reveal>Pertanyaan yang layak ditanyakan.</h2>
+      <p data-reveal>Makin jujur batas produknya, makin berguna cara memakainya.</p>
     </div>
     <div class="faq-list" data-reveal>
-      <div class="qa"><button class="q">Beneran gratis? Nggak ada jebakan?<span class="x"></span></button><div class="a"><p>Beneran. Nggak ada iklan, langganan, atau "unlock premium". 4KRT dibuat sebagai alat latihan — bukan mesin monetisasi.</p></div></div>
+      <div class="qa"><button class="q">Kok bayar semaunya? Maksudnya gimana?<span class="x"></span></button><div class="a"><p>Kamu yang menentukan angkanya saat checkout. Sekali bayar, semua fitur, tanpa langganan, tanpa "unlock premium". 4KRT dibuat supaya alat latihan yang layak nggak kehalang harga — nilainya kamu yang menakar.</p></div></div>
       <div class="qa"><button class="q">Apakah 4KRT bisa meningkatkan IQ?<span class="x"></span></button><div class="a"><p>Belum ada dasar untuk menjanjikan itu. 4KRT melatih tugas spesifik: membaca pola arah, memilih respons, mengurutkan gerak jari, dan menekan pada timing tertentu. Transfer ke kemampuan umum perlu diuji lewat penelitian langsung.</p></div></div>
-      <div class="qa"><button class="q">Harus online?<span class="x"></span></button><div class="a"><p>Cuma buat buka halaman ini. Setelah itu semuanya jalan offline — versi browser maupun APK.</p></div></div>
-      <div class="qa"><button class="q">Data dan progresku disimpan di mana?<span class="x"></span></button><div class="a"><p>Di perangkatmu sendiri (IndexedDB lokal). Nggak ada server, nggak ada akun. Backup tetap penting: data lokal bisa hilang saat browser atau perangkat dibersihkan — makanya ada ekspor-impor dengan verifikasi checksum.</p></div></div>
-      <div class="qa"><button class="q">Ini cuma buat pemain rhythm game?<span class="x"></span></button><div class="a"><p>Enggak. Asalnya memang dari kebutuhan latihan rhythm game 4-arah, tapi desainnya berfokus pada komponen skill yang lebih umum — respons visual, koordinasi, timing, fokus. Pemain rhythm game tetap dapat mode yang paling relevan.</p></div></div>
-      <div class="qa"><button class="q">Berapa lama sebaiknya latihan?<span class="x"></span></button><div class="a"><p>Mulai dari satu-dua sesi 60 detik. Kualitas respons lebih penting daripada durasi panjang. Berhenti saat gerakan mulai berantakan karena lelah, lalu pakai data sesi untuk menentukan latihan berikutnya.</p></div></div>
+      <div class="qa"><button class="q">Harus online?<span class="x"></span></button><div class="a"><p>Cuma buat mengunduhnya. Setelah itu semuanya jalan offline — versi webapp maupun APK. Di gunung tanpa sinyal pun tetap bisa latihan.</p></div></div>
+      <div class="qa"><button class="q">Data dan progresku disimpan di mana?<span class="x"></span></button><div class="a"><p>Di perangkatmu sendiri (IndexedDB lokal). Nggak ada server, nggak ada akun. Ada ekspor-impor backup dengan verifikasi checksum kalau mau pindah perangkat.</p></div></div>
       <div class="qa"><button class="q">Aku pemula banget. Bakal ketinggalan?<span class="x"></span></button><div class="a"><p>Justru 4KRT dirancang dari bawah: BPM mulai 60, preset Forgiving, level 6 panah. Kurva naiknya kamu yang pegang — bukan lagu, bukan lawan.</p></div></div>
-      <div class="qa"><button class="q">Bisa di HP?<span class="x"></span></button><div class="a"><p>Bisa. Ada APK Android 121 KB — lebih kecil dari satu foto — dengan kontrol sentuh, atau buka versi browser langsung dari HP.</p></div></div>
-      <div class="qa"><button class="q">Apakah 4KRT menggantikan terapi atau pemeriksaan profesional?<span class="x"></span></button><div class="a"><p>Tidak. 4KRT bukan perangkat medis. Keluhan fokus, koordinasi, tremor, nyeri tangan, atau gangguan fungsi sehari-hari perlu dinilai tenaga profesional yang sesuai.</p></div></div>
+      <div class="qa"><button class="q">Ini cuma buat pemain rhythm game?<span class="x"></span></button><div class="a"><p>Enggak. Asalnya memang dari kebutuhan latihan rhythm game 4-arah, tapi desainnya fokus ke komponen skill yang lebih umum — respons visual, koordinasi, timing, fokus. Pemain rhythm game tetap dapat mode yang paling relevan.</p></div></div>
+      <div class="qa"><button class="q">Apakah 4KRT menggantikan terapi atau pemeriksaan profesional?<span class="x"></span></button><div class="a"><p>Tidak. 4KRT bukan perangkat medis. Keluhan fokus, koordinasi, tremor, atau nyeri tangan perlu dinilai tenaga profesional yang sesuai.</p></div></div>
     </div>
   </div>
 </section>
@@ -949,10 +697,10 @@ footer{padding:34px 0 48px;color:#8d97a4}
       <h2>Satu menit untuk tahu posisi awalmu.</h2>
       <p>Mulai dari level yang nyaman. Biar datanya bicara. Besok, kembali dengan satu target yang lebih jelas.</p>
       <div class="row">
-        <a class="btn btn-dark magnetic" href="./play.html" target="_blank" rel="noopener">▶&nbsp; Main Sekarang — Gratis</a>
-        <a class="btn btn-line magnetic" href="./4KRT-Android.apk" download>Unduh APK Android</a>
+        <a class="btn btn-dark" href="https://meria.myr.id/pl/sigap-visual-motor-training-powered-by-4krt" target="_blank" rel="noopener">Dapatkan Webapp</a>
+        <a class="btn btn-line" href="https://meria.myr.id/pl/4krt-visual-motor-training-apk" target="_blank" rel="noopener">Dapatkan APK Android</a>
       </div>
-      <span class="cta-note">Tanpa akun · Tanpa iklan · Offline · Progres tersimpan di perangkatmu</span>
+      <span class="cta-note">Bayar semaumu · Sekali bayar · Offline · Progres tersimpan di perangkatmu</span>
     </div>
   </div>
 </section>
@@ -961,9 +709,22 @@ footer{padding:34px 0 48px;color:#8d97a4}
 
 <footer>
   <div class="wrap footer-grid">
-    <div class="brand"><span class="brand-mark"></span><span>4K<em>RT</em></span></div>
-    <div class="footer-copy">4KRT adalah skill-training webapp, bukan alat medis. Halaman ini sengaja menghindari klaim "meningkatkan IQ" dan memisahkan bukti ilmiah komponen latihan dari validasi produk 4KRT sendiri. Bagian dari <a href="https://meriaworks.github.io/" style="color:var(--lime)">MERIA</a>.</div>
-    <div class="footer-links"><a href="#top">Atas</a><a href="#sains">Sains</a><a href="#faq">FAQ</a><a href="https://meriaworks.github.io/">MERIA</a></div>
+    <div class="footer-brand">
+      <a class="brand" href="#top"><svg class="mark" width="44" height="44" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0b0e15" stroke="#273140"/><path d="M32 7l10 13H22z" fill="#43f5a0"/><path d="M32 57L22 44h20z" fill="#26e7ff"/><path d="M7 32l13-10v20z" fill="#9a64ff"/><path d="M57 32L44 22v20z" fill="#ff6876"/><circle cx="32" cy="32" r="7" fill="#fff"/><circle cx="32" cy="32" r="10.5" fill="none" stroke="#c8ff1a" stroke-width="2"/></svg><span>4K<em>RT</em></span></a>
+      <span class="tag">BACA CEPAT · GERAK TEPAT · NAIK LEVEL</span>
+      <div class="footer-cta">
+        <a class="btn btn-ghost" href="https://meriaworks.github.io/">Lihat produk MERIA lainnya</a>
+        <a class="mayar-button iframe-lightbox-link" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true"><span></span>Support Meria Works</a>
+      </div>
+    </div>
+    <div class="footer-copy">4KRT adalah skill-training webapp, bukan alat medis. Halaman ini sengaja menghindari klaim "meningkatkan IQ" dan memisahkan bukti ilmiah komponen latihan dari validasi produk 4KRT sendiri. Dibuat oleh <a href="https://meriaworks.github.io/" style="color:var(--lime)">MERIA</a> — software praktis &amp; privat dari Indonesia.</div>
+    <div class="footer-links">
+      <a href="#cerita">Cerita</a>
+      <a href="#cara">Metode SIGAP</a>
+      <a href="#coba">Coba demo</a>
+      <a href="#harga">Harga</a>
+      <a href="https://meriaworks.github.io/">MERIA Works</a>
+    </div>
   </div>
 </footer>
 
@@ -982,8 +743,8 @@ const arrowSVG=d=>`<svg viewBox="0 0 48 48" aria-label="${d}"><path transform="r
 const DIRS=["left","up","right","down"];
 const KEYD={ArrowLeft:"left",ArrowUp:"up",ArrowRight:"right",ArrowDown:"down"};
 
-/* ---------- AUDIO (uiTone dibatasi toggle; sfx demo selalu bunyi) ---------- */
-let AC=null,soundOn=false;
+/* ---------- AUDIO ---------- */
+let AC=null;
 function ac(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(AC&&AC.state==="suspended") AC.resume(); return AC; }
 function rawTone(f,delay,dur,vol,type){
   const a=ac(); if(!a) return;
@@ -994,7 +755,6 @@ function rawTone(f,delay,dur,vol,type){
   g.gain.exponentialRampToValueAtTime(.0001,t+(dur||.1));
   o.connect(g).connect(a.destination); o.start(t); o.stop(t+(dur||.1)+.03);
 }
-const uiTone=(f,dl,du,v,ty)=>{ if(soundOn) rawTone(f,dl,du,v,ty); };
 const sfx={
   hit(){ rawTone(440,0,.06,.045); },
   err(){ rawTone(150,0,.13,.055,"sawtooth"); },
@@ -1005,8 +765,6 @@ const sfx={
   miss(){ rawTone(155,0,.16,.055,"sawtooth"); rawTone(98,.05,.16,.045,"sawtooth"); },
   combo(n){ const t=Math.min(6,Math.floor(n/3)); for(let i=0;i<t;i++) rawTone(523.25*Math.pow(2,i/12),.1+i*.03,.09,.028,"triangle"); }
 };
-const st=$("#soundToggle");
-st.addEventListener("click",()=>{ soundOn=!soundOn; st.setAttribute("aria-pressed",soundOn); st.textContent=soundOn?"◉":"◌"; if(soundOn) rawTone(520,0,.08,.035,"triangle"); });
 
 /* ---------- PRELOADER ---------- */
 const loader=$("#loader"),lnum=$(".num",loader);
@@ -1032,9 +790,9 @@ if(fine&&!reduced){
     requestAnimationFrame(loop); })();
   document.addEventListener("mouseover",e=>{
     const t=e.target.closest("a,button,input,.tilt");
-    const play=e.target.closest('[href$="play.html"]');
-    document.body.classList.toggle("cur-hover",!!t&&!play);
-    document.body.classList.toggle("cur-play",!!play);
+    const get=e.target.closest('a[href="#harga"],a[href^="https://meria.myr.id/pl/"]');
+    document.body.classList.toggle("cur-hover",!!t&&!get);
+    document.body.classList.toggle("cur-get",!!get);
   });
 }
 
@@ -1093,29 +851,29 @@ if(!reduced){
 let hPat=["left","up","down","right"],hIdx=0,hHits=0,hTries=0,hT0=performance.now();
 const hSeq=$("#heroSequence");
 function renderHero(){ hSeq.innerHTML=hPat.map((d,i)=>`<span class="key ${i===hIdx?"active":""}">${arrowSVG(d)}</span>`).join(""); }
-function nextHero(){ hPat=Array.from({length:4},()=>DIRS[Math.floor(Math.random()*4)]); hIdx=0; hT0=performance.now(); renderHero(); }
+function nextHero(){ hPat=Array.from({length:4},()=>DIRS[Math.floor(Math.random()*4)]); hIdx=0; renderHero(); }
 renderHero();
 function heroVisible(){
   const r=$("#heroStage").getBoundingClientRect();
-  const nearTop=(document.documentElement.scrollTop||0)<vh()*1.2; /* hero menempati layar pertama */
+  const nearTop=(document.documentElement.scrollTop||0)<vh()*1.2;
   return (r.top<vh()*.9&&r.bottom>vh()*.1)||nearTop;
 }
 function heroKey(d){
   const keys=$$("#heroSequence .key"); hTries++;
   if(d===hPat[hIdx]){
-    if(hIdx===0) hT0=performance.now(); /* respons diukur dari tekanan pertama, bukan sejak halaman dibuka */
+    if(hIdx===0) hT0=performance.now();
     keys[hIdx].classList.remove("active"); keys[hIdx].classList.add("hit"); hIdx++; hHits++;
-    uiTone(430+hIdx*70,0,.045,.014,"square");
+    sfx.hit();
     $("#heroCombo").textContent=hHits;
     $("#heroAccuracy").textContent=Math.round(hHits/hTries*100)+"%";
     if(hIdx===hPat.length){ $("#heroResponse").textContent=Math.round(performance.now()-hT0)+"ms"; setTimeout(nextHero,350); }
     else keys[hIdx].classList.add("active"); }
-  else{ keys[hIdx].classList.add("miss"); uiTone(150,0,.08,.018,"sawtooth");
+  else{ keys[hIdx].classList.add("miss"); sfx.err();
     setTimeout(()=>keys[hIdx]&&keys[hIdx].classList.remove("miss"),280); }
 }
 
-/* ---------- DEMO GAME (giliran penuh: pola + judgment timing) ---------- */
-const D={combo:0,best:0,turn:0,hits:0,tries:0,seq:[],idx:0,phase:"idle",t0:0,dur:3000,raf:0};
+/* ---------- DEMO GAME ---------- */
+const D={combo:0,best:0,turn:0,hits:0,tries:0,seq:[],idx:0,phase:"idle",t0:0,dur:3000,raf:0,nudged:false};
 const dSeq=$("#dSeq"),dBall=$("#dBall"),dWord=$("#dWord"),dMsg=$("#dMsg");
 const TARGET=.84;
 function dStats(){ $("#dCombo").textContent=D.combo; $("#dBest").textContent=D.best;
@@ -1126,7 +884,7 @@ function newTurn(){
   const n=4+Math.min(4,Math.floor((D.turn-1)/2));
   D.seq=Array.from({length:n},()=>DIRS[Math.floor(Math.random()*4)]);
   D.idx=0; D.phase="seq"; setWord("");
-  dMsg.innerHTML="Baca dari kiri, ketik urutannya, lalu <strong>Spasi</strong> pas bolanya di lingkaran merah.";
+  if(!D.nudged) dMsg.innerHTML="Baca dari kiri, ketik urutannya, lalu <strong>Spasi</strong> pas bolanya di lingkaran merah.";
   dSeq.innerHTML=D.seq.map(d=>`<span class="dkey">${arrowSVG(d)}</span>`).join("");
   D.t0=performance.now(); D.dur=2000+n*250;
   cancelAnimationFrame(D.raf); ballLoop(); dStats();
@@ -1151,6 +909,8 @@ function judge(off,reason){
   sfx[cls]&&sfx[cls]();
   if(ok&&D.combo>=3) sfx.combo(D.combo);
   if(res==="PERFECT") burst();
+  if(!D.nudged&&D.combo>=4){ D.nudged=true;
+    dMsg.innerHTML='Udah kerasa ritmenya? <a href="#harga">Versi lengkapnya nunggu →</a>'; }
   setTimeout(newTurn,950);
 }
 function dDir(dir){
@@ -1169,7 +929,7 @@ function dSpace(){
   judge((p-TARGET)*D.dur);
 }
 $("#dStart").addEventListener("click",function(){
-  ac(); D.combo=0;D.best=0;D.turn=0;D.hits=0;D.tries=0;
+  ac(); D.combo=0;D.best=0;D.turn=0;D.hits=0;D.tries=0;D.nudged=false;
   this.textContent="⟳  Ulangi dari awal"; this.focus(); newTurn();
 });
 $(".dpad").addEventListener("pointerdown",e=>{
@@ -1178,7 +938,7 @@ $(".dpad").addEventListener("pointerdown",e=>{
   b.dataset.k==="space"?dSpace():dDir(b.dataset.k);
 });
 
-/* ---------- ROUTER KEYBOARD GLOBAL (hero + demo, dengan gate) ---------- */
+/* ---------- KEYBOARD ROUTER ---------- */
 addEventListener("keydown",e=>{
   const dir=KEYD[e.key];
   const demoShell=$(".demo-shell");
@@ -1213,46 +973,13 @@ function confLoop(){
   if(conf.length) requestAnimationFrame(confLoop);
 }
 
-/* ---------- SIGAP letters ---------- */
+/* ---------- SIGAP ---------- */
 const letters=$$(".sigap-word span");
 function lightLetter(i){ letters.forEach(x=>x.classList.remove("on")); if(letters[i]) letters[i].classList.add("on"); }
 const sigObs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) lightLetter(+e.target.dataset.letter); }),{rootMargin:"-35% 0px -45% 0px"});
 $$(".sigap-step").forEach(s=>{ sigObs.observe(s);
   s.addEventListener("mouseenter",()=>lightLetter(+s.dataset.letter));
   s.addEventListener("click",()=>lightLetter(+s.dataset.letter)); });
-
-/* ---------- RITME ---------- */
-const RIT=[
- ["R — Refleks","Tanganmu harus gerak sebelum kamu sempat mikir. Refleks nggak bisa dibeli — dia dibangun dari ribuan giliran kecil yang kamu selesaikan."],
- ["I — Irama","Beat bukan musuh yang ngejar-ngejar kamu. Dia metronom yang ngajarin disiplin: semua boleh cepat, asal tetap di dalam irama."],
- ["T — Timing","Menang-kalah ditentukan di jendela ±33 milidetik. 4KRT ngukur offset-mu tiap giliran — biar 'hampir pas' pelan-pelan jadi 'pas'."],
- ["M — Memori","Pola yang sering ketemu pindah dari mata ke otot. Makanya ada Pattern Lab dan Recovery Drill: kesalahan diulang sampai hafal."],
- ["E — Eksekusi","Baca cepat doang nggak dihitung. Skormu lahir dari eksekusi utuh: pola selesai, beat kena, konsisten dari giliran pertama sampai terakhir."]
-];
-const RC=["var(--lime)","var(--cyan)","var(--violet)","var(--coral)","var(--green)"];
-const rh=$("#ritmeH"),rp=$("#ritmeP");
-$$("#ritmeWord .rl").forEach(btn=>{
-  const show=()=>{ const i=+btn.dataset.i;
-    $$("#ritmeWord .rl").forEach(b=>b.classList.toggle("act",b===btn));
-    rh.textContent=RIT[i][0]; rh.style.color=RC[i]; rp.textContent=RIT[i][1]; };
-  btn.addEventListener("mouseenter",show); btn.addEventListener("click",show); btn.addEventListener("focus",show);
-});
-
-/* ---------- JUDGMENT LAB ---------- */
-const jr=$("#jRange"),jw=$("#jWord"),jms=$("#jMs");
-const JC={PERFECT:"var(--cyan)",GREAT:"var(--green)",COOL:"var(--amber)",BAD:"#ff9943",MISS:"var(--red)"};
-function jUpdate(){
-  const v=+jr.value,a=Math.abs(v);
-  const res=a<=33?"PERFECT":a<=70?"GREAT":a<=115?"COOL":a<=170?"BAD":"MISS";
-  jw.textContent=res; jw.style.color=JC[res];
-  jms.textContent=(v>0?"+":"")+v+" ms"+(v===0?" — tengah banget":v<0?" (kecepetan)":" (telat)");
-  $$(".zones span").forEach(s=>s.classList.remove("zon"));
-  const late=v>0;
-  const idx=res==="PERFECT"?4:res==="GREAT"?(late?5:3):res==="COOL"?(late?6:2):res==="BAD"?(late?7:1):(late?8:0);
-  $$(".zones span")[idx].classList.add("zon");
-}
-jr.addEventListener("input",()=>{ jUpdate(); uiTone(400+Math.abs(+jr.value),0,.02,.008); });
-jUpdate();
 
 /* ---------- ANALYTICS CHART ---------- */
 const chartData={
@@ -1272,68 +999,10 @@ function drawChart(type){
 }
 $$(".dash-tabs button").forEach(b=>b.addEventListener("click",()=>{
   $$(".dash-tabs button").forEach(x=>x.classList.remove("active")); b.classList.add("active");
-  drawChart(b.dataset.chart); uiTone(560,0,.05,.02,"triangle");
+  drawChart(b.dataset.chart);
 }));
 drawChart("accuracy");
 $$(".matrix-mini i").forEach((el,i)=>{ if([0,1,5,6,10,11,12,16].includes(i)) el.classList.add("mon"); else if([2,7,13,17].includes(i)) el.classList.add("mid"); });
-
-/* ---------- MODE RAIL (scroll native + tombol) ---------- */
-const mw=$("#modeWindow");
-const modeStep=()=>{ const c=$(".mode-card"); return c?c.getBoundingClientRect().width+18:380; };
-$("#modeNext").addEventListener("click",()=>mw.scrollBy({left:modeStep(),behavior:"smooth"}));
-$("#modePrev").addEventListener("click",()=>mw.scrollBy({left:-modeStep(),behavior:"smooth"}));
-
-/* ---------- THEME PLAYGROUND (inline style — kebal quirk renderer) ---------- */
-const THEMES=[
- {n:"Blue Court",d:"panah biru — sukses jadi hijau",bg:"#0a1c34",s:"#173a63",ln:"#28527f",ar:"#6fd0ff",hit:"#5dffb0",tx:"#f2faff",mut:"#a9cbe6"},
- {n:"Sapphire Rush",d:"biru dalam, hit elektrik",bg:"#050d20",s:"#122452",ln:"#26386e",ar:"#4ea6ff",hit:"#54ffab",tx:"#eef4ff",mut:"#9fb2d8"},
- {n:"Neon Pulse",d:"energi neon klasik 4KRT",bg:"#05070a",s:"#11161c",ln:"#2a3947",ar:"#26e7ff",hit:"#43f5a0",tx:"#f4f6f8",mut:"#aab4bf"},
- {n:"Sakura Signal",d:"pink lembut, tetap tajam",bg:"#110b12",s:"#291927",ln:"#3a2438",ar:"#91e9ee",hit:"#7dffc4",tx:"#fff5fb",mut:"#d8b9cd"},
- {n:"Solar Flare",d:"amber hangat, fokus panas",bg:"#140d05",s:"#38240d",ln:"#4a3010",ar:"#ff9f43",hit:"#ffd23f",tx:"#fff6df",mut:"#d9c8a6"},
- {n:"Deep Ocean",d:"biru laut, sinyal aqua",bg:"#031018",s:"#0d3040",ln:"#134457",ar:"#44cfff",hit:"#53ffd2",tx:"#eafcff",mut:"#9cc7d8"},
- {n:"Forest Circuit",d:"hijau tenang buat grinding",bg:"#071109",s:"#17331d",ln:"#1e4a28",ar:"#4ce6ba",hit:"#9cff57",tx:"#f0fff2",mut:"#a8cbb0"},
- {n:"Midnight Indigo",d:"indigo gelap, lavender listrik",bg:"#05091a",s:"#141f49",ln:"#232f6b",ar:"#50bcff",hit:"#b6ff63",tx:"#eef1ff",mut:"#a3add6"}
-];
-const tp=$("#tp"),tpSw=$("#tpSw"),tpName=$("#tpName"),tpArrows=$$("#tpArrows i");
-let CUR=THEMES[0];
-function applyTheme(t){
-  CUR=t;
-  tp.style.background=t.bg;
-  $("#tpH").style.color=t.tx;
-  $("#tpP").style.color=t.mut;
-  tpName.style.color=t.ar;
-  tpName.textContent=t.n.toUpperCase()+" — "+t.d;
-  tpArrows.forEach(cell=>{
-    cell.style.background=t.s; cell.style.borderColor=t.ln;
-    const svg=$("svg",cell); svg.style.fill=t.ar; svg.style.filter=`drop-shadow(0 0 8px ${t.ar})`;
-  });
-}
-function setCellHit(cell,on){
-  const svg=$("svg",cell);
-  cell.style.borderColor=on?CUR.hit:CUR.ln;
-  svg.style.fill=on?CUR.hit:CUR.ar;
-  svg.style.filter=`drop-shadow(0 0 ${on?10:8}px ${on?CUR.hit:CUR.ar})`;
-}
-let tpTimer=null;
-function themePulse(){
-  clearTimeout(tpTimer);
-  tpArrows.forEach(a=>setCellHit(a,false));
-  tpArrows.forEach((a,i)=>setTimeout(()=>setCellHit(a,true),260+i*180));
-  tpTimer=setTimeout(()=>tpArrows.forEach(a=>setCellHit(a,false)),260+tpArrows.length*180+900);
-}
-THEMES.forEach((t,i)=>{
-  const b=document.createElement("button");
-  b.style.background=`linear-gradient(135deg,${t.ar},${t.bg})`;
-  b.setAttribute("aria-label","Tema "+t.n);
-  if(i===0) b.classList.add("on");
-  b.addEventListener("click",()=>{
-    $$("#tpSw button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
-    applyTheme(t); themePulse(); uiTone(620,0,.06,.02,"triangle");
-  });
-  tpSw.appendChild(b);
-});
-applyTheme(THEMES[0]);
-setInterval(()=>{ const r=tp.getBoundingClientRect(); if(r.top<vh()&&r.bottom>0) themePulse(); },4200);
 
 /* ---------- FAQ ---------- */
 $$(".qa").forEach(qa=>{
@@ -1341,11 +1010,12 @@ $$(".qa").forEach(qa=>{
   btn.addEventListener("click",()=>{
     const open=qa.classList.contains("open");
     $$(".qa.open").forEach(o=>{ o.classList.remove("open"); $(".a",o).style.maxHeight="0"; });
-    if(!open){ qa.classList.add("open"); a.style.maxHeight=a.scrollHeight+"px"; uiTone(500,0,.04,.015); }
+    if(!open){ qa.classList.add("open"); a.style.maxHeight=a.scrollHeight+"px"; }
   });
 });
 
 })();
 </script>
+<script type="text/javascript" src="https://mayarembed.r2.mayar.id/mayar-new-min.js"></script>
 </body>
 </html>
