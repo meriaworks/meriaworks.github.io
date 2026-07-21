@@ -217,6 +217,41 @@ section{position:relative}
   .chaos-col:nth-child(n+3){display:none}
 }
 
+/* ---------- USP "JELAS" ---------- */
+.usp{padding:130px 0}
+.usp .sec-head{text-align:center;margin-inline:auto}
+.usp .sec-head h2,.usp .sec-head p{margin-inline:auto}
+.usp .sec-eyebrow{justify-content:center;display:inline-flex}
+.jelas-row{display:flex;gap:12px;margin-top:26px;min-height:320px}
+.jelas-card{
+  flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:clip;
+  padding:26px 22px;border:1px solid var(--line2);border-radius:var(--r-xl);
+  background:var(--surface);cursor:pointer;text-align:left;
+  transition:flex .55s var(--ease),background .35s,border-color .35s,box-shadow .35s;
+}
+.jelas-card .jelas-letter{
+  font-size:clamp(3rem,7vw,5.2rem);font-weight:700;line-height:1;letter-spacing:-.03em;
+  color:transparent;-webkit-text-stroke:1.5px var(--line2);transition:color .35s,-webkit-text-stroke .35s;
+}
+.jelas-card .jelas-word{font-weight:700;font-size:1.05rem;letter-spacing:.02em}
+.jelas-card .jelas-desc{
+  color:var(--muted);font-size:.9rem;max-width:34ch;
+  opacity:0;max-height:0;transform:translateY(8px);
+  transition:opacity .4s var(--ease) .1s,max-height .5s var(--ease),transform .4s var(--ease) .1s;
+}
+.jelas-card.active{
+  flex:2.6;border-color:var(--purple);box-shadow:var(--shadow);
+  background:linear-gradient(160deg,var(--purple-soft),var(--surface) 70%);
+}
+.jelas-card.active .jelas-letter{color:var(--purple);-webkit-text-stroke:1.5px transparent}
+.jelas-card.active .jelas-desc{opacity:1;max-height:9em;transform:none}
+.jelas-card:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(109,40,217,.4)}
+@media (max-width:820px){
+  .jelas-row{flex-direction:column;min-height:0}
+  .jelas-card{flex:none}
+  .jelas-card.active{flex:none}
+}
+
 /* ---------- bento features ---------- */
 .features{padding:130px 0}
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
@@ -530,44 +565,100 @@ section{position:relative}
     </div>
   </section>
 
-  <!-- ============ FEATURES ============ -->
-  <section class="features container" id="fitur">
+  <!-- ============ USP: JELAS ============ -->
+  <section class="usp container" id="jelas" aria-label="USP JELIN: JELAS">
     <div class="sec-head reveal">
-      <span class="sec-eyebrow">Fitur inti</span>
+      <span class="sec-eyebrow">Kenapa JELIN beda</span>
+      <h2>Cari kerja itu ruwet.<br>JELIN membuatnya <span style="color:var(--purple)">JELAS.</span></h2>
+      <p>Lima huruf, lima janji. Sentuh tiap hurufnya.</p>
+    </div>
+    <div class="jelas-row reveal" id="jelasRow">
+      <button class="jelas-card active" type="button">
+        <span class="jelas-letter" aria-hidden="true">J</span>
+        <span class="jelas-word">Jujur</span>
+        <span class="jelas-desc">Statistik dihitung dari datamu sendiri. Tanpa rekomendasi lowongan palsu, tanpa menebak-nebak hasil rekrutmen.</span>
+      </button>
+      <button class="jelas-card" type="button">
+        <span class="jelas-letter" aria-hidden="true">E</span>
+        <span class="jelas-word">Efisien</span>
+        <span class="jelas-desc">Simpan lowongan dalam 15 detik, pindah tahap satu sentuhan, edit kapan saja — semua di satu ruang.</span>
+      </button>
+      <button class="jelas-card" type="button">
+        <span class="jelas-letter" aria-hidden="true">L</span>
+        <span class="jelas-word">Lokal</span>
+        <span class="jelas-desc">Data tersimpan di perangkatmu, bukan di server orang lain. Offline penuh, tanpa akun, tanpa internet.</span>
+      </button>
+      <button class="jelas-card" type="button">
+        <span class="jelas-letter" aria-hidden="true">A</span>
+        <span class="jelas-word">Aman</span>
+        <span class="jelas-desc">Backup penuh sekali klik, pulihkan kapan saja dengan pratinjau dulu, dan hapus permanen sepenuhnya di tanganmu.</span>
+      </button>
+      <button class="jelas-card" type="button">
+        <span class="jelas-letter" aria-hidden="true">S</span>
+        <span class="jelas-word">Sederhana</span>
+        <span class="jelas-desc">Satu file HTML, sekali bayar Rp 13 ribu, langsung jalan di HP dan komputer. Tanpa langganan, tanpa ribet.</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features container" id="fitur" style="padding-top:0">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Fitur lengkap</span>
       <h2>Dibuat untuk proses cari kerja yang <em style="font-style:normal;color:var(--purple)">sungguhan.</em></h2>
-      <p>Bukan portal lowongan. Bukan penebak nasib. JELIN adalah meja kerja pribadimu untuk mengelola proses yang sedang benar-benar kamu jalani.</p>
+      <p>Bukan portal lowongan. Bukan penebak nasib. JELIN adalah meja kerja pribadimu untuk mengelola proses yang sedang benar-benar kamu jalani — dari lowongan pertama sampai tanda tangan offer.</p>
     </div>
     <div class="bento">
       <div class="tile wide reveal" style="--tone:var(--purple)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-board"/></svg></span>
         <h3>Pipeline papan &amp; tabel</h3>
-        <p>Semua lamaran tersusun per tahap — dari tersimpan, terkirim, interview, sampai offer. Pindah tahap satu sentuhan, lengkap dengan undo.</p>
+        <p>Semua lamaran tersusun per tahap — tersimpan, terkirim, interview, offer. Pindah tahap satu sentuhan, edit detail kapan saja, setiap perubahan tercatat di riwayat aktivitas, dan selalu ada undo.</p>
         <div class="anim-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       </div>
-      <div class="tile reveal" data-delay="1" style="--tone:var(--fuchsia)" data-tilt>
+      <div class="tile wide reveal" data-delay="1" style="--tone:var(--fuchsia)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-cal"/></svg></span>
-        <h3>Agenda &amp; follow-up</h3>
-        <p>Tugas terlambat, hari ini, dan mendatang dalam satu antrean tenang. Tunda, jadwalkan ulang, selesaikan.</p>
+        <h3>Kalender pencarian kerja</h3>
+        <p>Kalender penuh dengan tanggal merah &amp; libur nasional Indonesia (termasuk perkiraan Lebaran dan Jumat Agung). Catat interview, kirim lamaran, kirim CV, follow-up, dan deadline langsung di tanggalnya — lengkap dengan rekap bulanan.</p>
       </div>
-      <div class="tile reveal" data-delay="2" style="--tone:var(--warn)" data-tilt>
+      <div class="tile reveal" style="--tone:var(--warn)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-doc"/></svg></span>
         <h3>Dokumen &amp; versi</h3>
-        <p>CV mana yang dikirim ke perusahaan mana? Riwayat versi dokumen menjawabnya.</p>
+        <p>CV mana dikirim ke perusahaan mana? Catat metadata dokumen, tambah-edit-hapus versinya, semua terjawab.</p>
       </div>
-      <div class="tile reveal" style="--tone:var(--green)" data-tilt>
+      <div class="tile reveal" data-delay="1" style="--tone:var(--green)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-shield"/></svg></span>
         <h3>Privat dari desainnya</h3>
-        <p>Data tersimpan di IndexedDB perangkatmu. Tidak ada yang dikirim ke mana pun.</p>
+        <p>Data tersimpan di IndexedDB perangkatmu. Tidak ada yang dikirim ke mana pun — memang tidak ada servernya.</p>
       </div>
-      <div class="tile reveal" data-delay="1" style="--tone:var(--purple)" data-tilt>
+      <div class="tile reveal" data-delay="2" style="--tone:var(--purple)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-bolt"/></svg></span>
         <h3>Offline penuh</h3>
         <p>Di kereta, di daerah sinyal susah, saat kuota habis — JELIN tetap jalan 100%.</p>
       </div>
-      <div class="tile wide reveal" data-delay="2" style="--tone:var(--fuchsia)" data-tilt>
+      <div class="tile reveal" style="--tone:var(--fuchsia)" data-tilt>
+        <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-mail"/></svg></span>
+        <h3>Kontak &amp; relasi</h3>
+        <p>Simpan HR, user, dan pemberi referral per lamaran — siapa yang perlu di-follow-up tidak lagi hilang dari ingatan.</p>
+      </div>
+      <div class="tile reveal" data-delay="1" style="--tone:var(--warn)" data-tilt>
+        <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-plus"/></svg></span>
+        <h3>Tahap &amp; tampilan racikanmu</h3>
+        <p>Buat tahap custom sesuai alurmu dan simpan kombinasi filter favorit sebagai tampilan siap pakai.</p>
+      </div>
+      <div class="tile reveal" data-delay="2" style="--tone:var(--green)" data-tilt>
+        <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-check"/></svg></span>
+        <h3>Statistik jujur</h3>
+        <p>Berapa aktif, berapa interview, apa yang mendesak — dihitung dari datamu sendiri, bukan tebakan.</p>
+      </div>
+      <div class="tile wide reveal" style="--tone:var(--purple)" data-tilt>
         <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-export"/></svg></span>
-        <h3>Backup &amp; ekspor kapan saja</h3>
-        <p>Unduh seluruh datamu sebagai JSON atau CSV kapan pun. Pindah perangkat tanpa takut kehilangan riwayat, tanpa vendor lock-in.</p>
+        <h3>Backup penuh &amp; pulihkan</h3>
+        <p>Satu klik mengunduh seluruh datamu — 15+ jenis data dari lamaran sampai riwayat aktivitas. Pulihkan di perangkat baru dengan pratinjau dry-run dulu, dan JELIN mengingatkanmu kalau belum pernah backup.</p>
+      </div>
+      <div class="tile reveal" data-delay="1" style="--tone:var(--fuchsia)" data-tilt>
+        <span class="tile-icon"><svg viewBox="0 0 24 24" class="ic"><use href="#i-arrow"/></svg></span>
+        <h3>Ekspor CSV</h3>
+        <p>Butuh olah data di spreadsheet? Daftar lamaranmu keluar sebagai CSV kapan saja. Tanpa vendor lock-in.</p>
       </div>
     </div>
   </section>
@@ -674,10 +765,10 @@ section{position:relative}
           </li>
           <li>
             <span class="how-num">3</span>
-            <div><strong>Langsung pakai semua fiturnya</strong><p>Pipeline papan &amp; tabel, agenda follow-up, catatan interview, versi dokumen, statistik jujur, sampai backup JSON/CSV — semua aktif dari detik pertama.</p></div>
+            <div><strong>Langsung pakai semua fiturnya</strong><p>Pipeline papan &amp; tabel, kalender dengan libur nasional, kontak, versi dokumen, statistik jujur, sampai backup penuh &amp; pulihkan — semua aktif dari detik pertama.</p></div>
           </li>
         </ul>
-        <span class="file-chip"><svg class="ic" style="width:15px;height:15px"><use href="#i-doc"/></svg>JELIN.html · ±350 KB · offline</span>
+        <span class="file-chip"><svg class="ic" style="width:15px;height:15px"><use href="#i-doc"/></svg>JELIN.html · ±390 KB · offline</span>
       </div>
     </div>
   </section>
@@ -884,6 +975,28 @@ section{position:relative}
   };
   if (reduceMotion) chaos.style.setProperty("--p", "1");
   else { addEventListener("scroll", scrub, { passive: true }); scrub(); }
+
+  /* ---------- USP JELAS: satu kartu aktif, rotasi pelan, berhenti saat disentuh ---------- */
+  const jelasCards = $$("#jelasRow .jelas-card");
+  let jelasIndex = 0;
+  let jelasTimer = 0;
+  const activateJelas = (index) => {
+    jelasIndex = index;
+    jelasCards.forEach((card, cardIndex) => card.classList.toggle("active", cardIndex === index));
+  };
+  const startJelas = () => {
+    if (reduceMotion) return;
+    clearInterval(jelasTimer);
+    jelasTimer = setInterval(() => activateJelas((jelasIndex + 1) % jelasCards.length), 3200);
+  };
+  jelasCards.forEach((card, index) => {
+    card.addEventListener("pointerenter", () => { clearInterval(jelasTimer); activateJelas(index); });
+    card.addEventListener("focus", () => { clearInterval(jelasTimer); activateJelas(index); });
+    card.addEventListener("click", () => { clearInterval(jelasTimer); activateJelas(index); });
+  });
+  const jelasRow = $("#jelasRow");
+  jelasRow.addEventListener("pointerleave", startJelas);
+  startJelas();
 
   /* ---------- buy button (placeholder sampai link pembelian aktif) ---------- */
   const buyBtn = $("#buyBtn"), buyNote = $("#buyNote");
