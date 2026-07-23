@@ -548,6 +548,12 @@ nav.scrolled .inner{box-shadow:0 14px 36px -18px rgba(12,34,28,.35);border-color
 .final h2 em{color:var(--mint)}
 .final .lead{color:#A9D4C9;margin:18px auto 0}
 .final .lead b{color:#fff}
+/* ---- Support Meria Works (lightbox, styled to KLINAP) ---- */
+a.ms-support{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:1rem;line-height:1;border-radius:999px;padding:14px 28px;cursor:pointer;text-decoration:none;color:var(--mint);background:rgba(45,212,191,.10);border:2px solid var(--mint);transition:transform .2s,background .2s,box-shadow .2s}
+a.ms-support:hover{transform:translateY(-2px);background:rgba(45,212,191,.2);box-shadow:0 14px 34px -14px rgba(45,212,191,.6)}
+a.ms-support .ms-heart{color:var(--mint);animation:msHeartbeat 1.3s ease-in-out infinite}
+@keyframes msHeartbeat{0%,100%{transform:scale(1)}42%{transform:scale(1.24)}}
+@media (prefers-reduced-motion:reduce){.ms-support .ms-heart{animation:none}}
 .final .spot{position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.22),transparent 65%);
   pointer-events:none;left:var(--mx,50%);top:var(--my,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .3s}
 .final:hover .spot{opacity:1}
@@ -1400,6 +1406,13 @@ footer .logo{font-size:1.15rem}
       <a class="btn btn-mint btn-lg" data-magnetic href="#harga">Beli Sekarang — Rp 129rb <span class="ar">→</span></a>
       <a class="btn btn-ghost btn-lg" href="panduan/">Baca Panduan Lengkap</a>
     </div>
+    <div style="margin-top:20px">
+      <a class="mayar-button iframe-lightbox-link ms-support" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true" aria-label="Dukung Meria Works">
+        <svg class="ms-heart" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21S2.4 14.6 2.4 8.9C2.4 5.8 4.8 3.6 7.6 3.6c1.8 0 3.4 1 4.4 2.6 1-1.6 2.6-2.6 4.4-2.6 2.8 0 5.2 2.2 5.2 5.3C21.6 14.6 12 21 12 21z"/></svg>
+        Dukung Meria Works
+      </a>
+      <p class="reassure" style="margin-top:12px;opacity:.85">Klinap murah karena tanpa server bulanan. Kalau terbantu, dukungan kecilmu bikin produk lokal seterjangkau ini terus lahir.</p>
+    </div>
     <p class="reassure" style="margin-top:20px">Tanpa biaya tersembunyi · Data milik Anda.</p>
   </div>
 </section>
@@ -1885,5 +1898,6 @@ document.querySelectorAll('#faqList .qa').forEach(qa=>{
   });
 })();
 </script>
+<script type="text/javascript" src="https://mayarembed.r2.mayar.id/mayar-new-min.js" defer></script>
 </body>
 </html>

@@ -238,6 +238,11 @@ nav.sc{border-color:var(--line)}
 .hcard{border-radius:20px;padding:24px;border:1px dashed rgba(255,199,97,.4);background:rgba(255,199,97,.045)}
 .hcard b{font-family:var(--disp);display:flex;gap:11px;align-items:center;font-size:16px}
 .hcard p{color:var(--mut);font-size:13.5px;margin-top:8px}
+a.ms-support{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:15px;line-height:1;border-radius:14px;padding:15px 26px;cursor:pointer;text-decoration:none;color:#241a06;background:linear-gradient(100deg,#ffc761,#ff9d4d);border:1px solid rgba(255,199,97,.5);box-shadow:0 14px 40px -12px rgba(255,157,77,.55);transition:transform .25s,box-shadow .25s,filter .2s}
+a.ms-support:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 20px 52px -12px rgba(255,157,77,.78)}
+a.ms-support .ms-heart{color:#241a06;animation:msHeartbeat 1.3s ease-in-out infinite}
+@keyframes msHeartbeat{0%,100%{transform:scale(1)}42%{transform:scale(1.24)}}
+@media (prefers-reduced-motion:reduce){.ms-support .ms-heart{animation:none}}
 .final{padding:150px 24px;text-align:center;overflow:hidden;
   background:radial-gradient(64% 76% at 50% 108%,rgba(255,107,61,.2),transparent 62%),var(--coal)}
 .final h2{font-size:clamp(38px,6.4vw,74px)}
@@ -538,6 +543,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
         <span><small>SEGERA DI</small><b>Google Play</b></span>
       </a>
+      <a class="mayar-button iframe-lightbox-link ms-support" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true" aria-label="Dukung Meria Works">
+        <svg class="ms-heart" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21S2.4 14.6 2.4 8.9C2.4 5.8 4.8 3.6 7.6 3.6c1.8 0 3.4 1 4.4 2.6 1-1.6 2.6-2.6 4.4-2.6 2.8 0 5.2 2.2 5.2 5.3C21.6 14.6 12 21 12 21z"/></svg>
+        Dukung Meria Works
+      </a>
     </div>
   </div>
 </section>
@@ -637,5 +646,6 @@ function demoPick(i){clearInterval(dtimer);
 const dio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){dio.disconnect();demoShow();}}),{threshold:.35});
 const db=document.getElementById('demo-box');if(db)dio.observe(db);
 </script>
+<script type="text/javascript" src="https://mayarembed.r2.mayar.id/mayar-new-min.js" defer></script>
 </body>
 </html>

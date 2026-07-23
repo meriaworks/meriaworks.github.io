@@ -344,6 +344,27 @@
     .btn.dark-btn { --btn-bg: var(--ink); --btn-color: var(--bg); }
     .btn.mint-btn { --btn-bg: var(--accent-2); }
 
+    /* ---- Support Meria Works (Mayar lightbox, theme-aware) ---- */
+    a.ms-support {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 24px;
+      border-radius: var(--btn-radius);
+      font-family: var(--font-display); font-weight: 700; font-size: .95rem; line-height: 1;
+      cursor: pointer; text-decoration: none;
+      border: var(--bw) solid var(--ink);
+      background: linear-gradient(120deg, var(--pink), var(--butter));
+      color: var(--ink);
+      transition: transform .22s var(--bounce), box-shadow .22s ease, filter .22s ease;
+    }
+    [data-theme="cute"] a.ms-support { box-shadow: var(--pop-sm); }
+    [data-theme="cute"] a.ms-support:hover { transform: translate(-2px,-3px); box-shadow: 7px 7px 0 var(--ink); }
+    [data-theme="modern"] a.ms-support { border-color: transparent; background: linear-gradient(120deg, var(--coral), var(--accent)); }
+    [data-theme="modern"] a.ms-support:hover { filter: brightness(1.05); box-shadow: 0 16px 44px color-mix(in srgb, var(--coral) 34%, transparent); }
+    a.ms-support .ms-label { font: inherit; color: inherit; }
+    a.ms-support .ms-heart { color: #c0264a; animation: msHeartbeat 1.3s ease-in-out infinite; }
+    [data-theme="modern"] a.ms-support .ms-heart { color: var(--ink); }
+    @keyframes msHeartbeat { 0%,100% { transform: scale(1); } 42% { transform: scale(1.24); } }
+
     /* ============ HERO ============ */
     .hero {
       position: relative;
@@ -1630,6 +1651,10 @@
         <div class="cta-actions">
           <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com&amp;su=Halo%20Meria%20Works&amp;body=Halo%20Meria%20Works%2C%0A%0ASaya%20tertarik%20dengan..." target="_blank" rel="noopener"><span data-i18n="cta.b1">Ngobrol dengan Meria</span><svg class="ic"><use href="#ic-mail"/></svg></a>
           <a class="btn ghost" href="#produk" data-i18n="cta.b2">Lihat semua produk</a>
+          <a class="mayar-button iframe-lightbox-link ms-support" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true" aria-label="Dukung Meria Works">
+            <svg class="ms-heart" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21S2.4 14.6 2.4 8.9C2.4 5.8 4.8 3.6 7.6 3.6c1.8 0 3.4 1 4.4 2.6 1-1.6 2.6-2.6 4.4-2.6 2.8 0 5.2 2.2 5.2 5.3C21.6 14.6 12 21 12 21z"/></svg>
+            <b class="ms-label" data-i18n="support.cta">Dukung Meria Works</b>
+          </a>
         </div>
         <a class="email-pill" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com" target="_blank" rel="noopener">meriaworks.id@gmail.com</a>
       </div>
@@ -1825,6 +1850,7 @@
         'cta.h2': 'Life is expensive enough.<br><span>Your tools shouldn’t be.</span>',
         'cta.body': 'Meria Works builds digital products for people who keep going—running businesses, organising life, hunting for jobs, caring for patients, and keeping their minds sharp.',
         'cta.b1': 'Talk to Meria', 'cta.b2': 'See all products',
+        'support.cta': 'Support Meria Works',
         'foot.title': 'Digital tools for real life.',
         'foot.explore': 'Explore', 'foot.products': 'Products', 'foot.made': 'Made in Indonesia.',
       };
@@ -2039,5 +2065,6 @@
       addEventListener('resize', resizeCanvas);
     })();
   </script>
+  <script type="text/javascript" src="https://mayarembed.r2.mayar.id/mayar-new-min.js" defer></script>
 </body>
 </html>
