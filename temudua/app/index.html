@@ -15,8 +15,19 @@
       content="TemuDua — catat perasaan, jadwal, tugas rumah, dan uang berdua. Datamu tersimpan di perangkatmu sendiri."
     />
     <title>TemuDua — Hidup Berdua Lebih Tertata</title>
-    <script type="module" crossorigin src="/temudua/app/assets/index-NyvnaVgM.js"></script>
-    <link rel="stylesheet" crossorigin href="/temudua/app/assets/index-DOaYofp4.css">
+    <script>
+      // Applies the saved theme before first paint. Without this the app paints
+      // the default palette and then repaints the chosen one, which reads as a
+      // flash of the wrong colour on every single launch.
+      try {
+        var t = localStorage.getItem('temudua.theme')
+        if (t && ['pastel','ceria','senja','embun','malam'].indexOf(t) > -1) {
+          document.documentElement.setAttribute('data-theme', t)
+        }
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/temudua/app/assets/index-BnYHB_c8.js"></script>
+    <link rel="stylesheet" crossorigin href="/temudua/app/assets/index-DNcGYZbB.css">
   <link rel="manifest" href="/temudua/app/manifest.webmanifest"></head>
   <body>
     <div id="root"></div>

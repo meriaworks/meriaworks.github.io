@@ -4,500 +4,615 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TemuDua — Hidup berdua jadi lebih tertata</title>
-<meta name="description" content="TemuDua adalah ruang berdua yang lokal-first: kalender, tugas rumah, uang, nikah, kesuburan, dan pengasuhan dalam satu tempat. Tanpa akun, tanpa server, tanpa skor hubungan. Datamu tinggal di perangkatmu." />
+<meta name="description" content="Satu ruang berdua: kalender, urusan rumah, uang, persiapan nikah, kesuburan, dan pengasuhan. Tanpa akun, tanpa server, tanpa skor hubungan. Gratis selamanya." />
 <link rel="canonical" href="https://meriaworks.github.io/temudua/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="TemuDua — Hidup berdua jadi lebih tertata" />
-<meta property="og:description" content="Kalender, tugas rumah, uang, nikah, kesuburan, dan pengasuhan dalam satu ruang berdua. Tanpa akun, tanpa server, gratis." />
+<meta property="og:description" content="Kalender, urusan rumah, uang, nikah, kesuburan, pengasuhan — dalam satu ruang berdua. Tanpa akun, tanpa server, gratis." />
 <meta property="og:url" content="https://meriaworks.github.io/temudua/" />
-<meta property="og:image" content="https://meriaworks.github.io/assets/logos/temudua.png" />
+<meta property="og:image" content="https://meriaworks.github.io/temudua/icon-1024.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#fdf7fa" />
+<meta name="theme-color" content="#FFF7FB" />
+
+<!-- Favicon, spelled out in every form a browser looks for. A lone SVG is not
+     enough: Safari wants a PNG, iOS wants apple-touch-icon, and some Android
+     browsers only read the 32px PNG. -->
+<link rel="icon" type="image/svg+xml" href="./icon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="./icon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="./icon-180.png" />
+<link rel="mask-icon" href="./icon.svg" color="#FF6F9F" />
+
+<script>
+  // Opt IN to scroll animation, rather than opting out of it. If anything here
+  // is missing the page simply renders fully visible, which is the safe state.
+  try {
+    if ('IntersectionObserver' in window &&
+        !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.className += ' anim'
+    }
+  } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" href="./app/icons/favicon.svg">
 <style>
-/* ==================================================================
+/* ===================================================================
    TemuDua — landing.
-   Art direction inherited from the product itself: bright pastel,
-   pink + teal, very round, dark ink on every fill (never white on
-   pastel — that fails contrast and looks washed out).
-   ================================================================== */
+
+   Light ALWAYS. An earlier version honoured prefers-color-scheme and
+   went dark on a dark phone, which killed the whole point: this page
+   exists to show that the product is bright and friendly. A marketing
+   page is a brand statement, not a system surface.
+   =================================================================== */
 
 :root{
-  --bg:#fdf7fa; --surface:#ffffff; --sunk:#f2fbf8;
-  --ink:#243044; --muted:#586074; --line:#e4ecf3;
-  --primary:#ff8fb3; --primary-soft:#ffeef4; --primary-ink:#a32d59;
-  --teal:#5fd6c8; --teal-soft:#ddf8f4; --teal-ink:#0e6a5f;
-  --lav:#cdc4ff; --lav-soft:#efecfe; --lav-ink:#4a338f;
-  --yellow:#ffdf6e; --yellow-soft:#fff6db; --yellow-ink:#6f5100;
-  --coral:#ffab95; --coral-soft:#ffeee9; --coral-ink:#a33c28;
+  --paper:#FFF7FB; --paper2:#F4FBFA; --card:#FFFFFF;
+  --ink:#231B2E; --muted:#5C5470; --faint:#8E86A3;
+  --line:rgba(35,27,46,.10);
+  --pink:#FF6F9F; --pink-soft:#FFE4EE; --pink-ink:#96204F;
+  --teal:#2FBFB0; --teal-soft:#D6F6F2; --teal-ink:#0A5F56;
+  --violet:#8B7BFF; --violet-soft:#EAE6FF; --violet-ink:#3B2A96;
+  --amber:#FFB43D; --amber-soft:#FFF0D6; --amber-ink:#6B4400;
+  --lime:#7BD86B; --lime-soft:#E4F8E0; --lime-ink:#26621C;
+  --sky:#49B8F0; --sky-soft:#DCF0FC; --sky-ink:#0D4F73;
   --font:"Nunito",ui-sans-serif,system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.2,.7,.3,1);
   --spring:cubic-bezier(.34,1.56,.64,1);
-  --r-sm:14px; --r-md:20px; --r-lg:28px; --r-xl:36px; --r-pill:999px;
-  --sh-sm:0 2px 8px rgba(126,87,110,.07);
-  --sh-md:0 10px 26px rgba(126,87,110,.10);
-  --sh-lg:0 24px 60px rgba(126,87,110,.16);
-  --wrap:1120px;
+  --r-s:16px; --r-m:24px; --r-l:34px; --r-xl:44px; --r-pill:999px;
+  --sh-s:0 2px 10px rgba(120,70,110,.07);
+  --sh-m:0 14px 34px rgba(120,70,110,.12);
+  --sh-l:0 30px 70px rgba(120,70,110,.18);
+  --wrap:1180px;
 }
-
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#15192a; --surface:#1f2438; --sunk:#1a1f31;
-    --ink:#f0f3fa; --muted:#a8b0c4; --line:#333b54;
-    --primary-soft:#43263a; --primary-ink:#ffc7dc;
-    --teal-soft:#123c3c; --teal-ink:#8ef0e2;
-    --lav-soft:#2a2545; --lav-ink:#d3c9ff;
-    --yellow-soft:#3a2f18; --yellow-ink:#ffe49b;
-    --coral-soft:#43261f; --coral-ink:#ffc0ad;
-    --sh-sm:0 2px 8px rgba(0,0,0,.4);
-    --sh-md:0 10px 26px rgba(0,0,0,.45);
-    --sh-lg:0 24px 60px rgba(0,0,0,.5);
-  }
-}
-
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--font);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{line-height:1.05;letter-spacing:-.035em;font-weight:900}
+h1{font-size:clamp(40px,8.5vw,96px)}
+h2{font-size:clamp(30px,5.4vw,60px)}
+h3{font-size:clamp(19px,2.3vw,25px);letter-spacing:-.02em;line-height:1.2}
+p{color:var(--muted)}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 22px}
+section{position:relative;padding:clamp(64px,9vw,130px) 0}
+
+/* motion off for those who ask */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv,.rv-child{opacity:1!important;transform:none!important}
 }
-body{
-  background:var(--bg);color:var(--ink);font-family:var(--font);
-  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+
+/* ---------- animated mesh background ---------- */
+.mesh{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.mesh i{
+  position:absolute;display:block;border-radius:50%;filter:blur(70px);opacity:.38;
+  will-change:transform;
 }
-img,svg{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:900}
-h1{font-size:clamp(34px,6.4vw,64px)}
-h2{font-size:clamp(26px,4.2vw,42px)}
-h3{font-size:clamp(18px,2.4vw,22px)}
-p{color:var(--muted)}
-.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 20px}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 15px;border-radius:var(--r-pill);
-  background:var(--teal-soft);color:var(--teal-ink);
-  font-size:13px;font-weight:800;letter-spacing:.01em;
+.mesh i:nth-child(1){width:46vw;height:46vw;background:var(--pink);top:-12vw;left:-8vw;animation:drift1 26s var(--ease) infinite}
+.mesh i:nth-child(2){width:40vw;height:40vw;background:var(--teal);top:24vh;right:-12vw;animation:drift2 31s var(--ease) infinite}
+.mesh i:nth-child(3){width:36vw;height:36vw;background:var(--violet);bottom:-6vw;left:18vw;animation:drift3 35s var(--ease) infinite}
+.mesh i:nth-child(4){width:28vw;height:28vw;background:var(--amber);top:58vh;left:-6vw;animation:drift2 29s var(--ease) infinite reverse}
+@keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(6vw,8vh,0) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1.1)}50%{transform:translate3d(-7vw,-6vh,0) scale(.95)}}
+@keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5vw,-9vh,0) scale(1.2)}}
+
+/* ---------- cursor companion (desktop only) ---------- */
+.cursor{
+  position:fixed;top:0;left:0;width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--amber),var(--pink));
+  pointer-events:none;z-index:90;mix-blend-mode:multiply;display:none;opacity:.75;
+  transition:width .25s var(--spring),height .25s var(--spring);
 }
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  min-height:52px;padding:0 26px;border:1px solid transparent;
-  border-radius:var(--r-md);background:var(--primary);color:#243044;
-  font:inherit;font-weight:900;font-size:15px;text-decoration:none;cursor:pointer;
-  box-shadow:var(--sh-sm);
-  transition:transform .26s var(--spring),box-shadow .2s var(--ease),filter .15s var(--ease);
-}
-.btn:hover{transform:translateY(-2px);box-shadow:var(--sh-md);filter:brightness(.97)}
-.btn:active{transform:translateY(0) scale(.97);box-shadow:none}
-.btn--teal{background:var(--teal)}
-.btn--ghost{background:transparent;border-color:var(--line);color:var(--ink);box-shadow:none}
-.btn--ghost:hover{background:var(--sunk)}
-.btn svg{width:18px;height:18px;flex:none}
+/* Only exists where there is a real cursor to follow. */
+@media (hover:hover) and (pointer:fine){ .cursor{display:block} }
+.cursor.big{width:64px;height:64px}
 
 /* ---------- nav ---------- */
-.nav{
-  position:sticky;top:0;z-index:50;
-  background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(16px);
+  background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid var(--line)}
+.nav__in{display:flex;align-items:center;gap:14px;height:72px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:19px;letter-spacing:-.03em;min-height:44px}
+.brand img{width:38px;height:38px;border-radius:12px;box-shadow:var(--sh-s)}
+.nav__links{margin-left:auto;display:flex;align-items:center;gap:4px}
+.nav__links a:not(.btn){padding:10px 15px;border-radius:var(--r-pill);font-weight:800;font-size:14.5px;color:var(--muted);
+  transition:background .18s var(--ease),color .18s var(--ease)}
+.nav__links a:not(.btn):hover{background:var(--pink-soft);color:var(--pink-ink)}
+@media (max-width:880px){ .nav__links a:not(.btn){display:none} }
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:56px;padding:0 30px;border:2px solid var(--ink);border-radius:var(--r-pill);
+  background:var(--pink);color:var(--ink);font:inherit;font-weight:900;font-size:16px;cursor:pointer;
+  box-shadow:4px 4px 0 var(--ink);
+  transition:transform .18s var(--spring),box-shadow .18s var(--ease),background .18s var(--ease);
 }
-.nav__in{display:flex;align-items:center;gap:14px;height:68px}
-.nav__brand{display:flex;align-items:center;gap:11px;min-height:44px;font-weight:900;font-size:18px;text-decoration:none;letter-spacing:-.02em}
-.nav__links{margin-left:auto;display:flex;align-items:center;gap:6px}
-.nav__links a{
-  padding:9px 14px;border-radius:var(--r-pill);text-decoration:none;
-  font-weight:800;font-size:14px;color:var(--muted);
-  transition:background .16s var(--ease),color .16s var(--ease);
-}
-.nav__links a:hover{background:var(--primary-soft);color:var(--primary-ink)}
-.nav__links .btn{min-height:42px;padding:0 18px;font-size:14px}
-@media (max-width:760px){ .nav__links a:not(.btn){display:none} }
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn--teal{background:var(--teal)}
+.btn--amber{background:var(--amber)}
+.btn--ghost{background:var(--card)}
+.btn--sm{min-height:46px;padding:0 20px;font-size:14.5px;box-shadow:3px 3px 0 var(--ink)}
+.btn svg{width:19px;height:19px;flex:none}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:clamp(46px,8vw,86px) 0 clamp(40px,6vw,64px);overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
-@media (max-width:900px){ .hero__grid{grid-template-columns:1fr;gap:34px} }
-.hero h1{margin:18px 0 16px}
-.hero h1 em{font-style:normal;color:var(--primary-ink);position:relative;white-space:nowrap}
-.hero h1 em::after{
-  content:'';position:absolute;left:0;right:0;bottom:.08em;height:.30em;
-  background:var(--yellow);border-radius:var(--r-pill);z-index:-1;opacity:.85;
-}
-.hero__lead{font-size:clamp(16px,2vw,19px);max-width:52ch}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.hero__note{margin-top:16px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px}
-.hero__note span{display:inline-flex;align-items:center;gap:6px}
-.blob{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none;z-index:-2;opacity:.55}
-.blob--a{width:420px;height:420px;top:-170px;right:-120px;background:radial-gradient(circle,var(--teal) 0%,transparent 68%)}
-.blob--b{width:320px;height:320px;bottom:-150px;left:-110px;background:radial-gradient(circle,var(--primary) 0%,transparent 68%)}
+.hero{padding-top:clamp(30px,5vw,60px);padding-bottom:clamp(40px,6vw,80px)}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,60px);align-items:center}
+@media (max-width:940px){ .hero__grid{grid-template-columns:1fr;gap:38px} }
+.tagpill{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border:2px solid var(--ink);
+  border-radius:var(--r-pill);background:var(--card);font-size:13.5px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}
+.tagpill b{color:var(--teal-ink)}
+.hero h1{margin:22px 0 20px}
+/* Each word animates in on its own — a whole headline fading at once reads
+   like a slow page, word-by-word reads like it was written for you. */
+.word{display:inline-block;opacity:0;transform:translateY(28px) rotate(3deg);
+  animation:wordIn .78s var(--spring) forwards}
+@keyframes wordIn{to{opacity:1;transform:none}}
+.hl{position:relative;display:inline-block;white-space:nowrap}
+.hl svg{position:absolute;left:-2%;bottom:-14%;width:104%;height:52%;z-index:-1;overflow:visible}
+.hl path{stroke:var(--amber);stroke-width:15;fill:none;stroke-linecap:round;
+  stroke-dasharray:520;stroke-dashoffset:520;animation:draw 1.1s var(--ease) 1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero__lead{font-size:clamp(16.5px,1.9vw,20px);max-width:50ch;margin-bottom:30px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero__proof{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:14px;font-weight:800;color:var(--muted)}
+.hero__proof span{display:inline-flex;align-items:center;gap:8px}
+.hero__proof svg{width:17px;height:17px;color:var(--teal-ink)}
 
-/* phone mock */
+/* phone */
+.phone-wrap{position:relative;justify-self:center;perspective:1200px}
 .phone{
-  position:relative;justify-self:center;width:min(310px,84vw);
-  border-radius:40px;padding:12px;background:var(--surface);
-  border:1px solid var(--line);box-shadow:var(--sh-lg);
-  animation:floaty 7s var(--ease) infinite;
+  position:relative;width:min(320px,84vw);border:3px solid var(--ink);border-radius:44px;padding:12px;
+  background:var(--card);box-shadow:12px 14px 0 var(--ink);
+  transform-style:preserve-3d;transition:transform .3s var(--ease);
+  animation:bob 6.5s var(--ease) infinite;
 }
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
-.phone__screen{border-radius:30px;background:var(--bg);overflow:hidden;border:1px solid var(--line)}
-.phone__bar{display:flex;align-items:center;gap:8px;padding:13px 15px;border-bottom:1px solid var(--line)}
-.phone__bar b{font-size:14px;font-weight:900}
-.phone__bar small{color:var(--muted);font-size:11px;display:block;font-weight:700}
-.phone__body{padding:14px;display:grid;gap:10px}
-.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:13px;box-shadow:var(--sh-sm)}
-.pcard--hero{
-  background:linear-gradient(140deg,var(--primary-soft),var(--lav-soft) 52%,var(--teal-soft));
-  border-color:transparent;
-}
-.pcard b{font-size:14.5px;display:block;letter-spacing:-.01em}
-.pcard small{color:var(--muted);font-size:11.5px;font-weight:700}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.chip{padding:5px 11px;border-radius:var(--r-pill);font-size:10.5px;font-weight:800}
-.chip--p{background:var(--primary-soft);color:var(--primary-ink)}
-.chip--t{background:var(--teal-soft);color:var(--teal-ink)}
-.chip--l{background:var(--lav-soft);color:var(--lav-ink)}
-.chip--y{background:var(--yellow-soft);color:var(--yellow-ink)}
-.phone__nav{display:flex;justify-content:space-around;padding:11px 6px;border-top:1px solid var(--line);background:var(--surface)}
-.phone__nav i{width:22px;height:22px;border-radius:8px;background:var(--line);display:block}
-.phone__nav i:first-child{background:var(--primary)}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -14px}}
+.phone__screen{border-radius:32px;overflow:hidden;background:var(--paper);border:2px solid var(--ink)}
+.phone__bar{display:flex;align-items:center;gap:9px;padding:13px 15px;background:var(--card);border-bottom:2px solid var(--line)}
+.phone__bar img{width:30px;height:30px;border-radius:10px}
+.phone__bar b{font-size:14.5px;display:block;letter-spacing:-.02em}
+.phone__bar small{color:var(--faint);font-size:11px;font-weight:800}
+.phone__body{padding:13px;display:grid;gap:9px}
+.pc{border:2px solid var(--ink);border-radius:var(--r-s);padding:12px;background:var(--card);box-shadow:2px 2px 0 var(--ink)}
+.pc--hero{background:linear-gradient(135deg,var(--pink-soft),var(--violet-soft) 55%,var(--teal-soft))}
+.pc b{display:block;font-size:14.5px;letter-spacing:-.02em}
+.pc small{color:var(--muted);font-size:11.5px;font-weight:700}
+.pchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.pchip{padding:5px 10px;border:1.5px solid var(--ink);border-radius:var(--r-pill);font-size:10px;font-weight:900}
+.phone__nav{display:flex;justify-content:space-around;padding:10px 6px;background:var(--card);border-top:2px solid var(--line)}
+.phone__nav i{width:24px;height:24px;border-radius:8px;background:var(--line);display:block}
+.phone__nav i:first-child{background:var(--pink)}
+/* floating badges around the phone */
+.fb{position:absolute;display:flex;align-items:center;gap:7px;padding:10px 14px;background:var(--card);
+  border:2px solid var(--ink);border-radius:var(--r-pill);font-size:12.5px;font-weight:900;box-shadow:3px 3px 0 var(--ink);z-index:2}
+.fb svg{width:16px;height:16px}
+.fb--1{top:-5%;left:-13%;animation:float1 5.5s var(--ease) infinite}
+.fb--2{top:42%;right:-17%;animation:float2 6.2s var(--ease) infinite}
+.fb--3{bottom:-4%;left:-8%;animation:float1 7s var(--ease) .6s infinite}
+@keyframes float1{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-13px) rotate(-1deg)}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-11px) rotate(1deg)}}
+/* Below the two-column breakpoint the phone is centred with no side room, so
+   the badges have nowhere to go without covering it. They are decoration —
+   dropping them beats overlapping the thing they are meant to point at. */
+@media (max-width:940px){ .fb{display:none} }
 
-/* ---------- sections ---------- */
-section{padding:clamp(52px,7vw,92px) 0}
-.sec-head{max-width:64ch;margin-bottom:clamp(28px,4vw,46px)}
-.sec-head h2{margin:14px 0 12px}
-.sec-head p{font-size:clamp(15px,1.7vw,17.5px)}
+/* ---------- marquee ---------- */
+.marquee{border-block:3px solid var(--ink);background:var(--amber);overflow:hidden;padding:16px 0}
+.marquee__track{display:flex;gap:44px;width:max-content;animation:slide 26s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee__item{display:flex;align-items:center;gap:12px;font-weight:900;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.marquee__item svg{width:20px;height:20px}
 
-.grid{display:grid;gap:16px}
-.grid--3{grid-template-columns:repeat(3,1fr)}
-.grid--2{grid-template-columns:repeat(2,1fr)}
-@media (max-width:900px){ .grid--3{grid-template-columns:1fr 1fr} }
-@media (max-width:620px){ .grid--3,.grid--2{grid-template-columns:1fr} }
+/* ---------- USP: T E M U ---------- */
+.usp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+@media (max-width:860px){ .usp-grid{grid-template-columns:repeat(2,1fr)} }
+.usp{
+  position:relative;border:3px solid var(--ink);border-radius:var(--r-l);padding:26px 22px;background:var(--card);
+  box-shadow:6px 6px 0 var(--ink);overflow:hidden;
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease);
+}
+.usp:hover{transform:translate(-3px,-5px);box-shadow:10px 12px 0 var(--ink)}
+.usp__letter{font-size:clamp(56px,7vw,84px);font-weight:900;line-height:.85;letter-spacing:-.06em;color:var(--tone)}
+.usp__word{font-size:clamp(19px,2.2vw,24px);font-weight:900;letter-spacing:-.03em;margin:10px 0 8px}
+.usp p{font-size:14.5px}
+.usp::after{content:'';position:absolute;width:120px;height:120px;border-radius:50%;background:var(--tone);
+  opacity:.14;right:-40px;top:-40px;transition:transform .5s var(--spring)}
+.usp:hover::after{transform:scale(1.7)}
+.usp--t{--tone:var(--pink)} .usp--e{--tone:var(--teal)}
+.usp--m{--tone:var(--violet)} .usp--u{--tone:var(--amber)}
 
-.card{
-  background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-sm);
-  transition:transform .28s var(--spring),box-shadow .22s var(--ease),border-color .18s var(--ease);
+/* ---------- bento features ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+@media (max-width:980px){ .bento{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:600px){ .bento{grid-template-columns:1fr} }
+.bx{
+  position:relative;border:3px solid var(--ink);border-radius:var(--r-l);padding:26px;overflow:hidden;
+  background:var(--card);box-shadow:5px 5px 0 var(--ink);
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease);
 }
-.card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:var(--teal)}
-.card h3{margin:14px 0 8px}
-.card p{font-size:14.5px}
-.ic-chip{
-  width:52px;height:52px;border-radius:17px;display:grid;place-items:center;
-  background:var(--tone-soft,var(--teal-soft));color:var(--tone-ink,var(--teal-ink));
-}
-.ic-chip svg{width:26px;height:26px}
+.bx:hover{transform:translate(-3px,-5px);box-shadow:9px 11px 0 var(--ink)}
+.bx--w3{grid-column:span 3} .bx--w2{grid-column:span 2} .bx--w6{grid-column:span 6}
+@media (max-width:980px){ .bx--w3,.bx--w2,.bx--w6{grid-column:span 2} }
+@media (max-width:600px){ .bx--w3,.bx--w2,.bx--w6{grid-column:span 1} }
+.bx__ic{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;border:2.5px solid var(--ink);
+  background:var(--tone-soft);color:var(--tone-ink);margin-bottom:16px;box-shadow:3px 3px 0 var(--ink)}
+.bx__ic svg{width:30px;height:30px}
+.bx h3{margin-bottom:9px}
+.bx p{font-size:14.8px}
+.bx__list{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.bx__list span{padding:6px 12px;border:2px solid var(--ink);border-radius:var(--r-pill);font-size:12px;font-weight:800;background:var(--tone-soft);color:var(--tone-ink)}
+.bx--pink{--tone:var(--pink);--tone-soft:var(--pink-soft);--tone-ink:var(--pink-ink)}
+.bx--teal{--tone:var(--teal);--tone-soft:var(--teal-soft);--tone-ink:var(--teal-ink)}
+.bx--violet{--tone:var(--violet);--tone-soft:var(--violet-soft);--tone-ink:var(--violet-ink)}
+.bx--amber{--tone:var(--amber);--tone-soft:var(--amber-soft);--tone-ink:var(--amber-ink)}
+.bx--lime{--tone:var(--lime);--tone-soft:var(--lime-soft);--tone-ink:var(--lime-ink)}
+.bx--sky{--tone:var(--sky);--tone-soft:var(--sky-soft);--tone-ink:var(--sky-ink)}
 
-/* icon motion — each icon moves like the thing it is */
-.card:hover .ic-chip [data-spin]{animation:spin .8s var(--ease)}
-.card:hover .ic-chip [data-beat]{animation:beat .7s var(--ease)}
-.card:hover .ic-chip [data-draw]{animation:draw .6s var(--ease)}
-.card:hover .ic-chip [data-rise]{animation:rise .6s var(--spring)}
-.card:hover .ic-chip [data-swell]{animation:swell .7s var(--spring)}
-.card:hover .ic-chip [data-rock]{animation:rock .8s var(--ease)}
-@keyframes spin{to{transform:rotate(120deg)}}
-@keyframes beat{0%,100%{transform:scale(1)}22%{transform:scale(1.16)}44%{transform:scale(1)}66%{transform:scale(1.08)}}
-@keyframes draw{from{stroke-dasharray:24;stroke-dashoffset:24}to{stroke-dasharray:24;stroke-dashoffset:0}}
-@keyframes rise{0%,100%{transform:translateY(0)}45%{transform:translateY(-3px)}}
-@keyframes swell{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-@keyframes rock{0%,100%{transform:rotate(0)}30%{transform:rotate(-7deg)}70%{transform:rotate(7deg)}}
-.ic-chip svg *{transform-box:fill-box;transform-origin:center}
+/* icon motion — each moves like the thing it is */
+.bx:hover .bx__ic [data-spin]{animation:spin .9s var(--ease)}
+.bx:hover .bx__ic [data-beat]{animation:beat .8s var(--ease)}
+.bx:hover .bx__ic [data-draw]{animation:draw2 .7s var(--ease)}
+.bx:hover .bx__ic [data-rise]{animation:rise .7s var(--spring)}
+.bx:hover .bx__ic [data-swell]{animation:swell .8s var(--spring)}
+.bx:hover .bx__ic [data-rock]{animation:rock .9s var(--ease)}
+.bx:hover .bx__ic [data-slide]{animation:slidex .8s var(--ease)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.22)}40%{transform:scale(1)}60%{transform:scale(1.12)}}
+@keyframes draw2{from{stroke-dasharray:30;stroke-dashoffset:30}to{stroke-dasharray:30;stroke-dashoffset:0}}
+@keyframes rise{0%,100%{transform:translateY(0)}45%{transform:translateY(-4px)}}
+@keyframes swell{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+@keyframes rock{0%,100%{transform:rotate(0)}30%{transform:rotate(-9deg)}70%{transform:rotate(9deg)}}
+@keyframes slidex{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.bx__ic svg *{transform-box:fill-box;transform-origin:center}
 
-/* ---------- privacy strip ---------- */
-.strip{
-  border-radius:var(--r-xl);padding:clamp(26px,4vw,44px);
-  background:linear-gradient(140deg,var(--primary-soft),var(--lav-soft) 52%,var(--teal-soft));
-  border:1px solid var(--line);position:relative;overflow:hidden;
-}
-.strip h2{margin-bottom:12px}
-.strip p{color:var(--ink);opacity:.78;max-width:62ch}
-.strip__list{display:grid;gap:10px;margin-top:22px;grid-template-columns:repeat(2,1fr)}
-@media (max-width:700px){ .strip__list{grid-template-columns:1fr} }
-.strip__list div{
-  display:flex;gap:10px;align-items:flex-start;background:color-mix(in srgb,var(--surface) 74%,transparent);
-  border-radius:var(--r-md);padding:13px 15px;font-size:14px;font-weight:700;
-}
-.strip__list svg{width:19px;height:19px;flex:none;margin-top:2px;color:var(--teal-ink)}
+/* ---------- sticky steps (sync) ---------- */
+.sync{background:var(--ink);color:#fff;border-block:3px solid var(--ink);border-radius:var(--r-xl);overflow:hidden}
+.sync h2,.sync h3{color:#fff}
+.sync p{color:rgba(255,255,255,.72)}
+.sync__in{padding:clamp(34px,5vw,62px)}
+.steps{display:grid;gap:14px;margin-top:34px;counter-reset:s}
+.step{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;
+  background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.16);border-radius:var(--r-m);padding:22px;
+  transition:background .25s var(--ease),transform .25s var(--spring)}
+.step:hover{background:rgba(255,255,255,.12);transform:translateX(6px)}
+.step::before{counter-increment:s;content:counter(s);width:64px;height:64px;border-radius:20px;display:grid;place-items:center;
+  background:var(--amber);color:var(--ink);font-weight:900;font-size:26px;border:2.5px solid #fff}
+.step h3{margin-bottom:6px;font-size:19px}
+.step p{font-size:14.5px}
+.step code{background:rgba(255,255,255,.14);border-radius:7px;padding:2px 8px;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#fff}
+.sync__two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+@media (max-width:760px){ .sync__two{grid-template-columns:1fr} }
+.sync__opt{background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.16);border-radius:var(--r-m);padding:24px}
+.sync__opt .bx__ic{border-color:#fff}
 
 /* ---------- download ---------- */
-.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media (max-width:900px){ .dl{grid-template-columns:1fr} }
-.dl__card{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:26px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--sh-sm);
-  transition:transform .28s var(--spring),box-shadow .22s var(--ease);
-}
-.dl__card:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
-.dl__card--lead{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft),var(--sh-sm)}
-.dl__tag{
-  align-self:flex-start;padding:5px 12px;border-radius:var(--r-pill);
-  font-size:11.5px;font-weight:900;background:var(--yellow-soft);color:var(--yellow-ink);
-}
-.dl__card h3{margin-top:6px}
-.dl__card p{font-size:14px;flex:1}
-.dl__card .btn{margin-top:12px;width:100%}
-.dl__meta{font-size:12.5px;color:var(--muted);font-weight:700}
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media (max-width:940px){ .dl{grid-template-columns:1fr} }
+.dlc{border:3px solid var(--ink);border-radius:var(--r-l);padding:28px;background:var(--card);
+  box-shadow:5px 5px 0 var(--ink);display:flex;flex-direction:column;gap:10px;
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease)}
+.dlc:hover{transform:translate(-3px,-5px);box-shadow:9px 11px 0 var(--ink)}
+.dlc--lead{background:linear-gradient(150deg,var(--pink-soft),var(--card) 65%)}
+.dlc__tag{align-self:flex-start;padding:6px 14px;border:2px solid var(--ink);border-radius:var(--r-pill);
+  font-size:11.5px;font-weight:900;background:var(--amber)}
+.dlc p{font-size:14.5px;flex:1}
+.dlc .btn{width:100%;margin-top:10px}
+.dlc__meta{font-size:12.5px;color:var(--faint);font-weight:800}
 
-/* ---------- steps ---------- */
-.steps{counter-reset:s;display:grid;gap:14px}
-.step{
-  display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:start;
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;
-}
-.step::before{
-  counter-increment:s;content:counter(s);
-  width:46px;height:46px;border-radius:15px;display:grid;place-items:center;
-  background:var(--teal-soft);color:var(--teal-ink);font-weight:900;font-size:18px;
-}
-.step h3{margin-bottom:5px;font-size:17px}
-.step p{font-size:14.5px}
-.step code{
-  background:var(--sunk);border:1px solid var(--line);border-radius:8px;
-  padding:2px 7px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);
-}
-
-/* ---------- donation ---------- */
-.donate{
-  border-radius:var(--r-xl);padding:clamp(28px,4.4vw,50px);
-  background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh-md);
-  display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,44px);align-items:center;
-}
-@media (max-width:860px){ .donate{grid-template-columns:1fr} }
-.donate h2{margin:12px 0 12px}
-.donate p{font-size:15.5px}
-.donate__opts{display:grid;gap:11px}
-.donate__opt{
-  display:flex;align-items:center;gap:14px;text-decoration:none;
-  background:var(--sunk);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:15px 17px;font-weight:800;
-  transition:transform .24s var(--spring),border-color .18s var(--ease),background .18s var(--ease);
-}
-.donate__opt:hover{transform:translateX(4px);border-color:var(--primary);background:var(--primary-soft)}
-.donate__opt span{display:block;font-size:12px;font-weight:700;color:var(--muted)}
-.donate__opt b{font-size:15px}
-.donate__opt .ic-chip{width:44px;height:44px;border-radius:14px}
-.donate__opt .ic-chip svg{width:22px;height:22px}
-.donate__free{
-  margin-top:16px;padding:14px 16px;border-radius:var(--r-md);
-  background:var(--teal-soft);color:var(--teal-ink);font-size:13.5px;font-weight:800;
-}
+/* ---------- donate ---------- */
+.donate{border:3px solid var(--ink);border-radius:var(--r-xl);padding:clamp(28px,4.5vw,54px);
+  background:linear-gradient(145deg,var(--amber-soft),var(--pink-soft) 60%,var(--violet-soft));
+  box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,46px);align-items:center}
+@media (max-width:880px){ .donate{grid-template-columns:1fr} }
+.donate p{color:var(--ink);opacity:.8}
+.dopt{display:flex;align-items:center;gap:15px;background:var(--card);border:2.5px solid var(--ink);
+  border-radius:var(--r-m);padding:17px 19px;font-weight:900;box-shadow:4px 4px 0 var(--ink);margin-bottom:12px;
+  transition:transform .22s var(--spring),box-shadow .22s var(--ease)}
+.dopt:hover{transform:translate(-2px,-3px);box-shadow:7px 8px 0 var(--ink)}
+.dopt span{display:block;font-size:12.5px;font-weight:700;color:var(--muted)}
+.dopt .bx__ic{width:46px;height:46px;border-radius:14px;margin:0;box-shadow:2px 2px 0 var(--ink)}
+.dopt .bx__ic svg{width:23px;height:23px}
+.donate__free{margin-top:14px;padding:15px 17px;border:2.5px dashed var(--ink);border-radius:var(--r-m);
+  background:var(--card);font-size:14px;font-weight:800}
 
 /* ---------- faq ---------- */
-.faq{display:grid;gap:11px}
-details{
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:18px 22px;transition:border-color .18s var(--ease);
-}
-details[open]{border-color:var(--teal)}
-summary{
-  cursor:pointer;font-weight:900;font-size:16px;list-style:none;
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-}
+.faq{display:grid;gap:13px;margin-top:40px}
+details{border:3px solid var(--ink);border-radius:var(--r-m);padding:20px 24px;background:var(--card);
+  box-shadow:4px 4px 0 var(--ink);transition:box-shadow .2s var(--ease)}
+details[open]{box-shadow:7px 8px 0 var(--ink);background:var(--teal-soft)}
+summary{cursor:pointer;font-weight:900;font-size:17px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;letter-spacing:-.02em}
 summary::-webkit-details-marker{display:none}
-summary::after{
-  content:'';width:11px;height:11px;flex:none;
-  border-right:2.4px solid var(--muted);border-bottom:2.4px solid var(--muted);
-  transform:rotate(45deg);transition:transform .26s var(--spring);
-}
+summary::after{content:'';width:13px;height:13px;flex:none;border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);
+  transform:rotate(45deg);transition:transform .3s var(--spring)}
 details[open] summary::after{transform:rotate(225deg)}
-details p{margin-top:11px;font-size:14.5px}
+details p{margin-top:13px;font-size:15px;color:var(--ink);opacity:.78}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
-.foot{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
-/* min-height, not just padding: a bare inline link renders ~23px tall, which is
-   under any usable tap target on a phone. */
-.foot a{
-  color:var(--muted);text-decoration:none;font-weight:800;font-size:14px;
-  display:inline-flex;align-items:center;min-height:44px;
-}
-.foot a:hover{color:var(--primary-ink)}
-.foot__links{display:flex;flex-wrap:wrap;gap:6px 18px}
-.foot__note a{display:inline;min-height:0}
-.foot__note{font-size:13px;color:var(--muted);margin-top:16px;max-width:70ch}
+footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card)}
+.foot{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.foot__links{display:flex;flex-wrap:wrap;gap:6px 20px}
+.foot__links a{font-weight:800;font-size:14.5px;color:var(--muted);display:inline-flex;align-items:center;min-height:44px}
+.foot__links a:hover{color:var(--pink-ink)}
+.foot__note{font-size:13.5px;color:var(--faint);margin-top:20px;max-width:76ch;line-height:1.7}
+.foot__note a{text-decoration:underline}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none} }
+/* ---------- section heads ---------- */
+.head{max-width:62ch}
+.head h2{margin:16px 0 14px}
+.head p{font-size:clamp(15.5px,1.8vw,18.5px)}
+.kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border:2.5px solid var(--ink);
+  border-radius:var(--r-pill);background:var(--tone,var(--teal));font-size:13px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}
+.kicker svg{width:16px;height:16px}
+
+/* ---------- reveal ----------
+   Content is VISIBLE by default and only hidden once the page has proven it can
+   reveal it again (html.anim, set by the head script when IntersectionObserver
+   exists and motion is allowed).
+
+   The previous version had it backwards — `.rv{opacity:0}` in the stylesheet,
+   revealed by JS. Any browser where the observer misbehaves therefore rendered
+   a page with a hero and nothing else. A landing page must never depend on
+   JavaScript to show its own text. */
+.rv{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.anim .rv{opacity:0;transform:translateY(34px)}
+.anim .rv.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
-<!-- icon sprite: hand-drawn, one grid, one stroke. No emoji anywhere. -->
+<div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
 <svg style="display:none" aria-hidden="true">
-  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3.6" y="5.4" width="16.8" height="15" rx="3"/><path d="M3.6 10h16.8"/>
-    <path data-rise d="M8 3.4v3.6M16 3.4v3.6"/><path d="M7.6 13.6h2.2M13.6 13.6h2.8M7.6 16.8h4.6"/>
-  </symbol>
-  <symbol id="i-broom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3.6" y="4.4" width="16.8" height="16" rx="3.4"/><path data-draw d="m8 12.2 2.6 2.6L16.4 9"/>
-  </symbol>
-  <symbol id="i-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse data-swell cx="12" cy="7.6" rx="7" ry="3.2"/>
-    <path d="M5 7.6v8.8c0 1.8 3.1 3.2 7 3.2s7-1.4 7-3.2V7.6"/><path d="M5 12c0 1.8 3.1 3.2 7 3.2s7-1.4 7-3.2"/>
-  </symbol>
-  <symbol id="i-ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="12" cy="15.6" rx="5.2" ry="4.4"/><path data-swell d="M12 3.6 15.2 7 12 10.4 8.8 7Z"/><path d="M8.8 7h6.4"/>
-  </symbol>
-  <symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <g data-rock><circle cx="12" cy="9.6" r="5.4"/><path d="M9.8 8.8h.02M14.2 8.8h.02"/><path d="M10.2 11.6c1.1.9 2.5.9 3.6 0"/></g>
-    <path d="M7.4 15.6 6 20.4M16.6 15.6 18 20.4"/>
-  </symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path data-beat d="M12 20s-7.2-4.3-7.2-9.2A4 4 0 0 1 12 8.3a4 4 0 0 1 7.2 2.5C19.2 15.7 12 20 12 20Z"/>
-  </symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 3.4 19 6v6.2c0 4.2-3 7-7 8.4-4-1.4-7-4.2-7-8.4V6Z"/><path data-draw d="m8.8 11.9 2.2 2.2 4.2-4.6"/>
-  </symbol>
-  <symbol id="i-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <g data-spin><path d="M19 12a7 7 0 1 1-2.6-5.4"/><path d="M19.4 4.2v3.6h-3.6"/></g>
-  </symbol>
-  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3.6" y="11.4" width="16.8" height="9" rx="2.8"/><path d="M12 3.4v6.2M9 7l3 3 3-3"/>
-  </symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M5 12h13M13 7l5 5-5 5"/>
-  </symbol>
-  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3.4" y="9.4" width="17.2" height="11" rx="2.6"/><path d="M3.4 13.4h17.2M12 9.4v11"/>
-    <path data-beat d="M12 9.4S10.6 5 8.4 5a2.2 2.2 0 0 0 0 4.4M12 9.4S13.4 5 15.6 5a2.2 2.2 0 0 1 0 4.4"/>
-  </symbol>
-  <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 9h13v6.4a4.6 4.6 0 0 1-4.6 4.6H8.6A4.6 4.6 0 0 1 4 15.4Z"/>
-    <path d="M17 11h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path data-rise d="M8 5.6V4M12 5.6V4"/>
-  </symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <path data-swell d="m12 4 2.5 5.2 5.5.8-4 3.9 1 5.5-5-2.7-5 2.7 1-5.5-4-3.9 5.5-.8Z"/>
-  </symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="4.6" y="10.6" width="14.8" height="9.4" rx="2.8"/><path d="M8.2 10.4V7.8a3.8 3.8 0 0 1 7.6 0v2.6"/>
-  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.4" y="5.4" width="17.2" height="15.2" rx="3.2"/><path d="M3.4 10.2h17.2"/>
+    <path data-rise d="M8 3.2v4M16 3.2v4"/><path d="M7.4 13.8h2.4M13.6 13.8h3M7.4 17h5"/></symbol>
+  <symbol id="i-broom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.4" y="4.2" width="17.2" height="16.4" rx="3.6"/><path data-draw d="m7.8 12.4 2.8 2.8 5.6-6"/></symbol>
+  <symbol id="i-money" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse data-swell cx="12" cy="7.4" rx="7.2" ry="3.3"/>
+    <path d="M4.8 7.4v9c0 1.9 3.2 3.3 7.2 3.3s7.2-1.4 7.2-3.3v-9"/><path d="M4.8 11.9c0 1.9 3.2 3.3 7.2 3.3s7.2-1.4 7.2-3.3"/></symbol>
+  <symbol id="i-ring" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="12" cy="15.8" rx="5.4" ry="4.5"/><path data-swell d="M12 3.4 15.4 7 12 10.6 8.6 7Z"/><path d="M8.6 7h6.8"/></symbol>
+  <symbol id="i-baby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g data-rock><circle cx="12" cy="9.4" r="5.6"/><path d="M9.7 8.6h.02M14.3 8.6h.02"/><path d="M10 11.5c1.2 1 2.8 1 4 0"/></g>
+    <path d="M7.2 15.6 5.8 20.6M16.8 15.6 18.2 20.6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path data-beat d="M12 20.4s-7.6-4.5-7.6-9.7A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.6 2.7c0 5.2-7.6 9.7-7.6 9.7Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3.2 19.4 6v6.4c0 4.4-3.2 7.4-7.4 8.8-4.2-1.4-7.4-4.4-7.4-8.8V6Z"/><path data-draw d="m8.6 11.8 2.3 2.3 4.4-4.8"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g data-spin><path d="M19.4 12a7.4 7.4 0 1 1-2.7-5.7"/><path d="M19.8 4v3.8h-3.8"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.4" y="11.2" width="17.2" height="9.4" rx="3"/><path data-rise d="M12 3.2v6.6M8.8 6.8l3.2 3.2 3.2-3.2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path data-slide d="M4.6 12h14M13 6.4l5.6 5.6-5.6 5.6"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.2" y="9.2" width="17.6" height="11.4" rx="2.8"/><path d="M3.2 13.4h17.6M12 9.2v11.4"/>
+    <path data-beat d="M12 9.2S10.5 4.6 8.2 4.6a2.3 2.3 0 0 0 0 4.6M12 9.2s1.5-4.6 3.8-4.6a2.3 2.3 0 0 1 0 4.6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path data-swell d="m12 3.6 2.6 5.4 5.8.8-4.2 4 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.2-4 5.8-.8Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4.4" y="10.4" width="15.2" height="9.8" rx="3"/><path data-rise d="M8 10.2V7.6a4 4 0 0 1 8 0v2.6"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path data-draw d="M9 6.4h11M9 12h11M9 17.6h11"/><path d="M4.4 6.4h.02M4.4 12h.02M4.4 17.6h.02"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path data-rise d="M20.4 12.4a7.6 7.6 0 0 1-8.2 7.6L5 21l1.2-4.6A7.6 7.6 0 1 1 20.4 12.4Z"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20.6v-7"/><path data-swell d="M12 13.6c0-3 2.4-5.4 5.4-5.4 0 3-2.4 5.4-5.4 5.4Z"/>
+    <path data-swell d="M12 15.6c0-2.6-2.1-4.7-4.7-4.7 0 2.6 2.1 4.7 4.7 4.7Z"/></symbol>
 </svg>
 
 <nav class="nav">
   <div class="wrap nav__in">
-    <a class="nav__brand" href="./">
-      <img src="./app/icons/icon-192.png" alt="" width="34" height="34" style="border-radius:11px">
-      TemuDua
-    </a>
+    <a class="brand" href="./"><img src="./icon-192.png" alt="" width="38" height="38">TemuDua</a>
     <div class="nav__links">
+      <a href="#usp">Kenapa</a>
       <a href="#fitur">Fitur</a>
-      <a href="#privasi">Privasi</a>
       <a href="#sinkron">Sinkron berdua</a>
+      <a href="#unduh">Unduh</a>
       <a href="#donasi">Donasi</a>
-      <a class="btn" href="./app/">Buka aplikasinya<svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--sm" href="./app/">Buka aplikasi<svg><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="blob blob--a"></div>
-  <div class="blob blob--b"></div>
   <div class="wrap hero__grid">
     <div>
-      <span class="eyebrow"><svg width="15" height="15"><use href="#i-lock"/></svg> Gratis · tanpa akun · offline</span>
-      <h1>Bukan cuma makin dekat. <em>Hidup berdua</em> juga jadi lebih tertata.</h1>
+      <span class="tagpill"><svg width="15" height="15"><use href="#i-lock"/></svg> Gratis selamanya · <b>tanpa akun</b> · offline</span>
+      <h1 id="headline"></h1>
       <p class="hero__lead">
-        Kalender, tugas rumah, uang, persiapan nikah, kesuburan, sampai pengasuhan —
-        satu ruang buat kalian berdua. Datanya tinggal di HP kamu, bukan di server siapa-siapa.
+        Kalender, urusan rumah, uang, persiapan nikah, kesuburan, sampai pengasuhan —
+        satu ruang buat kalian berdua. Datanya nginep di HP kamu, bukan di server siapa-siapa.
       </p>
       <div class="hero__cta">
         <a class="btn" href="./app/">Coba sekarang<svg><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="./TemuDua.apk" download>Unduh APK Android<svg><use href="#i-down"/></svg></a>
+        <a class="btn btn--teal" href="./TemuDua.apk" download>Unduh APK<svg><use href="#i-down"/></svg></a>
       </div>
-      <p class="hero__note">
-        <span><svg width="15" height="15" style="color:var(--teal-ink)"><use href="#i-shield"/></svg> Tanpa iklan &amp; pelacak</span>
-        <span><svg width="15" height="15" style="color:var(--teal-ink)"><use href="#i-shield"/></svg> Tanpa skor hubungan</span>
-        <span><svg width="15" height="15" style="color:var(--teal-ink)"><use href="#i-shield"/></svg> Bisa jalan tanpa internet</span>
+      <p class="hero__proof">
+        <span><svg><use href="#i-shield"/></svg> Tanpa iklan &amp; pelacak</span>
+        <span><svg><use href="#i-shield"/></svg> Tanpa skor hubungan</span>
+        <span><svg><use href="#i-shield"/></svg> Jalan tanpa internet</span>
       </p>
     </div>
 
-    <div class="phone" aria-hidden="true">
-      <div class="phone__screen">
-        <div class="phone__bar">
-          <img src="./app/icons/icon-192.png" alt="" width="28" height="28" style="border-radius:9px">
-          <div><b>TemuDua</b><small>Menikah</small></div>
-        </div>
-        <div class="phone__body">
-          <div class="pcard pcard--hero">
-            <small>Pagi, Nadia.</small>
-            <b style="font-size:17px;margin-top:3px">Hari ini lagi lengang.</b>
-            <div class="chips">
-              <span class="chip chip--p">Agenda</span>
-              <span class="chip chip--t">Check-in</span>
-              <span class="chip chip--l">Kebutuhan</span>
-              <span class="chip chip--y">Momen</span>
-            </div>
+    <div class="phone-wrap">
+      <span class="fb fb--1"><svg style="color:var(--teal-ink)"><use href="#i-shield"/></svg> Data di HP kamu</span>
+      <span class="fb fb--2"><svg style="color:var(--pink-ink)"><use href="#i-heart"/></svg> Tumbuh berdua</span>
+      <span class="fb fb--3"><svg style="color:var(--amber-ink)"><use href="#i-money"/></svg> Uang jelas</span>
+      <div class="phone" id="phone" aria-hidden="true">
+        <div class="phone__screen">
+          <div class="phone__bar">
+            <img src="./icon-192.png" alt="" width="30" height="30">
+            <div><b>TemuDua</b><small>Menikah</small></div>
           </div>
-          <div class="pcard"><b>Urusan rumah</b><small>Kamu 3 · Dimas 4 — beban kebagi</small></div>
-          <div class="pcard"><b>Uang berdua</b><small>Aman dipakai bulan ini: Rp1,2 jt</small></div>
-          <div class="pcard"><b>Temu</b><small>Tumbuh bareng — hari ke-128</small></div>
+          <div class="phone__body">
+            <div class="pc pc--hero">
+              <small>Pagi, Nadia.</small>
+              <b style="font-size:17px;margin-top:3px">Hari ini lagi lengang.</b>
+              <div class="pchips">
+                <span class="pchip" style="background:var(--pink-soft)">Agenda</span>
+                <span class="pchip" style="background:var(--teal-soft)">Check-in</span>
+                <span class="pchip" style="background:var(--violet-soft)">Kebutuhan</span>
+              </div>
+            </div>
+            <div class="pc"><b>Urusan rumah</b><small>Kamu 3 · Dimas 4 — beban kebagi</small></div>
+            <div class="pc"><b>Uang berdua</b><small>Aman dipakai: Rp1,2 jt</small></div>
+            <div class="pc"><b>Temu</b><small>Tumbuh bareng — hari ke-128</small></div>
+          </div>
+          <div class="phone__nav"><i></i><i></i><i></i><i></i><i></i></div>
         </div>
-        <div class="phone__nav"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
   </div>
 </header>
 
-<section id="fitur">
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item"><svg><use href="#i-cal"/></svg>Kalender berdua</span>
+    <span class="marquee__item"><svg><use href="#i-broom"/></svg>Urusan rumah</span>
+    <span class="marquee__item"><svg><use href="#i-money"/></svg>Uang berdua</span>
+    <span class="marquee__item"><svg><use href="#i-ring"/></svg>Persiapan nikah</span>
+    <span class="marquee__item"><svg><use href="#i-sprout"/></svg>Kesuburan</span>
+    <span class="marquee__item"><svg><use href="#i-baby"/></svg>Pengasuhan</span>
+    <span class="marquee__item"><svg><use href="#i-heart"/></svg>Temu tumbuh berdua</span>
+    <span class="marquee__item"><svg><use href="#i-cal"/></svg>Kalender berdua</span>
+    <span class="marquee__item"><svg><use href="#i-broom"/></svg>Urusan rumah</span>
+    <span class="marquee__item"><svg><use href="#i-money"/></svg>Uang berdua</span>
+    <span class="marquee__item"><svg><use href="#i-ring"/></svg>Persiapan nikah</span>
+    <span class="marquee__item"><svg><use href="#i-sprout"/></svg>Kesuburan</span>
+    <span class="marquee__item"><svg><use href="#i-baby"/></svg>Pengasuhan</span>
+    <span class="marquee__item"><svg><use href="#i-heart"/></svg>Temu tumbuh berdua</span>
+  </div>
+</div>
+
+<section id="usp">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow" style="background:var(--primary-soft);color:var(--primary-ink)">Satu aplikasi, satu rumah tangga</span>
-      <h2>Semua yang bikin hidup berdua ribet, ditaruh rapi di satu tempat.</h2>
-      <p>Bukan aplikasi chat, bukan aplikasi pasangan yang menilai kalian. Ini alat rumah tangga: yang perlu diingat, dibagi, dan dibicarakan.</p>
+    <div class="head rv">
+      <span class="kicker" style="--tone:var(--pink)"><svg><use href="#i-star"/></svg> Kenapa TemuDua</span>
+      <h2>Empat huruf, empat janji.</h2>
+      <p>Nama kami sendiri yang jadi singkatannya — dan tiap hurufnya beneran dipegang sampai ke level kode.</p>
+    </div>
+    <div class="usp-grid">
+      <article class="usp usp--t rv"><div class="usp__letter">T</div><div class="usp__word">Tertata</div>
+        <p>Jadwal, tugas, tagihan, rencana — semuanya punya tempat. Nggak lagi kescroll hilang di chat.</p></article>
+      <article class="usp usp--e rv"><div class="usp__letter">E</div><div class="usp__word">Empati</div>
+        <p>Nggak ada skor, nggak ada rapor, nggak ada "siapa lebih rajin". Cuma catatan dan bahan ngobrol.</p></article>
+      <article class="usp usp--m rv"><div class="usp__letter">M</div><div class="usp__word">Milikmu</div>
+        <p>Datanya nginep di perangkatmu. Tanpa akun, tanpa server wajib. APK-nya bahkan nggak minta izin internet.</p></article>
+      <article class="usp usp--u rv"><div class="usp__letter">U</div><div class="usp__word">Utuh</div>
+        <p>Dari kalender sampai warisan urusan rumah tangga — satu aplikasi, bukan tujuh aplikasi setengah jadi.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="fitur" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker" style="--tone:var(--teal)"><svg><use href="#i-list"/></svg> Isi lengkapnya</span>
+      <h2>Tujuh dunia, satu aplikasi.</h2>
+      <p>Ini bukan aplikasi chat pasangan. Ini alat rumah tangga — dan tiap bagiannya digarap sampai dalam, bukan cuma judul di menu.</p>
     </div>
 
-    <div class="grid grid--3">
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--primary-soft);--tone-ink:var(--primary-ink)"><svg><use href="#i-cal"/></svg></div>
-        <h3>Kalender &amp; pengingat</h3>
-        <p>Agenda berdua, ulang tahun, jatuh tempo tagihan, dan hal berulang. Pengingatnya jalan di HP, tanpa kirim apa pun ke luar.</p>
+    <div class="bento">
+      <article class="bx bx--w3 bx--amber rv">
+        <div class="bx__ic"><svg><use href="#i-money"/></svg></div>
+        <h3>Uang berdua — 25 bagian</h3>
+        <p>Tiga ruang: uang kamu, uang dia, uang kita. Tiap objek punya pemilik, siapa yang boleh lihat, siapa yang tanggung jawab, dan siapa yang berhak memutuskan.</p>
+        <div class="bx__list"><span>8 model patungan</span><span>Buku kas</span><span>Split &amp; settle-up</span><span>Tagihan</span><span>Amplop</span><span>Aman dipakai</span><span>Utang &amp; arisan</span><span>Tabungan</span><span>Usulan belanja</span><span>Protokol pisah</span></div>
       </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--teal-soft);--tone-ink:var(--teal-ink)"><svg><use href="#i-broom"/></svg></div>
-        <h3>Urusan rumah</h3>
-        <p>Bukan cuma daftar tugas — juga beban mikirnya. Siapa yang <em>kepikiran</em>, bukan cuma siapa yang ngerjain.</p>
+
+      <article class="bx bx--w3 bx--violet rv">
+        <div class="bx__ic"><svg><use href="#i-ring"/></svg></div>
+        <h3>Persiapan nikah — 40 modul</h3>
+        <p>Banyak acara sekaligus: lamaran, siraman, akad, resepsi, unduh mantu. Checklist-nya ngerti tanggalmu dan ikut geser kalau akadnya pindah.</p>
+        <div class="bx__list"><span>Multi-acara</span><span>Checklist pintar</span><span>Kuota tamu per keluarga</span><span>RSVP</span><span>Seating</span><span>Souvenir &amp; angpao</span><span>QR check-in offline</span><span>Rundown</span><span>Command center hari-H</span><span>Vendor &amp; budget</span></div>
       </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--yellow-soft);--tone-ink:var(--yellow-ink)"><svg><use href="#i-money"/></svg></div>
-        <h3>Uang berdua</h3>
-        <p>Tiga ruang: uang kamu, uang dia, uang kita. Patungan, tagihan, utang, arisan, sampai tabungan — tanpa saling ngurusin dompet pribadi.</p>
-      </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--lav-soft);--tone-ink:var(--lav-ink)"><svg><use href="#i-ring"/></svg></div>
-        <h3>Persiapan nikah</h3>
-        <p>Banyak acara, checklist yang ngerti tanggalmu, kuota tamu per keluarga, sampai QR check-in yang jalan pas gedungnya nggak ada sinyal.</p>
-      </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--coral-soft);--tone-ink:var(--coral-ink)"><svg><use href="#i-baby"/></svg></div>
+
+      <article class="bx bx--w2 bx--lime rv">
+        <div class="bx__ic"><svg><use href="#i-sprout"/></svg></div>
         <h3>Kesuburan &amp; kehamilan</h3>
-        <p>Tujuh mode, dari "lagi nggak mikirin" sampai kehamilan dan pemulihan. Selalu pakai rentang, bukan tanggal pasti. Ada mode kehilangan yang langsung menyembunyikan semuanya.</p>
+        <p>Tujuh mode, dari "lagi nggak mikirin" sampai kehamilan dan pemulihan. Selalu pakai rentang, bukan tanggal pasti.</p>
+        <div class="bx__list"><span>ANC K6</span><span>TTD</span><span>P4K</span><span>Triase tanda bahaya</span><span>IVF</span><span>Mode kehilangan</span></div>
       </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--teal-soft);--tone-ink:var(--teal-ink)"><svg><use href="#i-heart"/></svg></div>
-        <h3>Temu, yang tumbuh berdua</h3>
-        <p>Satu teman kecil yang tumbuh dari kehadiran kalian berdua — 15 tahap, dari titik kecil sampai bertahun-tahun. Nggak pernah mati, nggak pernah nyalahin kalau kamu absen.</p>
+
+      <article class="bx bx--w2 bx--sky rv">
+        <div class="bx__ic"><svg><use href="#i-baby"/></svg></div>
+        <h3>Pengasuhan bersama</h3>
+        <p>Serah-terima anak jadi inti, bukan chat. Ada Mode Solo dan mode pengasuhan paralel buat hubungan yang perlu jarak.</p>
+        <div class="bx__list"><span>Jadwal 2-2-3</span><span>Konfirmasi dua arah</span><span>Biaya anak</span><span>Log keputusan</span><span>Ekspor mediasi</span></div>
+      </article>
+
+      <article class="bx bx--w2 bx--teal rv">
+        <div class="bx__ic"><svg><use href="#i-broom"/></svg></div>
+        <h3>Urusan rumah</h3>
+        <p>Bukan cuma siapa yang <em>ngerjain</em> — tapi siapa yang <em>kepikiran</em>. Beban mental ikut kehitung.</p>
+        <div class="bx__list"><span>Kepemilikan urusan</span><span>Beban mental</span><span>Belanja</span><span>Rutinitas</span></div>
+      </article>
+
+      <article class="bx bx--w3 bx--pink rv">
+        <div class="bx__ic"><svg><use href="#i-cal"/></svg></div>
+        <h3>Kalender &amp; pengingat</h3>
+        <p>Agenda berdua, ulang tahun, jatuh tempo, dan hal berulang. Pengingatnya jalan di HP — nggak ada yang dikirim keluar.</p>
+        <div class="bx__list"><span>Agenda berdua</span><span>Berulang</span><span>Pengingat</span><span>Hari penting</span></div>
+      </article>
+
+      <article class="bx bx--w3 bx--pink rv">
+        <div class="bx__ic"><svg><use href="#i-heart"/></svg></div>
+        <h3>Temu — tumbuh dari kehadiran kalian</h3>
+        <p>Satu teman kecil yang tumbuh cuma kalau <strong>kalian berdua</strong> hadir. 15 tahap, dari titik kecil sampai bertahun-tahun. Nggak pernah mati, nggak pernah nyalahin kalau kamu absen.</p>
+        <div class="bx__list"><span>15 tahap</span><span>5 garis warna</span><span>9 ekspresi</span><span>Hari istirahat</span><span>Tanpa hukuman</span></div>
+      </article>
+
+      <article class="bx bx--w6 bx--violet rv">
+        <div class="bx__ic"><svg><use href="#i-shield"/></svg></div>
+        <h3>Dan yang nggak kelihatan tapi paling penting</h3>
+        <p>Catatan kesehatan privat secara bawaan — cuma pemiliknya yang bisa membuka. Riwayat perubahan mencatat <em>bahwa</em> sesuatu berubah, bukan isinya. Backup bisa dikunci pakai kata sandi. Dan kalau harus pisah, aksesnya ditutup dua arah tanpa jalan balik diam-diam.</p>
+        <div class="bx__list"><span>Privat bawaan</span><span>Backup terenkripsi</span><span>Riwayat perubahan</span><span>Pisah dengan aman</span><span>Wishlist</span><span>Ide kencan</span><span>Linimasa kenangan</span><span>Dua profil satu HP</span></div>
       </article>
     </div>
   </div>
 </section>
 
-<section id="privasi" style="padding-top:0">
+<section id="sinkron">
   <div class="wrap">
-    <div class="strip rv">
-      <span class="eyebrow" style="background:color-mix(in srgb,var(--surface) 70%,transparent);color:var(--teal-ink)">
-        <svg width="15" height="15"><use href="#i-lock"/></svg> Privasi bukan fitur tambahan
-      </span>
-      <h2>Datamu nggak ke mana-mana.</h2>
-      <p>TemuDua nyimpen semuanya di dalam browser atau HP kamu sendiri. Nggak ada akun, nggak ada server yang wajib, nggak ada iklan, nggak ada pelacak. Versi APK-nya bahkan <strong>nggak minta izin internet sama sekali</strong> — jadi bukan cuma janji, tapi dipaksa sama sistemnya.</p>
-      <div class="strip__list">
-        <div><svg><use href="#i-shield"/></svg><span>Data kesehatan privat secara bawaan. Cuma pemiliknya yang bisa membuka.</span></div>
-        <div><svg><use href="#i-shield"/></svg><span>Nggak ada skor hubungan, nggak ada peringkat antar pasangan.</span></div>
-        <div><svg><use href="#i-shield"/></svg><span>Nggak ada pelacakan lokasi, nggak ada "dibaca jam berapa".</span></div>
-        <div><svg><use href="#i-shield"/></svg><span>Kalau pisah: akses ditutup dua arah, tanpa jalan balik diam-diam.</span></div>
+    <div class="sync rv">
+      <div class="sync__in">
+        <span class="kicker" style="--tone:var(--amber)"><svg><use href="#i-sync"/></svg> Buat berdua</span>
+        <h2 style="margin:16px 0 14px">Nyambung ke HP pasangan.</h2>
+        <p style="font-size:17px;max-width:62ch">TemuDua nggak punya server. Jadi biar dua HP bisa sinkron, kamu yang pegang kendali — dan tetap Rp0.</p>
+
+        <div class="sync__two">
+          <div class="sync__opt">
+            <div class="bx__ic" style="--tone-soft:var(--pink);--tone-ink:var(--ink)"><svg><use href="#i-heart"/></svg></div>
+            <h3>Cara 1 — satu HP berdua</h3>
+            <p>Paling gampang, nggak butuh setup apa pun. Dua profil di satu perangkat, masing-masing punya ruang privat sendiri. Cocok buat yang serumah.</p>
+          </div>
+          <div class="sync__opt">
+            <div class="bx__ic" style="--tone-soft:var(--teal);--tone-ink:var(--ink)"><svg><use href="#i-sync"/></svg></div>
+            <h3>Cara 2 — dua HP, sinkron sendiri</h3>
+            <p>Buat LDR atau yang mau HP masing-masing. Tiga langkah di bawah, sekali seumur hidup.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step"><div><h3>Bikin "kotak pos" gratis</h3>
+            <p>Pakai Cloudflare Workers — gratis permanen, nggak minta kartu kredit. Berkasnya sudah disiapkan, tinggal jalankan <code>npx wrangler deploy</code> sekali.</p></div></div>
+          <div class="step"><div><h3>Tempel alamatnya di menu Sinkron</h3>
+            <p>Sengaja nggak ada alamat bawaan. Kalau kami sediakan server sendiri, janji "datamu nggak ke mana-mana" jadi bohong.</p></div></div>
+          <div class="step"><div><h3>Pindai QR-nya, selesai</h3>
+            <p>HP pertama nampilin QR, HP kedua memindai. Kunci enkripsinya ikut di QR itu dan <strong>nggak pernah</strong> dikirim ke kotak pos — jadi isinya tetap nggak kebaca siapa pun, termasuk kami.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -505,85 +620,36 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
 
 <section id="unduh" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Tiga cara pakai</span>
-      <h2>Pilih yang paling gampang buat kamu.</h2>
-      <p>Semuanya isinya sama persis. Bedanya cuma cara masuknya.</p>
+    <div class="head rv">
+      <span class="kicker" style="--tone:var(--lime)"><svg><use href="#i-down"/></svg> Tiga cara pakai</span>
+      <h2>Pilih yang paling gampang.</h2>
+      <p>Isinya sama persis. Bedanya cuma cara masuknya.</p>
     </div>
-
     <div class="dl">
-      <div class="dl__card dl__card--lead rv">
-        <span class="dl__tag">Paling gampang</span>
+      <div class="dlc dlc--lead rv">
+        <span class="dlc__tag">Paling gampang</span>
         <h3>Buka di browser</h3>
         <p>Langsung jalan, nggak usah instal. Di Chrome atau Safari bisa dipasang ke layar depan biar kayak aplikasi beneran.</p>
-        <span class="dl__meta">Android · iPhone · Windows · Mac</span>
+        <span class="dlc__meta">Android · iPhone · Windows · Mac</span>
         <a class="btn" href="./app/">Buka aplikasinya<svg><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="dl__card rv">
-        <span class="dl__tag" style="background:var(--teal-soft);color:var(--teal-ink)">Android</span>
+      <div class="dlc rv">
+        <span class="dlc__tag" style="background:var(--teal)">Android</span>
         <h3>Unduh APK</h3>
-        <p>Buat yang mau ikonnya nangkring di layar HP. Tanpa izin internet sama sekali, jadi datanya dijamin nggak ke mana-mana.</p>
-        <span class="dl__meta" id="apk-meta">± 0,5 MB · Android 7.0 ke atas</span>
+        <p>Buat yang mau ikonnya nangkring di layar HP. Tanpa izin internet sama sekali — jadi datanya dijamin nggak ke mana-mana.</p>
+        <span class="dlc__meta" id="apk-meta">± 0,5 MB · Android 7.0 ke atas</span>
         <a class="btn btn--teal" href="./TemuDua.apk" download>Unduh TemuDua.apk<svg><use href="#i-down"/></svg></a>
       </div>
-      <div class="dl__card rv">
-        <span class="dl__tag" style="background:var(--lav-soft);color:var(--lav-ink)">Satu berkas</span>
+      <div class="dlc rv">
+        <span class="dlc__tag" style="background:var(--violet)">Satu berkas</span>
         <h3>File HTML tunggal</h3>
-        <p>Satu berkas yang isinya seluruh aplikasi. Simpan di flashdisk, klik dua kali, jalan — tanpa internet, tanpa instal apa pun.</p>
-        <span class="dl__meta">Buat laptop/PC</span>
+        <p>Satu berkas berisi seluruh aplikasi. Simpan di flashdisk, klik dua kali, jalan — tanpa internet, tanpa instal.</p>
+        <span class="dlc__meta">Buat laptop / PC</span>
         <a class="btn btn--ghost" href="./temudua.html" download>Unduh temudua.html<svg><use href="#i-down"/></svg></a>
       </div>
     </div>
-    <p style="margin-top:16px;font-size:13.5px;color:var(--muted)">
-      APK ini ditandatangani sendiri (bukan lewat Play Store), jadi Android bakal nanya konfirmasi waktu instal. Itu normal buat aplikasi di luar Play Store.
-    </p>
-  </div>
-</section>
-
-<section id="sinkron">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow" style="background:var(--lav-soft);color:var(--lav-ink)">
-        <svg width="15" height="15"><use href="#i-sync"/></svg> Buat berdua
-      </span>
-      <h2>Gimana caranya nyambung berdua?</h2>
-      <p>
-        TemuDua nggak punya server. Jadi biar dua HP bisa sinkron, kamu yang pegang kendali —
-        dan semuanya tetap Rp0.
-      </p>
-    </div>
-
-    <div class="grid grid--2" style="margin-bottom:22px">
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--primary-soft);--tone-ink:var(--primary-ink)"><svg><use href="#i-heart"/></svg></div>
-        <h3>Cara 1 — satu HP berdua</h3>
-        <p>Paling simpel dan nggak butuh apa-apa. Dua profil di satu perangkat: masing-masing punya ruang privatnya sendiri, yang dibagi cuma yang sengaja dibagi. Cocok buat yang tinggal serumah.</p>
-      </article>
-      <article class="card rv">
-        <div class="ic-chip" style="--tone-soft:var(--teal-soft);--tone-ink:var(--teal-ink)"><svg><use href="#i-sync"/></svg></div>
-        <h3>Cara 2 — dua HP, sinkron sendiri</h3>
-        <p>Buat LDR atau yang mau HP masing-masing. Kamu pasang satu "kotak pos" gratis punyamu sendiri, lalu dua HP dipasangkan lewat QR. Isinya sudah dienkripsi dari HP, jadi si kotak pos nggak bisa baca apa pun.</p>
-      </article>
-    </div>
-
-    <div class="steps rv">
-      <div class="step">
-        <div><h3>Bikin kotak pos gratis</h3>
-        <p>Pakai Cloudflare Workers (gratis permanen, nggak minta kartu kredit). Berkasnya sudah disiapkan di <code>scripts/sync-worker/</code> — tinggal <code>npx wrangler deploy</code>.</p></div>
-      </div>
-      <div class="step">
-        <div><h3>Tempel alamatnya di aplikasi</h3>
-        <p>Buka menu <strong>Sinkron</strong>, tempel alamat kotak pos tadi. Sengaja nggak ada alamat bawaan — biar nggak ada server orang lain yang diam-diam ada di tengah kalian.</p></div>
-      </div>
-      <div class="step">
-        <div><h3>Pasangkan lewat QR</h3>
-        <p>HP pertama nampilin QR, HP kedua memindainya. Kunci enkripsinya ikut di QR itu dan nggak pernah dikirim ke kotak pos. Setelah itu perubahan nyusul sendiri.</p></div>
-      </div>
-    </div>
-
-    <p style="margin-top:18px;font-size:14px;color:var(--muted);max-width:70ch">
-      Kenapa nggak disediain server sendiri? Karena begitu ada server bawaan, janji "datamu nggak ke mana-mana" jadi bohong.
-      Kotak posnya punya kamu, bisa kamu matikan kapan saja, dan isinya tetap nggak kebaca sama siapa pun termasuk kami.
+    <p style="margin-top:18px;font-size:14px;color:var(--faint)">
+      APK ini ditandatangani sendiri (bukan lewat Play Store), jadi Android bakal minta konfirmasi waktu instal. Itu normal buat aplikasi di luar Play Store.
     </p>
   </div>
 </section>
@@ -592,33 +658,21 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
   <div class="wrap">
     <div class="donate rv">
       <div>
-        <span class="eyebrow" style="background:var(--yellow-soft);color:var(--yellow-ink)">
-          <svg width="15" height="15"><use href="#i-gift"/></svg> Dukung kalau merasa terbantu
-        </span>
-        <h2>TemuDua gratis, dan bakal tetap gratis.</h2>
-        <p>
-          Nggak ada versi premium, nggak ada fitur yang dikunci, nggak ada iklan, dan nggak ada data kamu yang dijual.
-          Kalau aplikasi ini beneran ngebantu rumah tangga kamu, traktir kopi boleh banget — tapi nggak usah maksa.
-          Yang nggak donasi tetap dapat aplikasi yang sama persis.
-        </p>
-        <div class="donate__free">
-          Nggak punya budget? Pakai aja terus. Bantu ceritain ke pasangan lain juga sudah sangat membantu.
-        </div>
+        <span class="kicker" style="--tone:var(--card)"><svg><use href="#i-gift"/></svg> Dukung kalau merasa terbantu</span>
+        <h2 style="margin:16px 0 14px">Gratis, dan bakal tetap gratis.</h2>
+        <p style="font-size:16.5px">Nggak ada versi premium, nggak ada fitur yang dikunci, nggak ada iklan, dan nggak ada data kamu yang dijual — karena datanya nggak pernah nyampe ke kami. Kalau ini beneran ngebantu rumah tangga kamu, traktir kopi boleh banget. Yang nggak donasi tetap dapat aplikasi yang sama persis.</p>
+        <div class="donate__free">Nggak punya budget? Pakai aja terus. Bantu ceritain ke pasangan lain juga udah sangat membantu.</div>
       </div>
-      <!-- The donation and contact endpoints are the ones Meria Works already
-           publishes on its other product pages. Inventing a Saweria/Trakteer
-           handle here would have pointed real money at a page that may not
-           belong to anyone. -->
-      <div class="donate__opts">
-        <a class="donate__opt" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau" target="_blank" rel="noopener noreferrer">
-          <span class="ic-chip" style="--tone-soft:var(--coral-soft);--tone-ink:var(--coral-ink)"><svg><use href="#i-coffee"/></svg></span>
-          <span style="flex:1"><b>Dukung lewat Mayar</b><span>QRIS, e-wallet, atau transfer bank — bebas nominalnya</span></span>
-          <svg width="18" height="18" style="color:var(--muted)"><use href="#i-arrow"/></svg>
+      <div>
+        <a class="dopt" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau" target="_blank" rel="noopener noreferrer">
+          <span class="bx__ic" style="--tone-soft:var(--amber);--tone-ink:var(--ink)"><svg><use href="#i-gift"/></svg></span>
+          <span style="flex:1">Dukung lewat Mayar<span>QRIS, e-wallet, atau transfer — bebas nominalnya</span></span>
+          <svg width="19" height="19"><use href="#i-arrow"/></svg>
         </a>
-        <a class="donate__opt" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com&amp;su=Masukan%20untuk%20TemuDua" target="_blank" rel="noopener noreferrer">
-          <span class="ic-chip" style="--tone-soft:var(--lav-soft);--tone-ink:var(--lav-ink)"><svg><use href="#i-star"/></svg></span>
-          <span style="flex:1"><b>Kirim masukan</b><span>Gratis, dan sering lebih berguna daripada uang</span></span>
-          <svg width="18" height="18" style="color:var(--muted)"><use href="#i-arrow"/></svg>
+        <a class="dopt" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com&amp;su=Masukan%20untuk%20TemuDua" target="_blank" rel="noopener noreferrer">
+          <span class="bx__ic" style="--tone-soft:var(--violet);--tone-ink:var(--ink)"><svg><use href="#i-chat"/></svg></span>
+          <span style="flex:1">Kirim masukan<span>Gratis, dan sering lebih berguna daripada uang</span></span>
+          <svg width="19" height="19"><use href="#i-arrow"/></svg>
         </a>
       </div>
     </div>
@@ -627,32 +681,20 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head rv"><h2>Yang sering ditanya</h2></div>
+    <div class="head rv"><span class="kicker" style="--tone:var(--sky)"><svg><use href="#i-chat"/></svg> Sering ditanya</span><h2 style="margin-top:16px">Yang biasanya bikin ragu.</h2></div>
     <div class="faq rv">
-      <details>
-        <summary>Beneran gratis? Ada jebakannya nggak?</summary>
-        <p>Beneran. Nggak ada akun, nggak ada langganan, nggak ada fitur terkunci, nggak ada iklan, dan nggak ada data yang dijual — karena datanya nggak pernah nyampe ke kami sama sekali.</p>
-      </details>
-      <details>
-        <summary>Kalau HP-ku hilang, datanya ikut hilang?</summary>
-        <p>Iya — itu konsekuensi dari data yang cuma ada di perangkatmu. Makanya ada menu Backup: hasilnya satu berkas yang bisa dikunci pakai kata sandi, simpan sendiri di tempat aman. Restore-nya nampilin isi berkasnya dulu sebelum nulis apa pun.</p>
-      </details>
-      <details>
-        <summary>Pasanganku bisa lihat semua isinya?</summary>
-        <p>Nggak. Semua hal sensitif privat secara bawaan, dan cuma pemiliknya yang bisa memperlebar akses. Catatan kesehatan dan siklus nggak pernah kebuka ke pasangan kecuali kamu sendiri yang menyalakannya, dan bisa kamu tutup lagi kapan saja.</p>
-      </details>
-      <details>
-        <summary>Aplikasinya nge-judge hubungan kami nggak?</summary>
-        <p>Nggak, dan itu aturan yang dipegang sampai ke level kode. Nggak ada skor, nggak ada persentase kecocokan, nggak ada label "toxic", nggak ada perbandingan siapa lebih rajin. Yang ada cuma catatan dan bahan buat ngobrol.</p>
-      </details>
-      <details>
-        <summary>Kenapa APK-nya bikin Android nanya-nanya waktu instal?</summary>
-        <p>Karena dipasang di luar Play Store dan ditandatangani sendiri. Android selalu minta konfirmasi buat itu. Kalau lebih nyaman, pakai versi browser-nya saja — isinya sama.</p>
-      </details>
-      <details>
-        <summary>Ini bisa dipakai kalau lagi sendiri atau baru pacaran?</summary>
-        <p>Bisa. Waktu pertama buka, kamu pilih lagi sendiri, pacaran, atau menikah — dan aplikasinya nyesuaiin. Modul yang nggak relevan nggak muncul sampai kamu sendiri yang menyalakannya.</p>
-      </details>
+      <details open><summary>Beneran gratis? Ada jebakannya nggak?</summary>
+        <p>Beneran. Nggak ada akun, nggak ada langganan, nggak ada fitur terkunci, nggak ada iklan, dan nggak ada data yang dijual — karena datanya nggak pernah nyampe ke kami sama sekali.</p></details>
+      <details><summary>Bahasanya bisa Indonesia?</summary>
+        <p>Bawaannya memang Bahasa Indonesia. Ada juga English, dan mode Dwibahasa yang nampilin dua bahasa sekaligus di tombol dan menu — enak buat pasangan beda bahasa. Gantinya di Pengaturan.</p></details>
+      <details><summary>Kalau HP-ku hilang, datanya ikut hilang?</summary>
+        <p>Iya — itu konsekuensi dari data yang cuma ada di perangkatmu. Makanya ada menu Backup: hasilnya satu berkas yang bisa dikunci pakai kata sandi. Waktu restore, isinya ditampilkan dulu sebelum apa pun ditulis.</p></details>
+      <details><summary>Pasanganku bisa lihat semua isinya?</summary>
+        <p>Nggak. Semua hal sensitif privat secara bawaan, dan cuma pemiliknya yang bisa memperlebar akses. Catatan kesehatan dan siklus nggak pernah kebuka ke pasangan kecuali kamu sendiri yang menyalakannya — dan bisa kamu tutup lagi kapan saja.</p></details>
+      <details><summary>Aplikasinya nge-judge hubungan kami nggak?</summary>
+        <p>Nggak, dan itu aturan yang dipegang sampai ke level kode. Nggak ada skor, nggak ada persentase kecocokan, nggak ada label "toxic", nggak ada perbandingan siapa lebih rajin.</p></details>
+      <details><summary>Bisa dipakai kalau masih pacaran atau lagi sendiri?</summary>
+        <p>Bisa. Waktu pertama buka kamu pilih lagi sendiri, pacaran, atau menikah — dan semua modul tetap bisa dibuka lewat menu Kehidupan, termasuk uang, nikah, dan kesuburan. Yang nggak relevan cuma nggak dipajang di depan.</p></details>
     </div>
   </div>
 </section>
@@ -660,20 +702,18 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <a class="nav__brand" href="./" style="font-size:17px">
-        <img src="./app/icons/icon-192.png" alt="" width="30" height="30" style="border-radius:10px">
-        TemuDua
-      </a>
+      <a class="brand" href="./"><img src="./icon-192.png" alt="" width="34" height="34">TemuDua</a>
       <div class="foot__links">
         <a href="./app/">Buka aplikasi</a>
         <a href="./TemuDua.apk" download>Unduh APK</a>
-        <a href="#privasi">Privasi</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#sinkron">Sinkron</a>
         <a href="#donasi">Donasi</a>
         <a href="https://meriaworks.github.io/">Meria Works</a>
       </div>
     </div>
     <p class="foot__note">
-      TemuDua bagian dari <a href="https://meriaworks.github.io/" style="text-decoration:underline">Meria Works</a>.
+      TemuDua bagian dari <a href="https://meriaworks.github.io/">Meria Works</a>.
       Aplikasi ini bukan alat medis dan bukan penasihat keuangan — perkiraan siklus dan angka uang selalu ditampilkan sebagai perkiraan, bukan kepastian.
       Buat urusan kesehatan, tetap tanya bidan atau dokter.
     </p>
@@ -681,32 +721,106 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:20px}
 </footer>
 
 <script>
-// Reveal on scroll. Falls back to "just show it" where IO is unavailable.
 (function () {
-  var els = document.querySelectorAll('.rv')
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(function (e) { e.classList.add('in') })
-    return
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target) }
-    })
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 })
-  els.forEach(function (e, i) { e.style.transitionDelay = (i % 3) * 70 + 'ms'; io.observe(e) })
-})();
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
 
-// Show the real APK size rather than a number that quietly goes stale.
-(function () {
+  /* Headline, word by word. Built in JS so the markup stays one readable
+     sentence instead of forty <span>s. */
+  var HEAD = [
+    { t: 'Bukan' }, { t: 'cuma' }, { t: 'makin' }, { t: 'dekat.' },
+    { t: 'Hidup', hl: true }, { t: 'berdua', hl: true },
+    { t: 'juga' }, { t: 'jadi' }, { t: 'lebih' }, { t: 'tertata.' },
+  ]
+  var h1 = document.getElementById('headline')
+  if (h1) {
+    HEAD.forEach(function (w, i) {
+      var span = document.createElement('span')
+      span.className = 'word'
+      span.style.animationDelay = reduce ? '0s' : (0.05 + i * 0.055) + 's'
+      if (w.hl) {
+        var hl = document.createElement('span')
+        hl.className = 'hl'
+        hl.textContent = w.t
+        hl.insertAdjacentHTML('beforeend',
+          '<svg viewBox="0 0 300 40" preserveAspectRatio="none"><path d="M6 27C64 12 150 8 294 18"/></svg>')
+        span.appendChild(hl)
+      } else {
+        span.textContent = w.t
+      }
+      h1.appendChild(span)
+      h1.appendChild(document.createTextNode(' '))
+    })
+  }
+
+  /* Reveal on scroll, staggered per group. */
+  var els = [].slice.call(document.querySelectorAll('.rv'))
+  if (!('IntersectionObserver' in window) || reduce) {
+    els.forEach(function (e) { e.classList.add('in') })
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return
+        en.target.classList.add('in')
+        io.unobserve(en.target)
+      })
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 })
+    els.forEach(function (e, i) {
+      e.style.transitionDelay = ((i % 4) * 0.08) + 's'
+      io.observe(e)
+    })
+    // Belt and braces: if the observer has not revealed something within a
+    // couple of seconds — a stale layout, an odd embedded webview, a bug — show
+    // it anyway. Invisible content is a far worse failure than a missed
+    // animation.
+    setTimeout(function () {
+      els.forEach(function (e) { e.classList.add('in') })
+    }, 2200)
+  }
+
+  /* Cursor companion + tilt. Pointer-fine only: on a touch screen there is no
+     cursor to follow and the listener would just burn battery. */
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce) {
+    var cur = document.getElementById('cursor')
+    // Parked off-screen until the pointer actually moves. Starting it at the
+    // centre left a stray dot sitting on the headline in any screenshot or
+    // first paint before the user touched the mouse.
+    var cx = -100, cy = -100, tx = cx, ty = cy, seen = false
+    addEventListener('mousemove', function (e) {
+      if (!seen) { seen = true; cx = e.clientX; cy = e.clientY }
+      tx = e.clientX; ty = e.clientY
+    }, { passive: true })
+    ;(function loop() {
+      cx += (tx - cx) * 0.18; cy += (ty - cy) * 0.18
+      cur.style.transform = 'translate(' + (cx - 13) + 'px,' + (cy - 13) + 'px)'
+      requestAnimationFrame(loop)
+    })()
+    document.querySelectorAll('a,button,summary,.usp,.bx').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { cur.classList.add('big') })
+      el.addEventListener('mouseleave', function () { cur.classList.remove('big') })
+    })
+
+    /* The phone leans toward the pointer — the one bit of 3D on the page. */
+    var phone = document.getElementById('phone')
+    if (phone) {
+      addEventListener('mousemove', function (e) {
+        var r = phone.getBoundingClientRect()
+        var dx = (e.clientX - (r.left + r.width / 2)) / innerWidth
+        var dy = (e.clientY - (r.top + r.height / 2)) / innerHeight
+        phone.style.transform = 'rotateY(' + (dx * 13) + 'deg) rotateX(' + (-dy * 10) + 'deg)'
+      }, { passive: true })
+    }
+  }
+
+  /* Real APK size rather than a number that quietly goes stale. */
   var meta = document.getElementById('apk-meta')
-  if (!meta || !window.fetch) return
-  fetch('./TemuDua.apk', { method: 'HEAD' }).then(function (r) {
-    var len = r.headers.get('content-length')
-    if (!len) return
-    var mb = (Number(len) / 1024 / 1024).toFixed(1).replace('.', ',')
-    meta.textContent = mb + ' MB · Android 7.0 ke atas'
-  }).catch(function () {})
-})();
+  if (meta && window.fetch) {
+    fetch('./TemuDua.apk', { method: 'HEAD' }).then(function (r) {
+      var len = r.headers.get('content-length')
+      if (!len) return
+      meta.textContent = (Number(len) / 1048576).toFixed(1).replace('.', ',') + ' MB · Android 7.0 ke atas'
+    }).catch(function () {})
+  }
+})()
 </script>
 </body>
 </html>
