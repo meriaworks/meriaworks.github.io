@@ -1,0 +1,18 @@
+{
+  "country": "ID",
+  "year": 2026,
+  "packVersion": 1,
+  "note": "Hanya berisi hari libur nasional yang tanggalnya tetap tiap tahun menurut undang-undang. Hari libur yang tanggalnya ditetapkan ulang tiap tahun lewat SKB 3 Menteri (Idul Fitri, Idul Adha, Nyepi, Waisak, Imlek, Isra Miraj, Wafat & Kenaikan Isa Almasih, Maulid Nabi, Tahun Baru Islam) dan cuti bersama TIDAK dimasukkan di sini karena butuh sumber resmi tahun berjalan. Tambahkan sendiri lewat Pengaturan, atau impor data pack resmi.",
+  "official": [
+    { "date": "2026-01-01", "name": "Tahun Baru Masehi", "source": "UU 1/2013 & Keppres 3/1983 — tanggal tetap" },
+    { "date": "2026-05-01", "name": "Hari Buruh Internasional", "source": "Keppres 24/2013 — tanggal tetap" },
+    { "date": "2026-06-01", "name": "Hari Lahir Pancasila", "source": "Keppres 24/2016 — tanggal tetap" },
+    { "date": "2026-08-17", "name": "Hari Kemerdekaan RI", "source": "UU 1/2013 — tanggal tetap" },
+    { "date": "2026-12-25", "name": "Hari Raya Natal", "source": "Keppres 3/1983 — tanggal tetap" }
+  ],
+  "celebrations": [
+    { "date": "2026-02-14", "name": "Valentine", "optional": true },
+    { "date": "2026-04-21", "name": "Hari Kartini", "optional": true },
+    { "date": "2026-12-22", "name": "Hari Ibu (Indonesia)", "optional": true }
+  ]
+}
