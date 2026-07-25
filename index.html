@@ -462,7 +462,7 @@
     [data-theme="cute"] .hero-proof .ic { color: var(--ink); }
 
     /* --- hero mascot world --- */
-    .hero-world { position: relative; height: 640px; z-index: 2; }
+    .hero-world { position: relative; height: 700px; z-index: 2; }
     .mascot-stage {
       position: absolute; left: 50%; top: 50%;
       width: 320px;
@@ -518,8 +518,9 @@
     .product-float {
       --x: 0px; --y: 0px;
       position: absolute; z-index: 5;
-      width: 178px; min-height: 108px;
-      padding: 14px 16px;
+      /* tinggi diseragamkan supaya 7 kartu tidak pernah bertabrakan */
+      width: 178px; height: var(--pf-h, 142px);
+      padding: 13px 15px;
       border: var(--bw) solid var(--ink);
       border-radius: 22px;
       background: var(--card);
@@ -537,17 +538,20 @@
     }
     [data-theme="modern"] .product-float:hover { border-color: var(--tone); }
     .product-float .mini-icon {
-      width: 36px; height: 36px; display: grid; place-items: center;
+      width: 34px; height: 34px; display: grid; place-items: center;
       border-radius: 12px;
       border: var(--bw) solid var(--ink);
       background: var(--tone);
       color: var(--ink);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     [data-theme="modern"] .product-float .mini-icon { border-color: transparent; }
     .product-float .mini-icon .ic { width: 20px; height: 20px; }
     .product-float strong { display: block; font-family: var(--font-display); font-size: 1.02rem; }
-    .product-float small { display: block; margin-top: 3px; color: var(--muted); line-height: 1.4; font-weight: 600; }
+    .product-float small {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      margin-top: 3px; color: var(--muted); line-height: 1.38; font-size: .8rem; font-weight: 600;
+    }
     [data-theme="modern"] .product-float small { color: #aeb7ae; }
     .product-float .stat-dot {
       position: absolute; right: 12px; top: 12px;
@@ -557,13 +561,14 @@
     }
     [data-theme="modern"] .product-float .stat-dot { border-color: transparent; }
     .product-float .stat-dot.soon { background: var(--butter); }
-    .pf-sajin  { --tone: var(--c-sajin);  left: -2%;  top: 4%;    --rot: -5deg; animation: cardFloat 5.6s ease-in-out infinite; }
-    .pf-klinap { --tone: var(--c-klinap); right: -4%; top: 6%;    --rot: 5deg;  animation: cardFloat 6.2s .5s ease-in-out infinite; }
-    .pf-kalik  { --tone: var(--c-kalik);  right: -6%; top: 44%;   --rot: 3deg;  animation: cardFloat 5.9s .9s ease-in-out infinite; }
-    .pf-4krt   { --tone: var(--c-4krt);   right: 4%;  bottom: 2%; --rot: -3deg; animation: cardFloat 5.4s 1.2s ease-in-out infinite; }
-    .pf-jelin  { --tone: var(--c-jelin);  left: -4%;  bottom: 4%; --rot: 4deg;  animation: cardFloat 6.4s .2s ease-in-out infinite; }
-    .pf-pantur { --tone: var(--c-pantur); left: -7%;  top: 42%;   --rot: -4deg; animation: cardFloat 5.8s .7s ease-in-out infinite; }
-    .pf-temudua{ --tone: var(--c-temudua);right: -6%; bottom: 26%;--rot: 4deg;  animation: cardFloat 6.1s 1.4s ease-in-out infinite; }
+    /* kiri 3 kartu, kanan 4 kartu — slot vertikal dihitung agar tak pernah bertumpuk */
+    .pf-sajin  { --tone: var(--c-sajin);  left: -3%;  top: 2%;    --rot: -5deg; animation: cardFloat 5.6s ease-in-out infinite; }
+    .pf-pantur { --tone: var(--c-pantur); left: -6%;  top: 39%;   --rot: -4deg; animation: cardFloat 5.8s .7s ease-in-out infinite; }
+    .pf-jelin  { --tone: var(--c-jelin);  left: -3%;  bottom: 2%; --rot: 4deg;  animation: cardFloat 6.4s .2s ease-in-out infinite; }
+    .pf-klinap { --tone: var(--c-klinap); right: -5%; top: 1.5%;  --rot: 5deg;  animation: cardFloat 6.2s .5s ease-in-out infinite; }
+    .pf-kalik  { --tone: var(--c-kalik);  right: -7%; top: 26%;   --rot: 3deg;  animation: cardFloat 5.9s .9s ease-in-out infinite; }
+    .pf-temudua{ --tone: var(--c-temudua);right: -5%; top: 52%;   --rot: 4deg;  animation: cardFloat 6.1s 1.4s ease-in-out infinite; }
+    .pf-4krt   { --tone: var(--c-4krt);   right: 1%;  bottom: 1.5%; --rot: -3deg; animation: cardFloat 5.4s 1.2s ease-in-out infinite; }
     @keyframes cardFloat { 50% { transform: translate3d(var(--x), calc(var(--y) - 12px), 0) rotate(calc(var(--rot) + 1.5deg)); } }
 
     .scroll-cue {
@@ -1095,7 +1100,7 @@
     @media (max-width: 1024px) {
       :root { --container: min(100% - 32px, 920px); }
       .hero-layout { grid-template-columns: 1fr; }
-      .hero-world { height: 600px; max-width: 700px; width: 100%; margin: 0 auto; }
+      .hero-world { height: 700px; max-width: 700px; width: 100%; margin: 0 auto; }
       .section-head, .manifesto-layout, .faq-layout, .footer-top { grid-template-columns: 1fr; }
       .manifesto-sticky, .faq-intro { position: static; }
       .product-panel { grid-template-columns: 1fr; }
@@ -1128,9 +1133,13 @@
       .hero { padding-top: 48px; }
       .hero h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
       .hero-actions .btn { width: 100%; }
-      .hero-world { height: 540px; margin-top: -10px; }
-      .mascot-stage { width: 240px; }
-      .product-float { width: 148px; padding: 12px; border-radius: 18px; }
+      .hero-world { height: 620px; margin-top: -10px; }
+      .mascot-stage { width: 230px; }
+      .product-float { --pf-h: 124px; width: 146px; padding: 11px 12px; border-radius: 18px; }
+      .product-float .mini-icon { width: 30px; height: 30px; border-radius: 10px; margin-bottom: 6px; }
+      .product-float .mini-icon .ic { width: 17px; height: 17px; }
+      .product-float strong { font-size: .92rem; }
+      .product-float small { font-size: .72rem; }
       .pf-sajin { left: -3%; } .pf-klinap { right: -4%; } .pf-kalik { right: -5%; } .pf-4krt { right: 2%; } .pf-jelin { left: -4%; } .pf-pantur { left: -6%; } .pf-temudua { right: -5%; }
       .orbit.one { width: 340px; height: 340px; }
       .orbit.two { width: 480px; height: 480px; }
@@ -1177,6 +1186,7 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"/></symbol>
+      <symbol id="ic-sprout" viewBox="0 0 24 24"><path d="M12 21v-8.5"/><path d="M12 12.5C12 9 9.6 6.4 6 6c-.4 3.6 2.2 6.5 6 6.5z"/><path d="M12 12.5C12 9.6 14 7.2 17 6.6c.4 3-1.9 5.6-5 5.9z"/><circle cx="12" cy="3.6" r="1.6" fill="currentColor" stroke="none"/></symbol>
       <symbol id="ic-temudua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17.5 21C14.8 17.7 7.8 15.7 7.3 10.5 7 6 10 3.2 12 2.8"/><path d="M6.5 21C9.2 17.7 16.2 15.7 16.7 10.5 17 6 14 3.2 12 2.8"/><circle cx="12" cy="4.6" r="1.7" fill="currentColor" stroke="none"/></symbol>
     <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M12 20.5S4.8 16 3 11.5C1.6 8 4 4.5 7.5 4.5c1.9 0 3.4 1 4.5 2.6C13.1 5.5 14.6 4.5 16.5 4.5 20 4.5 22.4 8 21 11.5 19.2 16 12 20.5 12 20.5z"/></symbol>
       <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2.5l2 6.7 6.8 1.9-6.3 2.9L12 21.5l-2.5-7.5-6.3-2.9 6.8-1.9z"/></symbol>
@@ -1264,7 +1274,7 @@
             <a class="btn ghost" href="#tentang" data-i18n="hero.cta2">Kenapa Meria dibuat?</a>
           </div>
           <div class="hero-proof reveal" data-delay="3">
-            <span><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="hero.p1">5 aplikasi sudah bisa dipakai</span></span>
+            <span><svg class="ic"><use href="#ic-check"/></svg><span data-i18n="hero.p1">6 aplikasi sudah bisa dipakai</span></span>
             <span><svg class="ic"><use href="#ic-cloud-off"/></svg><span data-i18n="hero.p2">Local-first &amp; offline-first</span></span>
             <span><svg class="ic"><use href="#ic-heart"/></svg><span data-i18n="hero.p3">Tanpa fitur pajangan</span></span>
           </div>
@@ -1303,12 +1313,12 @@
           <a class="product-float pf-sajin" href="./sajin/">
             <span class="stat-dot" title="Tersedia"></span>
             <span class="mini-icon"><svg class="ic"><use href="#ic-bowl"/></svg></span>
-            <strong>SAJIN</strong><small data-i18n="float.sajin">Operasional F&amp;B kecil, dibuat lebih rapi.</small>
+            <strong>SAJIN</strong><small data-i18n="float.sajin">Operasional F&amp;B jadi lebih rapi.</small>
           </a>
           <a class="product-float pf-klinap" href="./klinap/">
             <span class="stat-dot" title="Tersedia"></span>
             <span class="mini-icon"><svg class="ic"><use href="#ic-clinic"/></svg></span>
-            <strong>KLINAP</strong><small data-i18n="float.klinap">Operasional klinik sampai RME, 100% offline.</small>
+            <strong>KLINAP</strong><small data-i18n="float.klinap">Operasional klinik &amp; RME, offline.</small>
           </a>
           <a class="product-float pf-kalik" href="./kalik/">
             <span class="stat-dot" title="Tersedia"></span>
@@ -1318,12 +1328,12 @@
           <a class="product-float pf-4krt" href="./4krt/">
             <span class="stat-dot" title="Tersedia"></span>
             <span class="mini-icon"><svg class="ic"><use href="#ic-dpad"/></svg></span>
-            <strong>4KRT</strong><small data-i18n="float.4krt">Trainer ritme 4 arah — bayar semaumu, offline.</small>
+            <strong>4KRT</strong><small data-i18n="float.4krt">Trainer ritme 4 arah, offline.</small>
           </a>
           <a class="product-float pf-jelin" href="./jelin/">
             <span class="stat-dot" title="Tersedia"></span>
             <span class="mini-icon"><svg class="ic"><use href="#ic-plane"/></svg></span>
-            <strong>JELIN</strong><small data-i18n="float.jelin">Semua lamaran kerja, nggak lagi tercecer.</small>
+            <strong>JELIN</strong><small data-i18n="float.jelin">Semua lamaran kerja, nggak tercecer.</small>
           </a>
           <a class="product-float pf-temudua" href="./temudua/">
             <span class="stat-dot" title="Tersedia"></span>
@@ -1333,7 +1343,7 @@
           <a class="product-float pf-pantur" href="#produk" data-product="pantur">
             <span class="stat-dot soon" title="Segera"></span>
             <span class="mini-icon"><svg class="ic"><use href="#ic-coin"/></svg></span>
-            <strong>PANTUR</strong><small data-i18n="float.pantur">Uang, kewajiban, dan hidup dalam satu kendali.</small>
+            <strong>PANTUR</strong><small data-i18n="float.pantur">Uang &amp; kewajiban, satu kendali.</small>
           </a>
         </div>
       </div>
@@ -1485,7 +1495,7 @@
               </div>
             </div>
             <div class="product-visual">
-              <a class="mock-device" href="./jelin/" aria-label="Buka halaman JELIN" style="display:block;color:inherit">
+              <a class="mock-device" href="./jelin/" aria-label="Buka halaman JELIN" style="display:block">
                 <div class="mock-top"><span class="mock-logo"><i></i>JELIN</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
                 <div class="mock-hero-card"><span class="mock-label" data-i18n="jelin.m0">Lamaran aktif</span><div class="mock-number" data-i18n="jelin.m1">18 posisi</div></div>
                 <div class="mock-grid" data-i18n="jelin.mg"><div class="mock-card"><strong>Interview</strong><small>3 proses berjalan</small></div><div class="mock-card"><strong>Follow-up</strong><small>2 perlu dikirim</small></div><div class="mock-card"><strong>Response rate</strong><small>Naik 12%</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
@@ -1498,20 +1508,20 @@
             <div class="product-copy">
               <span class="product-index"><svg class="ic" style="width:14px;height:14px"><use href="#ic-temudua"/></svg><span data-i18n="temudua.index">06 &middot; Untuk pasangan &amp; rumah tangga</span></span>
               <h3>TEMUDUA</h3>
-              <p class="tagline" data-i18n="temudua.tag">Bukan cuma makin dekat. Hidup berdua juga jadi lebih tertata.</p>
-              <p data-i18n="temudua.body">TEMUDUA menyatukan kalender berdua, urusan rumah, uang bersama, persiapan nikah, kesuburan, sampai pengasuhan &mdash; tanpa akun, tanpa server, dan tanpa skor yang menilai hubungan kalian. Semua datanya tinggal di perangkat sendiri.</p>
-              <ul class="feature-list" data-i18n="temudua.feat"><li>Kalender &amp; pengingat</li><li>Urusan rumah</li><li>Uang berdua</li><li>Persiapan nikah</li><li>Kesuburan</li><li>Offline</li></ul>
+              <p class="tagline" data-i18n="temudua.tag">Yang bikin awet bukan romantis tiap hari. Tapi hadir tiap hari.</p>
+              <p data-i18n="temudua.body">TEMUDUA menyatukan kalender berdua, urusan rumah, uang bersama, persiapan nikah, kesuburan, sampai pengasuhan. Tiap hari kalian cukup isi satu hal kecil &mdash; dan Temu, teman kecil kalian, tumbuh dari kebiasaan itu. Ada hari istirahat, ada jeda, dan hari yang kelewat masih bisa disambung berdua.</p>
+              <ul class="feature-list" data-i18n="temudua.feat"><li>Temu &amp; streak berdua</li><li>Kalender berdua</li><li>Urusan rumah</li><li>Uang berdua</li><li>Nikah &amp; kesuburan</li><li>Offline</li></ul>
               <div class="product-cta">
                 <a class="btn" href="./temudua/"><span data-i18n="open.temudua">Lihat TEMUDUA</span><svg class="ic"><use href="#ic-arrow"/></svg></a>
               </div>
             </div>
             <div class="product-visual">
-              <a class="mock-device" href="./temudua/" aria-label="Buka halaman TEMUDUA" style="display:block;color:inherit">
+              <a class="mock-device" href="./temudua/" aria-label="Buka halaman TEMUDUA" style="display:block">
                 <div class="mock-top"><span class="mock-logo"><i></i>TEMUDUA</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
-                <div class="mock-hero-card"><span class="mock-label" data-i18n="temudua.m0">Hari ini</span><div class="mock-number" data-i18n="temudua.m1">Lagi lengang</div></div>
-                <div class="mock-grid" data-i18n="temudua.mg"><div class="mock-card"><strong>Urusan rumah</strong><small>Beban kebagi rata</small></div><div class="mock-card"><strong>Uang berdua</strong><small>Aman dipakai bulan ini</small></div><div class="mock-card"><strong>Temu</strong><small>Tumbuh bareng &mdash; hari ke-128</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+                <div class="mock-hero-card"><span class="mock-label" data-i18n="temudua.m0">Streak berdua</span><div class="mock-number" data-i18n="temudua.m1">128 hari</div></div>
+                <div class="mock-grid" data-i18n="temudua.mg"><div class="mock-card"><strong>Nadi hari ini</strong><small>Kalian berdua sudah isi</small></div><div class="mock-card"><strong>Temu</strong><small>Tahap: Penjelajah</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Uang berdua</strong><small>Aman dipakai bulan ini</small></div></div>
               </a>
-              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-shield"/></svg><span data-i18n="temudua.b1">Tanpa skor hubungan</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-cloud-off"/></svg><span data-i18n="temudua.b2">Data tetap di HP kamu</span></span>
+              <span class="float-badge badge-a"><svg class="ic"><use href="#ic-sprout"/></svg><span data-i18n="temudua.b1">Temu tumbuh bareng kalian</span></span><span class="float-badge badge-b"><svg class="ic"><use href="#ic-cloud-off"/></svg><span data-i18n="temudua.b2">Data tetap di HP kamu</span></span>
             </div>
           </article>
 
@@ -1642,14 +1652,14 @@
       <div class="container">
         <div class="section-head">
           <div><span class="eyebrow"><svg class="ic"><use href="#ic-bolt"/></svg><span data-i18n="st.eyebrow">Status produk</span></span><h2 id="status-title" class="reveal" data-i18n="st.h2">Bukan ide yang dipajang.<br><span class="hl">Produk yang bisa dibuka hari ini.</span></h2></div>
-          <p class="reveal" data-i18n="st.side">Lima aplikasi sudah bisa langsung dipakai. Satu lagi sedang disiapkan dengan standar yang sama. Klik kartunya untuk membuka halaman produk.</p>
+          <p class="reveal" data-i18n="st.side">Enam aplikasi sudah bisa langsung dipakai. Satu lagi sedang disiapkan dengan standar yang sama. Klik kartunya untuk membuka halaman produk.</p>
         </div>
         <div class="status-grid">
           <a class="status-card reveal" href="./sajin/" style="--tone:var(--c-sajin)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-sajin);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-bowl"/></svg></span><span class="status-name">SAJIN</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.sajin">Untung bersih, COGS per bahan, margin menu, stok pintar &amp; cash flow untuk UMKM F&amp;B.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
           <a class="status-card reveal" data-delay="1" href="./klinap/" style="--tone:var(--c-klinap)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-klinap);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-clinic"/></svg></span><span class="status-name">KLINAP</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.klinap">Operasional &amp; rekam medis elektronik (RME) untuk klinik—100% offline, sekali bayar, data milik Anda.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
           <a class="status-card reveal" data-delay="2" href="./kalik/" style="--tone:var(--c-kalik)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-kalik);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-flame"/></svg></span><span class="status-name">KALIK</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.kalik">Gym mini untuk otak—60 detik/hari: nalar gaya TPA, simulasi tes, dan pet elemen. Tanpa iklan, offline.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
           <a class="status-card reveal" href="./4krt/" style="--tone:var(--c-4krt)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-4krt);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-dpad"/></svg></span><span class="status-name">4KRT</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.4krt">Trainer ritme 4 arah: baca pola, kejar beat, analitik sampai milidetik. Bayar semaumu — offline, browser &amp; Android.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
-          <a class="status-card reveal" data-delay="1" href="./temudua/" style="--tone:var(--c-temudua)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-temudua);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-temudua"/></svg></span><span class="status-name">TEMUDUA</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.temudua">Ruang berdua untuk kalender, urusan rumah, uang, nikah, dan pengasuhan &mdash; lokal-first dan tanpa akun.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
+          <a class="status-card reveal" data-delay="1" href="./temudua/" style="--tone:var(--c-temudua)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-temudua);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-temudua"/></svg></span><span class="status-name">TEMUDUA</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.temudua">Ruang berdua untuk kalender, urusan rumah, uang, nikah, dan pengasuhan, plus streak yang dijalani berdua &mdash; lokal-first dan tanpa akun.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
           <a class="status-card reveal" data-delay="1" href="./jelin/" style="--tone:var(--c-jelin)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-jelin);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-plane"/></svg></span><span class="status-name">JELIN</span></div><span class="status-tag live" data-i18n="st.live">Sudah tersedia</span><p data-i18n="st.jelin">Job application tracker lengkap untuk pencari kerja yang menjalani banyak proses sekaligus.</p><span class="status-go"><span data-i18n="st.open">Buka halaman</span><svg class="ic"><use href="#ic-arrow"/></svg></span></a>
           <article class="status-card reveal" data-delay="2" style="--tone:var(--c-pantur)"><div class="status-top"><span class="icon-chip" style="--tone:var(--c-pantur);width:46px;height:46px;border-radius:15px"><svg class="ic"><use href="#ic-coin"/></svg></span><span class="status-name">PANTUR</span></div><span class="status-tag" data-i18n="st.soon">Segera hadir</span><p data-i18n="st.pantur">Finance dan life-admin untuk memahami uang aman, kewajiban, serta target hidup.</p></article>
         </div>
@@ -1740,14 +1750,14 @@
         'hero.h1': '<span class="hero-line">Life’s already</span><span class="hero-line outline">complicated</span><span class="hero-line"><span class="scribble">enough.</span></span>',
         'hero.lead': 'Meria Works builds web apps, PWAs, Android apps and digital products that help real people run their business, money, job hunt, health and mind—without pricing that adds to the headache.',
         'hero.cta1': 'Meet the products', 'hero.cta2': 'Why Meria exists',
-        'hero.p1': '5 apps ready to use today', 'hero.p2': 'Local-first & offline-first', 'hero.p3': 'No shelf-ware features',
-        'float.sajin': 'Small F&B operations, finally tidy.',
+        'hero.p1': '6 apps ready to use today', 'hero.p2': 'Local-first & offline-first', 'hero.p3': 'No shelf-ware features',
+        'float.sajin': 'Small F&B ops, finally tidy.',
         'float.klinap': 'Clinic ops to EMR, 100% offline.',
         'float.kalik': 'A mini gym for your brain, 60s a day.',
-        'float.4krt': '4-way rhythm trainer — pay what you want, offline.',
+        'float.4krt': '4-way rhythm trainer, offline.',
         'float.jelin': 'Every job application, never scattered.',
         'float.temudua': 'Life together, better organised.',
-        'float.pantur': 'Money, bills and life in one clear view.',
+        'float.pantur': 'Money and bills, one clear view.',
         'man.eyebrow': 'Why we exist',
         'man.side': 'In this economy that keeps getting harder to predict, good work tools should help people be more productive—not add another monthly subscription.',
         'man.h2': 'We’re all fighting side by side in this country. <span>Tools and technology should lighten the load.</span>',
@@ -1791,13 +1801,13 @@
         '4krt.b1': 'Sharper reflexes', '4krt.b2': 'Pay once, yours forever',
         'jelin.index': '05 · For job seekers',
         'temudua.index': '06 · For couples & households',
-        'temudua.tag': 'Not just closer. Life together, better organised.',
-        'temudua.body': 'TEMUDUA brings your shared calendar, household chores, money, wedding planning, fertility and co-parenting into one place — with no account, no server, and no score judging your relationship. Everything stays on your own device.',
-        'temudua.feat': '<li>Calendar & reminders</li><li>Household chores</li><li>Money together</li><li>Wedding planning</li><li>Fertility</li><li>Offline</li>',
+        'temudua.tag': 'What makes it last isn’t romance every day. It’s showing up every day.',
+        'temudua.body': 'TEMUDUA brings your shared calendar, household chores, money, wedding planning, fertility and co-parenting into one place. Each day you both fill in one small thing — and Temu, your little companion, grows from that habit. There are rest days, there is pause, and a missed day can still be reconnected together.',
+        'temudua.feat': '<li>Temu & shared streak</li><li>Shared calendar</li><li>Household chores</li><li>Money together</li><li>Wedding & fertility</li><li>Offline</li>',
         'open.temudua': 'Explore TEMUDUA',
-        'temudua.m0': 'Today', 'temudua.m1': 'All quiet',
-        'temudua.mg': '<div class="mock-card"><strong>Household</strong><small>Load shared evenly</small></div><div class="mock-card"><strong>Money together</strong><small>Safe to spend this month</small></div><div class="mock-card"><strong>Temu</strong><small>Growing together — day 128</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>',
-        'temudua.b1': 'No relationship score', 'temudua.b2': 'Data stays on your phone',
+        'temudua.m0': 'Streak together', 'temudua.m1': '128 days',
+        'temudua.mg': '<div class="mock-card"><strong>Today’s pulse</strong><small>You both filled it in</small></div><div class="mock-card"><strong>Temu</strong><small>Stage: Explorer</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="mock-card"><strong>Money together</strong><small>Safe to spend this month</small></div>',
+        'temudua.b1': 'Temu grows with you both', 'temudua.b2': 'Data stays on your phone',
         'jelin.tag': 'Job hunting is exhausting. Tracking it shouldn’t be.',
         'jelin.body': 'JELIN keeps every application you’ve sent, its status, deadlines, interview notes, documents and follow-ups—all stored locally on your device, so the next step is always clear.',
         'jelin.feat': '<li>Application pipeline</li><li>Reminders</li><li>Interview notes</li><li>Documents</li><li>Honest stats</li><li>Backup export</li>',
@@ -1869,13 +1879,13 @@
         'price.cta': 'Ask about a product',
         'st.eyebrow': 'Product status',
         'st.h2': 'Not ideas on display.<br><span class="hl">Products you can open today.</span>',
-        'st.side': 'Five apps are ready to use right now. One more is being built to the same standard. Click a card to open its product page.',
+        'st.side': 'Six apps are ready to use right now. One more is being built to the same standard. Click a card to open its product page.',
         'st.live': 'Available now', 'st.soon': 'Coming soon', 'st.open': 'Open page',
         'st.sajin': 'Net profit, per-ingredient COGS, menu margins, smart stock & cash flow for F&B businesses.',
         'st.klinap': 'Operations & electronic medical records (EMR) for clinics—100% offline, pay once, your data.',
         'st.kalik': 'A mini gym for your brain—60s/day: aptitude reasoning, test simulations, an elemental pet. No ads, offline.',
         'st.4krt': '4-way rhythm trainer: read patterns, chase beats, millisecond analytics. Pay what you want — offline, browser & Android.',
-        'st.temudua': 'A shared space for calendar, chores, money, wedding and parenting — local-first, no account.',
+        'st.temudua': 'A shared space for calendar, chores, money, wedding and parenting, with a streak you keep together — local-first, no account.',
         'st.jelin': 'A complete job application tracker for seekers juggling many processes at once.',
         'st.pantur': 'Finance and life-admin to understand safe money, commitments, and life goals.',
         'faq.h2': 'Fair questions, honest answers.',
