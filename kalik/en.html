@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23160f06'/%3E%3Cpath d='M14 11V37M14 25L23 14' stroke='%23f6edda' stroke-width='4.4' stroke-linecap='round'/%3E%3Cpath d='M31.5 15 Q38.5 23 35.8 30.4 Q34.2 35.6 30 38.4 Q25.8 35.6 24.2 30.4 Q21.5 23 28.5 15 Q29.4 19 30 20.6 Q30.6 19 31.5 15 Z' fill='%23ffc761'/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23160f06'/%3E%3Cpath d='M14 11V37M14 25L23 14' stroke='%23f6edda' stroke-width='4.4' stroke-linecap='round'/%3E%3Cpath d='M31.5 15 Q38.5 23 35.8 30.4 Q34.2 35.6 30 38.4 Q25.8 35.6 24.2 30.4 Q21.5 23 28.5 15 Q29.4 19 30 20.6 Q30.6 19 31.5 15 Z' fill='%23ffc761'/%3E%3C/svg%3E"/>
 <title>KALIK — A 60-second gym for your brain</title>
 <meta name="description" content="KALIK: a tiny gym for reasoning, focus & speed. 68 aptitude-style drills, test simulations, and elemental pets that grow with you. No ads. 100% offline."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -74,9 +76,17 @@ nav.sc{border-color:var(--line)}
 .hero h1 em{font-style:normal;background:linear-gradient(100deg,#ffe2a6,var(--gold) 40%,var(--lava));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{font-size:18px;margin-bottom:34px}
 .ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.playbtn{display:inline-flex;align-items:center;gap:12px;padding:14px 26px;border-radius:18px;background:linear-gradient(140deg,#ffe0a3,var(--gold) 45%,var(--ember));color:var(--ink);
+.playbtn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:14px 26px;border-radius:18px;background:linear-gradient(140deg,#ffe0a3,var(--gold) 45%,var(--ember));color:var(--ink);
   box-shadow:0 12px 40px rgba(255,157,77,.35);transition:transform .2s,box-shadow .2s;will-change:transform}
 .playbtn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 20px 54px rgba(255,157,77,.5)}
+.dlbtn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border-radius:18px;background:rgba(255,199,97,.06);border:1.5px solid rgba(255,199,97,.42);color:var(--cream);text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s,border-color .25s;will-change:transform}
+.dlbtn:hover{transform:translateY(-3px) scale(1.02);border-color:var(--gold);background:rgba(255,199,97,.13);box-shadow:0 20px 50px rgba(255,157,77,.24)}
+.dlbtn svg{color:var(--gold)}
+.dlbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.72}
+.dlbtn b{font-family:var(--disp);font-size:17px}
+.dltag{position:absolute;top:-10px;right:14px;font-size:8.5px;letter-spacing:.14em;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--gold);color:var(--ink);box-shadow:0 4px 12px rgba(255,157,77,.4)}
+.dlnote{margin:20px auto 0;font-size:12.5px;color:var(--mut);max-width:470px;line-height:1.65}
+.dlnote b{color:var(--cream)}
 .playbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.75}
 .playbtn b{font-family:var(--disp);font-size:17px}
 .ghostlink{font-weight:600;font-size:14.5px;color:var(--mut);border-bottom:1px dashed var(--mut);padding-bottom:2px;transition:color .2s}
@@ -530,11 +540,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h2 class="rv rv2">Start your first<br/>60 seconds today.</h2>
     <p class="sub rv rv3">Nala is already waiting on your home screen. Tomorrow, she'll still be there — a little closer to you.</p>
     <div class="ctas rv rv4" style="justify-content:center">
-      <a class="playbtn" href="#">
+      <!-- TODO: swap href="#" with the Google Play link once the app is published -->
+      <a class="playbtn" href="#" aria-label="Google Play — coming soon">
+        <span class="dltag">SOON</span>
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
         <span><small>COMING SOON ON</small><b>Google Play</b></span>
       </a>
+      <!-- TODO: swap href="#" with the Mayar purchase link (pay what you want) once ready -->
+      <a class="dlbtn" href="#" aria-label="Download HTML — pay what you want">
+        <span class="dltag">SOON</span>
+        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 16v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><small>PAY WHAT YOU WANT</small><b>Download HTML</b></span>
+      </a>
     </div>
+    <p class="dlnote rv rv4">A single HTML file — <b>double-click and play</b>, no internet, no install. Can also be installed as an app (PWA) from your browser. Google Play & the Mayar purchase link (pay any price you like) are coming soon.</p>
   </div>
 </section>
 
