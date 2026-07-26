@@ -216,6 +216,56 @@ h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:700}
 .d-note{margin-top:12px;font-size:.72rem;color:#6B7F77;line-height:1.4}
 @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 
+
+/* -- feature icons: one distinct mechanism each ---------
+   Named only while the button is active or hovered, and with no fill
+   mode, so leaving mid-run drops straight back to the drawn pose. The
+   app had the opposite - paused + fill:both - and every icon froze
+   halfway the moment the pointer left. */
+.fi *{transform-box:fill-box}
+.fi .a,.fi .b,.fi .c,.fi .d{animation-duration:1.1s;animation-timing-function:var(--ease);
+  animation-iteration-count:1;animation-fill-mode:none;animation-name:none}
+.f-btn:hover .fi .a,.f-btn:focus-visible .fi .a,.f-btn[aria-selected="true"] .fi .a{animation-name:var(--n-a,none)}
+.f-btn:hover .fi .b,.f-btn:focus-visible .fi .b,.f-btn[aria-selected="true"] .fi .b{animation-name:var(--n-b,none)}
+.f-btn:hover .fi .c,.f-btn:focus-visible .fi .c,.f-btn[aria-selected="true"] .fi .c{animation-name:var(--n-c,none)}
+.f-btn:hover .fi .d,.f-btn:focus-visible .fi .d,.f-btn[aria-selected="true"] .fi .d{animation-name:var(--n-d,none)}
+
+/* 1 - horizon: the node travels the line and settles */
+.fi-1{--n-a:drawLine;--n-b:walkDot}
+.fi-1 .a{stroke-dasharray:18}
+@keyframes drawLine{0%{stroke-dashoffset:18}55%,100%{stroke-dashoffset:0}}
+@keyframes walkDot{0%{transform:translateX(-7px);opacity:0}30%{opacity:1}70%,100%{transform:translateX(0);opacity:1}}
+
+/* 2 - calendar: dates land one after another, each with a small drop */
+.fi-2{--n-a:dropIn;--n-b:dropIn;--n-c:dropIn}
+.fi-2 .b{animation-delay:.13s}.fi-2 .c{animation-delay:.26s}
+@keyframes dropIn{0%{transform:translateY(-6px);opacity:0}55%{transform:translateY(1px);opacity:1}75%,100%{transform:translateY(0);opacity:1}}
+
+/* 3 - bars: grow from the baseline, each to its own height */
+.fi-3{--n-a:rise;--n-b:rise;--n-c:rise}
+.fi-3 .a,.fi-3 .b,.fi-3 .c{transform-origin:50% 100%}
+.fi-3 .b{animation-delay:.1s}.fi-3 .c{animation-delay:.2s}
+@keyframes rise{0%{transform:scaleY(.1)}70%{transform:scaleY(1.08)}100%{transform:scaleY(1)}}
+
+/* 4 - shield: a ring pulses out; the shield itself never moves */
+.fi-4{--n-a:pulseOut}
+.fi-4 .a{transform-origin:50% 50%}
+@keyframes pulseOut{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+
+/* 5 - scenario: the halves pull apart, then come back together */
+.fi-5{--n-a:partL;--n-b:partR;--n-c:nudgeL;--n-d:nudgeR}
+@keyframes partL{0%,100%{transform:translateX(0)}45%{transform:translateX(-3px)}}
+@keyframes partR{0%,100%{transform:translateX(0)}45%{transform:translateX(3px)}}
+@keyframes nudgeL{0%,100%{transform:translateX(0)}45%{transform:translateX(-2px)}}
+@keyframes nudgeR{0%,100%{transform:translateX(0)}45%{transform:translateX(2px)}}
+
+/* 6 - growth: the stem draws upward, then the leaf unfurls */
+.fi-6{--n-a:stem;--n-b:leaf}
+.fi-6 .a{stroke-dasharray:14}
+.fi-6 .b{transform-origin:0% 100%}
+@keyframes stem{0%{stroke-dashoffset:14}60%,100%{stroke-dashoffset:0}}
+@keyframes leaf{0%,40%{transform:scale(0)}80%{transform:scale(1.12)}100%{transform:scale(1)}}
+
 /* ── marquee ──────────────────────────────────────────── */
 .mq{overflow:hidden;border-block:1px solid var(--garis);padding-block:15px;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
