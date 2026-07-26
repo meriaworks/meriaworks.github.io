@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0B1F1B" />
+<title>PANTUR — Saldo besar belum tentu uang aman.</title>
+<meta name="description" content="Pencatat keuangan rumah tangga yang jalan penuh tanpa internet. Tanpa akun, tanpa server, tanpa skor. Uangmu, catatanmu, HP-mu." />
+<meta property="og:title" content="PANTUR — Saldo besar belum tentu uang aman." />
+<meta property="og:description" content="Pencatat keuangan rumah tangga yang jalan penuh tanpa internet. Tanpa akun, tanpa server, tanpa skor." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="%2312403A"/><g fill="none" stroke="%23F5F7F2" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"><path d="M194 232a62 62 0 0 1 124 0"/><path d="M116 232h280"/><path d="M150 232c-10 76 8 130 106 130s116-54 106-130"/></g><circle cx="256" cy="232" r="29" fill="%23B8EA63"/></svg>' />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PANTUR — landing
+   Palette taken from the product's own design tokens.
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --hutan:#0B1F1B; --hutan-2:#12403A; --hutan-3:#1B5A4E;
+  --mint:#7FE3C0; --lime:#B8EA63; --kertas:#F4F7F1;
+  --kabut:#8FA79D; --garis:rgba(244,247,241,.13);
+  --ink:#F4F7F1;
+  --wrap:min(1180px, calc(100% - 44px));
+  --r-s:14px; --r-m:22px; --r-l:34px;
+  --ease:cubic-bezier(.22,.9,.24,1); --spring:cubic-bezier(.34,1.5,.5,1);
+  --s1:8px; --s2:16px; --s3:26px; --s4:44px; --s5:72px; --s6:120px;
+  --display:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--hutan);color:var(--ink);
+  font-family:var(--body);font-size:16.5px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.wrap{width:var(--wrap);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+
+/* ── ambient grain + glow ─────────────────────────────── */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background:
+    radial-gradient(70ch 50ch at 78% -8%, rgba(127,227,192,.13), transparent 60%),
+    radial-gradient(50ch 40ch at 8% 32%, rgba(184,234,99,.07), transparent 62%);
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ── nav ──────────────────────────────────────────────── */
+.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--hutan) 84%,transparent);border-bottom:1px solid var(--garis)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding-block:13px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--display);
+  font-weight:700;font-size:1.06rem;letter-spacing:.01em}
+.nav-links{display:flex;align-items:center;gap:var(--s3)}
+.nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--kabut);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:900px){.nav-links a.hide-sm{display:none}}
+
+/* ── logo mark, animated ──────────────────────────────── */
+.mark{width:34px;height:34px;flex:none;overflow:visible}
+.mark .m-sun{stroke-dasharray:98;stroke-dashoffset:98;animation:sunRise 5s var(--ease) infinite}
+.mark .m-hor{stroke-dasharray:280;stroke-dashoffset:280;animation:horDraw 5s var(--ease) infinite}
+.mark .m-bag{stroke-dasharray:300;stroke-dashoffset:300;animation:bagDraw 5s var(--ease) infinite}
+.mark .m-dot{transform-box:fill-box;transform-origin:50% 50%;animation:dotPop 5s var(--spring) infinite}
+@keyframes horDraw{0%,4%{stroke-dashoffset:280}22%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:280}}
+@keyframes bagDraw{0%,16%{stroke-dashoffset:300}42%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:300}}
+@keyframes sunRise{0%,32%{stroke-dashoffset:98}54%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:98}}
+@keyframes dotPop{0%,52%{transform:scale(0)}66%{transform:scale(1.35)}74%,88%{transform:scale(1)}100%{transform:scale(0)}}
+
+/* ── buttons ──────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;
+  font-family:var(--body);font-weight:700;font-size:.94rem;text-decoration:none;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .22s var(--spring),box-shadow .22s,background .2s,border-color .2s;white-space:nowrap}
+.btn-1{background:var(--mint);color:#08201C}
+.btn-1:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px var(--mint)}
+.btn-2{border-color:var(--garis);color:var(--ink)}
+.btn-2:hover{border-color:var(--mint);transform:translateY(-3px)}
+.btn:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.btn svg{transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+
+/* ── HERO ─────────────────────────────────────────────── */
+.hero{padding-block:var(--s6) var(--s5);display:grid;gap:var(--s5);align-items:center}
+@media(min-width:960px){.hero{grid-template-columns:1.05fr .95fr;gap:var(--s4)}}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--garis);background:rgba(127,227,192,.07);
+  font-family:var(--display);font-size:.74rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--mint)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:blip 2.4s ease-in-out infinite}
+@keyframes blip{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+h1.hook{font-size:clamp(2.9rem,6.6vw,4.9rem);font-weight:700;margin-top:var(--s3)}
+h1.hook em{font-style:normal;color:var(--mint);position:relative;display:inline-block}
+h1.hook em::after{content:"";position:absolute;left:0;right:0;bottom:.08em;height:.09em;background:var(--lime);
+  transform:scaleX(0);transform-origin:left;animation:swipe 1s .7s var(--ease) forwards}
+@keyframes swipe{to{transform:scaleX(1)}}
+.sub{margin-top:var(--s3);font-size:1.08rem;color:var(--kabut);max-width:44ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:var(--s4)}
+.trust{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s3);font-size:.83rem;color:var(--kabut)}
+.trust span{display:flex;align-items:center;gap:7px}
+.trust svg{width:15px;height:15px;color:var(--lime);flex:none}
+
+/* ── phone mockup ─────────────────────────────────────── */
+.phone-stage{position:relative;display:grid;place-items:center;perspective:1400px}
+.phone{
+  width:min(320px,84vw);border-radius:38px;padding:11px;
+  background:linear-gradient(160deg,#1B5A4E,#0B1F1B);border:1px solid rgba(244,247,241,.16);
+  box-shadow:0 50px 90px -40px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.4) inset;
+  transform:rotateY(-13deg) rotateX(5deg) rotateZ(1deg);transform-style:preserve-3d;
+  animation:tilt 9s ease-in-out infinite;
+}
+@keyframes tilt{0%,100%{transform:rotateY(-13deg) rotateX(5deg) rotateZ(1deg)}
+  50%{transform:rotateY(-7deg) rotateX(2deg) rotateZ(-1deg)}}
+.screen{background:#F4F7F1;border-radius:29px;padding:17px 15px 19px;color:#12241F;overflow:hidden}
+.scr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.scr-brand{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:700;font-size:.78rem;color:#12403A}
+.scr-brand svg{width:16px;height:16px}
+.scr-eye{width:22px;height:22px;color:#7A8F86}
+.scr-lbl{font-size:.68rem;color:#6B7F77;font-weight:600;letter-spacing:.02em}
+.scr-big{font-family:var(--display);font-size:2.1rem;font-weight:700;color:#12403A;letter-spacing:-.03em;
+  line-height:1;margin:4px 0 3px;font-variant-numeric:tabular-nums}
+.scr-note{font-size:.66rem;color:#6B7F77}
+.bar{height:7px;border-radius:99px;background:#E1E9DE;margin-top:13px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#1B5A4E,#7FE3C0);
+  width:0;animation:fill 2.6s 1s var(--ease) forwards}
+@keyframes fill{to{width:63%}}
+.rows{margin-top:15px;display:grid;gap:7px}
+.row{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:9px;
+  background:#fff;border:1px solid #E4EBE1;border-radius:12px;padding:8px 10px;
+  opacity:0;transform:translateY(9px);animation:rowIn .55s var(--ease) forwards}
+.row:nth-child(1){animation-delay:1.5s}.row:nth-child(2){animation-delay:1.75s}
+.row:nth-child(3){animation-delay:2s}.row:nth-child(4){animation-delay:2.25s}
+@keyframes rowIn{to{opacity:1;transform:none}}
+.row-ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#EAF4EF;color:#1B5A4E}
+.row-ic svg{width:14px;height:14px}
+.row-t{font-size:.71rem;font-weight:600;color:#12241F;line-height:1.25}
+.row-t small{display:block;font-weight:400;color:#7A8F86;font-size:.63rem}
+.row-a{font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums;color:#B0413B}
+.row-a.in{color:#1B7A52}
+/* floating chips around the phone */
+.chip{position:absolute;display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:999px;
+  background:rgba(11,31,27,.9);border:1px solid var(--garis);backdrop-filter:blur(8px);
+  font-size:.73rem;font-weight:600;white-space:nowrap;box-shadow:0 18px 40px -22px rgba(0,0,0,.9)}
+.chip svg{width:14px;height:14px;color:var(--lime);flex:none}
+.chip-a{top:9%;right:-4%;animation:chipIn .6s 2.6s both var(--spring)}
+.chip-b{bottom:15%;left:-8%;animation:chipIn .6s 2.9s both var(--spring)}
+@keyframes chipIn{from{opacity:0;transform:scale(.8) translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:640px){.chip-a{right:-2%}.chip-b{left:-2%}}
+
+/* ── section frame ────────────────────────────────────── */
+.sec{padding-block:var(--s6)}
+.sec-head{display:grid;gap:var(--s2);max-width:60ch;margin-bottom:var(--s5)}
+.kicker{font-family:var(--display);font-size:.75rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mint)}
+h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:700}
+.lead{color:var(--kabut);font-size:1.04rem;max-width:52ch}
+
+/* ── USP: the acronym ─────────────────────────────────── */
+.usp-band{background:linear-gradient(180deg,rgba(127,227,192,.05),transparent)}
+.usp{display:grid;gap:1px;background:var(--garis);border:1px solid var(--garis);border-radius:var(--r-l);overflow:hidden}
+@media(min-width:700px){.usp{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1040px){.usp{grid-template-columns:repeat(6,1fr)}}
+.usp-cell{background:var(--hutan);padding:var(--s4) var(--s3) var(--s3);display:grid;gap:9px;
+  align-content:start;position:relative;transition:background .3s}
+.usp-cell:hover{background:#0E2A24}
+.usp-l{font-family:var(--display);font-size:3.4rem;font-weight:700;line-height:.8;color:var(--mint);
+  letter-spacing:-.05em;transition:transform .35s var(--spring),color .3s}
+.usp-cell:hover .usp-l{transform:translateY(-5px);color:var(--lime)}
+.usp-w{font-family:var(--display);font-size:1.02rem;font-weight:600;letter-spacing:-.01em}
+.usp-d{font-size:.86rem;color:var(--kabut);line-height:1.45}
+
+/* ── features: interactive switcher ───────────────────── */
+.feat{display:grid;gap:var(--s4)}
+@media(min-width:940px){.feat{grid-template-columns:.85fr 1.15fr;gap:var(--s5);align-items:start}}
+.f-list{display:grid;gap:7px}
+.f-btn{display:grid;grid-template-columns:38px 1fr;gap:var(--s2);align-items:start;text-align:left;
+  padding:16px;border-radius:var(--r-m);border:1px solid transparent;background:transparent;
+  color:inherit;cursor:pointer;font-family:inherit;transition:background .25s,border-color .25s}
+.f-btn:hover{background:rgba(244,247,241,.035)}
+.f-btn[aria-selected="true"]{background:rgba(127,227,192,.09);border-color:rgba(127,227,192,.28)}
+.f-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(127,227,192,.12);color:var(--mint);transition:background .25s,color .25s}
+.f-btn[aria-selected="true"] .f-ic{background:var(--mint);color:#08201C}
+.f-ic svg{width:20px;height:20px;overflow:visible}
+.f-t{font-family:var(--display);font-weight:600;font-size:1.01rem;margin-bottom:3px}
+.f-d{font-size:.87rem;color:var(--kabut);line-height:1.45}
+.f-stage{border:1px solid var(--garis);border-radius:var(--r-l);padding:var(--s4);
+  background:linear-gradient(165deg,rgba(27,90,78,.3),rgba(11,31,27,.5));min-height:390px;position:relative;overflow:hidden}
+.f-panel{display:none}
+.f-panel.on{display:block;animation:panelIn .45s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.f-panel h3{font-size:1.35rem;margin-bottom:10px}
+.f-panel>p{color:var(--kabut);font-size:.94rem;max-width:46ch}
+.demo{margin-top:var(--s3);background:var(--kertas);border-radius:var(--r-m);padding:16px;color:#12241F}
+.d-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.d-h strong{font-family:var(--display);font-size:.9rem;color:#12403A}
+.d-h span{font-size:.7rem;color:#7A8F86}
+.d-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid #E4EBE1;font-size:.8rem}
+.d-row:first-of-type{border-top:0}
+.d-row b{font-weight:600;color:#12241F}
+.d-row small{display:block;color:#7A8F86;font-weight:400;font-size:.7rem}
+.d-num{font-variant-numeric:tabular-nums;font-weight:700}
+.neg{color:#B0413B}.pos{color:#1B7A52}
+.pill{display:inline-block;padding:3px 9px;border-radius:99px;font-size:.65rem;font-weight:700;letter-spacing:.02em}
+.pill-ok{background:#DFF3E7;color:#1B7A52}
+.pill-warn{background:#FBEEDC;color:#96601C}
+.pill-bad{background:#FADEDC;color:#B0413B}
+.pill-none{background:#E7EDE6;color:#6B7F77}
+.d-bars{display:flex;align-items:flex-end;gap:6px;height:74px;margin-top:12px}
+.d-bars i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,#7FE3C0,#1B5A4E);
+  transform-origin:50% 100%;animation:grow .8s var(--ease) both}
+.d-note{margin-top:12px;font-size:.72rem;color:#6B7F77;line-height:1.4}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* ── marquee ──────────────────────────────────────────── */
+.mq{overflow:hidden;border-block:1px solid var(--garis);padding-block:15px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.mq-t{display:flex;width:max-content;animation:slide 46s linear infinite}
+.mq:hover .mq-t{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.mq-s{display:flex;align-items:center}
+.mq-s span{font-family:var(--display);font-size:.88rem;font-weight:500;color:var(--kabut);
+  padding-inline:20px;white-space:nowrap;display:flex;align-items:center;gap:20px}
+.mq-s span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--mint);opacity:.5}
+
+/* ── limits ───────────────────────────────────────────── */
+.lim{display:grid;gap:var(--s3)}
+@media(min-width:820px){.lim{grid-template-columns:repeat(2,1fr);gap:var(--s3)}}
+.lim-c{border:1px solid var(--garis);border-radius:var(--r-m);padding:var(--s3);display:grid;gap:9px;
+  align-content:start;transition:border-color .3s,transform .3s var(--ease)}
+.lim-c:hover{border-color:rgba(184,234,99,.4);transform:translateY(-3px)}
+.lim-c h3{font-size:1.06rem;font-weight:600;font-family:var(--display)}
+.lim-c p{font-size:.88rem;color:var(--kabut)}
+.lim-n{font-family:var(--display);font-size:.72rem;color:var(--lime);letter-spacing:.1em}
+
+/* ── pricing ──────────────────────────────────────────── */
+.buy{border:1px solid rgba(127,227,192,.3);border-radius:var(--r-l);padding:var(--s5) var(--s4);
+  background:linear-gradient(165deg,rgba(127,227,192,.1),rgba(11,31,27,.4));text-align:center;
+  display:grid;gap:var(--s3);justify-items:center;position:relative;overflow:hidden}
+.buy::before{content:"";position:absolute;inset:-40% -10% auto;height:60%;
+  background:radial-gradient(closest-side,rgba(127,227,192,.18),transparent);pointer-events:none}
+.buy h2{max-width:16ch}
+.price{display:flex;align-items:baseline;gap:10px;font-family:var(--display)}
+.price .amt{font-size:3rem;font-weight:700;color:var(--mint);letter-spacing:-.04em}
+.price .per{font-size:.9rem;color:var(--kabut)}
+.buy-note{font-size:.83rem;color:var(--kabut);max-width:42ch}
+.buy-list{display:grid;gap:9px;justify-items:start;text-align:left;margin-top:var(--s1)}
+.buy-list div{display:flex;gap:10px;align-items:flex-start;font-size:.89rem}
+.buy-list svg{width:17px;height:17px;color:var(--lime);flex:none;margin-top:3px}
+
+/* ── footer ───────────────────────────────────────────── */
+footer{border-top:1px solid var(--garis);padding-block:var(--s4) var(--s5);margin-top:var(--s6)}
+.foot{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:space-between;align-items:center}
+.foot p{font-size:.8rem;color:var(--kabut)}
+.foot a{color:var(--mint);text-decoration:none;font-weight:600}
+.foot a:hover{text-decoration:underline}
+
+/* ── reveal ───────────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.rv.on{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .rv{opacity:1;transform:none}
+  .bar i{width:63%}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 512 512" aria-hidden="true">
+        <rect width="512" height="512" rx="116" fill="#12403A"/>
+        <g fill="none" stroke="#F4F7F1" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+          <path class="m-sun" d="M194 232a62 62 0 0 1 124 0"/>
+          <path class="m-hor" d="M116 232h280"/>
+          <path class="m-bag" d="M150 232c-10 76 8 130 106 130s116-54 106-130"/>
+        </g>
+        <circle class="m-dot" cx="256" cy="232" r="29" fill="#B8EA63"/>
+      </svg>
+      PANTUR
+    </a>
+    <nav class="nav-links">
+      <a class="hide-sm" href="#usp">Kenapa PANTUR</a>
+      <a class="hide-sm" href="#fitur">Fitur</a>
+      <a class="hide-sm" href="#batas">Batasnya</a>
+      <a href="#beli" class="btn btn-1" style="padding:9px 18px;font-size:.85rem">Beli</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ══ HERO ══ -->
+<section class="wrap hero">
+  <div>
+    <span class="eyebrow"><i></i>Jalan penuh tanpa internet</span>
+    <h1 class="hook">Saldo besar belum tentu <em>uang aman.</em></h1>
+    <p class="sub">
+      PANTUR ngitung mana yang benar-benar bebas kamu pakai — setelah kos, cicilan,
+      arisan, dan uang yang sudah kamu sisihkan dipotong duluan.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-1" href="#beli">
+        Beli PANTUR
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-2" href="#fitur">Lihat isinya</a>
+    </div>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tanpa akun</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tanpa server</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sekali beli</span>
+    </div>
+  </div>
+
+  <div class="phone-stage">
+    <div class="phone">
+      <div class="screen">
+        <div class="scr-top">
+          <span class="scr-brand">
+            <svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="116" fill="#12403A"/><g fill="none" stroke="#F4F7F1" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"><path d="M194 232a62 62 0 0 1 124 0"/><path d="M116 232h280"/><path d="M150 232c-10 76 8 130 106 130s116-54 106-130"/></g><circle cx="256" cy="232" r="29" fill="#B8EA63"/></svg>
+            PANTUR
+          </span>
+          <svg class="scr-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/></svg>
+        </div>
+        <p class="scr-lbl">Aman dipakai sampai 25 Agu</p>
+        <p class="scr-big" id="count">Rp1.720.000</p>
+        <p class="scr-note">Setelah 4 kewajiban &amp; Rp2 jt terlindungi</p>
+        <div class="bar"><i></i></div>
+        <div class="rows">
+          <div class="row">
+            <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20h16"/><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/></svg></span>
+            <span class="row-t">Makan warung<small>Hari ini · 12.40</small></span>
+            <span class="row-a">−25.000</span>
+          </div>
+          <div class="row">
+            <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+            <span class="row-t">Kos bulanan<small>Jatuh tempo 5 hari lagi</small></span>
+            <span class="row-a">−1.200.000</span>
+          </div>
+          <div class="row">
+            <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20h16"/><path d="M12 16V5"/><path d="m7.5 9.5 4.5-4.5 4.5 4.5"/></svg></span>
+            <span class="row-t">Hasil warung<small>Kemarin</small></span>
+            <span class="row-a in">+310.000</span>
+          </div>
+          <div class="row">
+            <span class="row-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3 5 6v6c0 4.4 3 8 7 9 4-1 7-4.6 7-9V6z"/></svg></span>
+            <span class="row-t">Dana darurat<small>Terlindungi · tidak ikut dihitung</small></span>
+            <span class="row-a" style="color:#1B5A4E">2.000.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="chip chip-a">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12.5a9 9 0 0 1 14 0"/><path d="M8.5 16a4.5 4.5 0 0 1 7 0"/><path d="M4 4.5 20 20"/></svg>
+      Mode pesawat? Tetap jalan.
+    </span>
+    <span class="chip chip-b">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"/></svg>
+      0 data keluar dari HP
+    </span>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-t">
+    <div class="mq-s"><span>makan warung</span><span>bayar kos</span><span>arisan RT</span><span>kondangan</span><span>ojol</span><span>pulsa &amp; kuota</span><span>token listrik</span><span>galon</span><span>gas melon</span><span>kirim ke orang tua</span><span>SPP anak</span><span>BPJS</span><span>servis motor</span><span>pajak kendaraan</span><span>THR</span><span>zakat</span><span>mudik</span><span>paylater</span></div>
+    <div class="mq-s"><span>makan warung</span><span>bayar kos</span><span>arisan RT</span><span>kondangan</span><span>ojol</span><span>pulsa &amp; kuota</span><span>token listrik</span><span>galon</span><span>gas melon</span><span>kirim ke orang tua</span><span>SPP anak</span><span>BPJS</span><span>servis motor</span><span>pajak kendaraan</span><span>THR</span><span>zakat</span><span>mudik</span><span>paylater</span></div>
+  </div>
+</div>
+
+<!-- ══ USP ══ -->
+<section class="sec usp-band" id="usp">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Enam huruf, enam janji</span>
+      <h2>Namanya sendiri adalah janjinya.</h2>
+      <p class="lead">Bukan slogan yang ditempel belakangan. Tiap huruf ada di kodenya, dan ada tesnya.</p>
+    </div>
+    <div class="usp">
+      <div class="usp-cell rv"><span class="usp-l">P</span><span class="usp-w">Pribadi</span><span class="usp-d">Datamu cuma di HP-mu. Nggak ada server.</span></div>
+      <div class="usp-cell rv"><span class="usp-l">A</span><span class="usp-w">Apa adanya</span><span class="usp-d">Tanpa skor, tanpa nilai, tanpa vonis.</span></div>
+      <div class="usp-cell rv"><span class="usp-l">N</span><span class="usp-w">Nol sinyal</span><span class="usp-d">Jalan penuh tanpa internet. Selamanya.</span></div>
+      <div class="usp-cell rv"><span class="usp-l">T</span><span class="usp-w">Tepat</span><span class="usp-d">Rupiah dihitung utuh. Nol pembulatan.</span></div>
+      <div class="usp-cell rv"><span class="usp-l">U</span><span class="usp-w">Undur</span><span class="usp-d">Salah catat? Batalkan sekaligus.</span></div>
+      <div class="usp-cell rv"><span class="usp-l">R</span><span class="usp-w">Ramah</span><span class="usp-d">Ngerti warung, arisan, kondangan.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<section class="sec" id="fitur">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Isi PANTUR</span>
+      <h2>Klik satu per satu. Ini isinya beneran.</h2>
+      <p class="lead">Bukan daftar fitur. Ini layar yang bakal kamu pakai tiap hari.</p>
+    </div>
+
+    <div class="feat">
+      <div class="f-list" role="tablist" aria-label="Daftar fitur PANTUR">
+
+        <button class="f-btn" role="tab" aria-selected="true" data-p="p1">
+          <span class="f-ic"><svg class="fi fi-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><path class="a" d="M3 18h18"/><circle class="b" cx="12" cy="18" r="2" fill="currentColor" stroke="none"/></svg></span>
+          <span><span class="f-t">Aman dipakai</span><span class="f-d">Angka yang benar-benar bebas, bukan saldo mentah.</span></span>
+        </button>
+
+        <button class="f-btn" role="tab" aria-selected="false" data-p="p2">
+          <span class="f-ic"><svg class="fi fi-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle class="a" cx="8" cy="14.5" r="1.3" fill="currentColor" stroke="none"/><circle class="b" cx="12" cy="14.5" r="1.3" fill="currentColor" stroke="none"/><circle class="c" cx="16" cy="14.5" r="1.3" fill="currentColor" stroke="none"/></svg></span>
+          <span><span class="f-t">Kewajiban rutin</span><span class="f-d">Kos, listrik, arisan — muncul sebelum kamu lupa.</span></span>
+        </button>
+
+        <button class="f-btn" role="tab" aria-selected="false" data-p="p3">
+          <span class="f-ic"><svg class="fi fi-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path class="a" d="M7 20v-6"/><path class="b" d="M12 20V8"/><path class="c" d="M17 20v-10"/></svg></span>
+          <span><span class="f-t">Ke mana uangmu</span><span class="f-d">Lima sisi berdiri sendiri. Nggak dijadikan satu skor.</span></span>
+        </button>
+
+        <button class="f-btn" role="tab" aria-selected="false" data-p="p4">
+          <span class="f-ic"><svg class="fi fi-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.4 3 8 7 9 4-1 7-4.6 7-9V6z"/><circle class="a" cx="12" cy="12" r="7"/></svg></span>
+          <span><span class="f-t">Uang terlindungi</span><span class="f-d">Disisihkan tanpa dipindah. Dipotong tepat sekali.</span></span>
+        </button>
+
+        <button class="f-btn" role="tab" aria-selected="false" data-p="p5">
+          <span class="f-ic"><svg class="fi fi-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path class="a" d="M4 12h6"/><path class="b" d="M14 12h6"/><path d="M12 4v16" opacity=".35"/><path class="c" d="m8 8-4 4 4 4"/><path class="d" d="m16 16 4-4-4-4"/></svg></span>
+          <span><span class="f-t">Kalau keadaan berubah</span><span class="f-d">Pemasukan berhenti, uangmu habis bulan ke berapa.</span></span>
+        </button>
+
+        <button class="f-btn" role="tab" aria-selected="false" data-p="p6">
+          <span class="f-ic"><svg class="fi fi-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><path class="a" d="M12 21V8"/><path class="b" d="M12 12c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5z"/></svg></span>
+          <span><span class="f-t">Tujuan &amp; KPR</span><span class="f-d">Cicilan setelah bunga naik ikut dihitung.</span></span>
+        </button>
+      </div>
+
+      <div class="f-stage">
+        <!-- P1 -->
+        <div class="f-panel on" data-panel="p1">
+          <h3>Angka yang jujur</h3>
+          <p>Saldo Rp5,2 juta kelihatan aman — sampai kos, cicilan, dan dana darurat dipotong. PANTUR nunjukin sisanya duluan.</p>
+          <div class="demo">
+            <div class="d-h"><strong>Aman dipakai</strong><span>sampai 25 Agu</span></div>
+            <div class="d-row"><span><b>Saldo semua akun</b><small>Dompet, BCA, GoPay</small></span><span class="d-num">Rp5.230.000</span></div>
+            <div class="d-row"><span><b>Kewajiban 30 hari</b><small>Kos, listrik, arisan, paylater</small></span><span class="d-num neg">−Rp1.510.000</span></div>
+            <div class="d-row"><span><b>Uang terlindungi</b><small>Dana darurat + SPP anak</small></span><span class="d-num neg">−Rp2.000.000</span></div>
+            <div class="d-row" style="border-top:2px solid #12403A;margin-top:4px;padding-top:11px"><span><b>Aman dipakai</b><small>Rp90.500 per hari</small></span><span class="d-num pos" style="font-size:1.05rem">Rp1.720.000</span></div>
+            <p class="d-note">Kalau catatanmu belum cukup, kolom ini bilang “belum bisa dihitung” — bukan nampilin angka tebakan.</p>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="f-panel" data-panel="p2">
+          <h3>Nggak ada lagi yang kelewat</h3>
+          <p>Tanggal 31 di bulan Februari mundur sendiri ke akhir bulan, dan bulan depannya balik ke 31 lagi.</p>
+          <div class="demo">
+            <div class="d-h"><strong>30 hari ke depan</strong><span>4 kewajiban</span></div>
+            <div class="d-row"><span><b>Kos bulanan</b><small>5 Agu · tiap bulan</small></span><span><span class="pill pill-warn">5 hari lagi</span> <span class="d-num">Rp1.200.000</span></span></div>
+            <div class="d-row"><span><b>Token listrik</b><small>10 Agu · perkiraan</small></span><span><span class="pill pill-none">perkiraan</span> <span class="d-num">Rp250.000</span></span></div>
+            <div class="d-row"><span><b>Arisan RT</b><small>15 Agu · tiap bulan</small></span><span class="d-num">Rp100.000</span></div>
+            <div class="d-row"><span><b>Gaji masuk</b><small>25 Agu</small></span><span class="d-num pos">+Rp4.500.000</span></div>
+            <p class="d-note">Pemasukan yang belum cair nggak pernah dihitung sebagai uang yang bisa dipakai.</p>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="f-panel" data-panel="p3">
+          <h3>Lima sisi, tanpa satu skor</h3>
+          <p>Satu angka gampang dibaca jadi vonis. Jadi PANTUR sengaja nggak bikin.</p>
+          <div class="demo">
+            <div class="d-h"><strong>Kondisi keuangan</strong><span>Juli 2026</span></div>
+            <div class="d-row"><span><b>Ketahanan</b><small>Kalau pemasukan berhenti</small></span><span><span class="pill pill-ok">3,1 bulan</span></span></div>
+            <div class="d-row"><span><b>Beban kewajiban</b><small>Bagian pemasukan yang sudah terikat</small></span><span><span class="pill pill-warn">62 persen</span></span></div>
+            <div class="d-row"><span><b>Tekanan cicilan</b><small>Cicilan minimum vs pemasukan</small></span><span><span class="pill pill-ok">8 persen</span></span></div>
+            <div class="d-row"><span><b>Kesegaran saldo</b><small>Terakhir dicocokkan</small></span><span><span class="pill pill-ok">2 hari lalu</span></span></div>
+            <div class="d-row"><span><b>Rajin nyatet</b><small>Hari yang ada catatannya</small></span><span><span class="pill pill-none">belum cukup</span></span></div>
+            <p class="d-note">Tiap sisi nyebut apa yang <em>tidak</em> diukurnya. “Rajin nyatet” bukan ukuran disiplin — hari tanpa transaksi juga wajar.</p>
+          </div>
+        </div>
+
+        <!-- P4 -->
+        <div class="f-panel" data-panel="p4">
+          <h3>Disisihkan, bukan dipindah</h3>
+          <p>Uangnya tetap di rekening yang sama. Yang berubah cuma catatannya — dan PANTUR nggak ngitungnya dua kali.</p>
+          <div class="demo">
+            <div class="d-h"><strong>Uang terlindungi</strong><span>Rp2.000.000</span></div>
+            <div class="d-row"><span><b>Dana darurat</b><small>Target Rp10 jt · 12% terkumpul</small></span><span class="d-num">Rp1.200.000</span></div>
+            <div class="d-row"><span><b>SPP anak</b><small>Jatuh tempo Jan 2027</small></span><span class="d-num">Rp800.000</span></div>
+            <div class="d-row"><span><b>Naik haji</b><small>Tanpa tenggat</small></span><span><span class="pill pill-none">belum disisihkan</span></span></div>
+            <p class="d-note">Kalau dua tujuan jatuh di bulan yang sama, PANTUR nunjukin bulan mana yang kelebihan beban — tanpa mutusin mana yang lebih penting. Itu keputusanmu.</p>
+          </div>
+        </div>
+
+        <!-- P5 -->
+        <div class="f-panel" data-panel="p5">
+          <h3>Latihan hitung, bukan ramalan</h3>
+          <p>Tiga keadaan dari angka yang sama. PANTUR nggak nilai mana yang bakal kejadian.</p>
+          <div class="demo">
+            <div class="d-h"><strong>Kalau pemasukan berubah</strong><span>12 bulan ke depan</span></div>
+            <div class="d-row"><span><b>Tetap seperti sekarang</b><small>Pembanding, bukan ramalan</small></span><span><span class="pill pill-ok">Tidak habis</span></span></div>
+            <div class="d-row"><span><b>Turun separuh</b><small>Order sepi, jam kerja dipotong</small></span><span><span class="pill pill-warn">Bulan ke-7</span></span></div>
+            <div class="d-row"><span><b>Berhenti sama sekali</b><small>Kehilangan pekerjaan</small></span><span><span class="pill pill-bad">Bulan ke-3</span></span></div>
+            <div class="d-bars">
+              <i style="height:100%;animation-delay:.05s"></i><i style="height:94%;animation-delay:.1s"></i>
+              <i style="height:86%;animation-delay:.15s"></i><i style="height:72%;animation-delay:.2s"></i>
+              <i style="height:58%;animation-delay:.25s"></i><i style="height:44%;animation-delay:.3s"></i>
+              <i style="height:30%;animation-delay:.35s"></i><i style="height:18%;animation-delay:.4s"></i>
+              <i style="height:9%;animation-delay:.45s"></i>
+            </div>
+            <p class="d-note">Kewajiban tetap nggak ikut dikurangi. Kos dan cicilan nggak mengecil cuma karena bulanmu lagi berat.</p>
+          </div>
+        </div>
+
+        <!-- P6 -->
+        <div class="f-panel" data-panel="p6">
+          <h3>KPR: angka kedua yang bikin kaget</h3>
+          <p>Brosur nunjukin cicilan masa bunga tetap. PANTUR nunjukin yang setelahnya.</p>
+          <div class="demo">
+            <div class="d-h"><strong>Rumah Rp500 jt · 15 tahun</strong><span>DP Rp100 jt</span></div>
+            <div class="d-row"><span><b>Bunga tetap 3 tahun</b><small>8 persen per tahun</small></span><span class="d-num">Rp3.823.000<small style="text-align:right">per bulan</small></span></div>
+            <div class="d-row"><span><b>Setelah mengambang</b><small>12 persen per tahun</small></span><span class="d-num neg">Rp4.719.000<small style="text-align:right">naik Rp896 rb</small></span></div>
+            <div class="d-row"><span><b>Biaya hari akad</b><small>BPHTB, provisi, notaris, appraisal</small></span><span class="d-num">Rp29.350.000</span></div>
+            <div class="d-row"><span><b>Total di luar harga rumah</b><small>Bunga + semua biaya</small></span><span class="d-num neg">Rp387.400.000</span></div>
+            <p class="d-note">Provisi dihitung dari <em>nilai pinjaman</em>, bukan harga rumah — itu yang paling sering keliru. PANTUR nggak nyebut bank mana pun.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIMITS ══ -->
+<section class="sec" id="batas">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Baca sebelum beli</span>
+      <h2>Empat hal yang PANTUR nggak bisa.</h2>
+      <p class="lead">Ditaruh di sini, bukan di huruf kecil paling bawah. Kalau ada yang bikin batal, mendingan sekarang.</p>
+    </div>
+    <div class="lim">
+      <div class="lim-c rv"><span class="lim-n">01</span><h3>HP hilang, catatan ikut hilang</h3><p>Nggak ada salinan di server yang bisa dikirim ulang — emang nggak ada servernya. Simpan berkas cadangan sendiri.</p></div>
+      <div class="lim-c rv"><span class="lim-n">02</span><h3>Di HP sendiri ≠ terlindungi</h3><p>Siapa pun yang bisa buka HP-mu bisa baca catatanmu. PANTUR nggak bisa nyegah itu, dan nggak akan pura-pura bisa.</p></div>
+      <div class="lim-c rv"><span class="lim-n">03</span><h3>Nggak nyambung ke bank</h3><p>Nggak ada saldo yang masuk sendiri. Semua kamu yang catat — makanya PANTUR nggak pernah minta data rekeningmu.</p></div>
+      <div class="lim-c rv"><span class="lim-n">04</span><h3>Belum diperiksa pihak lain</h3><p>868 tes otomatis lulus, tapi yang bikin dan yang ngetes orang yang sama. Belum diuji pakai pembaca layar, belum diukur di HP Android murah.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BUY ══ -->
+<section class="sec" id="beli">
+  <div class="wrap">
+    <div class="buy rv">
+      <span class="kicker">Sekali beli, dipakai selamanya</span>
+      <h2>Bawa pulang PANTUR.</h2>
+      <div class="price"><span class="amt">Segera</span><span class="per">harga menyusul</span></div>
+      <p class="buy-note">Tanpa langganan, tanpa iklan, tanpa data kamu dijual. Sekali punya, dipakai tumbuh bersama.</p>
+      <div class="buy-list">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Aplikasi web, desktop, dan APK Android</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>82 kategori yang ngerti hidup di Indonesia</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Perencana KPR, pendidikan, kendaraan, pensiun</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Cadangan &amp; pemulihan data milik kamu sendiri</span></div>
+      </div>
+      <a class="btn btn-1" href="#beli" style="margin-top:8px;padding:16px 32px;font-size:1rem">
+        Beri tahu saya saat rilis
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p style="font-size:.76rem;color:var(--kabut)">Link pembelian dan harga sedang disiapkan.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <p>PANTUR — bagian dari <a href="/">Meria Works</a></p>
+    <p>Datanya milik kamu. Semuanya, selalu.</p>
+  </div>
+</footer>
+</main>
+
+<script>
+(function(){
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* reveal on scroll */
+  var rv = document.querySelectorAll(".rv");
+  if(reduce || !("IntersectionObserver" in window)){
+    rv.forEach(function(e){e.classList.add("on")});
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target);} });
+    },{rootMargin:"0px 0px -10% 0px",threshold:.12});
+    rv.forEach(function(e,i){ e.style.transitionDelay=(Math.min(i%6,5)*60)+"ms"; io.observe(e); });
+  }
+
+  /* feature switcher */
+  var btns=[].slice.call(document.querySelectorAll(".f-btn"));
+  var pans=[].slice.call(document.querySelectorAll(".f-panel"));
+  function show(id){
+    btns.forEach(function(b){ b.setAttribute("aria-selected", String(b.dataset.p===id)); });
+    pans.forEach(function(p){ p.classList.toggle("on", p.dataset.panel===id); });
+  }
+  btns.forEach(function(b){
+    b.addEventListener("click", function(){ show(b.dataset.p); });
+    b.addEventListener("keydown", function(ev){
+      var i=btns.indexOf(b), n=null;
+      if(ev.key==="ArrowDown"||ev.key==="ArrowRight") n=btns[(i+1)%btns.length];
+      if(ev.key==="ArrowUp"||ev.key==="ArrowLeft") n=btns[(i-1+btns.length)%btns.length];
+      if(n){ ev.preventDefault(); n.focus(); show(n.dataset.p); }
+    });
+  });
+
+  /* count-up on the hero figure */
+  var el=document.getElementById("count");
+  if(el && !reduce){
+    var target=1720000, t0=null, dur=1500;
+    function step(ts){
+      if(!t0) t0=ts;
+      var k=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-k,3);
+      el.textContent="Rp"+Math.round(target*e).toLocaleString("id-ID");
+      if(k<1) requestAnimationFrame(step);
+    }
+    setTimeout(function(){ requestAnimationFrame(step); },600);
+  }
+})();
+</script>
+</body>
+</html>
