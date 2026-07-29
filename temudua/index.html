@@ -822,5 +822,127 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   }
 })()
 </script>
+<style>
+.cw-fab,.cw-panel{--cw-surface:var(--card);--cw-bg:var(--paper);--cw-card:var(--card);--cw-text:var(--ink);
+  --cw-muted:var(--muted);--cw-line:var(--line);--cw-accent:var(--pink);--cw-on-accent:#fff;
+  --cw-link:var(--pink-ink);--cw-strong:var(--pink-ink)}
+
+/* ---------- TANYA TEMUDUA (offline, tanpa API) ---------- */
+.cw-fab,.cw-panel{font-family:var(--cw-font,inherit)}
+.cw-fab{position:fixed;left:18px;bottom:18px;z-index:9000;display:inline-flex;align-items:center;gap:9px;
+  padding:12px 17px;border-radius:999px;border:1px solid var(--line);background:var(--cw-accent);
+  color:var(--cw-on-accent);font-weight:700;font-size:.86rem;line-height:1;cursor:pointer;
+  box-shadow:0 14px 38px -14px rgba(255,111,159,.6);transition:transform .2s ease,filter .2s ease}
+.cw-fab:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.cw-fab svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cw-panel{position:fixed;left:18px;bottom:76px;z-index:9001;width:min(92vw,382px);max-height:min(72vh,560px);
+  display:none;flex-direction:column;background:var(--cw-surface);border:1px solid var(--line);
+  border-radius:18px;overflow:hidden;box-shadow:0 24px 70px -28px rgba(35,27,46,.3)}
+.cw-panel.open{display:flex}
+.cw-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--cw-accent);color:var(--cw-on-accent)}
+.cw-av{width:31px;height:31px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--cw-surface);color:var(--cw-accent);font-weight:800;font-size:.9rem}
+.cw-head b{font-size:.98rem;display:block;line-height:1.25}
+.cw-head p{margin:0;font-size:.65rem;opacity:.85;letter-spacing:.02em}
+.cw-x{margin-left:auto;background:none;border:0;color:inherit;cursor:pointer;font-size:1.35rem;line-height:1;padding:0 3px;opacity:.75}
+.cw-x:hover{opacity:1}
+.cw-body{flex:1;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:8px;background:var(--cw-bg)}
+.cw-msg{max-width:88%;padding:9px 12px;border-radius:14px;font-size:.83rem;line-height:1.55}
+.cw-msg.bot{background:var(--cw-card);border:1px solid var(--cw-line);color:var(--cw-text);
+  border-bottom-left-radius:4px;align-self:flex-start}
+.cw-msg.user{background:var(--cw-accent);color:var(--cw-on-accent);border-bottom-right-radius:4px;align-self:flex-end}
+.cw-msg a{color:var(--cw-link);font-weight:700}
+.cw-msg b{color:var(--cw-strong,var(--cw-text))}
+.cw-chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:100%}
+.cw-chip{font-size:.71rem;font-weight:700;padding:6px 10px;border-radius:999px;border:1px solid var(--cw-line);
+  background:var(--cw-card);color:var(--cw-muted);cursor:pointer;font-family:inherit}
+.cw-chip:hover{border-color:var(--cw-accent);color:var(--cw-text)}
+.cw-in{display:flex;gap:8px;padding:10px;border-top:1px solid var(--cw-line);background:var(--cw-surface)}
+.cw-in input{flex:1;min-width:0;border:1px solid var(--cw-line);border-radius:999px;padding:9px 14px;
+  font-size:.83rem;font-family:inherit;background:var(--cw-bg);color:var(--cw-text);outline:none}
+.cw-in input:focus{border-color:var(--cw-accent)}
+.cw-in button{width:39px;height:39px;border-radius:50%;border:0;background:var(--cw-accent);
+  color:var(--cw-on-accent);cursor:pointer;display:grid;place-items:center;flex:none}
+.cw-in button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:720px){
+  .cw-fab{padding:10px 13px;font-size:.78rem;left:12px;bottom:12px}
+  .cw-panel{left:10px;right:10px;width:auto;bottom:68px;max-height:70vh}
+}
+@media (prefers-reduced-motion:reduce){.cw-fab{transition:none}}
+</style>
+<!-- TANYA TEMUDUA (offline, tanpa API) -->
+<button type="button" class="cw-fab" id="cwFab" aria-expanded="false" aria-controls="cwPanel">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Tanya TemuDua
+</button>
+<div class="cw-panel" id="cwPanel" role="dialog" aria-label="Asisten tanya jawab TemuDua">
+  <div class="cw-head">
+    <span class="cw-av" aria-hidden="true">T</span>
+    <div><b>Asisten TemuDua</b><p>otomatis &middot; offline &middot; jawab langsung</p></div>
+    <button type="button" class="cw-x" id="cwClose" aria-label="Tutup">&times;</button>
+  </div>
+  <div class="cw-body" id="cwBody"></div>
+  <div class="cw-in">
+    <input id="cwIn" type="text" placeholder="Ketik pertanyaan… mis. 'beneran gratis?'" aria-label="Pertanyaan Anda">
+    <button type="button" id="cwSend" aria-label="Kirim"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
+  </div>
+</div>
+<script>
+/* ===== TANYA TEMUDUA — pencocokan kata kunci lokal, tanpa API ===== */
+(function(){
+  var fab=document.getElementById('cwFab'), panel=document.getElementById('cwPanel'),
+      body=document.getElementById('cwBody'), input=document.getElementById('cwIn'),
+      send=document.getElementById('cwSend'), closeBtn=document.getElementById('cwClose');
+  if(!fab||!panel) return;
+  var KB=[{"k": "gratis harga biaya bayar berapa jebakan langganan trial", "a": "<b>Beneran gratis.</b> Tidak ada akun, tidak ada langganan, tidak ada fitur terkunci, dan tidak ada iklan."}, {"k": "akun daftar login register email password server", "a": "<b>Tidak perlu akun.</b> TemuDua tidak punya server — jadi tidak ada pendaftaran dan tidak ada data kalian yang menginap di tempat kami."}, {"k": "nyambung sinkron pasangan berdua hubungkan pairing dua hp koneksi", "a": "Karena tidak ada server, <b>kalian yang pegang kendali</b> saat menyambungkan dua HP. Caranya dijelaskan di bagian \"Nyambung ke HP pasangan\" pada halaman ini — dan tetap Rp 0."}, {"k": "privasi lihat semua rahasia pribadi baca pasangan intip", "a": "Tidak semuanya otomatis terbuka. Ada bagian yang memang untuk berdua, dan ada ruang pribadi — TemuDua dibuat untuk membantu, bukan untuk saling mengawasi."}, {"k": "skor nilai rating judge menghakimi hubungan", "a": "Tidak ada skor yang menilai hubungan kalian. Temu tumbuh dari <b>kebiasaan kalian berdua hadir</b>, bukan dari seberapa sempurna hubungannya."}, {"k": "streak temu nadi harian beruntun tumbuh istirahat jeda sambung", "a": "Tiap hari kalian berdua mengisi satu hal kecil (\"Nadi\"), dan <b>Temu</b> tumbuh dari kebiasaan itu. Ada <b>hari istirahat</b>, ada <b>jeda</b>, dan hari yang kelewat masih bisa <b>disambung berdua</b> — jadi streaknya tidak menghukum."}, {"k": "kalender jadwal agenda pengingat acara", "a": "Ada kalender berdua: jadwal, rencana, dan pengingat punya tempatnya sendiri — tidak lagi kescroll hilang di chat."}, {"k": "rumah tugas chore beban pekerjaan bagi kerjaan", "a": "Ada pembagian urusan rumah supaya bebannya kelihatan dan terbagi, bukan hanya terasa oleh satu orang."}, {"k": "uang keuangan bersama patungan tagihan belanja", "a": "Ada catatan uang berdua: pengeluaran bersama dan tagihan bisa dipantau tanpa harus saling menagih lewat chat."}, {"k": "nikah wedding persiapan kawin lamaran", "a": "Ada modul persiapan nikah — daftar persiapan dan tenggatnya tertata di satu tempat."}, {"k": "kesuburan hamil promil siklus haid anak pengasuhan", "a": "Ada bagian kesuburan dan pengasuhan untuk pasangan yang sedang di tahap itu. Semua tetap tersimpan lokal."}, {"k": "hp hilang rusak data backup cadangan pindah ganti", "a": "Karena datanya ada di perangkat kalian, cadangan itu penting. Simpan ekspor cadangan secara berkala supaya bisa dipulihkan kalau HP hilang atau ganti perangkat."}, {"k": "sendiri pacaran belum nikah status cocok siapa", "a": "Bisa dipakai di berbagai tahap — sendiri, pacaran, maupun menikah. Isinya menyesuaikan tahap yang kalian pilih."}, {"k": "android apk unduh install pwa perangkat hp", "a": "Tersedia sebagai webapp/PWA di browser dan sebagai APK Android. Keduanya jalan offline."}, {"k": "bahasa indonesia inggris english language", "a": "Tersedia dalam Bahasa Indonesia dan Inggris."}, {"k": "kontak email hubungi bantuan tanya", "a": "Email ke <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>."}];
+  var CHIPS=["Beneran gratis?", "Perlu akun?", "Cara nyambung berdua?", "Pasangan lihat semua?", "Streak-nya apa?", "Kalau HP hilang?"];
+  var GREET="Halo! 👋 Saya asisten otomatis TemuDua — jawab langsung soal fitur, privasi, dan cara menyambungkan berdua.";
+  var MISS="Hmm, saya belum menemukan jawaban pastinya. Coba kata kunci lain (mis. \"harga\", \"offline\", \"data\"), atau email <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>.";
+  function addMsg(html,who){
+    var d=document.createElement('div'); d.className='cw-msg '+who; d.innerHTML=html;
+    body.appendChild(d); body.scrollTop=body.scrollHeight;
+  }
+  function addChips(){
+    var w=document.createElement('div'); w.className='cw-chips';
+    CHIPS.forEach(function(c){
+      var b=document.createElement('button'); b.type='button'; b.className='cw-chip'; b.textContent=c;
+      b.addEventListener('click',function(){ ask(c); });
+      w.appendChild(b);
+    });
+    body.appendChild(w); body.scrollTop=body.scrollHeight;
+  }
+  function norm(s){ return s.toLowerCase().replace(/[^a-z0-9\s]/g,' '); }
+  function answer(q){
+    var words=norm(q).split(/\s+/).filter(function(w){ return w.length>2; });
+    var best=null,bestScore=0;
+    KB.forEach(function(e){
+      var keys=e.k.split(' '), score=0;
+      words.forEach(function(w){
+        if(keys.some(function(k){ return k===w||k.indexOf(w)===0||w.indexOf(k)===0; })) score++;
+      });
+      if(score>bestScore){ bestScore=score; best=e; }
+    });
+    return (best&&bestScore>0) ? best.a : MISS;
+  }
+  function ask(q){
+    addMsg(q.replace(/[<>]/g,''),'user');
+    setTimeout(function(){ addMsg(answer(q),'bot'); },320);
+  }
+  var opened=false;
+  function setOpen(open){
+    panel.classList.toggle('open',open);
+    fab.setAttribute('aria-expanded',open?'true':'false');
+    if(open&&!opened){ opened=true; addMsg(GREET,'bot'); addChips(); }
+    if(open) setTimeout(function(){ input.focus(); },60);
+  }
+  fab.addEventListener('click',function(){ setOpen(!panel.classList.contains('open')); });
+  closeBtn.addEventListener('click',function(){ setOpen(false); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&panel.classList.contains('open')) setOpen(false);
+  });
+  function submit(){ var q=input.value.trim(); if(!q) return; input.value=''; ask(q); }
+  send.addEventListener('click',submit);
+  input.addEventListener('keydown',function(e){ if(e.key==='Enter') submit(); });
+})();
+</script>
 </body>
 </html>
