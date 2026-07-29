@@ -88,7 +88,9 @@ nav.sc{border-color:var(--line)}
 .dlbtn svg{color:var(--gold)}
 .dlbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.72}
 .dlbtn b{font-family:var(--disp);font-size:17px}
-.dltag{position:absolute;top:-10px;right:14px;font-size:8.5px;letter-spacing:.14em;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--gold);color:var(--ink);box-shadow:0 4px 12px rgba(255,157,77,.4)}
+.dltag{position:absolute;top:-10px;right:14px;font-size:8.5px;letter-spacing:.14em;font-weight:800;padding:3px 9px;border-radius:99px;
+  background:#2a2118;color:var(--mut);border:1px solid var(--line)}
+.dlbtn .dltag{background:var(--mint);color:#06301f;border-color:transparent;box-shadow:0 4px 14px rgba(61,230,166,.36)}
 .dlnote{margin:20px auto 0;font-size:12.5px;color:var(--mut);max-width:470px;line-height:1.65}
 .dlnote b{color:var(--cream)}
 .playbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.75}
@@ -223,6 +225,22 @@ nav.sc{border-color:var(--line)}
 .dt-arc{animation:dtArc 3.6s ease-in-out infinite}
 @keyframes dtRadar{0%,100%{opacity:.55}50%{opacity:1}}
 .dt-radar{animation:dtRadar 3s ease-in-out infinite}
+.tsub{font-family:var(--disp);font-size:19px;margin:44px 0 6px}
+.tsub+p{color:var(--mut);font-size:13.5px;max-width:640px;margin-bottom:20px;line-height:1.65}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
+.titem{border-radius:18px;padding:18px 19px;background:var(--card);border:1px solid var(--line);transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.titem:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--h) 50%,transparent)}
+.titem::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--h);opacity:.85}
+.titem .th{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.titem .th b{font-family:var(--disp);font-size:15px}
+.titem .th svg{color:var(--h);flex:0 0 auto;overflow:visible}
+.titem p{color:var(--mut);font-size:12.5px;line-height:1.58;margin:0 0 9px}
+.titem .tmeta{display:flex;gap:6px;flex-wrap:wrap}
+.titem .tmeta i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:99px;
+  background:color-mix(in srgb,var(--h) 13%,transparent);color:color-mix(in srgb,var(--h) 88%,#fff)}
+.thonest{margin-top:22px;padding:15px 18px;border-radius:16px;border:1px dashed var(--line);background:rgba(255,255,255,.02);
+  font-size:12.5px;color:var(--mut);line-height:1.65;max-width:720px}
+.thonest b{color:var(--cream)}
 .trow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:26px}
 .tcard{border-radius:20px;padding:22px;background:var(--card);border:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;transition:transform .3s,border-color .3s}
 .tcard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--h) 45%,transparent)}
@@ -326,16 +344,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div>
       <span class="kicker rv"><span class="dot"></span> KALI &nbsp;·&nbsp; KLIK &nbsp;·&nbsp; KILAT</span>
       <h1 class="rv rv2"><span class="ln">Scroll bikin</span><span class="ln">lupa. <em>Bara</em></span><span class="ln"><em>bikin tajam.</em></span></h1>
-      <p class="sub rv rv3">Gym 60 detik untuk otakmu — 68 latihan nalar bergaya TPA yang naik level bersamamu, ditemani pet elemen yang tumbuh dari kebiasaanmu. Tanpa iklan. Tanpa internet. Selamanya.</p>
+      <p class="sub rv rv3">Gym 60 detik untuk otakmu — 67 latihan nalar bergaya TPA yang naik level bersamamu, ditemani pet elemen yang tumbuh dari kebiasaanmu. Tanpa iklan. Tanpa internet. Selamanya.</p>
       <div class="ctas rv rv4">
-        <a class="playbtn" id="magnet" href="#unduh">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
-          <span><small>SEGERA DI</small><b>Google Play</b></span>
+        <a class="playbtn" id="magnet" href="https://meria.myr.id/pl/kalik" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 16v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="#241a06" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><small>BAYAR SESUKA HATI</small><b>Unduh sekarang</b></span>
         </a>
         <a class="ghostlink" href="#demo">Coba soalnya dulu ↓</a>
       </div>
       <div class="hero-stats rv rv4">
-        <div class="hstat"><b data-count="68">0</b><small>tipe latihan</small></div>
+        <div class="hstat"><b data-count="67">0</b><small>tipe latihan</small></div>
+        <div class="hstat"><b data-count="348">0</b><small>soal psikotes</small></div>
         <div class="hstat"><b data-count="13">0</b><small>pet elemen</small></div>
         <div class="hstat"><b>0</b><small>iklan, selamanya</small></div>
         <div class="hstat"><b>100%</b><small>offline &amp; privat</small></div>
@@ -399,7 +418,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       </div>
       <div class="steps" id="steps">
         <div class="step" data-step="0"><div class="num">LANGKAH 01</div><h3>Buka. Satu misi menunggumu.</h3><p>Tanpa feed, tanpa keputusan berat — beranda menjawab satu hal: "apa yang kulakukan hari ini?" Satu tombol besar, dan streak-mu bersama Nala menanti di sampingnya.</p></div>
-        <div class="step" data-step="1"><div class="num">LANGKAH 02</div><h3>Naiki Tangga Nalar.</h3><p>Mulai dari level yang mudah. Lulus 8 dari 10, dan tangga membawamu naik — 68 tipe soal TPA terbuka pelan-pelan mengikuti kemampuanmu, bukan menjatuhkanmu.</p></div>
+        <div class="step" data-step="1"><div class="num">LANGKAH 02</div><h3>Naiki Tangga Nalar.</h3><p>Mulai dari level yang mudah. Lulus 8 dari 10, dan tangga membawamu naik — 67 tipe soal TPA terbuka pelan-pelan mengikuti kemampuanmu, bukan menjatuhkanmu.</p></div>
         <div class="step" data-step="2"><div class="num">LANGKAH 03</div><h3>Pulang ke pet-mu.</h3><p>Setiap sesi menambah ikatan. Beri camilan, beri nama, pilihkan habitat — evolusi 8 tahap butuh berbulan-bulan kebersamaan yang tak bisa dibeli.</p></div>
         <div class="step" data-step="3"><div class="num">LANGKAH 04</div><h3>Lihat dirimu bertumbuh.</h3><p>Radar 7 domain, jam produktifmu, tren skor, dan interpretasi yang jujur — dari datamu sendiri, bukan angka hiburan.</p></div>
       </div>
@@ -474,7 +493,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h2 class="rv rv2">Terbiasa dengan tes,<br/>sebelum tes yang sebenarnya.</h2>
     <p class="sub rv rv3">Format psikotes &amp; TPA yang dipakai seleksi kerja dan pendidikan — dilatih pelan sampai terasa akrab. Semua berlabel jujur: simulasi latihan, bukan penilaian resmi.</p>
     <div class="tchips rv rv3">
-      <span>68 tipe latihan TPA</span><span>Skor 40–160 + interpretasi</span><span>6 instrumen psikotes</span><span>158 item orisinal</span><span>Kurva kerja Pauli</span><span>Anti-curang tersegel</span>
+      <span>67 tipe latihan TPA</span><span>Skor 40–160 + interpretasi</span><span>6 instrumen psikotes</span><span>348 soal orisinal</span><span>35 faset kepribadian</span><span>Kurva kerja Pauli</span><span>Anti-curang tersegel</span>
     </div>
     <div class="dash rv rv4">
       <div class="dcard"><small>SKOR SIMULASI</small>
@@ -488,7 +507,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="trow">
       <div class="tcard rv" style="--h:var(--gold)">
         <svg class="li ic-otak" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c-2.4 0-3.4 1.6-3.4 3 0 .3-1.6.6-1.6 2.6 0 1.2.7 1.8.7 1.8s-.9.7-.9 2.1c0 1.9 1.7 2.9 3 2.9.4 1.4 1.3 2.1 2.2 2.1V4Z"/><path d="M12 4c2.4 0 3.4 1.6 3.4 3 0 .3 1.6.6 1.6 2.6 0 1.2-.7 1.8-.7 1.8s.9.7.9 2.1c0 1.9-1.7 2.9-3 2.9-.4 1.4-1.3 2.1-2.2 2.1V4Z"/><circle class="m1" cx="9.2" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle class="m2" cx="14.8" cy="12.6" r="1.1" fill="currentColor" stroke="none"/><circle class="m3" cx="10" cy="14" r="1" fill="currentColor" stroke="none"/></svg>
-        <div><b>Tes IQ &amp; Kognitif</b><small>Simulasi berwaktu 7 domain (skor 40–160), Asah Nalar 68 tipe, latihan per jenis.</small></div></div>
+        <div><b>Tes IQ &amp; Kognitif</b><small>Simulasi berwaktu 7 domain (skor 40–160), Asah Nalar 67 tipe, latihan per jenis.</small></div></div>
       <div class="tcard rv rv2" style="--h:var(--violet)">
         <svg class="li ic-kompas" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><g class="m"><path d="M12 12 15 8l-3 4-3 4Z" fill="currentColor" stroke="none"/></g><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
         <div><b>EQ &amp; Kepribadian</b><small>6 instrumen refleksi: Lima Faktor, 16 tipe, gaya kerja, EQ 4D, integritas, SJT.</small></div></div>
@@ -499,6 +518,73 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <svg class="li ic-wartegg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M12 3.5v17M3.5 12h17"/><path class="m" d="M6 8.5 Q8 6 9.5 8.5"/></svg>
         <div><b>Kenali Format Proyektif</b><small>Wartegg 8 kotak &amp; panduan tes gambar — tanpa skoring palsu.</small></div></div>
     </div>
+
+    <h3 class="tsub rv">Enam instrumen psikotes, 348 soal orisinal.</h3>
+    <p class="rv">Bukan kuis receh. Tiap instrumen punya versi <b style="color:var(--cream)">Ringkas</b> dan <b style="color:var(--cream)">Lengkap</b> — versi lengkapnya memakai minimal 15 pernyataan per dimensi, jumlah yang membuat hasilnya benar-benar stabil, lalu diurai sampai 35 faset.</p>
+    <div class="tgrid">
+      <div class="titem rv" style="--h:var(--cyan)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path class="m" d="M12 3v18M3 12h18" opacity=".55"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" opacity=".75"/></svg>
+          <b>Lima Faktor Kepribadian</b>
+        </div>
+        <p>Profil O-C-E-A-N: keterbukaan, kesungguhan, ekstraversi, keramahan, dan stabilitas emosi — diurai sampai 15 faset seperti Ketekunan, Kehati-hatian, dan Ketenangan.</p>
+        <div class="tmeta"><i>90 soal</i><i>5 dimensi</i><i>15 faset</i></div>
+      </div>
+      <div class="titem rv rv2" style="--h:var(--violet)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><g class="m"><path d="M12 12 15.5 7.5 12 12 8.5 16.5Z" fill="currentColor" stroke="none"/></g><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+          <b>Preferensi 4 Dimensi</b>
+        </div>
+        <p>Dari mana energimu datang, cara kamu menyerap informasi, memutuskan, dan menata hidup — menghasilkan 1 dari 16 kode tipe, lengkap dengan seberapa <em>jelas</em> tiap preferensimu.</p>
+        <div class="tmeta"><i>60 pasangan</i><i>16 tipe</i></div>
+      </div>
+      <div class="titem rv rv3" style="--h:var(--pink)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path class="m" d="M12 20c-5-4.2-8.5-6.8-8.5-11A4.5 4.5 0 0 1 12 6.6 4.5 4.5 0 0 1 20.5 9c0 4.2-3.5 6.8-8.5 11Z"/></svg>
+          <b>Kecerdasan Emosi (EQ)</b>
+        </div>
+        <p>Empat dimensi: mengenali emosi diri, membaca perasaan orang, mengelola dorongan, dan mengubah rasa jadi bahan bakar — sampai faset seperti Rem Impuls dan Pulih Diri.</p>
+        <div class="tmeta"><i>64 soal</i><i>4 dimensi</i><i>8 faset</i></div>
+      </div>
+      <div class="titem rv" style="--h:var(--gold)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19h16"/><rect class="m" x="5" y="11" width="3.6" height="6" rx="1" fill="currentColor" stroke="none"/><rect x="10.2" y="7" width="3.6" height="10" rx="1" fill="currentColor" stroke="none" opacity=".8"/><rect x="15.4" y="4" width="3.6" height="13" rx="1" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          <b>Gaya Kerja</b>
+        </div>
+        <p>Empat gaya yang dipakai banyak proses rekrutmen: Penggerak, Perangkul, Penjaga Irama, dan Penganalisis — plus di mana kekuatanmu paling terasa dalam tim.</p>
+        <div class="tmeta"><i>64 soal</i><i>4 gaya</i><i>8 faset</i></div>
+      </div>
+      <div class="titem rv rv2" style="--h:var(--mint)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l7.5 2.8v6C19.5 17 16 20.5 12 21.6 8 20.5 4.5 17 4.5 11.8v-6Z"/><path class="m" d="M8.8 12.2l2.4 2.4 4.2-4.8" stroke-linecap="round"/></svg>
+          <b>Integritas Kerja</b>
+        </div>
+        <p>Konsistensi etika saat tak ada yang mengawasi — kejujuran materi, tanggung jawab, kepatuhan aturan, dan keberanian bersikap saat melihat kecurangan.</p>
+        <div class="tmeta"><i>40 soal</i><i>4 faset</i></div>
+      </div>
+      <div class="titem rv rv3" style="--h:var(--lava)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path class="m" d="M3 5.5h11a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7l-4 3.5v-3.5a1.5 1.5 0 0 1-1-1.5v-4a2 2 0 0 1 2-2Z"/><path d="M18 9.5h3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1v3l-3-3h-4" opacity=".6"/></svg>
+          <b>Penilaian Situasi Kerja</b>
+        </div>
+        <p>30 dilema kerja nyata — tenggat mepet, rekan yang menyulitkan, atasan yang keliru. Kamu pilih tindakan terbaik <em>dan</em> terburuk, dinilai pada tiga sumbu: etika, komunikasi, prioritas.</p>
+        <div class="tmeta"><i>30 skenario</i><i>3 dimensi</i></div>
+      </div>
+    </div>
+
+    <h3 class="tsub rv">Tujuh domain nalar, diukur satu per satu.</h3>
+    <p class="rv">Simulasi kognitif berwaktu memberi skor gaya tes 40–160, lalu memecahnya jadi radar tujuh domain — supaya kamu tahu bukan cuma <em>seberapa</em>, tapi <em>di mana</em> kamu kuat dan lemah.</p>
+    <div class="tgrid">
+      <div class="titem rv" style="--h:var(--violet)"><div class="th"><b>Pola &amp; Logika</b></div><p>Deret figural, matriks, dan penalaran urutan — inti hampir semua tes TPA.</p></div>
+      <div class="titem rv" style="--h:var(--gold)"><div class="th"><b>Angka</b></div><p>Deret bilangan, aritmetika cepat, dan hubungan kuantitatif.</p></div>
+      <div class="titem rv rv2" style="--h:var(--cyan)"><div class="th"><b>Ruang</b></div><p>Rotasi mental, jaring kubus, dan pencerminan bentuk.</p></div>
+      <div class="titem rv rv2" style="--h:var(--mint)"><div class="th"><b>Ingat &amp; Olah</b></div><p>Memori kerja: menahan informasi sambil mengolahnya.</p></div>
+      <div class="titem rv rv3" style="--h:#ffe45c"><div class="th"><b>Kecepatan</b></div><p>Ketepatan di bawah tekanan waktu — refleks berpikir.</p></div>
+      <div class="titem rv rv3" style="--h:var(--pink)"><div class="th"><b>Fokus</b></div><p>Menahan gangguan, menolak jebakan, dan tetap teliti.</p></div>
+      <div class="titem rv rv4" style="--h:#7dd3fc"><div class="th"><b>Kata</b></div><p>Analogi, sinonim-antonim, klasifikasi, dan deduksi verbal.</p></div>
+    </div>
+
+    <p class="thonest rv"><b>Jujur soal batasnya:</b> semua di sini adalah <b>simulasi latihan</b> agar kamu terbiasa dengan format dan tempo — bukan pengukuran resmi, bukan angka IQ, dan tidak menggantikan penilaian psikolog. Tiap hasil menampilkan rentang ketelitiannya sendiri (mis. ±6 poin), karena skor yang jujur selalu punya margin. Instrumen berhak cipta tidak kami kloning — semua item ditulis orisinal dalam bahasa Indonesia.</p>
   </div>
 </section>
 
@@ -508,7 +594,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h2 class="rv rv2">Apa arti <em style="font-style:normal;color:var(--gold)">KALIK</em>?</h2>
     <div class="usp-row">
       <div class="usp rv" style="--h:var(--ember)"><b>K</b><i>Konsisten</i><small>60 detik tiap hari mengalahkan 2 jam sekali seminggu.</small></div>
-      <div class="usp rv rv2" style="--h:var(--gold)"><b>A</b><i>Asah</i><small>Nalar diasah lewat 68 tipe soal yang naik level bersamamu.</small></div>
+      <div class="usp rv rv2" style="--h:var(--gold)"><b>A</b><i>Asah</i><small>Nalar diasah lewat 67 tipe soal yang naik level bersamamu.</small></div>
       <div class="usp rv rv3" style="--h:var(--cyan)"><b>L</b><i>Latih</i><small>Format TPA, psikotes &amp; Pauli dilatih sampai terasa akrab.</small></div>
       <div class="usp rv rv3" style="--h:var(--mint)"><b>I</b><i>Ikatan</i><small>Pet &amp; streak-mu tumbuh dari kehadiranmu — berbulan-bulan.</small></div>
       <div class="usp rv rv4" style="--h:var(--violet)"><b>K</b><i>Kilat</i><small>Kecepatan &amp; refleks pikiran — terukur per milidetik.</small></div>
@@ -555,18 +641,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
         <span><small>SEGERA DI</small><b>Google Play</b></span>
       </a>
-      <!-- TODO: ganti href="#" dgn tautan pembelian Mayar (bayar semaumu) saat siap -->
-      <a class="dlbtn" href="#" aria-label="Unduh HTML — bayar semaumu di Mayar">
-        <span class="dltag">SEGERA</span>
+      <a class="dlbtn" href="https://meria.myr.id/pl/kalik" target="_blank" rel="noopener" aria-label="Unduh versi HTML — bayar sesuka hati">
+        <span class="dltag">TERSEDIA</span>
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 16v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span><small>BAYAR SEMAUMU</small><b>Unduh HTML</b></span>
+        <span><small>BAYAR SESUKA HATI</small><b>Unduh HTML</b></span>
       </a>
       <a class="mayar-button iframe-lightbox-link ms-support" href="https://meria.myr.id/donate/dukung-meria-works-membuat-produk-digital-lokal-yang-terjangkau?iframe=true" data-padding-bottom="30%" data-scrolling="true" aria-label="Dukung Meria Works">
         <svg class="ms-heart" width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21S2.4 14.6 2.4 8.9C2.4 5.8 4.8 3.6 7.6 3.6c1.8 0 3.4 1 4.4 2.6 1-1.6 2.6-2.6 4.4-2.6 2.8 0 5.2 2.2 5.2 5.3C21.6 14.6 12 21 12 21z"/></svg>
         Dukung Meria Works
       </a>
     </div>
-    <p class="dlnote rv rv4">Satu berkas HTML — <b>dobel-klik, langsung main</b>, tanpa internet & tanpa pemasangan. Bisa juga dipasang sebagai aplikasi (PWA) dari browser. Tautan Google Play & pembelian di Mayar (bayar berapa pun kamu mau) menyusul.</p>
+    <p class="dlnote rv rv4">Versi HTML: satu berkas, <b>dobel-klik langsung main</b> — tanpa internet, tanpa pemasangan, jalan di PC mana pun. <b>Bayar sesuka hati</b>, termasuk Rp0 kalau memang sedang tak ada. Versi Google Play menyusul.</p>
   </div>
 </section>
 
@@ -737,7 +822,7 @@ const db=document.getElementById('demo-box');if(db)dio.observe(db);
       body=document.getElementById('cwBody'), input=document.getElementById('cwIn'),
       send=document.getElementById('cwSend'), closeBtn=document.getElementById('cwClose');
   if(!fab||!panel) return;
-  var KB=[{"k": "gratis harga biaya bayar berapa mahal semaumu donasi", "a": "KALIK bisa dipakai <b>gratis</b>. Ada opsi <b>bayar semaumu</b> kalau kamu merasa terbantu — kamu yang menentukan angkanya, termasuk Rp 0."}, {"k": "iklan ads promosi ganggu popup", "a": "<b>Tanpa iklan, selamanya.</b> Tidak ada popup, tidak ada video iklan, tidak ada yang memotong fokusmu."}, {"k": "internet offline koneksi wifi sinyal online butuh", "a": "<b>100% offline.</b> Setelah dibuka, KALIK jalan tanpa internet sama sekali — dan datamu tetap di perangkatmu."}, {"k": "latihan soal tipe nalar tpa jenis apa saja berapa", "a": "Ada <b>68 latihan nalar bergaya TPA</b> yang naik level mengikuti kemampuanmu — melatih logika, pola, dan kecepatan berpikir."}, {"k": "waktu lama durasi menit sebentar sibuk berapa hari", "a": "Cukup <b>60 detik sehari</b>. Dirancang untuk orang sibuk: sesi pendek tapi rutin lebih berguna daripada sesekali lama."}, {"k": "pet elemen nala hewan peliharaan tumbuh companion", "a": "Ada <b>pet elemen</b> bernama Nala yang tumbuh dari kebiasaanmu berlatih — jadi progresmu terasa, bukan sekadar angka."}, {"k": "android apk google play hp iphone ios unduh install", "a": "Versi Android <b>segera hadir di Google Play</b>. Sementara itu tersedia <b>berkas HTML</b> — dobel-klik, langsung main, tanpa pemasangan dan tanpa internet."}, {"k": "data privasi aman server akun login simpan mana", "a": "Datamu tersimpan di perangkatmu sendiri. Tidak perlu akun dan tidak ada yang dikirim ke server."}, {"k": "tes simulasi ujian cpns psikotes persiapan", "a": "Latihannya bergaya TPA sehingga terasa relevan untuk persiapan tes — tapi KALIK dibuat sebagai latihan harian untuk menjaga ketajaman berpikir, bukan janji lulus tes tertentu."}, {"k": "anak umur usia cocok siapa dewasa", "a": "Cocok untuk siapa pun yang ingin otaknya aktif lagi — terutama kalau merasa terlalu banyak waktu habis untuk menggulir layar."}, {"k": "kontak email hubungi bantuan tanya", "a": "Email ke <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>."}];
+  var KB=[{"k": "gratis harga biaya bayar berapa mahal semaumu donasi", "a": "KALIK bisa dipakai <b>gratis</b>. Ada opsi <b>bayar sesuka hati</b> kalau kamu merasa terbantu — kamu yang menentukan angkanya, termasuk Rp 0."}, {"k": "iklan ads promosi ganggu popup", "a": "<b>Tanpa iklan, selamanya.</b> Tidak ada popup, tidak ada video iklan, tidak ada yang memotong fokusmu."}, {"k": "internet offline koneksi wifi sinyal online butuh", "a": "<b>100% offline.</b> Setelah dibuka, KALIK jalan tanpa internet sama sekali — dan datamu tetap di perangkatmu."}, {"k": "latihan soal tipe nalar tpa jenis apa saja berapa", "a": "Ada <b>67 latihan nalar bergaya TPA</b> yang naik level mengikuti kemampuanmu — melatih logika, pola, dan kecepatan berpikir."}, {"k": "waktu lama durasi menit sebentar sibuk berapa hari", "a": "Cukup <b>60 detik sehari</b>. Dirancang untuk orang sibuk: sesi pendek tapi rutin lebih berguna daripada sesekali lama."}, {"k": "pet elemen nala hewan peliharaan tumbuh companion", "a": "Ada <b>pet elemen</b> bernama Nala yang tumbuh dari kebiasaanmu berlatih — jadi progresmu terasa, bukan sekadar angka."}, {"k": "android apk google play hp iphone ios unduh install", "a": "Versi Android <b>segera hadir di Google Play</b>. Sementara itu tersedia <b>berkas HTML</b> — dobel-klik, langsung main, tanpa pemasangan dan tanpa internet. Ambil di <a href=\"https://meria.myr.id/pl/kalik\" target=\"_blank\" rel=\"noopener\">halaman unduhnya</a> (bayar sesuka hati)."}, {"k": "data privasi aman server akun login simpan mana", "a": "Datamu tersimpan di perangkatmu sendiri. Tidak perlu akun dan tidak ada yang dikirim ke server."}, {"k": "tes simulasi ujian cpns psikotes persiapan", "a": "Latihannya bergaya TPA sehingga terasa relevan untuk persiapan tes — tapi KALIK dibuat sebagai latihan harian untuk menjaga ketajaman berpikir, bukan janji lulus tes tertentu."}, {"k": "anak umur usia cocok siapa dewasa", "a": "Cocok untuk siapa pun yang ingin otaknya aktif lagi — terutama kalau merasa terlalu banyak waktu habis untuk menggulir layar."}, {"k": "kontak email hubungi bantuan tanya", "a": "Email ke <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>."}];
   var CHIPS=["Beneran gratis?", "Perlu internet?", "Latihannya apa saja?", "Pet-nya apa?", "Ada iklan?", "Bisa di Android?"];
   var GREET="Halo! 👋 Saya asisten otomatis KALIK — jawab langsung soal latihan, pet, dan cara mainnya.";
   var MISS="Hmm, saya belum menemukan jawaban pastinya. Coba kata kunci lain (mis. \"harga\", \"offline\", \"data\"), atau email <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>.";

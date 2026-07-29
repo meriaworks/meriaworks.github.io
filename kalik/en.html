@@ -6,7 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23160f06'/%3E%3Cpath d='M14 11V37M14 25L23 14' stroke='%23f6edda' stroke-width='4.4' stroke-linecap='round'/%3E%3Cpath d='M31.5 15 Q38.5 23 35.8 30.4 Q34.2 35.6 30 38.4 Q25.8 35.6 24.2 30.4 Q21.5 23 28.5 15 Q29.4 19 30 20.6 Q30.6 19 31.5 15 Z' fill='%23ffc761'/%3E%3C/svg%3E"/>
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23160f06'/%3E%3Cpath d='M14 11V37M14 25L23 14' stroke='%23f6edda' stroke-width='4.4' stroke-linecap='round'/%3E%3Cpath d='M31.5 15 Q38.5 23 35.8 30.4 Q34.2 35.6 30 38.4 Q25.8 35.6 24.2 30.4 Q21.5 23 28.5 15 Q29.4 19 30 20.6 Q30.6 19 31.5 15 Z' fill='%23ffc761'/%3E%3C/svg%3E"/>
 <title>KALIK — A 60-second gym for your brain</title>
-<meta name="description" content="KALIK: a tiny gym for reasoning, focus & speed. 68 aptitude-style drills, test simulations, and elemental pets that grow with you. No ads. 100% offline."/>
+<meta name="description" content="KALIK: a tiny gym for reasoning, focus & speed. 67 aptitude-style drills, test simulations, and elemental pets that grow with you. No ads. 100% offline."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
@@ -84,7 +84,25 @@ nav.sc{border-color:var(--line)}
 .dlbtn svg{color:var(--gold)}
 .dlbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.72}
 .dlbtn b{font-family:var(--disp);font-size:17px}
-.dltag{position:absolute;top:-10px;right:14px;font-size:8.5px;letter-spacing:.14em;font-weight:800;padding:3px 9px;border-radius:99px;background:var(--gold);color:var(--ink);box-shadow:0 4px 12px rgba(255,157,77,.4)}
+.dltag{position:absolute;top:-10px;right:14px;font-size:8.5px;letter-spacing:.14em;font-weight:800;padding:3px 9px;border-radius:99px;
+  background:#2a2118;color:var(--mut);border:1px solid var(--line)}
+.dlbtn .dltag{background:var(--mint);color:#06301f;border-color:transparent;box-shadow:0 4px 14px rgba(61,230,166,.36)}
+.tsub{font-family:var(--disp);font-size:19px;margin:44px 0 6px}
+.tsub+p{color:var(--mut);font-size:13.5px;max-width:640px;margin-bottom:20px;line-height:1.65}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
+.titem{border-radius:18px;padding:18px 19px;background:var(--card);border:1px solid var(--line);transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.titem:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--h) 50%,transparent)}
+.titem::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--h);opacity:.85}
+.titem .th{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.titem .th b{font-family:var(--disp);font-size:15px}
+.titem .th svg{color:var(--h);flex:0 0 auto;overflow:visible}
+.titem p{color:var(--mut);font-size:12.5px;line-height:1.58;margin:0 0 9px}
+.titem .tmeta{display:flex;gap:6px;flex-wrap:wrap}
+.titem .tmeta i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:99px;
+  background:color-mix(in srgb,var(--h) 13%,transparent);color:color-mix(in srgb,var(--h) 88%,#fff)}
+.thonest{margin-top:22px;padding:15px 18px;border-radius:16px;border:1px dashed var(--line);background:rgba(255,255,255,.02);
+  font-size:12.5px;color:var(--mut);line-height:1.65;max-width:720px}
+.thonest b{color:var(--cream)}
 .dlnote{margin:20px auto 0;font-size:12.5px;color:var(--mut);max-width:470px;line-height:1.65}
 .dlnote b{color:var(--cream)}
 .playbtn small{display:block;font-size:9px;letter-spacing:.16em;font-weight:800;opacity:.75}
@@ -317,16 +335,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div>
       <span class="kicker rv"><span class="dot"></span> KALI &nbsp;·&nbsp; KLIK &nbsp;·&nbsp; KILAT</span>
       <h1 class="rv rv2"><span class="ln">Scrolling dulls.</span><span class="ln"><em>Embers</em></span><span class="ln"><em>sharpen.</em></span></h1>
-      <p class="sub rv rv3">A 60-second gym for your brain — 68 aptitude-style drills that level up with you, alongside elemental pets that grow from your habit. No ads. No internet. Ever.</p>
+      <p class="sub rv rv3">A 60-second gym for your brain — 67 aptitude-style drills that level up with you, alongside elemental pets that grow from your habit. No ads. No internet. Ever.</p>
       <div class="ctas rv rv4">
-        <a class="playbtn" id="magnet" href="#unduh">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
-          <span><small>COMING SOON ON</small><b>Google Play</b></span>
+        <a class="playbtn" id="magnet" href="https://meria.myr.id/pl/kalik" target="_blank" rel="noopener">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 16v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="#241a06" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><small>PAY WHAT YOU WANT</small><b>Download now</b></span>
         </a>
         <a class="ghostlink" href="#demo">Try the questions first ↓</a>
       </div>
       <div class="hero-stats rv rv4">
-        <div class="hstat"><b data-count="68">0</b><small>drill types</small></div>
+        <div class="hstat"><b data-count="67">0</b><small>drill types</small></div>
+        <div class="hstat"><b data-count="348">0</b><small>assessment items</small></div>
         <div class="hstat"><b data-count="13">0</b><small>elemental pets</small></div>
         <div class="hstat"><b>0</b><small>ads, forever</small></div>
         <div class="hstat"><b>100%</b><small>offline &amp; private</small></div>
@@ -390,7 +409,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       </div>
       <div class="steps" id="steps">
         <div class="step" data-step="0"><div class="num">STEP 01</div><h3>Open. One mission awaits.</h3><p>No feed, no heavy decisions — the home screen answers one thing: "what do I do today?" One big button, with your streak and Nala waiting beside it.</p></div>
-        <div class="step" data-step="1"><div class="num">STEP 02</div><h3>Climb the Reasoning Ladder.</h3><p>Start at an easy level. Pass 8 of 10 and the ladder lifts you — 68 aptitude question types unlock gradually with your skill, never crushing you.</p></div>
+        <div class="step" data-step="1"><div class="num">STEP 02</div><h3>Climb the Reasoning Ladder.</h3><p>Start at an easy level. Pass 8 of 10 and the ladder lifts you — 67 aptitude question types unlock gradually with your skill, never crushing you.</p></div>
         <div class="step" data-step="2"><div class="num">STEP 03</div><h3>Come home to your pet.</h3><p>Every session deepens the bond. Feed them, name them, pick their habitat — 8 evolution stages take months of togetherness money can't buy.</p></div>
         <div class="step" data-step="3"><div class="num">STEP 04</div><h3>Watch yourself grow.</h3><p>A 7-domain radar, your productive hours, score trends, and honest insights — from your own data, not vanity numbers.</p></div>
       </div>
@@ -465,7 +484,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h2 class="rv rv2">Get used to tests,<br/>before the real one.</h2>
     <p class="sub rv rv3">The aptitude &amp; psychometric formats used in job and school selection — practiced gently until familiar. All honestly labeled: practice simulations, not official assessments.</p>
     <div class="tchips rv rv3">
-      <span>68 aptitude drill types</span><span>Score 40–160 + interpretation</span><span>6 assessment instruments</span><span>158 original items</span><span>Pauli work curve</span><span>Tamper-sealed scoring</span>
+      <span>67 aptitude drill types</span><span>Score 40–160 + interpretation</span><span>6 assessment instruments</span><span>348 original items</span><span>35 personality facets</span><span>Pauli work curve</span><span>Tamper-sealed scoring</span>
     </div>
     <div class="dash rv rv4">
       <div class="dcard"><small>SIMULATION SCORE</small>
@@ -479,7 +498,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="trow">
       <div class="tcard rv" style="--h:var(--gold)">
         <svg class="li ic-otak" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c-2.4 0-3.4 1.6-3.4 3 0 .3-1.6.6-1.6 2.6 0 1.2.7 1.8.7 1.8s-.9.7-.9 2.1c0 1.9 1.7 2.9 3 2.9.4 1.4 1.3 2.1 2.2 2.1V4Z"/><path d="M12 4c2.4 0 3.4 1.6 3.4 3 0 .3 1.6.6 1.6 2.6 0 1.2-.7 1.8-.7 1.8s.9.7.9 2.1c0 1.9-1.7 2.9-3 2.9-.4 1.4-1.3 2.1-2.2 2.1V4Z"/><circle class="m1" cx="9.2" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle class="m2" cx="14.8" cy="12.6" r="1.1" fill="currentColor" stroke="none"/><circle class="m3" cx="10" cy="14" r="1" fill="currentColor" stroke="none"/></svg>
-        <div><b>IQ-style &amp; Cognitive</b><small>Timed 7-domain simulations (score 40–160), 68 drill types, per-type practice.</small></div></div>
+        <div><b>IQ-style &amp; Cognitive</b><small>Timed 7-domain simulations (score 40–160), 67 drill types, per-type practice.</small></div></div>
       <div class="tcard rv rv2" style="--h:var(--violet)">
         <svg class="li ic-kompas" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><g class="m"><path d="M12 12 15 8l-3 4-3 4Z" fill="currentColor" stroke="none"/></g><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
         <div><b>EQ &amp; Personality</b><small>6 reflection instruments: Big-Five style, 16 types, work style, 4-D EQ, integrity, SJT.</small></div></div>
@@ -490,6 +509,73 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <svg class="li ic-wartegg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M12 3.5v17M3.5 12h17"/><path class="m" d="M6 8.5 Q8 6 9.5 8.5"/></svg>
         <div><b>Meet Projective Formats</b><small>Wartegg 8 boxes &amp; drawing-test guides — no fake scoring.</small></div></div>
     </div>
+
+    <h3 class="tsub rv">Six assessment instruments, 348 original items.</h3>
+    <p class="rv">Not throwaway quizzes. Each instrument has a <b style="color:var(--cream)">Short</b> and a <b style="color:var(--cream)">Full</b> form — the full form uses at least 15 statements per dimension, the amount that makes a result genuinely stable, then breaks it down across 35 facets.</p>
+    <div class="tgrid">
+      <div class="titem rv" style="--h:var(--cyan)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path class="m" d="M12 3v18M3 12h18" opacity=".55"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" opacity=".75"/></svg>
+          <b>Five Factor Personality</b>
+        </div>
+        <p>The O-C-E-A-N profile: openness, conscientiousness, extraversion, agreeableness and emotional stability — broken down into 15 facets such as Persistence, Prudence and Calm.</p>
+        <div class="tmeta"><i>90 items</i><i>5 dimensions</i><i>15 facets</i></div>
+      </div>
+      <div class="titem rv rv2" style="--h:var(--violet)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><g class="m"><path d="M12 12 15.5 7.5 12 12 8.5 16.5Z" fill="currentColor" stroke="none"/></g><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+          <b>Four Preference Dimensions</b>
+        </div>
+        <p>Where your energy comes from, how you take in information, decide, and organise life — producing 1 of 16 type codes, plus how <em>clear</em> each preference actually is.</p>
+        <div class="tmeta"><i>60 pairs</i><i>16 types</i></div>
+      </div>
+      <div class="titem rv rv3" style="--h:var(--pink)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path class="m" d="M12 20c-5-4.2-8.5-6.8-8.5-11A4.5 4.5 0 0 1 12 6.6 4.5 4.5 0 0 1 20.5 9c0 4.2-3.5 6.8-8.5 11Z"/></svg>
+          <b>Emotional Intelligence</b>
+        </div>
+        <p>Four dimensions: knowing your own emotions, reading other people, managing impulses, and turning feeling into fuel — down to facets like Impulse Brake and Self-Recovery.</p>
+        <div class="tmeta"><i>64 items</i><i>4 dimensions</i><i>8 facets</i></div>
+      </div>
+      <div class="titem rv" style="--h:var(--gold)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19h16"/><rect class="m" x="5" y="11" width="3.6" height="6" rx="1" fill="currentColor" stroke="none"/><rect x="10.2" y="7" width="3.6" height="10" rx="1" fill="currentColor" stroke="none" opacity=".8"/><rect x="15.4" y="4" width="3.6" height="13" rx="1" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          <b>Work Style</b>
+        </div>
+        <p>Four styles many hiring processes look for: Driver, Connector, Steady Anchor and Analyst — plus where your strengths land inside a team.</p>
+        <div class="tmeta"><i>64 items</i><i>4 styles</i><i>8 facets</i></div>
+      </div>
+      <div class="titem rv rv2" style="--h:var(--mint)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l7.5 2.8v6C19.5 17 16 20.5 12 21.6 8 20.5 4.5 17 4.5 11.8v-6Z"/><path class="m" d="M8.8 12.2l2.4 2.4 4.2-4.8" stroke-linecap="round"/></svg>
+          <b>Work Integrity</b>
+        </div>
+        <p>Ethical consistency when nobody is watching — honesty with money and property, ownership of mistakes, rule-following, and the nerve to speak up about wrongdoing.</p>
+        <div class="tmeta"><i>40 items</i><i>4 facets</i></div>
+      </div>
+      <div class="titem rv rv3" style="--h:var(--lava)">
+        <div class="th">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path class="m" d="M3 5.5h11a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7l-4 3.5v-3.5a1.5 1.5 0 0 1-1-1.5v-4a2 2 0 0 1 2-2Z"/><path d="M18 9.5h3a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1v3l-3-3h-4" opacity=".6"/></svg>
+          <b>Situational Judgement</b>
+        </div>
+        <p>30 real workplace dilemmas — tight deadlines, difficult colleagues, a manager who got it wrong. You pick the best <em>and</em> the worst action, scored on three axes: ethics, communication, priorities.</p>
+        <div class="tmeta"><i>30 scenarios</i><i>3 dimensions</i></div>
+      </div>
+    </div>
+
+    <h3 class="tsub rv">Seven reasoning domains, measured one by one.</h3>
+    <p class="rv">The timed cognitive simulation gives a test-style score of 40–160, then breaks it into a seven-domain radar — so you learn not just <em>how much</em>, but <em>where</em> you're strong and weak.</p>
+    <div class="tgrid">
+      <div class="titem rv" style="--h:var(--violet)"><div class="th"><b>Patterns &amp; Logic</b></div><p>Figural series, matrices and sequence reasoning — the core of almost every aptitude test.</p></div>
+      <div class="titem rv" style="--h:var(--gold)"><div class="th"><b>Numbers</b></div><p>Number series, quick arithmetic and quantitative relationships.</p></div>
+      <div class="titem rv rv2" style="--h:var(--cyan)"><div class="th"><b>Space</b></div><p>Mental rotation, cube nets and shape mirroring.</p></div>
+      <div class="titem rv rv2" style="--h:var(--mint)"><div class="th"><b>Memory &amp; Processing</b></div><p>Working memory: holding information while operating on it.</p></div>
+      <div class="titem rv rv3" style="--h:#ffe45c"><div class="th"><b>Speed</b></div><p>Accuracy under time pressure — reflex thinking.</p></div>
+      <div class="titem rv rv3" style="--h:var(--pink)"><div class="th"><b>Focus</b></div><p>Resisting distraction, refusing traps, staying precise.</p></div>
+      <div class="titem rv rv4" style="--h:#7dd3fc"><div class="th"><b>Words</b></div><p>Analogies, synonyms and antonyms, classification and verbal deduction.</p></div>
+    </div>
+
+    <p class="thonest rv"><b>Honest about the limits:</b> everything here is a <b>practice simulation</b> to make the formats and pacing familiar — not an official assessment, not an IQ number, and no replacement for a psychologist. Every result shows its own margin of precision (e.g. ±6 points), because an honest score always has one. We don't clone copyrighted instruments — every item is written original.</p>
   </div>
 </section>
 
@@ -499,7 +585,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h2 class="rv rv2">What does <em style="font-style:normal;color:var(--gold)">KALIK</em> mean?</h2>
     <div class="usp-row">
       <div class="usp rv" style="--h:var(--ember)"><b>K</b><i>Konsisten</i><small>Consistent — 60 daily seconds beat 2 weekly hours.</small></div>
-      <div class="usp rv rv2" style="--h:var(--gold)"><b>A</b><i>Asah</i><small>Sharpen — 68 question types that level up with you.</small></div>
+      <div class="usp rv rv2" style="--h:var(--gold)"><b>A</b><i>Asah</i><small>Sharpen — 67 question types that level up with you.</small></div>
       <div class="usp rv rv3" style="--h:var(--cyan)"><b>L</b><i>Latih</i><small>Train — aptitude, assessment &amp; Pauli formats until familiar.</small></div>
       <div class="usp rv rv3" style="--h:var(--mint)"><b>I</b><i>Ikatan</i><small>Bond — pets &amp; streaks grow from showing up, for months.</small></div>
       <div class="usp rv rv4" style="--h:var(--violet)"><b>K</b><i>Kilat</i><small>Lightning — mental speed &amp; reflexes, to the millisecond.</small></div>
@@ -546,14 +632,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .6.7 1 1.2.7l.3-.2 9.2-8.4L5.5 3l-.3-.2C4.7 2.5 4 2.9 4 3.5Z" fill="#164a33"/><path d="M17.5 9.9 7.2 4l7.5 6.9Z" fill="#173a52"/><path d="M17.5 14.1 14.7 13.1 7.2 20Z" fill="#5c2417"/><path d="M17.5 9.9l2.9 1.3c.8.4.8 1.4 0 1.8l-2.9 1.3-3-2.2Z" fill="#4d3505"/></svg>
         <span><small>COMING SOON ON</small><b>Google Play</b></span>
       </a>
-      <!-- TODO: swap href="#" with the Mayar purchase link (pay what you want) once ready -->
-      <a class="dlbtn" href="#" aria-label="Download HTML — pay what you want">
-        <span class="dltag">SOON</span>
+      <a class="dlbtn" href="https://meria.myr.id/pl/kalik" target="_blank" rel="noopener" aria-label="Download the HTML version — pay what you want">
+        <span class="dltag">AVAILABLE</span>
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10m0 0l-4-4m4 4l4-4M5 16v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span><small>PAY WHAT YOU WANT</small><b>Download HTML</b></span>
       </a>
     </div>
-    <p class="dlnote rv rv4">A single HTML file — <b>double-click and play</b>, no internet, no install. Can also be installed as an app (PWA) from your browser. Google Play & the Mayar purchase link (pay any price you like) are coming soon.</p>
+    <p class="dlnote rv rv4">The HTML version: a single file, <b>double-click and play</b> — no internet, no install, runs on any PC. <b>Pay whatever you like</b>, including nothing at all if money is tight right now. The Google Play version is coming.</p>
   </div>
 </section>
 
