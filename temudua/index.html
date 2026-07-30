@@ -435,6 +435,9 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
     <path data-draw d="M9 6.4h11M9 12h11M9 17.6h11"/><path d="M4.4 6.4h.02M4.4 12h.02M4.4 17.6h.02"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path data-rise d="M20.4 12.4a7.6 7.6 0 0 1-8.2 7.6L5 21l1.2-4.6A7.6 7.6 0 1 1 20.4 12.4Z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="6" width="13" height="15" rx="2.6" transform="rotate(-8 9 13.5)"/>
+    <rect x="8.5" y="3.5" width="13" height="15" rx="2.6" transform="rotate(7 15 11)"/></symbol>
   <symbol id="i-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 20.6v-7"/><path data-swell d="M12 13.6c0-3 2.4-5.4 5.4-5.4 0 3-2.4 5.4-5.4 5.4Z"/>
     <path data-swell d="M12 15.6c0-2.6-2.1-4.7-4.7-4.7 0 2.6 2.1 4.7 4.7 4.7Z"/></symbol>
@@ -461,8 +464,8 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
       <span class="tagpill"><svg width="15" height="15"><use href="#i-lock"/></svg> Bayar sesukamu · <b>tanpa akun</b> · offline</span>
       <h1 id="headline"></h1>
       <p class="hero__lead">
-        Kalender, urusan rumah, uang, persiapan nikah, kesuburan, sampai pengasuhan —
-        satu ruang buat kalian berdua. Datanya nginep di HP kamu, bukan di server siapa-siapa.
+        Kalender, urusan rumah, uang, persiapan nikah, kesuburan, pengasuhan,
+        sampai kartu obrolan tiap hari — satu ruang buat kalian berdua. Datanya nginep di HP kamu, bukan di server siapa-siapa.
       </p>
       <div class="hero__cta">
         <a class="btn" href="./app/">Coba sekarang<svg><use href="#i-arrow"/></svg></a>
@@ -497,6 +500,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
             </div>
             <div class="pc"><b>Urusan rumah</b><small>Kamu 3 · Dimas 4 — beban kebagi</small></div>
             <div class="pc"><b>Uang berdua</b><small>Aman dipakai: Rp1,2 jt</small></div>
+            <div class="pc"><b>Kartu hari ini</b><small>“Kapan terakhir kamu ngerasa dijagain?”</small></div>
             <div class="pc"><b>Temu</b><small>Tumbuh bareng — hari ke-128</small></div>
           </div>
           <div class="phone__nav"><i></i><i></i><i></i><i></i><i></i></div>
@@ -514,6 +518,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
     <span class="marquee__item"><svg><use href="#i-ring"/></svg>Persiapan nikah</span>
     <span class="marquee__item"><svg><use href="#i-sprout"/></svg>Kesuburan</span>
     <span class="marquee__item"><svg><use href="#i-baby"/></svg>Pengasuhan</span>
+    <span class="marquee__item"><svg><use href="#i-card"/></svg>Kartu berdua</span>
     <span class="marquee__item"><svg><use href="#i-heart"/></svg>Temu tumbuh berdua</span>
     <span class="marquee__item"><svg><use href="#i-cal"/></svg>Kalender berdua</span>
     <span class="marquee__item"><svg><use href="#i-broom"/></svg>Urusan rumah</span>
@@ -521,6 +526,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
     <span class="marquee__item"><svg><use href="#i-ring"/></svg>Persiapan nikah</span>
     <span class="marquee__item"><svg><use href="#i-sprout"/></svg>Kesuburan</span>
     <span class="marquee__item"><svg><use href="#i-baby"/></svg>Pengasuhan</span>
+    <span class="marquee__item"><svg><use href="#i-card"/></svg>Kartu berdua</span>
     <span class="marquee__item"><svg><use href="#i-heart"/></svg>Temu tumbuh berdua</span>
   </div>
 </div>
@@ -545,11 +551,54 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   </div>
 </section>
 
-<section id="fitur" style="padding-top:0">
+<section id="kartu" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker" style="--tone:var(--violet)"><svg><use href="#i-card"/></svg> Fitur utama</span>
+      <h2>Kehabisan bahan ngobrol? Buka satu kartu.</h2>
+      <p>Ditulis buat pasangan Indonesia — bukan terjemahan. Ada yang receh, ada yang bikin diem lama. Nggak ada jawaban benar, nggak ada yang dinilai.</p>
+    </div>
+
+    <div class="kartu-row rv">
+      <article class="kartu kartu--a">
+        <span class="kartu__tag">Dalam</span>
+        <p>Kalau kita berantem, kamu sebenernya lagi butuh apa: didengerin, dipeluk, atau dikasih ruang?</p>
+      </article>
+      <article class="kartu kartu--b">
+        <span class="kartu__tag">Berat</span>
+        <p>Sampai mana batas kita bantu keuangan keluarga besar?</p>
+      </article>
+      <article class="kartu kartu--c">
+        <span class="kartu__tag">Receh</span>
+        <p>Kalau kita ikut lomba 17-an bareng, lomba apa yang pasti kita menang?</p>
+      </article>
+      <article class="kartu kartu--d">
+        <span class="kartu__tag">Manis</span>
+        <p>Apa yang kamu harap tetap sama dari kita sepuluh tahun lagi?</p>
+      </article>
+    </div>
+
+    <div class="bento" style="margin-top:26px">
+      <article class="bx bx--w6 bx--violet rv">
+        <div class="bx__ic"><svg><use href="#i-card"/></svg></div>
+        <h3>Tujuh tumpukan, tiap suasana ada</h3>
+        <p>Dalam, Receh, Genit, Seru, Berat, Manis, Acak. Tinggal pilih lagi pengen ngobrol yang gimana.</p>
+        <div class="bx__list"><span>Dalam</span><span>Receh</span><span>Genit</span><span>Seru</span><span>Berat</span><span>Manis</span><span>Acak</span></div>
+      </article>
+            <article class="bx bx--w6 bx--teal rv">
+        <div class="bx__ic"><svg><use href="#i-heart"/></svg></div>
+        <h3>Ada kartu hari ini — sama di dua HP</h3>
+        <p>Kartunya dihitung dari tanggal, bukan diundi. Jadi kamu dan pasangan dapat kartu yang sama hari itu <em>tanpa</em> perlu nyambung ke server mana pun. Cocok buat yang lagi LDR: buka jam berapa aja, kartunya tetap sama.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="fitur">
   <div class="wrap">
     <div class="head rv">
       <span class="kicker" style="--tone:var(--teal)"><svg><use href="#i-list"/></svg> Isi lengkapnya</span>
-      <h2>Tujuh dunia, satu aplikasi.</h2>
+      <h2>Delapan dunia, satu aplikasi.</h2>
       <p>Ini bukan aplikasi chat pasangan. Ini alat rumah tangga — dan tiap bagiannya digarap sampai dalam, bukan cuma judul di menu.</p>
     </div>
 
@@ -596,6 +645,13 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
         <div class="bx__list"><span>Agenda berdua</span><span>Berulang</span><span>Pengingat</span><span>Hari penting</span></div>
       </article>
 
+      <article class="bx bx--w3 bx--violet rv">
+        <div class="bx__ic"><svg><use href="#i-card"/></svg></div>
+        <h3>Kartu berdua — bahan ngobrol tiap hari</h3>
+        <p>Tujuh tumpukan pertanyaan yang ditulis buat pasangan Indonesia, dari yang receh sampai yang bikin diem lama. Satu kartu tiap hari, sama di dua HP, tanpa server.</p>
+        <div class="bx__list"><span>Dalam</span><span>Receh</span><span>Genit</span><span>Seru</span><span>Berat</span><span>Manis</span><span>Acak</span><span>Kartu hari ini</span></div>
+      </article>
+
       <article class="bx bx--w3 bx--pink rv">
         <div class="bx__ic"><svg><use href="#i-heart"/></svg></div>
         <h3>Temu — tumbuh dari kehadiran kalian</h3>
@@ -613,49 +669,6 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   </div>
 </section>
 
-
-<section id="kartu">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="kicker" style="--tone:var(--violet)"><svg><use href="#i-chat"/></svg> Fitur utama</span>
-      <h2>Kehabisan bahan ngobrol? Buka satu kartu.</h2>
-      <p>Ditulis buat pasangan Indonesia — bukan terjemahan. Ada yang receh, ada yang bikin diem lama. Nggak ada jawaban benar, nggak ada yang dinilai.</p>
-    </div>
-
-    <div class="kartu-row rv">
-      <article class="kartu kartu--a">
-        <span class="kartu__tag">Dalam</span>
-        <p>Kalau kita berantem, kamu sebenernya lagi butuh apa: didengerin, dipeluk, atau dikasih ruang?</p>
-      </article>
-      <article class="kartu kartu--b">
-        <span class="kartu__tag">Berat</span>
-        <p>Sampai mana batas kita bantu keuangan keluarga besar?</p>
-      </article>
-      <article class="kartu kartu--c">
-        <span class="kartu__tag">Receh</span>
-        <p>Kalau kita ikut lomba 17-an bareng, lomba apa yang pasti kita menang?</p>
-      </article>
-      <article class="kartu kartu--d">
-        <span class="kartu__tag">Manis</span>
-        <p>Apa yang kamu harap tetap sama dari kita sepuluh tahun lagi?</p>
-      </article>
-    </div>
-
-    <div class="bento" style="margin-top:26px">
-      <article class="bx bx--w6 bx--violet rv">
-        <div class="bx__ic"><svg><use href="#i-chat"/></svg></div>
-        <h3>Tujuh tumpukan, tiap suasana ada</h3>
-        <p>Dalam, Receh, Genit, Seru, Berat, Manis, Acak. Tinggal pilih lagi pengen ngobrol yang gimana.</p>
-        <div class="bx__list"><span>Dalam</span><span>Receh</span><span>Genit</span><span>Seru</span><span>Berat</span><span>Manis</span><span>Acak</span></div>
-      </article>
-            <article class="bx bx--w6 bx--teal rv">
-        <div class="bx__ic"><svg><use href="#i-heart"/></svg></div>
-        <h3>Ada kartu hari ini — sama di dua HP</h3>
-        <p>Kartunya dihitung dari tanggal, bukan diundi. Jadi kamu dan pasangan dapat kartu yang sama hari itu <em>tanpa</em> perlu nyambung ke server mana pun. Cocok buat yang lagi LDR: buka jam berapa aja, kartunya tetap sama.</p>
-      </article>
-    </div>
-  </div>
-</section>
 
 <section id="sinkron">
   <div class="wrap">
