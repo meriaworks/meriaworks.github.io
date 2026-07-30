@@ -1,0 +1,2 @@
+import{v as i,G as d,a as u,e as m}from"./index-BFNF5eY-.js";const y=280;function g(e,t=new Date){const s=i(e),n=d(t,s),o=u(s,y),a=Math.floor(n/7),f=(n%7+7)%7,r=n<0||a>42,c=r?null:a<14?1:a<28?2:3;return{weeks:a,days:f,trimester:c,estimatedDueDate:m(o,"yyyy-MM-dd"),daysRemaining:d(o,t),outOfRange:r}}function D(e){return e.outOfRange?"fam.outOfRange":"fam.week"}export{D as a,g as d};
+//# sourceMappingURL=pregnancyMath-BRIlEb2_.js.map

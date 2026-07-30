@@ -544,7 +544,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
       <article class="usp usp--e rv"><div class="usp__letter">E</div><div class="usp__word">Empati</div>
         <p>Nggak ada skor, nggak ada rapor, nggak ada "siapa lebih rajin". Cuma catatan dan bahan ngobrol.</p></article>
       <article class="usp usp--m rv"><div class="usp__letter">M</div><div class="usp__word">Milikmu</div>
-        <p>Datanya nginep di perangkatmu. Tanpa akun, tanpa server wajib. APK-nya bahkan nggak minta izin internet.</p></article>
+        <p>Datanya nginep di perangkatmu. Tanpa akun, tanpa server wajib. Sebelum kamu sambungkan sama pasangan, nggak ada apa pun yang keluar dari HP.</p></article>
       <article class="usp usp--u rv"><div class="usp__letter">U</div><div class="usp__word">Utuh</div>
         <p>Dari kalender sampai warisan urusan rumah tangga — satu aplikasi, bukan tujuh aplikasi setengah jadi.</p></article>
     </div>
@@ -605,9 +605,9 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
     <div class="bento">
       <article class="bx bx--w3 bx--amber rv">
         <div class="bx__ic"><svg><use href="#i-money"/></svg></div>
-        <h3>Uang berdua — 25 bagian</h3>
-        <p>Tiga ruang: uang kamu, uang dia, uang kita. Tiap objek punya pemilik, siapa yang boleh lihat, siapa yang tanggung jawab, dan siapa yang berhak memutuskan.</p>
-        <div class="bx__list"><span>8 model patungan</span><span>Buku kas</span><span>Split &amp; settle-up</span><span>Tagihan</span><span>Amplop</span><span>Aman dipakai</span><span>Utang &amp; arisan</span><span>Tabungan</span><span>Usulan belanja</span><span>Protokol pisah</span></div>
+        <h3>Catat pengeluaran — dan 25 bagian lain</h3>
+        <p>Catat "sarapan 20 ribu" dalam lima detik, lalu lihat sisa bulan ini, pemasukan, pengeluaran, dan ke mana perginya per kategori. Di baliknya: tiga ruang uang, dan tiap catatan punya pemilik, siapa yang boleh lihat, siapa yang tanggung jawab, dan siapa yang berhak memutuskan.</p>
+        <div class="bx__list"><span>Catat harian</span><span>Rekap per kategori</span><span>Ekspor CSV</span><span>8 model patungan</span><span>Buku kas</span><span>Split &amp; settle-up</span><span>Tagihan</span><span>Amplop</span><span>Aman dipakai</span><span>Utang &amp; arisan</span><span>Tabungan</span><span>Usulan belanja</span><span>Protokol pisah</span></div>
       </article>
 
       <article class="bx bx--w3 bx--violet rv">
@@ -675,29 +675,29 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
     <div class="sync rv">
       <div class="sync__in">
         <span class="kicker" style="--tone:var(--amber)"><svg><use href="#i-sync"/></svg> Buat berdua</span>
-        <h2 style="margin:16px 0 14px">Nyambung ke HP pasangan.</h2>
-        <p style="font-size:17px;max-width:62ch">TemuDua nggak punya server. Jadi biar dua HP bisa sinkron, kamu yang pegang kendali — dan tetap Rp0.</p>
-
-        <div class="sync__two">
-          <div class="sync__opt">
-            <div class="bx__ic" style="--tone-soft:var(--pink);--tone-ink:var(--ink)"><svg><use href="#i-heart"/></svg></div>
-            <h3>Cara 1 — satu HP berdua</h3>
-            <p>Paling gampang, nggak butuh setup apa pun. Dua profil di satu perangkat, masing-masing punya ruang privat sendiri. Cocok buat yang serumah.</p>
-          </div>
-          <div class="sync__opt">
-            <div class="bx__ic" style="--tone-soft:var(--teal);--tone-ink:var(--ink)"><svg><use href="#i-sync"/></svg></div>
-            <h3>Cara 2 — dua HP, sinkron sendiri</h3>
-            <p>Buat LDR atau yang mau HP masing-masing. Tiga langkah di bawah, sekali seumur hidup.</p>
-          </div>
-        </div>
+        <h2 style="margin:16px 0 14px">Dua HP, satu kode.</h2>
+        <p style="font-size:17px;max-width:62ch">Kalian nggak akan tiap saat bareng — satu di kantor, satu di rumah, kadang lagi dinas. Jadi dua HP-nya yang harus nyambung, bukan orangnya yang harus ketemu.</p>
 
         <div class="steps">
-          <div class="step"><div><h3>Bikin "kotak pos" sendiri</h3>
-            <p>Pakai Cloudflare Workers. Daftarnya <strong>nggak minta kartu kredit</strong>, dan jatah cuma-cumanya 100.000 permintaan per hari + 5 GB penyimpanan — dipakai berdua nggak bakal kepakai habis. Berkasnya sudah disiapkan, tinggal jalankan <code>npx wrangler deploy</code> sekali.</p></div></div>
-          <div class="step"><div><h3>Tempel alamatnya di menu Sinkron</h3>
-            <p>Sengaja nggak ada alamat bawaan. Kalau kami sediakan server sendiri, janji "datamu nggak ke mana-mana" jadi bohong.</p></div></div>
-          <div class="step"><div><h3>Pindai QR-nya, selesai</h3>
-            <p>HP pertama nampilin QR, HP kedua memindai. Kunci enkripsinya ikut di QR itu dan <strong>nggak pernah</strong> dikirim ke kotak pos — jadi isinya tetap nggak kebaca siapa pun, termasuk kami.</p></div></div>
+          <div class="step"><div><h3>HP pertama bikin kode</h3>
+            <p>Satu tombol di menu Sambungkan. Keluar delapan huruf, misalnya <code>K4MQ-7XR2</code>. Nggak ada akun, nggak ada email, nggak ada yang harus dipasang.</p></div></div>
+          <div class="step"><div><h3>Kirim kodenya lewat chat</h3>
+            <p>WhatsApp, SMS, dibacain lewat telepon — bebas. Kodenya berlaku 15 menit dan cuma bisa dipakai sekali.</p></div></div>
+          <div class="step"><div><h3>HP kedua ketik kodenya. Selesai.</h3>
+            <p>Setelah itu perubahan nyusul sendiri tiap kali aplikasinya dibuka. Sekali seumur hidup, nggak ada setelan lagi.</p></div></div>
+        </div>
+
+        <div class="sync__two" style="margin-top:26px">
+          <div class="sync__opt">
+            <div class="bx__ic" style="--tone-soft:var(--teal);--tone-ink:var(--ink)"><svg><use href="#i-lock"/></svg></div>
+            <h3>Yang lewat cuma paket teracak</h3>
+            <p>Kunci kalian nggak pernah dikirim ke mana pun. Yang dititip sebentar buat menyambungkan cuma versi teracaknya, dan yang bisa membukanya cuma kode tadi — yang nggak ikut terkirim. Isi catatan kalian nggak kebaca siapa pun, termasuk kami.</p>
+          </div>
+          <div class="sync__opt">
+            <div class="bx__ic" style="--tone-soft:var(--pink);--tone-ink:var(--ink)"><svg><use href="#i-shield"/></svg></div>
+            <h3>Nggak wajib, dan bisa dicabut</h3>
+            <p>Sebelum disambungkan, nggak ada apa pun yang keluar dari HP kamu. Yang ikut nyebrang cuma hal yang sudah kamu tandai bisa dilihat berdua — catatan privat tetap tinggal. Mau berhenti? Putuskan dari menu yang sama.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -722,7 +722,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
       <div class="dlc rv">
         <span class="dlc__tag" style="background:var(--teal)">Android</span>
         <h3>Unduh APK</h3>
-        <p>Buat yang mau ikonnya nangkring di layar HP. Tanpa izin internet sama sekali — jadi datanya dijamin nggak ke mana-mana. Khusus Android; kalau kamu pakai iPhone, versi browser di sebelah isinya sama persis.</p>
+        <p>Buat yang mau ikonnya nangkring di layar HP. Cuma minta satu izin — internet — dan itu pun kepakai kalau kamu menyambungkan HP berdua. Nggak ada izin lokasi, kontak, atau penyimpanan. Khusus Android; kalau kamu pakai iPhone, versi browser di sebelah isinya sama persis.</p>
         <span class="dlc__meta">± 0,5 MB · Android 7.0 ke atas · nominal kamu yang tentuin</span>
         <a class="btn btn--teal" href="https://meria.myr.id/pl/temudua-16823" target="_blank" rel="noopener noreferrer">Unduh APK<svg><use href="#i-down"/></svg></a>
       </div>
