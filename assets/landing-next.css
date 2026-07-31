@@ -1,0 +1,134 @@
+/* Shared progressive enhancement and signature imagery for Meria Works landing pages. */
+html,body{overflow-x:clip}
+
+:where(.reveal,.rv,.rvl,.rvs,[data-reveal]){
+  opacity:1!important;
+  transform:none!important;
+}
+
+html.mw-reveal-ready :where(.reveal,.rv,.rvl,.rvs,[data-reveal]):not(.in-view):not(.show):not(.seen){
+  opacity:0!important;
+  transform:translateY(22px)!important;
+}
+
+.mw-signature{
+  --mw-accent:#ff8fb3;
+  position:relative;
+  width:min(1320px,calc(100% - clamp(24px,5vw,80px)));
+  min-height:clamp(390px,58vw,680px);
+  margin:clamp(28px,6vw,88px) auto;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--mw-accent) 38%,transparent);
+  border-radius:clamp(24px,3vw,44px);
+  background:#111;
+  box-shadow:0 28px 90px rgba(0,0,0,.18);
+  isolation:isolate;
+}
+
+.mw-signature[data-product="sajin"]{--mw-accent:#ff6a24}
+.mw-signature[data-product="klinap"]{--mw-accent:#2dd4bf}
+.mw-signature[data-product="kalik"]{--mw-accent:#ffb43b}
+.mw-signature[data-product="temudua"]{--mw-accent:#ff77a8}
+.mw-signature[data-product="pantur"]{--mw-accent:#2f8b6c}
+.mw-signature[data-product="jelin"]{--mw-accent:#9b72e8}
+.mw-signature[data-product="4krt"]{--mw-accent:#b7ef2b}
+
+.mw-signature img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.94) contrast(1.02);
+  transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease;
+}
+
+.mw-signature::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg,transparent 38%,rgba(5,8,8,.16) 58%,rgba(5,8,8,.9) 100%);
+  pointer-events:none;
+}
+
+.mw-signature::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:calc(clamp(24px,3vw,44px) - 10px);
+  pointer-events:none;
+}
+
+.mw-signature-copy{
+  position:absolute;
+  z-index:3;
+  left:clamp(24px,5vw,72px);
+  right:clamp(24px,5vw,72px);
+  bottom:clamp(26px,5vw,68px);
+  max-width:780px;
+  color:#fff;
+  text-wrap:balance;
+}
+
+.mw-signature-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 14px;
+  font:800 clamp(.68rem,1vw,.78rem)/1.2 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.mw-signature-kicker::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--mw-accent);
+  box-shadow:0 0 24px var(--mw-accent);
+}
+
+.mw-signature-title{
+  max-width:18ch;
+  margin:0;
+  font:800 clamp(2rem,5vw,4.9rem)/.96 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:-.055em;
+  text-shadow:0 3px 28px rgba(0,0,0,.35);
+}
+
+.mw-signature-note{
+  max-width:56ch;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.78);
+  font:500 clamp(.9rem,1.3vw,1.05rem)/1.55 ui-sans-serif,system-ui,sans-serif;
+}
+
+@media (hover:hover){
+  .mw-signature:hover img{transform:scale(1.025);filter:saturate(1) contrast(1.04)}
+}
+
+@media (max-width:640px){
+  .mw-signature{
+    width:calc(100% - 24px);
+    min-height:520px;
+    margin:24px auto 52px;
+    border-radius:24px;
+  }
+  .mw-signature::after{inset:10px;border-radius:17px}
+  .mw-signature img{object-position:center}
+  .mw-signature-title{font-size:clamp(2.1rem,11vw,3.4rem)}
+  .mw-signature-note{font-size:.88rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.mw-reveal-ready :where(.reveal,.rv,.rvl,.rvs,[data-reveal]){
+    opacity:1!important;
+    transform:none!important;
+  }
+  .mw-signature img{transition:none}
+}
