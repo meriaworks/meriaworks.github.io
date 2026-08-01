@@ -1182,7 +1182,42 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
-  </style>
+  
+    /* ---- Pemandu keputusan "situasimu yang mana" ---- */
+    .pilih { margin: 0 0 26px; }
+    .pilih__q { margin: 0 0 12px; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+    .pilih__opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pilih__chip {
+      font: inherit; font-size: .86rem; font-weight: 700; cursor: pointer;
+      padding: 9px 15px; border-radius: 999px;
+      border: var(--bw) solid var(--ink); background: var(--card); color: var(--ink);
+      transition: transform .18s var(--bounce), background .2s ease;
+    }
+    [data-theme="cute"] .pilih__chip { box-shadow: 3px 3px 0 var(--ink); }
+    [data-theme="modern"] .pilih__chip { border-color: var(--line-soft); }
+    .pilih__chip:hover { transform: translateY(-2px); }
+    .pilih__chip[aria-pressed="true"] { background: var(--tone, var(--accent)); }
+    .pilih__chip:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+    .pilih__out { margin-top: 14px; }
+    .pilih__card {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 16px 18px; border-radius: var(--radius-md);
+      border: var(--bw) solid var(--ink); background: var(--card);
+      border-left: 6px solid var(--tone);
+    }
+    [data-theme="cute"] .pilih__card { box-shadow: var(--pop-sm); }
+    [data-theme="modern"] .pilih__card { border-color: var(--line-soft); }
+    .pilih__card b { font-family: var(--font-display); font-size: 1.1rem; }
+    .pilih__card p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; line-height: 1.5; max-width: 52ch; }
+    .pilih__go {
+      margin-left: auto; white-space: nowrap; font-weight: 800; font-size: .86rem;
+      padding: 9px 16px; border-radius: 999px; border: var(--bw) solid var(--ink);
+      background: var(--tone); color: var(--ink); text-decoration: none;
+    }
+    [data-theme="modern"] .pilih__go { border-color: transparent; }
+    @media (max-width: 620px) { .pilih__go { margin-left: 0; width: 100%; text-align: center; } }
+    @media (prefers-reduced-motion: reduce) { .pilih__chip { transition: none; } }
+</style>
   <link rel="stylesheet" href="./assets/landing-next.css" />
   <script defer src="./assets/landing-next.js"></script>
 </head>
@@ -1605,6 +1640,21 @@
           <div><span class="eyebrow"><svg class="ic"><use href="#ic-smile"/></svg><span data-i18n="aud.eyebrow">Produk Meria Works</span></span><h2 class="reveal" data-i18n="aud.h2">Bukan untuk semua orang.<br><span class="hl">Tapi untuk orang-orang yang sedang survive!</span></h2></div>
           <p class="reveal" data-i18n="aud.side">Kami tidak membuat persona yang terlalu sempurna. Kami memikirkan orang yang sibuk, kadang capek, sering harus mengurus banyak hal sekaligus, tapi tetap ingin hidupnya bergerak maju.</p>
         </div>
+
+        <!-- Pemandu keputusan: satu klik, langsung ke produk yang cocok -->
+        <div class="pilih reveal" id="pilih">
+          <p class="pilih__q" data-i18n="pilih.q">Situasimu yang mana?</p>
+          <div class="pilih__opts" role="group" aria-label="Pilih situasimu">
+            <button type="button" class="pilih__chip" data-p="sajin" data-i18n="pilih.o1">Punya usaha makanan</button>
+            <button type="button" class="pilih__chip" data-p="klinap" data-i18n="pilih.o2">Kelola klinik</button>
+            <button type="button" class="pilih__chip" data-p="pantur" data-i18n="pilih.o3">Uang selalu ludes</button>
+            <button type="button" class="pilih__chip" data-p="jelin" data-i18n="pilih.o4">Lagi cari kerja</button>
+            <button type="button" class="pilih__chip" data-p="temudua" data-i18n="pilih.o5">Ngurus hidup berdua</button>
+            <button type="button" class="pilih__chip" data-p="kalik" data-i18n="pilih.o6">Otak terasa tumpul</button>
+            <button type="button" class="pilih__chip" data-p="4krt" data-i18n="pilih.o7">Mau refleks lebih tajam</button>
+          </div>
+          <div class="pilih__out" id="pilihOut" role="status" aria-live="polite"></div>
+        </div>
         <div class="audience-rail">
           <article class="audience-row reveal" style="--tone:var(--c-sajin)"><span class="icon-chip" style="--tone:var(--c-sajin)"><svg class="ic"><use href="#ic-bowl"/></svg></span><h3 data-i18n="aud.r1t">Pemilik usaha makanan yang masih pegang banyak peran sendiri.</h3><p data-i18n="aud.r1b">Butuh tahu untung, stok, dan arus uang tanpa harus punya tim operasional besar.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
           <article class="audience-row reveal" style="--tone:var(--c-pantur)"><span class="icon-chip" style="--tone:var(--c-pantur)"><svg class="ic"><use href="#ic-coin"/></svg></span><h3 data-i18n="aud.r2t">Pekerja dan keluarga muda yang ingin uangnya lebih terasa aman.</h3><p data-i18n="aud.r2b">Ingin melihat kewajiban, tujuan, dan uang bebas pakai dalam satu gambaran yang jujur.</p><span class="audience-arrow"><svg class="ic"><use href="#ic-arrow"/></svg></span></article>
@@ -1920,6 +1970,11 @@
         'cta.body': 'Meria Works builds digital products for people who keep going—running businesses, organising life, hunting for jobs, caring for patients, and keeping their minds sharp.',
         'cta.b1': 'Talk to Meria', 'cta.b2': 'See all products',
         'support.cta': 'Support Meria Works',
+        'pilih.q': 'Which one sounds like you?',
+        'pilih.o1': 'I run a food business', 'pilih.o2': 'I manage a clinic',
+        'pilih.o3': 'My money always vanishes', 'pilih.o4': 'I am job hunting',
+        'pilih.o5': 'We run life together', 'pilih.o6': 'My brain feels dull',
+        'pilih.o7': 'I want sharper reflexes',
         'foot.title': 'Digital tools for real life.',
         'foot.explore': 'Explore', 'foot.products': 'Products', 'foot.made': 'Made in Indonesia.',
       };
@@ -2132,6 +2187,57 @@
       }
       resizeCanvas(); drawCanvas();
       addEventListener('resize', resizeCanvas);
+
+    /* ---- Pemandu keputusan ---- */
+    (function(){
+      var box = document.getElementById('pilih'); if (!box) return;
+      var out = document.getElementById('pilihOut');
+      var DATA = {
+        sajin:   ['SAJIN','./sajin/','var(--c-sajin)'],
+        klinap:  ['KLINAP','./klinap/','var(--c-klinap)'],
+        pantur:  ['PANTUR','./pantur/','var(--c-pantur)'],
+        jelin:   ['JELIN','./jelin/','var(--c-jelin)'],
+        temudua: ['TEMUDUA','./temudua/','var(--c-temudua)'],
+        kalik:   ['KALIK','./kalik/','var(--c-kalik)'],
+        '4krt':  ['4KRT','./4krt/','var(--c-4krt)']
+      };
+      var ID = {
+        sajin:'Lihat untung bersih, COGS per bahan, margin menu, dan stok dalam satu tempat. Rp 49.000, sekali bayar.',
+        klinap:'Registrasi, antrean, rekam medis, farmasi, sampai kasir \u2014 100% offline. Rp 129.000, sekali bayar.',
+        pantur:'Tahu berapa yang benar-benar aman dipakai setelah tagihan dan cicilan dihitung. Masih dalam pengembangan.',
+        jelin:'Semua lamaran, tahap, dan follow-up rapi di satu berkas yang jalan offline. Rp 13.000, sekali bayar.',
+        temudua:'Kalender, urusan rumah, dan uang berdua \u2014 plus Temu yang tumbuh saat kalian sama-sama hadir. Gratis.',
+        kalik:'60 detik sehari, 68 latihan nalar bergaya TPA, tanpa iklan dan tanpa internet. Bayar semaumu.',
+        '4krt':'Trainer ritme 4 arah dengan analitik sampai milidetik. Bayar semaumu, jalan offline.'
+      };
+      var EN = {
+        sajin:'Net profit, per-ingredient COGS, menu margins and stock in one place. Rp 49,000, pay once.',
+        klinap:'Registration, queues, medical records, pharmacy and billing \u2014 100% offline. Rp 129,000, pay once.',
+        pantur:'See what is genuinely safe to spend after bills and instalments. Still in development.',
+        jelin:'Every application, stage and follow-up in one file that runs offline. Rp 13,000, pay once.',
+        temudua:'Shared calendar, chores and money \u2014 plus Temu, which grows when you both show up. Free.',
+        kalik:'60 seconds a day, 68 aptitude-style drills, no ads and no internet. Pay what you want.',
+        '4krt':'A 4-way rhythm trainer with millisecond analytics. Pay what you want, runs offline.'
+      };
+      var chips = [].slice.call(box.querySelectorAll('.pilih__chip'));
+      chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      function pilih(c){
+        var k = c.dataset.p, d = DATA[k];
+        var en = document.documentElement.dataset.lang === 'en';
+        chips.forEach(function(x){
+          var on = x === c;
+          x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          if (on) { x.style.setProperty('--tone', d[2]); } else { x.style.removeProperty('--tone'); }
+        });
+        out.innerHTML =
+          '<div class="pilih__card" style="--tone:' + d[2] + '">' +
+            '<div><b>' + d[0] + '</b><p>' + (en ? EN : ID)[k] + '</p></div>' +
+            '<a class="pilih__go" href="' + d[1] + '">' + (en ? 'Open ' : 'Buka ') + d[0] + ' \u2192</a>' +
+          '</div>';
+      }
+      chips.forEach(function(c){ c.addEventListener('click', function(){ pilih(c); }); });
+    })();
+
     })();
   </script>
   <script type="text/javascript" src="https://mayarembed.r2.mayar.id/mayar-new-min.js" defer></script>

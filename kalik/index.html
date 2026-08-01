@@ -48,6 +48,11 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:120
 .cursor.big{width:44px;height:44px}
 #loader{position:fixed;inset:0;z-index:300;background:var(--coal);display:grid;place-items:center;transition:opacity .5s,visibility .5s}
 #loader.off{opacity:0;visibility:hidden}
+/* Pengaman tanpa JS: kalau skrip gagal/dimatikan, loader tetap menyingkir
+   sendiri lewat CSS. Dibatasi ke :not(.off) supaya animasi ini tidak
+   menimpa aturan .off saat JS berhasil jalan. */
+#loader:not(.off){animation:ldFailsafe 0s linear 2.6s forwards}
+@keyframes ldFailsafe{to{opacity:0;visibility:hidden}}
 #loader svg{width:74px}
 @keyframes ldFlame{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.14) scaleX(.95)}}
 #loader .lf{transform-origin:50% 88%;animation:ldFlame .7s ease-in-out infinite}
