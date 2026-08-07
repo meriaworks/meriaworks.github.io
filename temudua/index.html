@@ -391,84 +391,9 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
    a page with a hero and nothing else. A landing page must never depend on
    JavaScript to show its own text. */
 .rv{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.anim .rv{opacity:0;transform:translateX(-28px)}
-.anim .rv:nth-of-type(even){transform:translateX(28px)}
+.anim .rv{opacity:0;transform:translateY(34px)}
 .anim .rv.in{opacity:1;transform:none}
-
-/* ---------- Demo Nadi & Temu (bukti produk interaktif) ---------- */
-.nadi{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:26px;align-items:start;
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:26px;
-  box-shadow:0 24px 70px -34px rgba(35,27,46,.34)}
-.nadi__stage{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:center;
-  background:linear-gradient(150deg,var(--pink-soft),var(--teal-soft));border-radius:var(--r-m);padding:16px}
-.temu{width:104px;height:104px;display:block}
-.temu__pot{fill:rgba(35,27,46,.10)}
-.temu__stem{stroke:var(--teal);stroke-width:5;stroke-linecap:round;fill:none;
-  stroke-dasharray:30;stroke-dashoffset:30;transition:stroke-dashoffset .5s ease}
-.temu__core{fill:var(--pink);transition:r .45s cubic-bezier(.34,1.4,.36,1),fill .45s ease}
-.temu__leafL path,.temu__leafR path{fill:var(--teal)}
-.temu__leafL,.temu__leafR{transform-origin:60px 78px;transform:scale(0);transition:transform .45s cubic-bezier(.34,1.4,.36,1)}
-.temu__face{opacity:0;transition:opacity .35s ease}
-.temu__face circle{fill:#fff}
-.temu__face path{stroke:#fff;stroke-width:2;stroke-linecap:round}
-.temu__spark circle{fill:var(--amber);transition:opacity .35s ease}
-.nadi[data-stage="1"] .temu__stem,.nadi[data-stage="2"] .temu__stem,.nadi[data-stage="3"] .temu__stem,
-.nadi[data-stage="4"] .temu__stem,.nadi[data-stage="5"] .temu__stem{stroke-dashoffset:0}
-.nadi[data-stage="0"] .temu__core{r:8}
-.nadi[data-stage="1"] .temu__core{r:11}
-.nadi[data-stage="2"] .temu__core{r:13}
-.nadi[data-stage="3"] .temu__core,.nadi[data-stage="4"] .temu__core,.nadi[data-stage="5"] .temu__core{r:15}
-.nadi[data-stage="3"] .temu__leafL,.nadi[data-stage="4"] .temu__leafL,.nadi[data-stage="5"] .temu__leafL{transform:scale(1)}
-.nadi[data-stage="4"] .temu__leafR,.nadi[data-stage="5"] .temu__leafR{transform:scale(1)}
-.nadi[data-stage="2"] .temu__face,.nadi[data-stage="3"] .temu__face,
-.nadi[data-stage="4"] .temu__face,.nadi[data-stage="5"] .temu__face{opacity:1}
-.nadi[data-stage="0"] .temu__spark circle{opacity:1}
-.nadi:not([data-stage="0"]) .temu__spark circle{opacity:0}
-.nadi__meta b{display:block;font-size:1.15rem;line-height:1.2}
-.nadi__meta span{display:block;font-size:.82rem;color:var(--muted);margin-top:2px}
-.nadi__stats{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:10px}
-.nadi__stats span{font-size:.76rem;color:var(--ink);font-weight:600}
-.nadi__stats i{font-style:normal;font-weight:800;color:var(--pink-ink);font-size:1rem}
-.nadi__week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-.nadi__day{display:flex;flex-direction:column;gap:5px;min-width:0}
-.nadi__lbl{font-size:.68rem;font-weight:800;letter-spacing:.05em;color:var(--faint);text-align:center;text-transform:uppercase}
-.nadi__half{appearance:none;border:1.5px solid var(--line);background:var(--paper);border-radius:11px;
-  padding:9px 2px;cursor:pointer;font:inherit;font-size:.66rem;font-weight:700;color:var(--faint);
-  display:grid;place-items:center;gap:3px;transition:background .2s,border-color .2s,color .2s,transform .18s cubic-bezier(.34,1.4,.36,1)}
-.nadi__half:hover{border-color:var(--pink)}
-.nadi__half:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
-.nadi__half .dot{width:15px;height:15px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:.6rem}
-.nadi__half[aria-pressed="true"]{color:#fff;border-color:transparent;transform:scale(1.03)}
-.nadi__half.me[aria-pressed="true"]{background:var(--pink)}
-.nadi__half.you[aria-pressed="true"]{background:var(--teal)}
-.nadi__day.full .nadi__lbl{color:var(--teal-ink)}
-.nadi__day.full{position:relative}
-.nadi__day.full::after{content:"";position:absolute;inset:auto 0 -9px;height:3px;border-radius:3px;background:var(--teal);
-  animation:nadiLink .35s ease-out}
-@keyframes nadiLink{from{transform:scaleX(0)}}
-.nadi__day.rest .nadi__half{opacity:.55;border-style:dashed}
-.nadi__foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
-  border-top:1px solid var(--line);padding-top:14px}
-.nadi__foot p{margin:0;font-size:.84rem;color:var(--muted);max-width:52ch}
-.nadi__acts{display:flex;gap:8px;flex-wrap:wrap}
-.nadi__btn{font:inherit;font-size:.78rem;font-weight:700;padding:8px 14px;border-radius:var(--r-pill);
-  border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
-.nadi__btn:hover{border-color:var(--teal);background:var(--teal-soft)}
-.nadi__btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.nadi__note{margin:14px 0 0;font-size:.86rem;color:var(--muted);max-width:70ch}
-@media(max-width:900px){
-  .nadi{grid-template-columns:1fr}
-  .nadi__week{gap:5px}
-  .nadi__half{font-size:0;padding:8px 2px}
-  .nadi__half .dot{font-size:.62rem}
-}
-@media (prefers-reduced-motion:reduce){
-  .temu__core,.temu__leafL,.temu__leafR,.temu__stem,.temu__face,.nadi__half{transition:none}
-  .nadi__day.full::after{animation:none}
-}
 </style>
-<link rel="stylesheet" href="../assets/landing-next.css" />
-<script defer src="../assets/landing-next.js"></script>
 </head>
 <body>
 
@@ -606,15 +531,6 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   </div>
 </div>
 
-<aside class="mw-signature" data-product="temudua" aria-label="Visual hidup berdua yang lebih tertata">
-  <img src="../assets/visuals/temudua-shared-life.webp" alt="Meja rumah dengan dua cangkir, dua ponsel, kalender bersama, tabungan, belanja, dan token urusan rumah" width="1536" height="1024" loading="eager" fetchpriority="high" />
-  <div class="mw-signature-copy">
-    <p class="mw-signature-kicker">Satu ruang berdua</p>
-    <p class="mw-signature-title">Dua layar. Satu hidup yang lebih tertata.</p>
-    <p class="mw-signature-note">Bukan skor hubungan—hanya ruang privat untuk kalender, uang, rumah, dan percakapan yang perlu dijalani bersama.</p>
-  </div>
-</aside>
-
 <section id="usp">
   <div class="wrap">
     <div class="head rv">
@@ -678,57 +594,6 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   </div>
 </section>
 
-<!-- ================= DEMO NADI & TEMU (bukti produk interaktif) ================= -->
-<section id="coba">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="kicker" style="--tone:var(--teal)"><svg><use href="#i-sprout"/></svg> Coba sendiri</span>
-      <h2>Satu hal kecil. Berdua. Tiap hari.</h2>
-      <p>Ini Nadi — inti TemuDua. Isi bagianmu dan bagian pasangan, lalu lihat Temu tumbuh. Klik kotaknya, tidak perlu pasang apa pun.</p>
-    </div>
-
-    <div class="nadi rv">
-      <div class="nadi__stage">
-        <svg class="temu" viewBox="0 0 120 120" role="img" aria-labelledby="temuNama">
-          <title id="temuNama">Temu tahap Percik</title>
-          <ellipse class="temu__pot" cx="60" cy="104" rx="26" ry="7"/>
-          <path class="temu__stem" d="M60 100 V72" />
-          <g class="temu__leafL"><path d="M60 84c-13 0-20-7-20-16 10-2 20 4 20 16z"/></g>
-          <g class="temu__leafR"><path d="M60 76c13 0 20-7 20-16-10-2-20 4-20 16z"/></g>
-          <circle class="temu__core" cx="60" cy="60" r="14"/>
-          <g class="temu__face">
-            <circle cx="55" cy="58" r="1.9"/><circle cx="65" cy="58" r="1.9"/>
-            <path d="M55.5 64c2.6 2.4 6.4 2.4 9 0" fill="none"/>
-          </g>
-          <g class="temu__spark"><circle cx="38" cy="44" r="3.2"/><circle cx="82" cy="44" r="3.2"/></g>
-        </svg>
-        <div class="nadi__meta">
-          <b id="temuStage">Percik</b>
-          <span id="temuBlurb">Dua percik yang baru ketemu.</span>
-          <div class="nadi__stats">
-            <span><i id="temuStreak">0</i> hari berturut-turut</span>
-            <span><i id="temuFull">0</i>/7 hari lengkap</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="nadi__week" role="group" aria-label="Tujuh hari Nadi">
-        <!-- diisi oleh skrip -->
-      </div>
-
-      <div class="nadi__foot">
-        <p id="nadiHint">Klik <b>Kamu</b> dan <b>Pasangan</b> pada hari yang sama — Temu cuma tumbuh kalau dua-duanya hadir.</p>
-        <div class="nadi__acts">
-          <button type="button" class="nadi__btn" id="nadiRest">Ambil hari istirahat</button>
-          <button type="button" class="nadi__btn" id="nadiReset">Ulangi</button>
-        </div>
-      </div>
-    </div>
-
-    <p class="nadi__note rv">Hari istirahat dan jeda tidak memutus streak. Hari yang kelewat pun masih bisa disambung berdua — TemuDua sengaja tidak menghukum.</p>
-  </div>
-</section>
-
 <section id="fitur">
   <div class="wrap">
     <div class="head rv">
@@ -783,7 +648,7 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
       <article class="bx bx--w3 bx--violet rv">
         <div class="bx__ic"><svg><use href="#i-card"/></svg></div>
         <h3>Kartu berdua — bahan ngobrol tiap hari</h3>
-        <p>Tujuh tumpukan pertanyaan yang ditulis buat pasangan Indonesia, dari yang receh sampai yang bikin diem lama. Satu kartu tiap hari, sama di dua HP, tanpa server.</p>
+        <p>Ratusan pertanyaan dalam tujuh tumpukan, ditulis buat pasangan Indonesia — dari yang receh sampai yang bikin diem lama. Satu kartu tiap hari, sama di dua HP, tanpa server.</p>
         <div class="bx__list"><span>Dalam</span><span>Receh</span><span>Genit</span><span>Seru</span><span>Berat</span><span>Manis</span><span>Acak</span><span>Kartu hari ini</span></div>
       </article>
 
@@ -1033,203 +898,6 @@ footer{border-top:3px solid var(--ink);padding:50px 0 60px;background:var(--card
   }
 
 })()
-</script>
-<script>
-/* ---------- Demo Nadi & Temu ---------- */
-(function(){
-  var wrap=document.querySelector('.nadi'); if(!wrap) return;
-  var week=wrap.querySelector('.nadi__week');
-  var HARI=['Sen','Sel','Rab','Kam','Jum','Sab','Min'];
-  var TAHAP=[
-    {n:'Percik',  b:'Dua percik yang baru ketemu.'},
-    {n:'Benih',   b:'Masih menutup, tapi sudah ada.'},
-    {n:'Denyut',  b:'Mulai berdenyut dan berkedip.'},
-    {n:'Tunas',   b:'Mahkotanya mulai terbelah dua.'},
-    {n:'Merekah', b:'Wajahnya muncul. Sekarang dia punya ekspresi.'},
-    {n:'Temu Kecil', b:'Bentuk utuh pertama. Sudah bisa berdiri sendiri.'}
-  ];
-  var state=HARI.map(function(){ return {me:false,you:false,rest:false}; });
-
-  HARI.forEach(function(nama,i){
-    var d=document.createElement('div'); d.className='nadi__day';
-    var l=document.createElement('span'); l.className='nadi__lbl'; l.textContent=nama; d.appendChild(l);
-    [['me','Kamu'],['you','Pasangan']].forEach(function(pair){
-      var b=document.createElement('button');
-      b.type='button'; b.className='nadi__half '+pair[0];
-      b.setAttribute('aria-pressed','false');
-      b.setAttribute('aria-label',pair[1]+' — '+nama);
-      b.innerHTML='<span class="dot"></span>'+pair[1];
-      b.addEventListener('click',function(){
-        if(state[i].rest) return;
-        state[i][pair[0]]=!state[i][pair[0]];
-        render();
-      });
-      d.appendChild(b);
-    });
-    week.appendChild(d);
-  });
-
-  function render(){
-    var lengkap=0, streak=0, best=0;
-    state.forEach(function(s,i){
-      var day=week.children[i];
-      var full=(s.me&&s.you)||s.rest;
-      day.classList.toggle('full',(s.me&&s.you));
-      day.classList.toggle('rest',s.rest);
-      day.querySelector('.me').setAttribute('aria-pressed',s.me?'true':'false');
-      day.querySelector('.you').setAttribute('aria-pressed',s.you?'true':'false');
-      if(s.me&&s.you) lengkap++;
-      if(full){ streak++; if(streak>best) best=streak; } else { streak=0; }
-    });
-    var tahap=Math.min(lengkap,TAHAP.length-1);
-    wrap.setAttribute('data-stage',String(tahap));
-    document.getElementById('temuStage').textContent=TAHAP[tahap].n;
-    document.getElementById('temuBlurb').textContent=TAHAP[tahap].b;
-    document.getElementById('temuStreak').textContent=best;
-    document.getElementById('temuFull').textContent=lengkap;
-    var t=wrap.querySelector('.temu title'); if(t) t.textContent='Temu tahap '+TAHAP[tahap].n;
-    var hint=document.getElementById('nadiHint');
-    var separuh=state.some(function(s){ return (s.me!==s.you) && !s.rest; });
-    if(lengkap===0&&!separuh) hint.innerHTML='Klik <b>Kamu</b> dan <b>Pasangan</b> pada hari yang sama — Temu cuma tumbuh kalau dua-duanya hadir.';
-    else if(separuh&&lengkap===0) hint.innerHTML='Separuh Nadi sudah hadir. Temu menunggu dengan tenang.';
-    else if(lengkap>=TAHAP.length-1) hint.innerHTML='Seminggu penuh. Di aplikasi aslinya, Temu terus tumbuh sampai belasan tahap — dan di hari ke-100 kalian pilih arah tumbuhnya.';
-    else hint.innerHTML='Temu tumbuh. Lewat satu hari pun streaknya masih bisa disambung berdua.';
-  }
-
-  document.getElementById('nadiRest').addEventListener('click',function(){
-    var i=state.findIndex(function(s){ return !s.rest && !(s.me&&s.you); });
-    if(i<0){ return; }
-    state[i].rest=true; state[i].me=false; state[i].you=false;
-    render();
-  });
-  document.getElementById('nadiReset').addEventListener('click',function(){
-    state=HARI.map(function(){ return {me:false,you:false,rest:false}; });
-    render();
-  });
-  render();
-})();
-</script>
-<style>
-.cw-fab,.cw-panel{--cw-surface:var(--card);--cw-bg:var(--paper);--cw-card:var(--card);--cw-text:var(--ink);
-  --cw-muted:var(--muted);--cw-line:var(--line);--cw-accent:var(--pink);--cw-on-accent:#fff;
-  --cw-link:var(--pink-ink);--cw-strong:var(--pink-ink)}
-
-/* ---------- TANYA TEMUDUA (offline, tanpa API) ---------- */
-.cw-fab,.cw-panel{font-family:var(--cw-font,inherit)}
-.cw-fab{position:fixed;left:18px;bottom:18px;z-index:9000;display:inline-flex;align-items:center;gap:9px;
-  padding:12px 17px;border-radius:999px;border:1px solid var(--line);background:var(--cw-accent);
-  color:var(--cw-on-accent);font-weight:700;font-size:.86rem;line-height:1;cursor:pointer;
-  box-shadow:0 14px 38px -14px rgba(255,111,159,.6);transition:transform .2s ease,filter .2s ease}
-.cw-fab:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.cw-fab svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.cw-panel{position:fixed;left:18px;bottom:76px;z-index:9001;width:min(92vw,382px);max-height:min(72vh,560px);
-  display:none;flex-direction:column;background:var(--cw-surface);border:1px solid var(--line);
-  border-radius:18px;overflow:hidden;box-shadow:0 24px 70px -28px rgba(35,27,46,.3)}
-.cw-panel.open{display:flex}
-.cw-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--cw-accent);color:var(--cw-on-accent)}
-.cw-av{width:31px;height:31px;border-radius:9px;flex:none;display:grid;place-items:center;
-  background:var(--cw-surface);color:var(--cw-accent);font-weight:800;font-size:.9rem}
-.cw-head b{font-size:.98rem;display:block;line-height:1.25}
-.cw-head p{margin:0;font-size:.65rem;opacity:.85;letter-spacing:.02em}
-.cw-x{margin-left:auto;background:none;border:0;color:inherit;cursor:pointer;font-size:1.35rem;line-height:1;padding:0 3px;opacity:.75}
-.cw-x:hover{opacity:1}
-.cw-body{flex:1;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:8px;background:var(--cw-bg)}
-.cw-msg{max-width:88%;padding:9px 12px;border-radius:14px;font-size:.83rem;line-height:1.55}
-.cw-msg.bot{background:var(--cw-card);border:1px solid var(--cw-line);color:var(--cw-text);
-  border-bottom-left-radius:4px;align-self:flex-start}
-.cw-msg.user{background:var(--cw-accent);color:var(--cw-on-accent);border-bottom-right-radius:4px;align-self:flex-end}
-.cw-msg a{color:var(--cw-link);font-weight:700}
-.cw-msg b{color:var(--cw-strong,var(--cw-text))}
-.cw-chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:100%}
-.cw-chip{font-size:.71rem;font-weight:700;padding:6px 10px;border-radius:999px;border:1px solid var(--cw-line);
-  background:var(--cw-card);color:var(--cw-muted);cursor:pointer;font-family:inherit}
-.cw-chip:hover{border-color:var(--cw-accent);color:var(--cw-text)}
-.cw-in{display:flex;gap:8px;padding:10px;border-top:1px solid var(--cw-line);background:var(--cw-surface)}
-.cw-in input{flex:1;min-width:0;border:1px solid var(--cw-line);border-radius:999px;padding:9px 14px;
-  font-size:.83rem;font-family:inherit;background:var(--cw-bg);color:var(--cw-text);outline:none}
-.cw-in input:focus{border-color:var(--cw-accent)}
-.cw-in button{width:39px;height:39px;border-radius:50%;border:0;background:var(--cw-accent);
-  color:var(--cw-on-accent);cursor:pointer;display:grid;place-items:center;flex:none}
-.cw-in button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:720px){
-  .cw-fab{padding:10px 13px;font-size:.78rem;left:12px;bottom:12px}
-  .cw-panel{left:10px;right:10px;width:auto;bottom:68px;max-height:70vh}
-}
-@media (prefers-reduced-motion:reduce){.cw-fab{transition:none}}
-</style>
-<!-- TANYA TEMUDUA (offline, tanpa API) -->
-<button type="button" class="cw-fab" id="cwFab" aria-expanded="false" aria-controls="cwPanel">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Tanya TemuDua
-</button>
-<div class="cw-panel" id="cwPanel" role="dialog" aria-label="Asisten tanya jawab TemuDua">
-  <div class="cw-head">
-    <span class="cw-av" aria-hidden="true">T</span>
-    <div><b>Asisten TemuDua</b><p>otomatis &middot; offline &middot; jawab langsung</p></div>
-    <button type="button" class="cw-x" id="cwClose" aria-label="Tutup">&times;</button>
-  </div>
-  <div class="cw-body" id="cwBody"></div>
-  <div class="cw-in">
-    <input id="cwIn" type="text" placeholder="Ketik pertanyaan… mis. 'beneran gratis?'" aria-label="Pertanyaan Anda">
-    <button type="button" id="cwSend" aria-label="Kirim"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></button>
-  </div>
-</div>
-<script>
-/* ===== TANYA TEMUDUA — pencocokan kata kunci lokal, tanpa API ===== */
-(function(){
-  var fab=document.getElementById('cwFab'), panel=document.getElementById('cwPanel'),
-      body=document.getElementById('cwBody'), input=document.getElementById('cwIn'),
-      send=document.getElementById('cwSend'), closeBtn=document.getElementById('cwClose');
-  if(!fab||!panel) return;
-  var KB=[{"k": "gratis harga biaya bayar berapa jebakan langganan trial", "a": "<b>Beneran gratis.</b> Tidak ada akun, tidak ada langganan, tidak ada fitur terkunci, dan tidak ada iklan."}, {"k": "akun daftar login register email password server", "a": "<b>Tidak perlu akun.</b> TemuDua tidak punya server — jadi tidak ada pendaftaran dan tidak ada data kalian yang menginap di tempat kami."}, {"k": "nyambung sinkron pasangan berdua hubungkan pairing dua hp koneksi", "a": "Karena tidak ada server, <b>kalian yang pegang kendali</b> saat menyambungkan dua HP. Caranya dijelaskan di bagian \"Nyambung ke HP pasangan\" pada halaman ini — dan tetap Rp 0."}, {"k": "privasi lihat semua rahasia pribadi baca pasangan intip", "a": "Tidak semuanya otomatis terbuka. Ada bagian yang memang untuk berdua, dan ada ruang pribadi — TemuDua dibuat untuk membantu, bukan untuk saling mengawasi."}, {"k": "skor nilai rating judge menghakimi hubungan", "a": "Tidak ada skor yang menilai hubungan kalian. Temu tumbuh dari <b>kebiasaan kalian berdua hadir</b>, bukan dari seberapa sempurna hubungannya."}, {"k": "streak temu nadi harian beruntun tumbuh istirahat jeda sambung", "a": "Tiap hari kalian berdua mengisi satu hal kecil (\"Nadi\"), dan <b>Temu</b> tumbuh dari kebiasaan itu. Ada <b>hari istirahat</b>, ada <b>jeda</b>, dan hari yang kelewat masih bisa <b>disambung berdua</b> — jadi streaknya tidak menghukum."}, {"k": "kalender jadwal agenda pengingat acara", "a": "Ada kalender berdua: jadwal, rencana, dan pengingat punya tempatnya sendiri — tidak lagi kescroll hilang di chat."}, {"k": "rumah tugas chore beban pekerjaan bagi kerjaan", "a": "Ada pembagian urusan rumah supaya bebannya kelihatan dan terbagi, bukan hanya terasa oleh satu orang."}, {"k": "uang keuangan bersama patungan tagihan belanja", "a": "Ada catatan uang berdua: pengeluaran bersama dan tagihan bisa dipantau tanpa harus saling menagih lewat chat."}, {"k": "nikah wedding persiapan kawin lamaran", "a": "Ada modul persiapan nikah — daftar persiapan dan tenggatnya tertata di satu tempat."}, {"k": "kesuburan hamil promil siklus haid anak pengasuhan", "a": "Ada bagian kesuburan dan pengasuhan untuk pasangan yang sedang di tahap itu. Semua tetap tersimpan lokal."}, {"k": "hp hilang rusak data backup cadangan pindah ganti", "a": "Karena datanya ada di perangkat kalian, cadangan itu penting. Simpan ekspor cadangan secara berkala supaya bisa dipulihkan kalau HP hilang atau ganti perangkat."}, {"k": "sendiri pacaran belum nikah status cocok siapa", "a": "Bisa dipakai di berbagai tahap — sendiri, pacaran, maupun menikah. Isinya menyesuaikan tahap yang kalian pilih."}, {"k": "android apk unduh install pwa perangkat hp", "a": "Tersedia sebagai webapp/PWA di browser dan sebagai APK Android. Keduanya jalan offline."}, {"k": "bahasa indonesia inggris english language", "a": "Tersedia dalam Bahasa Indonesia dan Inggris."}, {"k": "kontak email hubungi bantuan tanya", "a": "Email ke <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>."}];
-  var CHIPS=["Beneran gratis?", "Perlu akun?", "Cara nyambung berdua?", "Pasangan lihat semua?", "Streak-nya apa?", "Kalau HP hilang?"];
-  var GREET="Halo! 👋 Saya asisten otomatis TemuDua — jawab langsung soal fitur, privasi, dan cara menyambungkan berdua.";
-  var MISS="Hmm, saya belum menemukan jawaban pastinya. Coba kata kunci lain (mis. \"harga\", \"offline\", \"data\"), atau email <a href=\"https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meriaworks.id@gmail.com\" target=\"_blank\" rel=\"noopener\">meriaworks.id@gmail.com</a>.";
-  function addMsg(html,who){
-    var d=document.createElement('div'); d.className='cw-msg '+who; d.innerHTML=html;
-    body.appendChild(d); body.scrollTop=body.scrollHeight;
-  }
-  function addChips(){
-    var w=document.createElement('div'); w.className='cw-chips';
-    CHIPS.forEach(function(c){
-      var b=document.createElement('button'); b.type='button'; b.className='cw-chip'; b.textContent=c;
-      b.addEventListener('click',function(){ ask(c); });
-      w.appendChild(b);
-    });
-    body.appendChild(w); body.scrollTop=body.scrollHeight;
-  }
-  function norm(s){ return s.toLowerCase().replace(/[^a-z0-9\s]/g,' '); }
-  function answer(q){
-    var words=norm(q).split(/\s+/).filter(function(w){ return w.length>2; });
-    var best=null,bestScore=0;
-    KB.forEach(function(e){
-      var keys=e.k.split(' '), score=0;
-      words.forEach(function(w){
-        if(keys.some(function(k){ return k===w||k.indexOf(w)===0||w.indexOf(k)===0; })) score++;
-      });
-      if(score>bestScore){ bestScore=score; best=e; }
-    });
-    return (best&&bestScore>0) ? best.a : MISS;
-  }
-  function ask(q){
-    addMsg(q.replace(/[<>]/g,''),'user');
-    setTimeout(function(){ addMsg(answer(q),'bot'); },320);
-  }
-  var opened=false;
-  function setOpen(open){
-    panel.classList.toggle('open',open);
-    fab.setAttribute('aria-expanded',open?'true':'false');
-    if(open&&!opened){ opened=true; addMsg(GREET,'bot'); addChips(); }
-    if(open) setTimeout(function(){ input.focus(); },60);
-  }
-  fab.addEventListener('click',function(){ setOpen(!panel.classList.contains('open')); });
-  closeBtn.addEventListener('click',function(){ setOpen(false); });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&&panel.classList.contains('open')) setOpen(false);
-  });
-  function submit(){ var q=input.value.trim(); if(!q) return; input.value=''; ask(q); }
-  send.addEventListener('click',submit);
-  input.addEventListener('keydown',function(e){ if(e.key==='Enter') submit(); });
-})();
 </script>
 </body>
 </html>

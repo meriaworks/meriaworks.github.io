@@ -1,0 +1,2 @@
+import{K as i,O as a}from"./index-FaNuwcS1.js";function u(e,n,s){const t=i(e,s?.in);if(isNaN(n))return a(e,NaN);if(!n)return t;const r=t.getDate(),o=a(e,t.getTime());o.setMonth(t.getMonth()+n+1,0);const c=o.getDate();return r>=c?o:(t.setFullYear(o.getFullYear(),o.getMonth(),r),t)}function h(e,n){const s=i(e,n?.in);return s.setDate(1),s.setHours(0,0,0,0),s}export{u as a,h as s};
+//# sourceMappingURL=startOfMonth-DcnAfMYC.js.map
