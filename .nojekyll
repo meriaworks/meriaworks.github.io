@@ -1,0 +1,1 @@
+Jekyll hides dot-directories, which would hide .well-known and silently break Android link verification.

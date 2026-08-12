@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "works.meria.temudua",
+      "sha256_cert_fingerprints": [
+        "93:3F:CF:EA:FA:45:CE:C5:05:3B:5D:4D:EF:62:82:80:1D:D9:E5:93:45:39:F7:29:E4:7D:7D:F7:80:F2:35:70"
+      ]
+    }
+  }
+]
