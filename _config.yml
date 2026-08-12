@@ -1,0 +1,9 @@
+# Jekyll drops anything beginning with a dot, which would silently take
+# .well-known/assetlinks.json with it — the file Android reads to confirm that
+# the TemuDua app may open temudua links. Without it the link opens a browser
+# instead of the app, and the pairing code is spent in the wrong place.
+#
+# .nojekyll does not work here: it switches Jekyll off, and this directive with
+# it. The directory has to be included, not exempted.
+include:
+  - .well-known
