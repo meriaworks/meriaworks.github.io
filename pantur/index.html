@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>PANTUR — Pantau keuanganmu, atur hidupmu.</title>
-<meta name="description" content="Pencatat keuangan rumah tangga yang jalan penuh tanpa internet. Catat lewat suara, foto struk, mutasi PDF, atau ketik. Lihat uang yang benar-benar aman dipakai. Tanpa akun, tanpa server." />
+<meta name="description" content="Pencatat keuangan rumah tangga yang jalan penuh tanpa internet. Catat lewat suara, foto struk, mutasi PDF, atau ketik. Lihat uang yang benar-benar aman dipakai. Tanpa akun, tanpa iklan, tanpa pelacak." />
 <meta name="theme-color" content="#0F3D2E" />
 <meta property="og:title" content="PANTUR — Saldo besar belum tentu uang aman." />
 <meta property="og:description" content="Catat, lihat yang aman dipakai, dan rawat Tetes tiap hari. Offline, tanpa akun, datamu tetap di ponselmu." />
@@ -150,7 +150,9 @@ h2.title .serif { color: var(--sea); font-weight: 500; }
 .film-play:hover span { transform: scale(1.06); }
 .film-play svg { width: 34px; height: 34px; }
 .film.playing .film-play { display: none; }
-@media (max-width: 640px) { .film { aspect-ratio: 9 / 16; max-width: 420px; margin-inline: auto; } }
+/* the full film is 16:9 everywhere; only the 30-second cut has a tall version for phones */
+@media (max-width: 640px) { .film.tall { aspect-ratio: 9 / 16; max-width: 420px; margin-inline: auto; } }
+.film-alt { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 18px; color: var(--ink-2); font-size: 16px; }
 
 /* ── reel fitur: sembilan film vertikal ───────────────────────────────────── */
 .reel { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(230px, 24vw, 300px); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 34px max(20px, calc((100% - 1180px) / 2)) 30px; scrollbar-width: none; }
@@ -304,7 +306,7 @@ footer { padding: 40px 0 60px; background: var(--forest-2); color: #A8BDB3; font
           </a>
           <a class="btn btn-ghost" href="#film">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.6v12.8a1 1 0 0 0 1.5.9l10-6.4a1 1 0 0 0 0-1.7l-10-6.4A1 1 0 0 0 8 5.6Z"/></svg>
-            Tonton 30 detik
+            Tonton filmnya
           </a>
         </div>
         <ul class="chips reveal" style="--d:1000ms">
@@ -355,15 +357,18 @@ footer { padding: 40px 0 60px; background: var(--forest-2); color: #A8BDB3; font
   <!-- ═════════════════════════════════ FILM ══════════════════════════════════ -->
   <section class="sec" id="film">
     <div class="wrap">
-      <span class="eyebrow reveal">Film 30 detik</span>
+      <span class="eyebrow reveal">Film 3 menit</span>
       <h2 class="title" data-kinetic>Semua layar di film ini <span class="serif">asli.</span></h2>
-      <p class="sub reveal">Direkam dari aplikasinya sendiri, dengan data contoh. Tidak ada tampilan tiruan.</p>
+      <p class="sub reveal">Dari mencatat sampai Tetes, semua isi aplikasinya dalam satu film. Layarnya direkam dari aplikasi aslinya dengan data contoh, tanpa tampilan tiruan.</p>
       <div class="film reveal" id="filmBox">
-        <video id="filmVideo" playsinline preload="none" controls poster="media/film-30.webp" data-src-wide="media/film-30.mp4" data-src-tall="media/film-30-v.mp4" aria-label="Film PANTUR 30 detik"></video>
-        <button class="film-play" type="button" id="filmPlay" aria-label="Putar film PANTUR 30 detik dengan suara">
+        <video id="filmVideo" playsinline preload="none" controls poster="media/film-promo.webp" data-src-wide="media/film-promo.mp4" aria-label="Film promosi PANTUR, 3 menit"></video>
+        <button class="film-play" type="button" id="filmPlay" aria-label="Putar film PANTUR 3 menit dengan suara">
           <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#0F3D2E"/><path fill="#B8EA63" d="M10 7.8v8.4a.7.7 0 0 0 1 .6l6.6-4.2a.7.7 0 0 0 0-1.2L11 7.2a.7.7 0 0 0-1 .6Z"/></svg>Putar dengan suara</span>
         </button>
       </div>
+      <p class="film-alt reveal">Cuma punya setengah menit?
+        <button class="btn btn-ghost" type="button" id="filmShort" data-src-wide="media/film-30.mp4" data-src-tall="media/film-30-v.mp4">Tonton versi 30 detik</button>
+      </p>
     </div>
   </section>
 
@@ -482,10 +487,10 @@ footer { padding: 40px 0 60px; background: var(--forest-2); color: #A8BDB3; font
   <section class="sec" id="privasi" style="padding-top:0">
     <div class="wrap">
       <span class="eyebrow reveal">Privasi bukan fitur tambahan</span>
-      <h2 class="title" data-kinetic>Datamu <span class="serif">tidak pernah pergi.</span></h2>
-      <p class="sub reveal">Semua catatan tinggal di ponselmu. Cadangan ke Google Drive ada kalau kamu mau, dan terenkripsi.</p>
+      <h2 class="title" data-kinetic>Catatanmu <span class="serif">tinggal di ponselmu.</span></h2>
+      <p class="sub reveal">Transaksi, saldo, dan catatanmu tidak dikirim ke mana pun. Yang tersambung ke internet hanya yang kamu buka sendiri: Berdua dengan pasangan (terkunci), harga pasar investasi, dan data publik di Pantau. Cadangan ke Google Drive ada kalau kamu mau, terenkripsi.</p>
       <div class="zero">
-        <div class="reveal"><b>0</b><span>server</span><small>Tidak ada tempat catatanmu dikirim.</small></div>
+        <div class="reveal"><b>0</b><span>data dijual</span><small>Catatanmu bukan barang dagangan.</small></div>
         <div class="reveal" style="--d:80ms"><b>0</b><span>akun</span><small>Buka, langsung pakai.</small></div>
         <div class="reveal" style="--d:160ms"><b>0</b><span>iklan</span><small>Tidak ada yang menjual perhatianmu.</small></div>
         <div class="reveal" style="--d:240ms"><b>0</b><span>pelacak</span><small>Tidak ada analitik pihak ketiga.</small></div>
@@ -581,13 +586,17 @@ footer { padding: 40px 0 60px; background: var(--forest-2); color: #A8BDB3; font
   }, { threshold: 0.35 });
   document.querySelectorAll("video[data-autoplay]").forEach((v) => vids.observe(v));
 
-  /* Film utama: lebar di layar lebar, tegak di ponsel. Diputar dengan suara hanya bila diminta. */
+  /* Film utama (3 menit, lebar di semua layar) atau versi 30 detik (tegak di ponsel). Bersuara hanya bila diminta. */
   const film = document.getElementById("filmVideo"), box = document.getElementById("filmBox");
-  document.getElementById("filmPlay").addEventListener("click", () => {
-    film.src = matchMedia("(max-width: 640px)").matches ? film.dataset.srcTall : film.dataset.srcWide;
+  const playFilm = (src) => {
+    const tall = src.dataset.srcTall && matchMedia("(max-width: 640px)").matches;
+    film.src = tall ? src.dataset.srcTall : src.dataset.srcWide;
+    box.classList.toggle("tall", Boolean(tall));
     box.classList.add("playing");
     film.play().catch(() => {});
-  });
+  };
+  document.getElementById("filmPlay").addEventListener("click", () => playFilm(film));
+  document.getElementById("filmShort").addEventListener("click", (e) => { playFilm(e.currentTarget); box.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" }); });
 
   /* Reel: tombol geser. */
   const reel = document.getElementById("reel");
